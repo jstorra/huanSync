@@ -2,27 +2,25 @@ package com.u2team.huansync.activity.cosplay.categorycosplay.model;
 
 
 public class CategoryCosplay {
-    private int categoryCosplayId;
+    private long categoryCosplayId;
     private String nameCategoryCosplay;
-
 
     /*Constructor*/
     public CategoryCosplay() {
 
     }
 
-    public CategoryCosplay(int categoryCosplayId, String nameCategoryCosplay) {
+    public CategoryCosplay(Long categoryCosplayId, String nameCategoryCosplay) {
         this.categoryCosplayId = categoryCosplayId;
         this.nameCategoryCosplay = nameCategoryCosplay;
     }
 
-
     /*Getters and Setters*/
-    public int getCategoryCosplayId() {
+    public long getCategoryCosplayId() {
         return categoryCosplayId;
     }
 
-    public void setCategoryCosplayId(int categoryCosplayId) {
+    public void setCategoryCosplayId(long categoryCosplayId) {
         this.categoryCosplayId = categoryCosplayId;
     }
 

@@ -2,14 +2,12 @@ package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import com.u2team.huansync.persistence.BDConnection;
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase para acceder y manipular la tabla de categorías de cosplay en la base de datos.
+ * Clase para acceder y manipular la tabla de categorias de cosplay en la base de datos.
  */
 public class CategoryCosplayDAO {
 
@@ -72,4 +70,3 @@ public class CategoryCosplayDAO {
         }
     }
 }
-

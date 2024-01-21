@@ -1,11 +1,10 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
-
 import java.util.List;
 
 /**
- * Controlador para la gestión de categorías de cosplay.
+ * Controlador para la gestión de categorias de cosplay.
  */
 public class CategoryCosplayController {
     private CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();

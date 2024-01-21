@@ -2,21 +2,21 @@ package com.u2team.huansync.persistencia;
 
 import java.sql.*;
 
-public abstract class Operaciones {
+public abstract class Operations {
 
     public static Connection con;
     public static Statement stmt = null;
     public static ResultSet rs = null;
 
     public static Connection setConnection(Connection connection) {
-        Operaciones.con = connection;
+        Operations.con = connection;
         return connection;
     }
 
     public static Connection getConnection() {
         return con;
     }
-    
+
     public static void closeConnection(Connection con) {
         if (con != null) {
             try {
@@ -31,7 +31,7 @@ public abstract class Operaciones {
         try {
             rs = sentencia.executeQuery();
         } catch (SQLException | RuntimeException sqlex) {
-            System.out.println("ERROR RUTINA: " + sqlex);
+            System.out.println("Runtime Error: " + sqlex);
             return null;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -39,13 +39,13 @@ public abstract class Operaciones {
         }
         return rs;
     }
-    
-    public static int insertar_actualizar_borrar_BD(PreparedStatement sentencia){
+
+    public static int insertar_actualizar_borrar_BD(PreparedStatement sentencia) {
         int filas;
         try {
             filas = sentencia.executeUpdate();
         } catch (SQLException | RuntimeException sqlex) {
-            System.out.println("ERROR" + sqlex);
+            System.out.println("Error" + sqlex);
             return 0;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -58,7 +58,7 @@ public abstract class Operaciones {
         try {
             con.setAutoCommit(parametro);
         } catch (SQLException sqlex) {
-            System.out.println("Error al configurar el autoCommit " + sqlex.getMessage());
+            System.out.println("Error configuration autocommit " + sqlex.getMessage());
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public abstract class Operaciones {
             con.commit();
             return true;
         } catch (SQLException sqlex) {
-            System.out.println("Error al hacer commit " + sqlex.getMessage());
+            System.out.println("Error in commit " + sqlex.getMessage());
             return false;
         }
     }
@@ -83,7 +83,7 @@ public abstract class Operaciones {
             con.rollback();
             return true;
         } catch (SQLException sqlex) {
-            System.out.println("Error al hacer rollback " + sqlex.getMessage());
+            System.out.println("Error in rollback " + sqlex.getMessage());
             return false;
         }
     }

@@ -4,27 +4,23 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class Activity {
+    private Long activityId;
     private String name;
     private TypeActivity TypeActivity;
-    private Category category;
-    private int numParticipans;
-    private Event event;
-    private LocalTime hourStart;
+    private int categoryCosplayId;
+    private int numParticipants;
+    private int eventId;
+    private LocalTime startTime;
     private List<Staff> staff;
 
-    
-    public Activity(String name, TypeActivity typeActivity, Category category, int numParticipans, Event event,
-            LocalTime hourStart, List<Staff> staff) {
-        this.name = name;
-        this.TypeActivity = typeActivity;
-        this.category = category;
-        this.numParticipans = numParticipans;
-        this.event = event;
-        this.hourStart = hourStart;
-        this.staff = staff;
+    public Long getActivityIdId() {
+        return activityId;
     }
 
-    
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+
     public String getName() {
         return name;
     }
@@ -41,36 +37,36 @@ public class Activity {
         TypeActivity = typeActivity;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getIdCategoryCosplay() {
+        return categoryCosplayId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryCosplayId(int categoryCosplayId) {
+        this.categoryCosplayId = categoryCosplayId;
     }
 
-    public int getNumParticipans() {
-        return numParticipans;
+    public int getNumParticipants() {
+        return numParticipants;
     }
 
-    public void setNumParticipans(int numParticipans) {
-        this.numParticipans = numParticipans;
+    public void setNumParticipants(int numParticipants) {
+        this.numParticipants = numParticipants;
     }
 
-    public Event getEvent() {
-        return event;
+    public int getEventId() {
+        return eventId;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
-    public LocalTime getHourStart() {
-        return hourStart;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setHourStart(LocalTime hourStart) {
-        this.hourStart = hourStart;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
     public List<Staff> getStaff() {

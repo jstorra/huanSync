@@ -5,17 +5,12 @@
 package com.u2team.huansync.event.workerRoles.model.DAO;
 
 import com.u2team.huansync.event.model.DAO.IDao;
-import com.u2team.huansync.event.model.classes.Event;
-import com.u2team.huansync.event.model.classes.builders.EventBuilder;
-import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Usuario
+ * @author Christian Pardo
  */
 public class EventController {
 
@@ -16,7 +16,7 @@ public class EventController {
         this.eventDao = new EventDAO();
     }
 
-    public Event getById(long eventId) {
+    public Event getByIdEvent(long eventId) {
         return eventDao.getById(eventId);
     }
 

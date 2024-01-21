@@ -1,22 +1,22 @@
-package com.u2team.huansync.persistencia;
+package com.u2team.huansync.persistence;
 
 import java.sql.*;
 
-public abstract class Operaciones {
+public abstract class Operations {
 
     public static Connection con;
     public static Statement stmt = null;
     public static ResultSet rs = null;
 
     public static Connection setConnection(Connection connection) {
-        Operaciones.con = connection;
+        Operations.con = connection;
         return connection;
     }
 
     public static Connection getConnection() {
         return con;
     }
-    
+
     public static void closeConnection(Connection con) {
         if (con != null) {
             try {
@@ -27,11 +27,11 @@ public abstract class Operaciones {
         }
     }
 
-    public static ResultSet consultar_BD(PreparedStatement sentencia) {
+    public static ResultSet query_db(PreparedStatement statement) {
         try {
-            rs = sentencia.executeQuery();
+            rs = statement.executeQuery();
         } catch (SQLException | RuntimeException sqlex) {
-            System.out.println("ERROR RUTINA: " + sqlex);
+            System.out.println("Runtime Error: " + sqlex);
             return null;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -39,13 +39,13 @@ public abstract class Operaciones {
         }
         return rs;
     }
-    
-    public static int insertar_actualizar_borrar_BD(PreparedStatement sentencia){
+
+    public static int insert_update_delete_db(PreparedStatement statement) {
         int filas;
         try {
-            filas = sentencia.executeUpdate();
+            filas = statement.executeUpdate();
         } catch (SQLException | RuntimeException sqlex) {
-            System.out.println("ERROR" + sqlex);
+            System.out.println("Error" + sqlex);
             return 0;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -54,17 +54,17 @@ public abstract class Operaciones {
         return filas;
     }
 
-    public static boolean setAutoCommitBD(boolean parametro) {
+    public static boolean setAutoCommitBD(boolean param) {
         try {
-            con.setAutoCommit(parametro);
+            con.setAutoCommit(param);
         } catch (SQLException sqlex) {
-            System.out.println("Error al configurar el autoCommit " + sqlex.getMessage());
+            System.out.println("Error configuration autocommit " + sqlex.getMessage());
             return false;
         }
         return true;
     }
 
-    public static void cerrarConexion() {
+    public static void closeConnection() {
         closeConnection(con);
     }
 
@@ -73,7 +73,7 @@ public abstract class Operaciones {
             con.commit();
             return true;
         } catch (SQLException sqlex) {
-            System.out.println("Error al hacer commit " + sqlex.getMessage());
+            System.out.println("Error in commit " + sqlex.getMessage());
             return false;
         }
     }
@@ -83,7 +83,7 @@ public abstract class Operaciones {
             con.rollback();
             return true;
         } catch (SQLException sqlex) {
-            System.out.println("Error al hacer rollback " + sqlex.getMessage());
+            System.out.println("Error in rollback " + sqlex.getMessage());
             return false;
         }
     }

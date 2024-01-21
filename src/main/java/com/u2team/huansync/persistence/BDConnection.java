@@ -1,8 +1,8 @@
-package com.u2team.huansync.persistencia;
+package com.u2team.huansync.persistence;
 
 import java.sql.*;
 
-public abstract class ConexionBD {
+public abstract class BDConnection {
     private static String url = "";
     private static String user = "";
     private static String password = "";
@@ -21,7 +21,7 @@ public abstract class ConexionBD {
             con = DriverManager.getConnection(url, user, password);
             if (con != null) {
                 DatabaseMetaData meta = con.getMetaData();
-                System.out.println("Base de datos conectada " + meta.getDriverName());
+                System.out.println("Database connected " + meta.getDriverName());
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

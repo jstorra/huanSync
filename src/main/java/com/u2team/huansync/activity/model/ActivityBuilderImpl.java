@@ -1,6 +1,5 @@
 package com.u2team.huansync.activity.model;
 
-import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder categoryCosplayId(int categoryCosplayId) {
+    public ActivityBuilder categoryCosplayId(long categoryCosplayId) {
         activity.setCategoryCosplayId(categoryCosplayId);
         return this;
     }
@@ -32,7 +31,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder eventId(int eventId) {
+    public ActivityBuilder eventId(long eventId) {
         activity.setEventId(eventId);
         return null;
     }

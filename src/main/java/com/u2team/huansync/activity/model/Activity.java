@@ -4,20 +4,20 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class Activity {
-    private Long activityId;
+    private long activityId;
     private String name;
     private TypeActivity TypeActivity;
-    private int categoryCosplayId;
+    private long categoryCosplayId;
     private int numParticipants;
-    private int eventId;
+    private long eventId;
     private LocalTime startTime;
     private List<Staff> staff;
 
-    public Long getActivityIdId() {
+    public long getActivityIdId() {
         return activityId;
     }
 
-    public void setActivityId(Long activityId) {
+    public void setActivityId(long activityId) {
         this.activityId = activityId;
     }
 
@@ -37,11 +37,11 @@ public class Activity {
         TypeActivity = typeActivity;
     }
 
-    public int getIdCategoryCosplay() {
+    public long getIdCategoryCosplay() {
         return categoryCosplayId;
     }
 
-    public void setCategoryCosplayId(int categoryCosplayId) {
+    public void setCategoryCosplayId(long categoryCosplayId) {
         this.categoryCosplayId = categoryCosplayId;
     }
 
@@ -53,11 +53,11 @@ public class Activity {
         this.numParticipants = numParticipants;
     }
 
-    public int getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(int eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 

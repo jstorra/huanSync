@@ -6,9 +6,9 @@ import java.util.List;
 public interface ActivityBuilder {
     ActivityBuilder name(String name);
     ActivityBuilder typeActivity(TypeActivity typeActivity);
-    ActivityBuilder categoryCosplayId(int categoryCosplayId);
+    ActivityBuilder categoryCosplayId(long categoryCosplayId);
     ActivityBuilder numParticipants(int numParticipants);
-    ActivityBuilder eventId(int eventId);
+    ActivityBuilder eventId(long eventId);
     ActivityBuilder startTime(LocalTime startTime);
     ActivityBuilder staff(List<Staff> staff);
     Activity build();

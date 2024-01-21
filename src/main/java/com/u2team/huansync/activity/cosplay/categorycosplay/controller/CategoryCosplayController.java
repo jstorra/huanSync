@@ -1,20 +1,13 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
-
 import java.util.List;
 
 /**
  * Controlador para la gestión de categorías de cosplay.
  */
 public class CategoryCosplayController {
-    private CategoryCosplayDAO categoryCosplayDAO;
-
-
-    public CategoryCosplayController() {
-        this.categoryCosplayDAO = new CategoryCosplayDAO();
-    }
-
+    private CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();
     /**
      * Obtiene todas las categorías de cosplay.
      *
@@ -41,7 +34,7 @@ public class CategoryCosplayController {
      * @param categoryId          Identificador de la categoría de cosplay a actualizar.
      * @param newNameCategoryCosplay Nuevo nombre para la categoría de cosplay.
      */
-    public void updateCategory(int categoryId, String newNameCategoryCosplay) {
+    public void updateCategory(long categoryId, String newNameCategoryCosplay) {
         CategoryCosplay category = new CategoryCosplay();
         category.setCategoryCosplayId(categoryId);
         category.setNameCategoryCosplay(newNameCategoryCosplay);
@@ -53,7 +46,7 @@ public class CategoryCosplayController {
      *
      * @param categoryId Identificador de la categoría de cosplay a eliminar.
      */
-    public void deleteCategory(int categoryId) {
+    public void deleteCategory(long categoryId) {
         categoryCosplayDAO.deleteCategory(categoryId);
     }
 }

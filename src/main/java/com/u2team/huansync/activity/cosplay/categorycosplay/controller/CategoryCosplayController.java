@@ -8,12 +8,7 @@ import java.util.List;
  * Controlador para la gestión de categorías de cosplay.
  */
 public class CategoryCosplayController {
-    private CategoryCosplayDAO categoryCosplayDAO;
-
-
-    public CategoryCosplayController() {
-        this.categoryCosplayDAO = new CategoryCosplayDAO();
-    }
+    private CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();
 
     /**
      * Obtiene todas las categorías de cosplay.
@@ -27,12 +22,10 @@ public class CategoryCosplayController {
     /**
      * Inserta una nueva categoría de cosplay.
      *
-     * @param nameCategoryCosplay Nombre de la nueva categoría de cosplay.
+     * @param nameCategory Nombre de la nueva categoría de cosplay.
      */
-    public void insertCategory(String nameCategoryCosplay) {
-        CategoryCosplay category = new CategoryCosplay();
-        category.setNameCategoryCosplay(nameCategoryCosplay);
-        categoryCosplayDAO.insertCategory(category);
+    public void insertCategory(String nameCategory) {
+        categoryCosplayDAO.insertCategory(nameCategory);
     }
 
     /**
@@ -42,10 +35,8 @@ public class CategoryCosplayController {
      * @param newNameCategoryCosplay Nuevo nombre para la categoría de cosplay.
      */
     public void updateCategory(int categoryId, String newNameCategoryCosplay) {
-        CategoryCosplay category = new CategoryCosplay();
-        category.setCategoryCosplayId(categoryId);
-        category.setNameCategoryCosplay(newNameCategoryCosplay);
-        categoryCosplayDAO.updateCategory(category);
+
+        categoryCosplayDAO.updateCategory(categoryId,newNameCategoryCosplay);
     }
 
     /**

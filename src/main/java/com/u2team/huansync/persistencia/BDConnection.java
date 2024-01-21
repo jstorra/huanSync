@@ -2,7 +2,7 @@ package com.u2team.huansync.persistencia;
 
 import java.sql.*;
 
-public abstract class ConexionBD {
+public abstract class BDConnection {
     private static String url = "";
     private static String user = "";
     private static String password = "";

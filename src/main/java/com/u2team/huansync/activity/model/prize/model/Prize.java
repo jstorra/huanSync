@@ -1,6 +1,7 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 public class Prize {
+    private int prizeId ;
     private String typePrize;
     private String description;
     private double price;
@@ -10,6 +11,14 @@ public class Prize {
 
     public String getTypePrize() {
         return typePrize;
+    }
+
+    public int getPrizeId() {
+        return prizeId;
+    }
+
+    public void setPrizeId(int prizeId) {
+        this.prizeId = prizeId;
     }
 
     public void setTypePrize(String typePrize) {

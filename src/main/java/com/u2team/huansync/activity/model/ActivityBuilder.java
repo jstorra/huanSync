@@ -1,4 +1,4 @@
-package com.u2team.huansync.activitiy.model;
+package com.u2team.huansync.activity.model;
 
 
 import java.time.LocalTime;

@@ -1,7 +1,8 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
-import com.u2team.huansync.persistencia.ConexionBD;
+import com.u2team.huansync.persistence.BDConnection;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class CategoryCosplayDAO {
     public List<CategoryCosplay> getAllCategories() {
         List<CategoryCosplay> categories = new ArrayList<>();
 
-        try (Connection connection = ConexionBD.MySQLConnection()) {
+        try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "SELECT * FROM tbl_categoryCosplay";
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
@@ -34,7 +35,7 @@ public class CategoryCosplayDAO {
     }
 
     public void insertCategory(CategoryCosplay category) {
-        try (Connection connection = ConexionBD.MySQLConnection()) {
+        try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay) VALUES (?)";
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, category.getNameCategoryCosplay());
@@ -52,7 +53,7 @@ public class CategoryCosplayDAO {
     }
 
     public void updateCategory(CategoryCosplay category) {
-        try (Connection connection = ConexionBD.MySQLConnection()) {
+        try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_categoryCosplay SET nameCosplay = ? WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, category.getNameCategoryCosplay());
@@ -65,7 +66,7 @@ public class CategoryCosplayDAO {
     }
 
     public void deleteCategory(int categoryId) {
-        try (Connection connection = ConexionBD.MySQLConnection()) {
+        try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_categoryCosplay WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, categoryId);

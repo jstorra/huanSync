@@ -1,4 +1,4 @@
-package com.u2team.huansync.persistencia;
+package com.u2team.huansync.persistence;
 
 import java.sql.*;
 
@@ -27,9 +27,9 @@ public abstract class Operations {
         }
     }
 
-    public static ResultSet consultar_BD(PreparedStatement sentencia) {
+    public static ResultSet query_db(PreparedStatement statement) {
         try {
-            rs = sentencia.executeQuery();
+            rs = statement.executeQuery();
         } catch (SQLException | RuntimeException sqlex) {
             System.out.println("Runtime Error: " + sqlex);
             return null;
@@ -40,10 +40,10 @@ public abstract class Operations {
         return rs;
     }
 
-    public static int insertar_actualizar_borrar_BD(PreparedStatement sentencia) {
+    public static int insert_update_delete_db(PreparedStatement statement) {
         int filas;
         try {
-            filas = sentencia.executeUpdate();
+            filas = statement.executeUpdate();
         } catch (SQLException | RuntimeException sqlex) {
             System.out.println("Error" + sqlex);
             return 0;
@@ -54,9 +54,9 @@ public abstract class Operations {
         return filas;
     }
 
-    public static boolean setAutoCommitBD(boolean parametro) {
+    public static boolean setAutoCommitBD(boolean param) {
         try {
-            con.setAutoCommit(parametro);
+            con.setAutoCommit(param);
         } catch (SQLException sqlex) {
             System.out.println("Error configuration autocommit " + sqlex.getMessage());
             return false;
@@ -64,7 +64,7 @@ public abstract class Operations {
         return true;
     }
 
-    public static void cerrarConexion() {
+    public static void closeConnection() {
         closeConnection(con);
     }
 

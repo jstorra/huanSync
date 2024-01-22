@@ -1,30 +1,28 @@
 package com.u2team.huansync.activity.model;
 
+import com.u2team.huansync.event.staff.model.classes.Staff;
+
 import java.time.LocalTime;
 import java.util.List;
 
 public class Activity {
+    private long activityId;
     private String name;
-    private TypeActivity TypeActivity;
-    private Category category;
-    private int numParticipans;
-    private Event event;
-    private LocalTime hourStart;
+    private TypeActivity typeActivity;
+    private long categoryCosplayId;
+    private int numParticipants;
+    private long eventId;
+    private LocalTime startTime;
     private List<Staff> staff;
 
-    
-    public Activity(String name, TypeActivity typeActivity, Category category, int numParticipans, Event event,
-            LocalTime hourStart, List<Staff> staff) {
-        this.name = name;
-        this.TypeActivity = typeActivity;
-        this.category = category;
-        this.numParticipans = numParticipans;
-        this.event = event;
-        this.hourStart = hourStart;
-        this.staff = staff;
+    public long getActivityIdId() {
+        return activityId;
     }
 
-    
+    public void setActivityId(long activityId) {
+        this.activityId = activityId;
+    }
+
     public String getName() {
         return name;
     }
@@ -34,43 +32,43 @@ public class Activity {
     }
 
     public TypeActivity getTypeActivity() {
-        return TypeActivity;
+        return typeActivity;
     }
 
     public void setTypeActivity(TypeActivity typeActivity) {
-        TypeActivity = typeActivity;
+        this.typeActivity = typeActivity;
     }
 
-    public Category getCategory() {
-        return category;
+    public long getIdCategoryCosplay() {
+        return categoryCosplayId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryCosplayId(long categoryCosplayId) {
+        this.categoryCosplayId = categoryCosplayId;
     }
 
-    public int getNumParticipans() {
-        return numParticipans;
+    public int getNumParticipants() {
+        return numParticipants;
     }
 
-    public void setNumParticipans(int numParticipans) {
-        this.numParticipans = numParticipans;
+    public void setNumParticipants(int numParticipants) {
+        this.numParticipants = numParticipants;
     }
 
-    public Event getEvent() {
-        return event;
+    public long getEventId() {
+        return eventId;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setEventId(long eventId) {
+        this.eventId = eventId;
     }
 
-    public LocalTime getHourStart() {
-        return hourStart;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setHourStart(LocalTime hourStart) {
-        this.hourStart = hourStart;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
     public List<Staff> getStaff() {
@@ -79,5 +77,19 @@ public class Activity {
 
     public void setStaff(List<Staff> staff) {
         this.staff = staff;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "activityId=" + activityId +
+                ", name='" + name + '\'' +
+                ", TypeActivity=" + typeActivity +
+                ", categoryCosplayId=" + categoryCosplayId +
+                ", numParticipants=" + numParticipants +
+                ", eventId=" + eventId +
+                ", startTime=" + startTime +
+                ", staff=" + staff +
+                '}';
     }
 }

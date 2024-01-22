@@ -3,15 +3,25 @@ package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import com.u2team.huansync.persistence.BDConnection;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase para acceder y manipular la tabla de categorías de cosplay en la base de datos.
+ * Data Access Object (DAO) for managing operations related to cosplay categories in the database.
  */
+
 public class CategoryCosplayDAO {
+
+    /**
+     * Retrieves all cosplay categories from the database.
+     *
+     * @return List of cosplay categories.
+     */
 
     public List<CategoryCosplay> getAllCategories() {
         List<CategoryCosplay> categories = new ArrayList<>();
@@ -34,36 +44,49 @@ public class CategoryCosplayDAO {
         return categories;
     }
 
-    public void insertCategory(CategoryCosplay category) {
+    /**
+     * Inserts a new cosplay category into the database.
+     *
+     * @param nameCategory Name of the new cosplay category.
+     */
+
+    public void insertCategory(String nameCategory) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay) VALUES (?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, category.getNameCategoryCosplay());
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, nameCategory);
                 statement.executeUpdate();
-
-                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        category.setCategoryCosplayId(generatedKeys.getInt(1));
-                    }
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateCategory(CategoryCosplay category) {
+    /**
+     * Updates an existing cosplay category in the database.
+     *
+     * @param categoryId              Identifier of the cosplay category to be updated.
+     * @param newNameCategoryCosplay New name for the cosplay category.
+     */
+
+    public void updateCategory(int categoryId, String newNameCategoryCosplay) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_categoryCosplay SET nameCosplay = ? WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, category.getNameCategoryCosplay());
-                statement.setInt(2, category.getCategoryCosplayId());
+                statement.setString(1, newNameCategoryCosplay);
+                statement.setInt(2, categoryId);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Deletes a cosplay category from the database.
+     *
+     * @param categoryId Identifier of the cosplay category to be deleted.
+     */
 
     public void deleteCategory(int categoryId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -77,4 +100,3 @@ public class CategoryCosplayDAO {
         }
     }
 }
-

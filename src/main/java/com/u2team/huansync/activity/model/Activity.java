@@ -13,9 +13,10 @@ public class Activity {
     private int numParticipants;
     private long eventId;
     private LocalTime startTime;
+    private long price;
     private List<Staff> staff;
 
-    public long getActivityIdId() {
+    public long getActivityId() {
         return activityId;
     }
 
@@ -39,7 +40,7 @@ public class Activity {
         this.typeActivity = typeActivity;
     }
 
-    public long getIdCategoryCosplay() {
+    public long getCategoryCosplayId() {
         return categoryCosplayId;
     }
 
@@ -71,6 +72,14 @@ public class Activity {
         this.startTime = startTime;
     }
 
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
     public List<Staff> getStaff() {
         return staff;
     }
@@ -84,11 +93,12 @@ public class Activity {
         return "Activity{" +
                 "activityId=" + activityId +
                 ", name='" + name + '\'' +
-                ", TypeActivity=" + typeActivity +
+                ", typeActivity=" + typeActivity +
                 ", categoryCosplayId=" + categoryCosplayId +
                 ", numParticipants=" + numParticipants +
                 ", eventId=" + eventId +
                 ", startTime=" + startTime +
+                ", price=" + price +
                 ", staff=" + staff +
                 '}';
     }

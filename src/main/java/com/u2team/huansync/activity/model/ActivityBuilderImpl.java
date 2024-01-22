@@ -49,7 +49,12 @@ public class ActivityBuilderImpl implements ActivityBuilder {
         return this;
     }
 
-    
+    @Override
+    public ActivityBuilder price(long price) {
+        return this;
+    }
+
+
     @Override
     public ActivityBuilder staff(List<Staff> staff) {
         activity.setStaff(staff);

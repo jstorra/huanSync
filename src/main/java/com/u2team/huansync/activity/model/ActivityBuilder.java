@@ -12,6 +12,7 @@ public interface ActivityBuilder {
     ActivityBuilder numParticipants(int numParticipants);
     ActivityBuilder eventId(long eventId);
     ActivityBuilder startTime(LocalTime startTime);
+    ActivityBuilder price(long price);
     ActivityBuilder staff(List<Staff> staff);
     Activity build();
 }

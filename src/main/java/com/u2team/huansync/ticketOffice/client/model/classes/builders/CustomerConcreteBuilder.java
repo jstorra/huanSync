@@ -76,6 +76,6 @@ public class CustomerConcreteBuilder implements CustomerBuilder {
 
     @Override
     public Customer build() {
-        return null;
+        return customer;
     }
 }

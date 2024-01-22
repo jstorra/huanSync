@@ -80,7 +80,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", customerTypeEnum=" + customerTypeEnum + '}';
+        return "Customer{" + "customerId=" + customerId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", customerType=" + customerTypeEnum + '}';
     }
 
     

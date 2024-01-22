@@ -1,67 +1,87 @@
 package com.u2team.huansync.event.controller;
 
 import com.u2team.huansync.event.model.DAO.EventDAO;
+import com.u2team.huansync.event.model.DAO.EventStaffDAO;
 import com.u2team.huansync.event.model.classes.Event;
+import com.u2team.huansync.event.model.classes.EventStaff;
+import com.u2team.huansync.event.model.classes.EventStaffFull;
 import java.util.List;
 
 /**
+ * Controller class for managing event-related operations.
+ * This class provides methods to interact with the EventDAO and EventStaffDAO
+ * for CRUD operations on events and their associated staff.
  *
  * @author Christian Pardo
- *
- * "eventDao" = eventDao is a class that implements the DAO design pattern for data handling
- * "DAO" = meaning =("Data" "Access" "Object"), it is use in IDao Interface
  */
-
 public class EventController {
-    private EventDAO eventDao;
 
-    // Create a new eventDao
-    public EventController() {
-        this.eventDao = new EventDAO();
-    }
+    private static EventDAO eventDao = new EventDAO();
+    private static EventStaffDAO eventStaffDao = new EventStaffDAO();
+
     /**
-     * GetById Method that use to get a event by id.
-     * @param long eventID represent id with each event.
-     * @return Event will return the Event .
+     * Retrieves an event by its ID.
+     *
+     * @param eventId The ID of the event to retrieve.
+     * @return Event object corresponding to the specified ID, or null if not found.
      */
-    public Event getByIdEvent(long eventId) {
+    public static Event getByIdEvent(long eventId) {
         return eventDao.getById(eventId);
     }
 
     /**
-     * List Method that use to get all events of Database.
-     * @param parameter  is empty.
-     * @return return a List with events inside.
+     * Retrieves a list of all events.
+     *
+     * @return List of all Event objects in the database.
      */
-    public List<Event> getAllEvents() {
+    public static List<Event> getAllEvents() {
         return eventDao.getAll();
     }
 
     /**
-     * Method for Send a event to the database.
-     * @param Event object.
-     * @return return empty (void method).
+     * Inserts a new event into the database.
+     *
+     * @param event Event object to be inserted.
      */
-    public void insertEvent(Event event) {
+    public static void insertEvent(Event event) {
         eventDao.save(event);
     }
 
     /**
-     * Method for delete a event in the database.
-     * @param long eventId.
-     * @return return empty (void method).
+     * Updates an existing event in the database.
+     *
+     * @param event Event object containing updated information.
      */
-    public void deleteEvent(long eventId) {
+    public static void updateEvent(Event event) {
+        eventDao.update(event);
+    }
+
+    /**
+     * Deletes an event from the database using its ID.
+     *
+     * @param eventId ID of the event to be deleted.
+     */
+    public static void deleteEvent(long eventId) {
         eventDao.delete(eventId);
     }
 
     /**
-     * Method for update a event in the database.
-     * @param Event object.
-     * @return return empty (void method).
+     * Retrieves a list of all events, including detailed information about the staff
+     * associated with each event.
+     *
+     * @return List of EventStaffFull objects, each representing an event with its
+     *         associated staff details.
      */
-    public void updateEvent(Event event) {
-        eventDao.update(event);
+    public static List<EventStaffFull> getAllFullEvents() {
+        return eventDao.getAllFull();
     }
 
+    /**
+     * Inserts a new EventStaff record into the database.
+     *
+     * @param eventStaff EventStaff object to be inserted.
+     */
+    public static void insertEventStaffDAO(EventStaff eventStaff) {
+        eventStaffDao.save(eventStaff);
+    }
 }

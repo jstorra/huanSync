@@ -7,8 +7,13 @@ import com.u2team.huansync.persistence.Operations;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-public class EventStaffDao implements ISaveDao<EventStaff> {
+/**
+ *
+ * @author Christian Pardo
+ *
+ * EventDao =  implements abstract methods of iDao (interface)
+ */
+public class EventStaffDAO implements ISaveDao<EventStaff> {
 
     @Override
     public void save(EventStaff eventStaff) {

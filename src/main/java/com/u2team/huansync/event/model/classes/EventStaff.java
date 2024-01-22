@@ -1,5 +1,10 @@
 package com.u2team.huansync.event.model.classes;
 
+/**
+ *
+ * @author Christian Pardo
+ *
+ */
 public class EventStaff {
     private long eventId;
     private long staffId;

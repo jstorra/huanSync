@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 /**
  *
- * @author Cristian Pardo
+ * @author Christian Pardo
  */
 public class EventConcreteBuilder implements EventBuilder {
     
@@ -112,8 +112,6 @@ public class EventConcreteBuilder implements EventBuilder {
          if (statusEnum.equalsIgnoreCase("finished")){
              event.setStatusEnum(StatusEnum.FINISHED);
          }
-         
         return this;
     }
-    
 }

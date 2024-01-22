@@ -150,8 +150,4 @@ public class Event {
     public String toString() {
         return "Event{" + "eventId=" + eventId + ", nameEvent=" + nameEvent + ", country=" + country + ", city=" + city + ", address=" + address + ", peopleCapacity=" + peopleCapacity + ", storeCapacity=" + storeCapacity + ", restaurantCapacity=" + restaurantCapacity + ", dateEvent=" + dateEvent + ", timeEvent=" + timeEvent + ", organizerId=" + organizerId + ", ageClassification=" + ageClassification + ", statusEnum=" + statusEnum + '}';
     }
-    
-    
-    
-    
 }

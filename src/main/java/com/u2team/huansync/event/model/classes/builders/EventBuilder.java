@@ -1,13 +1,11 @@
-
 package com.u2team.huansync.event.model.classes.builders;
 
 import com.u2team.huansync.event.model.classes.Event;
 import java.time.*;
 
-
 /**
  *
- * @author Cristian Pardo
+ * @author Christian Pardo
  */
 public interface EventBuilder {
     

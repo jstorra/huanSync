@@ -15,7 +15,7 @@ public class PrizeDAO {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "SELECT * FROM tbl_prizes WHERE statusPrize = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, "Available");
+                statement.setString(1, "available");
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
                         Prize prize = new Prize();

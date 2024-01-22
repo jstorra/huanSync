@@ -35,7 +35,7 @@ public class Question {
         return categoryQuestion;
     }
 
-    public void setCategory(CategoryQuestion categoryQuestion) {
+    public void setCategoryQuestion(CategoryQuestion categoryQuestion) {
         this.categoryQuestion = categoryQuestion;
     }
 
@@ -43,7 +43,7 @@ public class Question {
         return difficultyQuestion;
     }
 
-    public void setDifficulty(DifficultyQuestion difficultyQuestion) {
+    public void setDifficultyQuestion(DifficultyQuestion difficultyQuestion) {
         this.difficultyQuestion = difficultyQuestion;
     }
 

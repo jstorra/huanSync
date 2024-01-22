@@ -4,77 +4,78 @@
  */
 package com.u2team.huansync.ticketOffice.client.model.classes.builders;
 
-import com.u2team.huansync.ticketOffice.client.model.classes.Costumer;
-import com.u2team.huansync.ticketOffice.client.model.classes.CostumerTypeEnum;
+import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
+import com.u2team.huansync.ticketOffice.client.model.classes.CustomerTypeEnum;
+
 import java.util.Date;
 
 /**
  *
  * @author SANTOS
  */
-public class CostumerConcreteBuilder implements CostumerBuilder {
+public class CustomerConcreteBuilder implements CustomerBuilder {
 
-    private Costumer costumer = new Costumer();
+    private Customer customer = new Customer();
 
 
     @Override
-    public CostumerBuilder costumerId(long costumerId) {
-        costumer.setCostumerId(costumerId);
+    public CustomerBuilder customerId(long costumerId) {
+        customer.setCustomerId(costumerId);
         return this;
     }
 
     @Override
-    public CostumerBuilder nameCostumer(String nameCostumer) {
-        costumer.setName(nameCostumer);
+    public CustomerBuilder nameCustomer(String nameCostumer) {
+        customer.setName(nameCostumer);
         return this;
     }
 
     @Override
-    public CostumerBuilder document(String document) {
-        costumer.setDocument(document);
+    public CustomerBuilder document(String document) {
+        customer.setDocument(document);
         return this;
     }
 
     @Override
-    public CostumerBuilder gender(String gender) {
-        costumer.setGender(gender);
+    public CustomerBuilder gender(String gender) {
+        customer.setGender(gender);
         return this;
     }
 
     @Override
-    public CostumerBuilder birthDate(Date birthDate) {
-        costumer.setBirthDate(birthDate);
+    public CustomerBuilder birthDate(Date birthDate) {
+        customer.setBirthDate(birthDate);
         return this;
     }
 
     @Override
-    public CostumerBuilder email(String email) {
-        costumer.setEmail(email);
+    public CustomerBuilder email(String email) {
+        customer.setEmail(email);
         return this;
     }
 
     @Override
-    public CostumerBuilder phoneNumber(String phoneNumber) {
-        costumer.setPhoneNumber(phoneNumber);
+    public CustomerBuilder phoneNumber(String phoneNumber) {
+        customer.setPhoneNumber(phoneNumber);
         return this;
     }
 
     @Override
-    public CostumerBuilder costumerTypeEnum(String costumerTypeEnum) {
-        if(costumerTypeEnum.equalsIgnoreCase("participant")){
-            costumer.setCostumerTypeEnum(CostumerTypeEnum.PARTICIPANT);
+    public CustomerBuilder customerTypeEnum(String customerTypeEnum) {
+        if(customerTypeEnum.equalsIgnoreCase("participant")){
+            customer.setCustomerTypeEnum(CustomerTypeEnum.PARTICIPANT);
         }
-        if(costumerTypeEnum.equalsIgnoreCase("visitor")){
-            costumer.setCostumerTypeEnum(CostumerTypeEnum.VISITOR);
+        if(customerTypeEnum.equalsIgnoreCase("visitor")){
+            customer.setCustomerTypeEnum(CustomerTypeEnum.VISITOR);
         }
-        if(costumerTypeEnum.equalsIgnoreCase("winner")){
-            costumer.setCostumerTypeEnum(CostumerTypeEnum.WINNER);
+        if(customerTypeEnum.equalsIgnoreCase("winner")){
+            customer.setCustomerTypeEnum(CustomerTypeEnum.WINNER);
         }
         return this;
     }
 
     @Override
-    public Costumer build() {
+    public Customer build() {
         return null;
     }
 }

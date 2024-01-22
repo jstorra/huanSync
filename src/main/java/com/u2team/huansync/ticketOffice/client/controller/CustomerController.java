@@ -1,29 +1,29 @@
 package com.u2team.huansync.ticketOffice.client.controller;
 
-import com.u2team.huansync.ticketOffice.client.model.DAO.CostumerDAO;
-import com.u2team.huansync.ticketOffice.client.model.classes.Costumer;
+import com.u2team.huansync.ticketOffice.client.model.DAO.CustomerDAO;
+import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 
-public class CostumerController {
+public class CustomerController {
 
-    private CostumerDAO costumerDAO;
+    private CustomerDAO customerDAO;
 
-    public CostumerController()   {
-        this.costumerDAO = new CostumerDAO();
+    public CustomerController()   {
+        this.customerDAO = new CustomerDAO();
     }
     
-    public Costumer getById(long costumerId){
-        return costumerDAO.getById(costumerId);
+    public Customer getById(long customerId){
+        return customerDAO.getById(customerId);
     }
     
-    public void insertCostumer (Costumer costumer){
-        costumerDAO.save(costumer);
+    public void insertCustomer (Customer customer){
+        customerDAO.save(customer);
     }
     
-    public void deleteEvent(long costumerId){
-        costumerDAO.delete(costumerId);
+    public void deleteCustomer(long customerId){
+        customerDAO.delete(customerId);
     }
     
-    public void updateCostumer(Costumer costumer){
-        costumerDAO.update(costumer);
+    public void updateCustomer(Customer customer){
+        customerDAO.update(customer);
     }
 }

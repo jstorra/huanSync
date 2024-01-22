@@ -12,6 +12,11 @@ public class PrizeController {
         return prizeDAO.getAllPrizes();
     }
 
+     //get one prize by id
+    public Prize getPrizeById(long prizeId){
+        return prizeDAO.getPrizeById(prizeId);
+    }
+
     //add or insert prize
     public static void insertPrize(Prize prize){
         prizeDAO.insertPrize(prize);

@@ -35,6 +35,28 @@ public class PrizeDAO {
         return prizes;
     }
 
+    public Prize getPrizeById(long id) {
+        Prize prize = null;
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            String sql = "SELECT * FROM tbl_prizes WHERE prizeId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, id);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        prize = new Prize();
+                        prize.setPrizeId(resultSet.getLong("prizeId"));
+                        prize.setTypePrize(resultSet.getString("typePrize"));
+                        prize.setDescription(resultSet.getString("description"));
+                        prize.setPrice(resultSet.getDouble("price"));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prize;
+    }
+
     public void insertPrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_prizes (typePrize, description, price, statusPrize) VALUES (?, ?, ?, ?)";

@@ -14,12 +14,13 @@ Additionally, we will oversee a product inventory, managing its specifications a
 
 ## Physical Model 
 
+![Physical Model](./images/dataBaseStoreFixed.png)
 
 
 
 
 ## Class Model 
-
+![Class Model](./images/dataBaseStoreFixed.png)
 
 
 ##

@@ -2,22 +2,24 @@ package com.u2team.huansync.ticketOffice.model;
 
 public class TicketOffice {
 
-    private long ticketsId;
+    private long ticketOfficeId;
     private Event eventId;
     private boolean location;
     private String address;
     private String contactNumber;
     private Event staffId;
-
     
     public TicketOffice() {
     }
-   
- 
-    public long getTicketsId() {
-        return ticketsId;
+    
+    
+    public long getTicketOfficeId() {
+        return ticketOfficeId;
     }
 
+    public void setTicketOfficeId(long ticketOfficeId){
+        this.ticketOfficeId = ticketOfficeId;
+    }
 
     public Event getEventId() {
         return eventId;
@@ -69,15 +71,13 @@ public class TicketOffice {
 
     @Override
     public String toString() {
-        return "TicketOffice was assigned to:"+
-                "\n TicketsId: " + ticketsId +
+        return "TicketOfficeId was assigned to:"+
+                "\n ticketOfficeId: " + ticketOfficeId +
                 "\n eventId: " + eventId + 
                 "\n InPlace: " + location + 
                 "\n Address: " + address + 
                 "\n ContactNumber: " + contactNumber + 
                 "\n staffId: " + staffId + 
                 "****************************************";
-    }
-
-    
+    }    
 }

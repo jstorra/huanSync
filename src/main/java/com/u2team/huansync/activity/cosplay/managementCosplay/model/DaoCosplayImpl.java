@@ -9,53 +9,15 @@ import java.util.List;
 
 import com.u2team.huansync.persistence.BDConnection;
 
-public class DaoCosplayImpl implements DaoCosplay {
+public class DaoCosplayImpl implements CosplayDao {
 
     private Connection con = BDConnection.MySQLConnection();
-
-    public boolean searchActivity(int id) {
-        int idActivity = id;
-        String query = "SELECT * FROM tbl_activities WHERE activityId = ? AND LOWER(typeActivity) = 'cosplay';";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, idActivity);
-            ResultSet rs = preparedStatement.executeQuery();
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean searchParticipant(int id) {
-        int idParticipant = id;
-        String query = "SELECT * FROM tbl_customers WHERE customerId = ?";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, idParticipant);
-            ResultSet rs = preparedStatement.executeQuery();
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public void validateCosplay(Cosplay cosplay) {
-        Boolean searchAct = searchActivity(cosplay.getActivictyId());
-        Boolean searchPart = searchParticipant(cosplay.getParticipantId());
-
-        if (searchAct == false || searchPart == false) {
-            throw new RuntimeException(
-                    "You cannot add an activity that is not cosplay or that is not registered, or the participant to add to the event cannot be found");
-        }
-
-    }
 
     @Override
     public boolean searchCosplay(int id) {
         int idCosplay = id;
-        String query = "SELECT * FROM tbl_cosplay WHERE cosplayId = ?";
+        // validate if exists cosplay and status cosplay is active
+        String query = "SELECT * FROM tbl_cosplay WHERE cosplayId = ? and statusCosplay = 1";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, idCosplay);
             ResultSet rs = preparedStatement.executeQuery();
@@ -65,6 +27,25 @@ public class DaoCosplayImpl implements DaoCosplay {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public void validateCosplay(Cosplay cosplay) {
+        /*
+         * Boolean searchAct = searchActivity(cosplay.getActivictyId());
+         * Boolean searchPart = searchParticipant(cosplay.getParticipantId());
+         * Boolean searchCosplay = searchCosplay(cosplay.getCosplayId()) ;
+         * 
+         * 
+         * 
+         * if (searchAct == false || searchPart == false) {
+         * throw new RuntimeException(
+         * "You cannot add an activity that is not cosplay or that is not registered, or the participant to add to the event cannot be found"
+         * );
+         * }
+         * 
+         */
+
     }
 
     @Override
@@ -118,17 +99,35 @@ public class DaoCosplayImpl implements DaoCosplay {
     }
 
     @Override
-    public void modifyCosplay(int id) {
-        // This method is completely missing
+    public void modifyCosplay(Cosplay cosplay) {
+
+        try {
+            Cosplay objCosplay = cosplay;
+            boolean searchCosplay = searchCosplay(cosplay.getCosplayId());
+            if (!searchCosplay) {
+                throw new RuntimeException("The cosplay you want to delete is not in the database.");
+            }
+
+            String query = "UPDATE tbl_cosplay tc SET nameCosplay = ? WHERE tc.cosplayId = ?";
+            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+                preparedStatement.setString(1, objCosplay.getNameCosplay());
+                preparedStatement.setInt(2, objCosplay.getCosplayId());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
-    public void deleteCosplay(int id) {
+    public void desactivateCosplay(int id) {
         try {
             int idCosplay = id;
-
             boolean searchCosplay = searchCosplay(idCosplay);
-
             if (!searchCosplay) {
                 throw new RuntimeException("The cosplay you want to delete is not in the database.");
             }
@@ -143,6 +142,20 @@ public class DaoCosplayImpl implements DaoCosplay {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        DaoCosplayImpl daoCosplayImpl = new DaoCosplayImpl();
+
+        CosplayBuilderImpl cosplayBuilderImpl = new CosplayBuilderImpl();
+
+        Cosplay cosplayBuild = cosplayBuilderImpl
+                .cosplayId(1)
+                .nameCosplay("goku")
+                .build();
+
+        daoCosplayImpl.modifyCosplay(cosplayBuild);
+
     }
 
 }

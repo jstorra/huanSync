@@ -4,8 +4,11 @@
  */
 package com.u2team.huansync.event.staff.model.DAO;
 
-import com.u2team.huansync.event.model.DAO.IDao;
+import com.u2team.huansync.event.DAO.*;
 import com.u2team.huansync.event.staff.model.classes.Staff;
+import com.u2team.huansync.event.staff.model.classes.StaffFull;
+import com.u2team.huansync.event.workerRoles.model.DAO.WorkerRoleDao;
+import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;
@@ -19,24 +22,24 @@ import java.util.List;
  *
  * @author criis
  */
-public class StaffDAO implements IDao<Staff> {
+public class StaffDAO implements IGetByIdDao<Staff>, IGetAllDao<Staff>, ISaveDao<Staff>, IUpdateDao<Staff>, IDeleteDao<Staff>, IGetByIdFull<Staff> {
 
     @Override
-    public Staff getById(long id) {
+    public Staff getById(long staffId) {
         Operations.setConnection(BDConnection.MySQLConnection());
         String stm = "select * from tbl_staff where staffId = ? ;";
         
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
-            ps.setLong(1, id);
+            ps.setLong(1, staffId);
             ResultSet rs = Operations.query_db(ps);
             if (rs.next()) {
                 Staff staff = new Staff();
                 staff.setStaffId(rs.getLong("staffId"));
+                staff.setStaffNumberId(rs.getString("staffNumberId"));
                 staff.setNameStaff(rs.getString("nameStaff"));
                 staff.setBirthdayStaff(LocalDate.parse(rs.getString("birthdayStaff")));
                 staff.setStatusStaffEnum(staff.getStatusStaffEnum(rs.getString("statusStaff")));
                 staff.setWorkerRoleId(rs.getInt("roleWorkId"));
-                
                 
                 return staff;
             } else {
@@ -47,6 +50,24 @@ public class StaffDAO implements IDao<Staff> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Staff getByIdFull(long staffId){
+
+        Staff staff = getById(staffId);
+        StaffFull staffFull = new StaffFull();
+        staffFull.setStaffId(staff.getStaffId());
+        staffFull.setStaffNumberId(staff.getStaffNumberId());
+        staffFull.setNameStaff(staff.getNameStaff());
+        staffFull.setBirthdayStaff(staff.getBirthdayStaff());
+        staffFull.setStatusStaffEnum(staff.getStatusStaffEnum());
+        staffFull.setWorkerRoleId(staff.getWorkerRoleId());
+
+        WorkerRoleDao workerRoleDao = new WorkerRoleDao();
+        WorkerRole workerRole = workerRoleDao.getById(staff.getWorkerRoleId());
+        staffFull.setWorkerRole(workerRole);
+
+        return staffFull;
     }
 
     @Override
@@ -60,6 +81,7 @@ public class StaffDAO implements IDao<Staff> {
             while(rs.next()){
                 Staff staff = new Staff();
                 staff.setStaffId(rs.getLong("staffId"));
+                staff.setStaffNumberId(rs.getString("staffNumberId"));
                 staff.setNameStaff(rs.getString("nameStaff"));
                 staff.setBirthdayStaff(LocalDate.parse(rs.getString("birthdayStaff")));
                 staff.setStatusStaffEnum(staff.getStatusStaffEnum(rs.getString("statusStaff")));
@@ -76,13 +98,14 @@ public class StaffDAO implements IDao<Staff> {
     @Override
     public void save(Staff t) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stmInsert = "INSERT INTO tbl_staff(nameStaff, birthdayStaff, statusStaff, roleWorkID) VALUES (?,?,?,?);";
+        String stmInsert = "INSERT INTO tbl_staff(staffNumberId, nameStaff, birthdayStaff, statusStaff, roleWorkID) VALUES (?,?,?,?,?);";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
-            ps.setString(1, t.getNameStaff());
-            ps.setString(2, t.getBirthdayStaff().toString());
-            ps.setString(3, t.getStatusStaffEnum().name());
-            ps.setLong(4, t.getWorkerRoleId());
+            ps.setString(1, t.getStaffNumberId());
+            ps.setString(2, t.getNameStaff());
+            ps.setString(3, t.getBirthdayStaff().toString());
+            ps.setString(4, t.getStatusStaffEnum().name());
+            ps.setLong(5, t.getWorkerRoleId());
 
             int rows = Operations.insert_update_delete_db(ps);
             if (rows <= 0) {
@@ -97,12 +120,72 @@ public class StaffDAO implements IDao<Staff> {
 
     @Override
     public void update(Staff t) {
-        Operations.setConnection(BDConnection.MySQLConnection());
+
+        Staff sqlStaff = getById(t.getStaffId());
+
+        if(sqlStaff != null) {
+
+            sqlStaff.setStaffNumberId(t.getStaffNumberId());
+            sqlStaff.setNameStaff(t.getNameStaff());
+            sqlStaff.setBirthdayStaff(t.getBirthdayStaff());
+            sqlStaff.setStatusStaffEnum(t.getStatusStaffEnum());
+            sqlStaff.setWorkerRoleId(t.getWorkerRoleId());
+
+            String stmUpdate = """
+                    UPDATE tbl_staff
+                    SET staffNumberId = ?,
+                        nameStaff = ?,
+                        birthdayStaff = ?,
+                        statusStaff = ?,
+                        roleWorkId = ?
+                    WHERE staffId = ?;
+                                 """;
+
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)){
+                ps.setString(1, t.getStaffNumberId());
+                ps.setString(2, t.getNameStaff());
+                ps.setString(3, t.getBirthdayStaff().toString());
+                ps.setString(4, t.getStatusStaffEnum().name());
+                ps.setLong(5, t.getWorkerRoleId());
+                ps.setLong(6, t.getStaffId());
+
+                // use Operation class with insert_update_delete and verify if the rows in database are affected
+                int rows = Operations.insert_update_delete_db(ps);
+                if (rows <= 0) {
+                    System.out.println("Cannot update event");
+                } else {
+                    System.out.println("Successful update event");
+                }
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("not found results event");
+        }
     }
 
     @Override
-    public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void delete(long staffId) {
+        // Class Operations are used to configure the connection with database and send a Query saved in variable stm
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "DELETE FROM tbl_staff WHERE staffId = ?;";
+
+        // use Operation class with insert_update_delete and verify if the rows in database are affected
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
+            ps.setLong(1, staffId);
+            int rows = Operations.insert_update_delete_db(ps);
+            if (rows > 0) {
+                System.out.println("successful delete staff");
+                return;
+            } else {
+                System.out.println("not exists staff");
+                return;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("something was wrong on delete staff");
+        return;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.u2team.huansync.event.model.DAO;
 
+import com.u2team.huansync.event.DAO.*;
 import com.u2team.huansync.event.model.classes.builders.EventBuilder;
 import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import com.u2team.huansync.event.model.classes.Event;
@@ -18,7 +19,7 @@ import java.util.List;
  *
  * EventDao =  implements abstract methods of iDao (interface)
  */
-public class EventDAO implements IDao<Event> {
+public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao<Event>, IUpdateDao<Event>, IDeleteDao<Event> {
 
     /**
      * Retrieves an event from the database based on its unique identifier (ID).
@@ -296,7 +297,6 @@ public class EventDAO implements IDao<Event> {
     @Override
     // Method: Delete an event using an id by event.
     public void delete(long eventId) {
-
         // Class Operations are used to configure the connection with database and send a Query saved in variable stm
         Operations.setConnection(BDConnection.MySQLConnection());
         String stm = "DELETE FROM tbl_events WHERE eventId = ?;";

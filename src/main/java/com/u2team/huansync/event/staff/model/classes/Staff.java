@@ -9,6 +9,7 @@ import java.time.LocalDate;
  */
 public class Staff {
     private long staffId;
+    private String staffNumberId;
     private String nameStaff;
     private LocalDate birthdayStaff;
     private StatusStaffEnum statusStaffEnum;
@@ -19,22 +20,25 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String nameStaff, String birthdayStaff, String statusStaffEnum, long workerRoleId) {
+    public Staff(long staffId, String staffNumberId, String nameStaff, LocalDate birthdayStaff, String statusStaffEnum, long workerRoleId) {
+        this.staffId = staffId;
+        this.staffNumberId = staffNumberId;
         this.nameStaff = nameStaff;
-        this.birthdayStaff = LocalDate.parse(birthdayStaff);
+        this.birthdayStaff = birthdayStaff;
         this.statusStaffEnum = getStatusStaffEnum(statusStaffEnum);
         this.workerRoleId = workerRoleId;
     }
-    
+
     //Getter and Setters
 
-    public long getStaffId() {
-        return staffId;
-    }
-
+    public long getStaffId() { return staffId; }
     public void setStaffId(long staffId) {
         this.staffId = staffId;
     }
+
+    public String getStaffNumberId() { return staffNumberId; }
+
+    public void setStaffNumberId(String staffNumberId) { this.staffNumberId = staffNumberId; }
 
     public String getNameStaff() {
         return nameStaff;
@@ -75,24 +79,30 @@ public class Staff {
         statusEnum = StatusStaffEnum.TASK_ASSIGNED;
      }
      if (statusStaffEnum.equalsIgnoreCase("no_task_assigned")){
-          statusEnum = StatusStaffEnum.NO_TASK_ASSIGNED;
+        statusEnum = StatusStaffEnum.NO_TASK_ASSIGNED;
      }
      if (statusStaffEnum.equalsIgnoreCase("dismissed")){
-         statusEnum = StatusStaffEnum.DISMISSED;
+        statusEnum = StatusStaffEnum.DISMISSED;
      }
      if (statusStaffEnum.equalsIgnoreCase("incapacited")){
-         statusEnum = StatusStaffEnum.INCAPACITED;
+        statusEnum = StatusStaffEnum.INCAPACITED;
      }
 
      return statusEnum;
     }
+
     //toString
+
 
     @Override
     public String toString() {
-        return "Staff{" + "staffId=" + staffId + ", nameStaff=" + nameStaff + ", birthdayStaff=" + birthdayStaff + ", statusStaffEnum=" + statusStaffEnum + ", workerRoleId=" + workerRoleId + '}';
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", staffNumberId='" + staffNumberId + '\'' +
+                ", nameStaff='" + nameStaff + '\'' +
+                ", birthdayStaff=" + birthdayStaff +
+                ", statusStaffEnum=" + statusStaffEnum +
+                ", workerRoleId=" + workerRoleId +
+                '}';
     }
-
-
-    
 }

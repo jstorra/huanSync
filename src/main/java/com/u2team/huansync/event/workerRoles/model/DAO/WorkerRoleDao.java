@@ -4,7 +4,7 @@
  */
 package com.u2team.huansync.event.workerRoles.model.DAO;
 
-import com.u2team.huansync.event.model.DAO.IDao;
+import com.u2team.huansync.event.DAO.*;
 import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Usuario
  */
-public class WorkerRoleDao implements IDao<WorkerRole> {
+public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<WorkerRole>, ISaveDao<WorkerRole>, IUpdateDao<WorkerRole>, IDeleteDao<WorkerRole> {
 
     @Override
     public WorkerRole getById(long id) {

@@ -1,4 +1,4 @@
-package com.u2team.huansync.ticketOffice.tickets.model.classes;
+package com.u2team.huansync.ticketOffice.tickets.ticketType.model.classes;
 
 public class TicketType {
     private long ticketTypeId;

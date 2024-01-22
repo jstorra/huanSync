@@ -32,6 +32,8 @@ public class TicketsDAO implements IDao<Tickets>{
                         .additionalCost(rs.getDouble("additionalCost"))
                         .ageClassificationEnum(rs.getString("ageClassification"))
                         .buid();
+
+                        return sqlTickets;
             }
             else {
                 System.out.println("ERROR: The id has not been found");

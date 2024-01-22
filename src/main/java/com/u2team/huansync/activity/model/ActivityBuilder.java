@@ -13,6 +13,6 @@ public interface ActivityBuilder {
     ActivityBuilder eventId(long eventId);
     ActivityBuilder startTime(LocalTime startTime);
     ActivityBuilder price(long price);
-    ActivityBuilder staff(List<Staff> staff);
+    ActivityBuilder completed(boolean completed);
     Activity build();
 }

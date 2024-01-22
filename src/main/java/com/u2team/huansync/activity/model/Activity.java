@@ -14,7 +14,7 @@ public class Activity {
     private long eventId;
     private LocalTime startTime;
     private long price;
-    private List<Staff> staff;
+    private boolean completed;
 
     public long getActivityId() {
         return activityId;
@@ -80,12 +80,12 @@ public class Activity {
         this.price = price;
     }
 
-    public List<Staff> getStaff() {
-        return staff;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setStaff(List<Staff> staff) {
-        this.staff = staff;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Activity {
                 ", eventId=" + eventId +
                 ", startTime=" + startTime +
                 ", price=" + price +
-                ", staff=" + staff +
+                ", completed=" + completed +
                 '}';
     }
 }

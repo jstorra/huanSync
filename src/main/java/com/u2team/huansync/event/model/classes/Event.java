@@ -4,7 +4,7 @@ import java.time.*;
 
 /**
  *
- * @Cristian Pardo
+ * @author Cristian Pardo
  */
 public class Event {
     

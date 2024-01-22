@@ -19,13 +19,12 @@ public class EventController {
     public EventController() {
         this.eventDao = new EventDAO();
     }
-
     /**
      * GetById Method that use to get a event by id.
      * @param long eventID represent id with each event.
      * @return Event will return the Event .
      */
-    public Event getById(long eventId) {
+    public Event getByIdEvent(long eventId) {
         return eventDao.getById(eventId);
     }
 

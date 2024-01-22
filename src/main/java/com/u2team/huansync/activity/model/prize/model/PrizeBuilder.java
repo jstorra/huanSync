@@ -5,7 +5,7 @@ public interface PrizeBuilder {
     PrizeBuilder description(String description);
     PrizeBuilder price(double price);
     PrizeBuilder statusPrize(StatusPrize statusPrize);
-    PrizeBuilder activityId(Long activityId);
-    PrizeBuilder winnerId(Long winnerId);
+    PrizeBuilder activityId(long activityId);
+    PrizeBuilder winnerId(long winnerId);
     Prize build();
 }

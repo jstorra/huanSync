@@ -6,6 +6,11 @@ import java.util.List;
 public class ActivityBuilderImpl implements ActivityBuilder {
     private Activity activity =  new Activity();
 
+    public ActivityBuilder activityId(long activityId) {
+        activity.setActivityId(activityId);
+        return this;
+    }
+
     @Override
     public ActivityBuilder name(String name) {
         activity.setName(name);

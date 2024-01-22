@@ -44,11 +44,25 @@ public class Equipment {
     public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
-
-    public StatusEquipmentEnum getStatusEquipmentEnum() {
+     public StatusEquipmentEnum getStatusEquipmentEnum (){
         return statusEquipmentEnum;
     }
 
+
+    public StatusEquipmentEnum getStatusEquipmentEnum( String statusEquipmentEnum ) {
+        StatusEquipmentEnum statusEquipment = null;
+
+        if( statusEquipmentEnum.equalsIgnoreCase("ON_SITE")   ){
+            statusEquipment = StatusEquipmentEnum.ON_SITE;
+        }
+        if( statusEquipmentEnum.equalsIgnoreCase("IN_SITE")  ){
+            statusEquipment = StatusEquipmentEnum.IN_STOCK;
+        }
+
+        return statusEquipment;
+    }
+    
+   
     public void setStatusEquipmentEnum(StatusEquipmentEnum statusEquipmentEnum) {
         this.statusEquipmentEnum = statusEquipmentEnum;
     }

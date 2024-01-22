@@ -6,18 +6,20 @@ package com.u2team.huansync.event.equipment.model.DAO;
 
 
 import com.u2team.huansync.event.DAO.IDeleteDao;
+import com.u2team.huansync.event.DAO.IGetByIdDao;
 import com.u2team.huansync.event.DAO.ISaveDao;
 import com.u2team.huansync.event.equipment.model.classes.Equipment;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  *
  * @author criis
  */
-public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment> {
+public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>, IGetByIdDao<Equipment> {
 
 
     @Override
@@ -62,6 +64,32 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment> 
         System.out.println("something was wrong on delete workerRole");
         return;
 
+    }
+
+    @Override
+    public Equipment getById(long id) {
+        
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "SELECT * FROM tbl_equipment where equipmentId = ?;";
+
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
+            ps.setLong( 1 , id);
+            ResultSet rs = Operations.query_db(ps);
+            if( rs.next() ) {
+                Equipment equipment = new Equipment();
+                equipment.setEquipmentId(rs.getLong("equipmentId"));
+                equipment.setNameEquipment(rs.getString("nameEquipment"));
+                equipment.setQuantity(rs.getLong("quantity"));
+                equipment.setStatusEquipmentEnum( equipment.getStatusEquipmentEnum(rs.getString("statusStaff"))  );
+                return equipment;
+            }else{
+                System.out.println("ERROR: The id has not been found");
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
     

@@ -32,7 +32,7 @@ public class ActivityDAO {
                     activity.setEventId(resultSet.getLong("eventId"));
                     activity.setPrice(resultSet.getLong("price"));
                     activity.setStartTime(LocalTime.parse(resultSet.getString("startTime")));
-                    // The use of the staff list will be analyzed here.
+                    activity.setCompleted(resultSet.getBoolean("completed"));
                     activities.add(activity);
                 }
             }
@@ -64,7 +64,8 @@ public class ActivityDAO {
                         activity.setEventId(resultSet.getLong("eventId"));
                         activity.setPrice(resultSet.getLong("price"));
                         activity.setStartTime(LocalTime.parse(resultSet.getString("startTime")));
-                        // The use of the staff list will be analyzed here.
+                        activity.setCompleted(resultSet.getBoolean("completed"));
+
                     }
                 }
             }
@@ -78,7 +79,7 @@ public class ActivityDAO {
 
     public void insertActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, eventId, startTime, price) VALUES (?, ?, ?, ?, ?, ?,?)";
+            String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, eventId, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?,?,?)";
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, activity.getName());
                 statement.setString(2, activity.getTypeActivity().name());
@@ -87,7 +88,7 @@ public class ActivityDAO {
                 statement.setLong(5, activity.getEventId());
                 statement.setString(6, activity.getStartTime().toString());
                 statement.setLong(7,activity.getPrice());
-                // The use of the staff list will be analyzed here.
+                statement.setBoolean(8, activity.isCompleted());
                 statement.executeUpdate();
 
                 try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -103,7 +104,7 @@ public class ActivityDAO {
 
     public void updateActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "UPDATE tbl_activities SET name = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ? WHERE activityId = ?";
+            String sql = "UPDATE tbl_activities SET name = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ?, WHERE activityId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, activity.getName());
                 statement.setString(2, activity.getTypeActivity().name());
@@ -112,14 +113,32 @@ public class ActivityDAO {
                 statement.setLong(5, activity.getEventId());
                 statement.setString(6, activity.getStartTime().toString());
                 statement.setLong(7,activity.getPrice());
-                statement.setLong(8, activity.getActivityId());
-                // The use of the staff list will be analyzed here.
+                statement.setBoolean(8, activity.isCompleted());
+                statement.setLong(9, activity.getActivityId());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
+    public boolean searchActivity(int idActivity, String typeAct) {
+        try (Connection connection = BDConnection.MySQLConnection()){
+        String sql = "SELECT * FROM tbl_activities WHERE activityId = ? AND LOWER(typeActivity) = ? AND statusActivity = true";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idActivity);
+            preparedStatement.setString(2, typeAct);
+            ResultSet rs = preparedStatement.executeQuery();
+            return rs.next();
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
 
     public void deleteActivity(long activityId) {
         try (Connection connection = BDConnection.MySQLConnection()) {

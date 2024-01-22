@@ -8,6 +8,14 @@ package com.u2team.huansync.establishment.store.model;
  *
  * @author sneiderEsteban
  */
+
+import java.
 public class Cash {
     
+    private long cashId; 
+    private boolean State;
+    private long 
+    private double openingAmount ; 
+    private double cousingAmount; 
+   
 }

@@ -2,14 +2,12 @@ package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import com.u2team.huansync.persistence.BDConnection;
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase para acceder y manipular la tabla de categorías de cosplay en la base de datos.
+ * Clase para acceder y manipular la tabla de categorias de cosplay en la base de datos.
  */
 public class CategoryCosplayDAO {
 
@@ -34,30 +32,25 @@ public class CategoryCosplayDAO {
         return categories;
     }
 
-    public void insertCategory(CategoryCosplay category) {
+    public void insertCategory(String nameCategory) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay) VALUES (?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, category.getNameCategoryCosplay());
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, nameCategory);
                 statement.executeUpdate();
 
-                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        category.setCategoryCosplayId(generatedKeys.getInt(1));
-                    }
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateCategory(CategoryCosplay category) {
+    public void updateCategory(int categoryId, String newNameCategoryCosplay) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_categoryCosplay SET nameCosplay = ? WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, category.getNameCategoryCosplay());
-                statement.setInt(2, category.getCategoryCosplayId());
+                statement.setString(1, newNameCategoryCosplay);
+                statement.setInt(2, categoryId);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -77,4 +70,3 @@ public class CategoryCosplayDAO {
         }
     }
 }
-

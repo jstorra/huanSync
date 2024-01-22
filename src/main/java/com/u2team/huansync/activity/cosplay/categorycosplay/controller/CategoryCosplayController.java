@@ -1,58 +1,52 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
-
 import java.util.List;
 
 /**
- * Controlador para la gestión de categorías de cosplay.
+ * Controller for managing cosplay categories.
  */
+
 public class CategoryCosplayController {
-    private CategoryCosplayDAO categoryCosplayDAO;
-
-
-    public CategoryCosplayController() {
-        this.categoryCosplayDAO = new CategoryCosplayDAO();
-    }
+    private CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();
 
     /**
-     * Obtiene todas las categorías de cosplay.
+     * Retrieves all cosplay categories.
      *
-     * @return Lista de categorías de cosplay.
+     * @return List of cosplay categories.
      */
+
     public List<CategoryCosplay> getAllCategories() {
         return categoryCosplayDAO.getAllCategories();
     }
 
     /**
-     * Inserta una nueva categoría de cosplay.
+     * Inserts a new cosplay category.
      *
-     * @param nameCategoryCosplay Nombre de la nueva categoría de cosplay.
+     * @param nameCategory Name of the new cosplay category.
      */
-    public void insertCategory(String nameCategoryCosplay) {
-        CategoryCosplay category = new CategoryCosplay();
-        category.setNameCategoryCosplay(nameCategoryCosplay);
-        categoryCosplayDAO.insertCategory(category);
+
+    public void insertCategory(String nameCategory) {
+        categoryCosplayDAO.insertCategory(nameCategory);
     }
 
     /**
-     * Actualiza una categoría de cosplay existente.
+     * Updates an existing cosplay category.
      *
-     * @param categoryId          Identificador de la categoría de cosplay a actualizar.
-     * @param newNameCategoryCosplay Nuevo nombre para la categoría de cosplay.
+     * @param categoryId Identifier of the cosplay category to be updated.
+     * @param newNameCategoryCosplay New name for the cosplay category.
      */
+
     public void updateCategory(int categoryId, String newNameCategoryCosplay) {
-        CategoryCosplay category = new CategoryCosplay();
-        category.setCategoryCosplayId(categoryId);
-        category.setNameCategoryCosplay(newNameCategoryCosplay);
-        categoryCosplayDAO.updateCategory(category);
+        categoryCosplayDAO.updateCategory(categoryId, newNameCategoryCosplay);
     }
 
     /**
-     * Elimina una categoría de cosplay.
+     * Deletes a cosplay category.
      *
-     * @param categoryId Identificador de la categoría de cosplay a eliminar.
+     * @param categoryId Identifier of the cosplay category to be deleted.
      */
+
     public void deleteCategory(int categoryId) {
         categoryCosplayDAO.deleteCategory(categoryId);
     }

@@ -1,5 +1,7 @@
 package com.u2team.huansync.activity.model;
 
+import com.u2team.huansync.event.staff.model.classes.Staff;
+
 import java.time.LocalTime;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     @Override
     public ActivityBuilder eventId(long eventId) {
         activity.setEventId(eventId);
-        return null;
+        return this;
     }
 
     @Override
@@ -47,6 +49,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
         return this;
     }
 
+    
     @Override
     public ActivityBuilder staff(List<Staff> staff) {
         activity.setStaff(staff);

@@ -1,4 +1,4 @@
-package com.u2team.huansync.ticketOffice.ticketType.controller.classes;
+package com.u2team.huansync.ticketOffice.tickets.ticketType.controller.classes;
 
 public class TicketType {
 }

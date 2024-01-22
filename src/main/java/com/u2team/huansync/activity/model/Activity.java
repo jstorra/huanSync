@@ -6,7 +6,7 @@ import java.util.List;
 public class Activity {
     private long activityId;
     private String name;
-    private TypeActivity TypeActivity;
+    private TypeActivity typeActivity;
     private long categoryCosplayId;
     private int numParticipants;
     private long eventId;
@@ -30,11 +30,11 @@ public class Activity {
     }
 
     public TypeActivity getTypeActivity() {
-        return TypeActivity;
+        return typeActivity;
     }
 
     public void setTypeActivity(TypeActivity typeActivity) {
-        TypeActivity = typeActivity;
+        this.typeActivity = typeActivity;
     }
 
     public long getIdCategoryCosplay() {
@@ -75,5 +75,19 @@ public class Activity {
 
     public void setStaff(List<Staff> staff) {
         this.staff = staff;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "activityId=" + activityId +
+                ", name='" + name + '\'' +
+                ", TypeActivity=" + typeActivity +
+                ", categoryCosplayId=" + categoryCosplayId +
+                ", numParticipants=" + numParticipants +
+                ", eventId=" + eventId +
+                ", startTime=" + startTime +
+                ", staff=" + staff +
+                '}';
     }
 }

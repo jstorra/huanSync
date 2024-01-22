@@ -1,11 +1,11 @@
-package com.u2team.huansync.activity.model.prize.model;
+package com.u2team.huansync.activity.trivia.question.model;
 
-public enum StatusPrize {
-    AVAILABLE("Available"), AWARDED("Awarded");
+public enum DifficultyQuestion {
+    EASY("Easy"), MEDIUM("Medium"), HARD("Hard");
 
     private String name;
 
-    private StatusPrize(String name) {
+    private DifficultyQuestion(String name) {
         this.name = name;
     }
 

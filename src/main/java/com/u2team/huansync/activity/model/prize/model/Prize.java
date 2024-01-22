@@ -1,20 +1,20 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 public class Prize {
-    private int prizeId ;
+    private long prizeId;
     private String typePrize;
     private String description;
     private double price;
     private StatusPrize statusPrize;
-    private Long activityId;
-    private Long winnerId;
+    private long activityId;
+    private long winnerId;
+
+    public void setPrizeId(long prizeId) {
+        this.prizeId = prizeId;
+    }
 
     public String getTypePrize() {
         return typePrize;
-    }
-
-    public int getPrizeId() {
-        return prizeId;
     }
 
     public void setPrizeId(int prizeId) {
@@ -49,19 +49,32 @@ public class Prize {
         this.statusPrize = statusPrize;
     }
 
-    public Long getActivityId() {
+    public long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(Long activityId) {
+    public void setActivityId(long activityId) {
         this.activityId = activityId;
     }
 
-    public Long getWinnerId() {
+    public long getWinnerId() {
         return winnerId;
     }
 
-    public void setWinnerId(Long winnerId) {
+    public void setWinnerId(long winnerId) {
         this.winnerId = winnerId;
+    }
+
+    @Override
+    public String toString() {
+        return "Prize{" +
+                "prizeId=" + prizeId +
+                ", typePrize='" + typePrize + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", statusPrize=" + statusPrize +
+                ", activityId=" + activityId +
+                ", winnerId=" + winnerId +
+                '}';
     }
 }

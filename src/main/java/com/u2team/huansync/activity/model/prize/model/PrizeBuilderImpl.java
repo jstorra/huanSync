@@ -2,7 +2,12 @@ package com.u2team.huansync.activity.model.prize.model;
 
 public class PrizeBuilderImpl implements PrizeBuilder{
     private Prize prize = new Prize();
-    
+
+    public PrizeBuilder prizeId(long prizeId) {
+        prize.setPrizeId(prizeId);
+        return this;
+    }
+
     @Override
     public PrizeBuilder typePrize(String type) {
         prize.setTypePrize(type);
@@ -28,13 +33,13 @@ public class PrizeBuilderImpl implements PrizeBuilder{
     }
 
     @Override
-    public PrizeBuilder activityId(Long activityId) {
+    public PrizeBuilder activityId(long activityId) {
         prize.setActivityId(activityId);
         return this;
     }
 
     @Override
-    public PrizeBuilder winnerId(Long winnerId) {
+    public PrizeBuilder winnerId(long winnerId) {
         prize.setWinnerId(winnerId);
         return this;
     }

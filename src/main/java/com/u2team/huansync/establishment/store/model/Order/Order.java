@@ -9,5 +9,14 @@ package com.u2team.huansync.establishment.store.model.Order;
  * @author sneid
  */
 public class Order {
+    // Customer y cash tiene que ser listados 
+    private long orderId; 
+    private int customerId; 
+    private long establishmentId;
+    private int cashId; 
+    private StatusOrder status; 
+    
+    
+    
     
 }

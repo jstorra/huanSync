@@ -4,12 +4,11 @@
  */
 package com.u2team.huansync.establishment.store.model.Discount;
 
-import com.u2team.huansync.establishment.store.model.Order.Order;
 
 /**
  *
  * @author sneid
  */
-public class Discount extends Order  {
+public class Discount  {
     
 }

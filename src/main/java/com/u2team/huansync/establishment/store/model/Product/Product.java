@@ -10,37 +10,78 @@ package com.u2team.huansync.establishment.store.model.Product;
  */
 
 
-import com.u2team.huansync.establishment.store.model.Discount.Discount;
+//import com.u2team.huansync.establishment.store.model.Discount.Discount;
 
-import java.util.List; 
+//import java.util.List; 
 
 public class Product {
 
     private Long productId;
+    private int establishmentid; 
     private String productName;
+    private Double productPrice;
     private String description;
-    private Double unitPrice;
+    private String manufacturer; 
     private int quantity;
     private TypeProduct type;
-    private String maker;
-    private List<Discount> discount;
 
-    public Product(Long productId, String productName, String description, Double unitPrice, int quantity, TypeProduct type, String maker, List<Discount> discount) {
+    public Product(Long productId, int establishmentid, String productName, Double productPrice, String description, String manufacturer, int quantity, TypeProduct type) {
         this.productId = productId;
+        this.establishmentid = establishmentid;
         this.productName = productName;
+        this.productPrice = productPrice;
         this.description = description;
-        this.unitPrice = unitPrice;
+        this.manufacturer = manufacturer;
         this.quantity = quantity;
         this.type = type;
-        this.maker = maker;
-        this.discount = discount;     
     }
-   public String getDescription() {
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public int getEstablishmentid() {
+        return establishmentid;
+    }
+
+    public void setEstablishmentid(int establishmentid) {
+        this.establishmentid = establishmentid;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(Double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public String getDescription() {
         return description;
     }
 
-    public Double getUnitPrice() {
-        return unitPrice;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public int getQuantity() {
@@ -50,24 +91,16 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
-class Inventory {
-    private List<Product> products;
 
-    public Inventory(List<Product> products) {
-        this.products = products;
+    public TypeProduct getType() {
+        return type;
     }
 
-    public void sellProduct(Long productId, int quantity) {
-        for (Product product : products) {
-            if (product.productId.equals(productId)) {
-                int currentQuantity = product.getQuantity();
-                product.setQuantity(currentQuantity - quantity);
-                break;
-            }
-        }
+    public void setType(TypeProduct type) {
+        this.type = type;
     }
-}
+
+ 
+    
     
 }

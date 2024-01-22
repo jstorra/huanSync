@@ -1,16 +1,19 @@
 package com.u2team.huansync.event.model.DAO;
 
 import com.u2team.huansync.event.DAO.*;
+import com.u2team.huansync.event.model.classes.EventStaffFull;
 import com.u2team.huansync.event.model.classes.builders.EventBuilder;
 import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.event.model.util.Validations;
+import com.u2team.huansync.event.staff.model.classes.Staff;
 import com.u2team.huansync.persistence.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,7 +22,7 @@ import java.util.List;
  *
  * EventDao =  implements abstract methods of iDao (interface)
  */
-public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao<Event>, IUpdateDao<Event>, IDeleteDao<Event> {
+public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao<Event>, IUpdateDao<Event>, IDeleteDao<Event>, IGetAllFull<EventStaffFull> {
 
     /**
      * Retrieves an event from the database based on its unique identifier (ID).
@@ -123,7 +126,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
                         .timeEvent(LocalTime.parse(rs.getString("timeEvent")))
                         .organizerId(rs.getLong("organizerId"))
                         .ageClassificationEnum(rs.getString("ageClassification"))
-                        .statusEnum(rs.getString("status"))
+                        .statusEnum(rs.getString("statusEvent"))
                         // Build object
                         .build();
                 // Add each new object into the list "eventList"
@@ -150,7 +153,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
         // Use Validations Class with LocalTime Library with apply the conditions of exercise. (create an event within 1 to 7 days in advance)
         boolean validDate = Validations.dateBetween(LocalDate.now(), event.getDateEvent(), 1, 7);
 
-        if (validDate) {
+        if (!validDate) {
             System.out.println("Invalid date");
             return;
         }
@@ -163,7 +166,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
         }
 
         // Create a query and send corresponding information in each field by replacing the character "?" with the information
-        String stmInsert = "INSERT INTO tbl_events(nameEvent, countryEvent, cityEvent, addressEvent, peopleCapacity, storeCapacity, restaurantCapacity, dateEvent, timeEvent, organizerId, ageClassification, status)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String stmInsert = "INSERT INTO tbl_events(nameEvent, countryEvent, cityEvent, addressEvent, peopleCapacity, storeCapacity, restaurantCapacity, dateEvent, timeEvent, organizerId, ageClassification, statusEvent)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setString(1, event.getNameEvent());
             ps.setString(2, event.getCountry());
@@ -317,5 +320,61 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
         }
         System.out.println("something was wrong on delete event");
         return;
+    }
+
+    @Override
+    public List<EventStaffFull> getAllFull() {
+
+        List<Event> listEvents = getAll();
+        List<EventStaffFull> listEventsFull = new ArrayList<>();
+        Operations.setConnection(BDConnection.MySQLConnection());
+
+        for (Event event : listEvents){
+            EventStaffFull eventStaffFull = new EventStaffFull();
+
+            eventStaffFull.setEventId(event.getEventId());
+            eventStaffFull.setNameEvent(event.getNameEvent());
+            eventStaffFull.setCountry(event.getCountry());
+            eventStaffFull.setCity(event.getCity());
+            eventStaffFull.setAddress(event.getAddress());
+            eventStaffFull.setPeopleCapacity(event.getPeopleCapacity());
+            eventStaffFull.setStoreCapacity(event.getStoreCapacity());
+            eventStaffFull.setRestaurantCapacity(event.getRestaurantCapacity());
+            eventStaffFull.setDateEvent(event.getDateEvent());
+            eventStaffFull.setTimeEvent(event.getTimeEvent());
+            eventStaffFull.setOrganizerId(event.getOrganizerId());
+            eventStaffFull.setAgeClassification(event.getAgeClassification());
+            eventStaffFull.setStatusEnum(event.getStatusEnum());
+            listEventsFull.add(eventStaffFull);
+        }
+
+        for (EventStaffFull eventStaffFull : listEventsFull){
+            String stm = """
+                SELECT ts.* FROM tbl_staff_event tse
+                INNER JOIN tbl_events te ON te.eventId = tse.eventId
+                INNER JOIN tbl_staff ts ON ts.staffId = tse.staffId
+                WHERE te.eventId = ?;
+                    """;
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
+                ps.setLong(1, eventStaffFull.getEventId());
+                ResultSet rs = Operations.query_db(ps);
+                List<Staff> listStaff = new ArrayList<>();
+
+                while (rs.next()) {
+                    Staff staff = new Staff();
+                    staff.setStaffId(rs.getLong("staffId"));
+                    staff.setStaffNumberId(rs.getString("staffNumberId"));
+                    staff.setNameStaff(rs.getString("nameStaff"));
+                    staff.setBirthdayStaff(LocalDate.parse(rs.getString("birthdayStaff")));
+                    staff.setStatusStaffEnum(staff.getStatusStaffEnum(rs.getString("statusStaff")));
+                    staff.setWorkerRoleId(rs.getInt("roleWorkId"));
+                    listStaff.add(staff);
+                }
+                eventStaffFull.setStaff(listStaff);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return listEventsFull;
     }
 }

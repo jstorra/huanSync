@@ -123,8 +123,26 @@ public class TicketTypeDAO implements IDao<TicketType>{
     }
 
     @Override
-    public void delete(long id) {
-        
+    public void delete(long tycketTypeId) {
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "DELETE FROM tbl_ticketType WHERE ticketTypeId = ?;";
+
+        try(PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
+            ps.setLong(1, tycketTypeId);
+            int rows = Operations.insert_update_delete_db(ps);
+            if (rows > 0){
+                System.out.println("successful delete tycketType");
+                return;
+            }else {
+                System.out.println("not exists tycketType");
+                return;
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        System.out.println("Something was wrong on delete tycketType");
+
     }
     
     

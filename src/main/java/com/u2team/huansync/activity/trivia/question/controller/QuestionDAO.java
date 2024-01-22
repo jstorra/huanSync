@@ -33,11 +33,44 @@ public class QuestionDAO {
     }
 
     public static void insertQuestion(Question question){
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            String sql = "INSERT INTO tbl_questions (question, answer, category, difficulty) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1,question.getQuestion());
+                statement.setString(2,question.getAnswer());
+                statement.setString(3,question.getCategory().getName());
+                statement.setString(4,question.getDifficulty().getName());
+                statement.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void updateQuestion(Question question){
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            String sql = "UPDATE tbl_questions SET question = ?, answer = ?, category = ?, difficulty = ? WHERE questionId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, question.getQuestion());
+                statement.setString(2, question.getAnswer());
+                statement.setString(3, question.getCategory().getName());
+                statement.setString(4, question.getDifficulty().getName());
+                statement.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void deleteQuestion(long questionId){
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            String sql = "DELETE FROM tbl_questions WHERE questionId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, questionId);
+                statement.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

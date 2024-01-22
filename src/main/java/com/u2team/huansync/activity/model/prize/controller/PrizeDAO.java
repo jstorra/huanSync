@@ -53,7 +53,7 @@ public class PrizeDAO {
                 statement.setString(1, prize.getTypePrize()); 
                 statement.setString(2, prize.getDescription()); 
                 statement.setDouble(3, prize.getPrice());
-                statement.setInt(4, prize.getPrizeId()); 
+                statement.setLong(4, prize.getPrizeId()); 
                 statement.executeUpdate();
             }
         } catch (Exception e) {

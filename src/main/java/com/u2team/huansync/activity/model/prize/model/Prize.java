@@ -9,16 +9,16 @@ public class Prize {
     private long activityId;
     private long winnerId;
 
+    public long getPrizeId() {
+        return prizeId;
+    }
+
     public void setPrizeId(long prizeId) {
         this.prizeId = prizeId;
     }
 
     public String getTypePrize() {
         return typePrize;
-    }
-
-    public void setPrizeId(int prizeId) {
-        this.prizeId = prizeId;
     }
 
     public void setTypePrize(String typePrize) {

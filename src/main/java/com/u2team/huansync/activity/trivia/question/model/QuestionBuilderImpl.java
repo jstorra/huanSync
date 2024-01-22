@@ -3,6 +3,7 @@ package com.u2team.huansync.activity.trivia.question.model;
 public class QuestionBuilderImpl implements QuestionBuilder {
     Question question = new Question();
 
+    @Override
     public QuestionBuilder questionId(long questionId) {
         question.setQuestionId(questionId);
         return this;

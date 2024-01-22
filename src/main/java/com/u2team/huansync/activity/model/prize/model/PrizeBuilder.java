@@ -1,6 +1,7 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 public interface PrizeBuilder {
+    PrizeBuilder prizeId(long prizeId);
     PrizeBuilder typePrize(TypePrize type);
     PrizeBuilder description(String description);
     PrizeBuilder price(double price);

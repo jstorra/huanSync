@@ -1,12 +1,14 @@
 package com.u2team.huansync.activity.trivia.model;
 
-public class Trivia {
+import com.u2team.huansync.activity.model.Activity;
+
+public class Trivia extends Activity {
     private long triviaId;
     private long activityId;
     private long participantOneId;
     private long participantTwoId;
     private long winnerId;
-    private int round;
+    private long inchargedId;
 
     public long getTriviaId() {
         return triviaId;
@@ -48,11 +50,23 @@ public class Trivia {
         this.winnerId = winnerId;
     }
 
-    public int getRound() {
-        return round;
+    public long getInchargedId() {
+        return inchargedId;
     }
 
-    public void setRound(int round) {
-        this.round = round;
+    public void setInchargedId(long inchargedId) {
+        this.inchargedId = inchargedId;
+    }
+
+    @Override
+    public String toString() {
+        return "Trivia{" +
+                "triviaId=" + triviaId +
+                ", activityId=" + activityId +
+                ", participantOneId=" + participantOneId +
+                ", participantTwoId=" + participantTwoId +
+                ", winnerId=" + winnerId +
+                ", inchargedId=" + inchargedId +
+                '}';
     }
 }

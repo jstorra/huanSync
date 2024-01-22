@@ -3,6 +3,7 @@ package com.u2team.huansync.activity.model.prize.model;
 public class PrizeBuilderImpl implements PrizeBuilder{
     private Prize prize = new Prize();
 
+    @Override
     public PrizeBuilder prizeId(long prizeId) {
         prize.setPrizeId(prizeId);
         return this;

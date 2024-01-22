@@ -125,6 +125,7 @@ public class TicketsDAO implements IDao<Tickets>{
                 ps.setLong(5, tickets.getCostumerId());
                 ps.setLong(6, tickets.getTicketOfficeId());
                 ps.setLong(7, tickets.getTicketTypeId());
+                ps.setLong(8, tickets.getTicketId());
 
                 System.out.println(ps.toString());
 

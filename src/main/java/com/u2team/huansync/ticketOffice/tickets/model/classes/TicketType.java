@@ -6,6 +6,11 @@ public class TicketType {
     private String description;
     private double price;
 
+    public TicketType() {
+    }
+
+    
+    
     public TicketType(long ticketTypeId, String nameTicketType, String description, double price) {
         this.ticketTypeId = ticketTypeId;
         this.nameTicketType = nameTicketType;

@@ -2,6 +2,7 @@ package com.u2team.huansync.activity.model.prize.controller;
 
 import com.u2team.huansync.activity.model.prize.model.Prize;
 import com.u2team.huansync.activity.model.prize.model.StatusPrize;
+import com.u2team.huansync.activity.model.prize.model.TypePrize;
 import com.u2team.huansync.persistence.BDConnection;
 
 import java.sql.*;
@@ -20,8 +21,7 @@ public class PrizeDAO {
                     while (resultSet.next()) {
                         Prize prize = new Prize();
                         prize.setPrizeId(resultSet.getLong("prizeId"));
-                        prize.setTypePrize(resultSet.getString("typePrize"));
-//                        prize.setTypePrize(TypeProduct.valueOf(resultSet.getString("typePrize").toUpperCase()));
+                        prize.setTypePrize(TypePrize.valueOf(resultSet.getString("typePrize").toUpperCase()));
                         prize.setDescription(resultSet.getString("description"));
                         prize.setPrice(resultSet.getDouble("price"));
                         prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
@@ -45,7 +45,7 @@ public class PrizeDAO {
                     if (resultSet.next()) {
                         prize = new Prize();
                         prize.setPrizeId(resultSet.getLong("prizeId"));
-                        prize.setTypePrize(resultSet.getString("typePrize"));
+                        prize.setTypePrize(TypePrize.valueOf(resultSet.getString("typePrize").toUpperCase()));
                         prize.setDescription(resultSet.getString("description"));
                         prize.setPrice(resultSet.getDouble("price"));
                     }
@@ -61,8 +61,7 @@ public class PrizeDAO {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_prizes (typePrize, description, price, statusPrize) VALUES (?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, prize.getTypePrize());
-//                statement.setString(1, prize.getTypePrize().getName());
+                statement.setString(1, prize.getTypePrize().getName());
                 statement.setString(2, prize.getDescription());
                 statement.setDouble(3, prize.getPrice());
                 statement.setString(4, prize.getStatusPrize().getName());
@@ -77,8 +76,7 @@ public class PrizeDAO {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_prizes SET typePrize = ?, description = ?, price = ? WHERE prizeId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, prize.getTypePrize());
-//                statement.setString(1, prize.getTypePrize().getName());
+                statement.setString(1, prize.getTypePrize().getName());
                 statement.setString(2, prize.getDescription());
                 statement.setDouble(3, prize.getPrice());
                 statement.setLong(4, prize.getPrizeId());

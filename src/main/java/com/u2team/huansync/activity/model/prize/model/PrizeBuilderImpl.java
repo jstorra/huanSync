@@ -9,7 +9,7 @@ public class PrizeBuilderImpl implements PrizeBuilder{
     }
 
     @Override
-    public PrizeBuilder typePrize(String type) {
+    public PrizeBuilder typePrize(TypePrize type) {
         prize.setTypePrize(type);
         return this;
     }

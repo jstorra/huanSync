@@ -2,12 +2,9 @@ package com.u2team.huansync.activity.model.prize.controller;
 
 import com.u2team.huansync.activity.model.prize.model.Prize;
 import com.u2team.huansync.persistence.BDConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class PrizeDAO {
 
@@ -19,11 +16,10 @@ public class PrizeDAO {
                 ResultSet resultSet = statement.executeQuery()) { 
                 while (resultSet.next()) { 
                     Prize prize = new Prize();
-                    prize.setPrizeId(resultSet.getInt("prizeId"));
+                    prize.setPrizeId(resultSet.getLong("prizeId"));
                     prize.setTypePrize(resultSet.getString("typePrize"));
                     prize.setDescription(resultSet.getString("description")); 
-                    prize.setPrice(resultSet.getDouble("price")); 
-
+                    prize.setPrice(resultSet.getDouble("price"));
                 }
             }
         } catch (Exception e) {
@@ -61,37 +57,15 @@ public class PrizeDAO {
         }
     }
 
-    public void deletePrize(int id) {
+    public void deletePrize(long id) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_prizes WHERE prizeId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, id); 
+                statement.setLong(1, id);
                 statement.executeUpdate();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public Prize getPrizeById(int id) {
-        Prize prize = null; 
-        try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "SELECT * FROM tbl_prizes WHERE prizeId = ?"; 
-            try (PreparedStatement statement = connection.prepareStatement(sql)) { 
-                statement.setInt(1, id);  
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    if (resultSet.next()) { 
-                        prize = new Prize();
-                        prize.setPrizeId(resultSet.getInt("prizeId")); 
-                        prize.setTypePrize(resultSet.getString("typePrize"));
-                        prize.setDescription(resultSet.getString("description")); 
-                        prize.setPrice(resultSet.getDouble("price")); 
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return prize; 
     }
 }

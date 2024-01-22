@@ -38,7 +38,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     @Override
     public ActivityBuilder eventId(long eventId) {
         activity.setEventId(eventId);
-        return null;
+        return this;
     }
 
     @Override

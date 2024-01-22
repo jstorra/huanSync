@@ -2,8 +2,8 @@ package com.u2team.huansync.ticketOffice.client.model.classes;
 
 import java.util.Date;
 
-public class Client {
-    private long clientId;
+public class Costumer {
+    private long costumerId;
     private String name;
     private String document;
     private String gender;
@@ -12,7 +12,7 @@ public class Client {
     private String phoneNumber;
     
     
-    private ClientTypeEnum clientType;
+    private CostumerTypeEnum costumerTypeEnum;
 
     public String getName() {
         return name;
@@ -22,12 +22,12 @@ public class Client {
         this.name = name;
     }
 
-    public long getClientId() {
-        return clientId;
+    public long getCostumerId() {
+        return costumerId;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setCostumerId(long costumerId) {
+        this.costumerId = costumerId;
     }
 
     public String getDocument() {
@@ -70,21 +70,18 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public ClientTypeEnum getClientType() {
-        return clientType;
+    public CostumerTypeEnum getCostumerTypeEnum() {
+        return costumerTypeEnum;
     }
 
-    public void setClientType(ClientTypeEnum clientType) {
-        this.clientType = clientType;
+    public void setCostumerTypeEnum(CostumerTypeEnum costumerTypeEnum) {
+        this.costumerTypeEnum = costumerTypeEnum;
     }
 
     @Override
     public String toString() {
-        return "Client{" + "clientId=" + clientId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", clientType=" + clientType + '}';
+        return "Costumer{" + "costumerId=" + costumerId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", costumerTypeEnum=" + costumerTypeEnum + '}';
     }
 
-    public String setClientType() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
 }

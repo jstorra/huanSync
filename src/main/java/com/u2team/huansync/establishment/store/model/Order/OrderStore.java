@@ -4,10 +4,20 @@
  */
 package com.u2team.huansync.establishment.store.model.Order;
 
+import com.u2team.huansync.establishment.store.model.Product.Product;
+import java.util.List;
+
 /**
  *
  * @author sneiderEsteban
  */
-public class OrderStore {
+public class OrderStore extends Order {
+    
+    public OrderStore(long orderId, int customerId, long establishmentId, int cashId, StatusOrder status) {
+        super(orderId, customerId, establishmentId, cashId, status);
+    }
+    
+      private List<Product> productOrdered;
+    
     
 }

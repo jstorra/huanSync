@@ -9,6 +9,8 @@ package com.u2team.huansync.establishment.store.model.Discount;
  *
  * @author sneid
  */
+
+// Patron estrategy 
 public class Discount  {
     
 }

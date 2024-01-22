@@ -100,7 +100,9 @@ public class Product {
         this.type = type;
     }
 
- 
+ // Desing patron Singleton 
+    
+    
     
     
 }

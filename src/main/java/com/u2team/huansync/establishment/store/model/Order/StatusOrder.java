@@ -9,5 +9,5 @@ package com.u2team.huansync.establishment.store.model.Order;
  * @author user
  */
 public enum StatusOrder {
-    
+    REGISTRADO, PAGADO, ENTREGADO 
 }

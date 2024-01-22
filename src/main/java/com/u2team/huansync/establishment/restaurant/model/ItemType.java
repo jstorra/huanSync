@@ -1,14 +1,19 @@
 package com.u2team.huansync.establishment.restaurant.model;
-
-public enum ProductType {
+/**
+ * @author dfrincong
+ * Class to manage the types of dishes in the menu.
+ */
+public enum ItemType {
     APPETIZER("appetizer"),
     MAIN_COURSE("main course"),
     DRINK("drink"),
     DESSERT("dessert");
-
+    /**
+     * @param name indicates the name of the type of dish (item).
+     */
     private final String name;
 
-    private ProductType(String name) {
+    private ItemType(String name) {
         this.name = name;
     }
 

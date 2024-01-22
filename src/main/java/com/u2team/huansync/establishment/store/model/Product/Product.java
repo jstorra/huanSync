@@ -10,20 +10,22 @@ package com.u2team.huansync.establishment.store.model.Product;
  */
 
 
+import com.u2team.huansync.establishment.store.model.Discount.Discount;
+
 import java.util.List; 
 
 public class Product {
 
- private Long productId;
+    private Long productId;
     private String productName;
     private String description;
     private Double unitPrice;
     private int quantity;
-    private ProductType type;
+    private TypeProduct type;
     private String maker;
     private List<Discount> discount;
 
-    public Product(Long productId, String productName, String description, Double unitPrice, int quantity, ProductType type, String maker, List<Discount> discount) {
+    public Product(Long productId, String productName, String description, Double unitPrice, int quantity, TypeProduct type, String maker, List<Discount> discount) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -31,7 +33,7 @@ public class Product {
         this.quantity = quantity;
         this.type = type;
         this.maker = maker;
-        this.discount = discount;
+        this.discount = discount;     
     }
    public String getDescription() {
         return description;

@@ -8,8 +8,6 @@ package com.u2team.huansync.establishment.store.model.Product;
  *
  * @author sneideresteban
  */
-public enum ProductType {
+public enum TypeProduct {
     MANGA, MULTIMEDIA, ART, FIGURES, SOUVENIERS, CLOTHING, TECHNOLOGY
-
-
 }

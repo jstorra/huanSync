@@ -2,6 +2,7 @@ package com.u2team.huansync.activity.model.prize.controller;
 
 import com.u2team.huansync.activity.model.prize.model.Prize;
 import com.u2team.huansync.persistence.BDConnection;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,28 @@ public class PrizeDAO {
             e.printStackTrace();
         }
         return prizes; 
+    }
+
+    public Prize getPrizeById(long id) {
+        Prize prize = null;
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            String sql = "SELECT * FROM tbl_prizes WHERE prizeId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setLong(1, id);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        prize = new Prize();
+                        prize.setPrizeId(resultSet.getLong("prizeId"));
+                        prize.setTypePrize(resultSet.getString("typePrize"));
+                        prize.setDescription(resultSet.getString("description"));
+                        prize.setPrice(resultSet.getDouble("price"));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prize;
     }
 
     public void addPrize(Prize prize) {

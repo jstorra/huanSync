@@ -3,6 +3,7 @@ package com.u2team.huansync.activity.model.prize.controller;
 import com.u2team.huansync.activity.model.prize.model.Prize;
 import com.u2team.huansync.activity.model.prize.model.PrizeBuilderImpl;
 import com.u2team.huansync.activity.model.prize.model.StatusPrize;
+
 import java.util.List;
 
 public class PrizeController {
@@ -11,6 +12,11 @@ public class PrizeController {
     //view all prizes
     public List<Prize> getAllPrizes() {
         return prizeDAO.getAllPrizes();
+    }
+
+    //get one prize by id
+    public Prize getPrizeById(long prizeId){
+        return prizeDAO.getPrizeById(prizeId);
     }
 
     //add or insert prize

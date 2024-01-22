@@ -48,7 +48,6 @@ public class ActivityBuilderImpl implements ActivityBuilder {
         activity.setStartTime(startTime);
         return this;
     }
-
     
     @Override
     public ActivityBuilder staff(List<Staff> staff) {

@@ -23,6 +23,25 @@ public class Event {
     private AgeClassificationEnum ageClassification;
     private StatusEnum statusEnum;
 
+    public Event() {
+    }
+
+    public Event(long eventId, String nameEvent, String country, String city, String address, int peopleCapacity, int storeCapacity, int restaurantCapacity, LocalDate dateEvent, LocalTime timeEvent, long organizerId, AgeClassificationEnum ageClassification, StatusEnum statusEnum) {
+        this.eventId = eventId;
+        this.nameEvent = nameEvent;
+        this.country = country;
+        this.city = city;
+        this.address = address;
+        this.peopleCapacity = peopleCapacity;
+        this.storeCapacity = storeCapacity;
+        this.restaurantCapacity = restaurantCapacity;
+        this.dateEvent = dateEvent;
+        this.timeEvent = timeEvent;
+        this.organizerId = organizerId;
+        this.ageClassification = ageClassification;
+        this.statusEnum = statusEnum;
+    }
+
     public long getEventId() {
         return eventId;
     }
@@ -131,8 +150,4 @@ public class Event {
     public String toString() {
         return "Event{" + "eventId=" + eventId + ", nameEvent=" + nameEvent + ", country=" + country + ", city=" + city + ", address=" + address + ", peopleCapacity=" + peopleCapacity + ", storeCapacity=" + storeCapacity + ", restaurantCapacity=" + restaurantCapacity + ", dateEvent=" + dateEvent + ", timeEvent=" + timeEvent + ", organizerId=" + organizerId + ", ageClassification=" + ageClassification + ", statusEnum=" + statusEnum + '}';
     }
-    
-    
-    
-    
 }

@@ -1,9 +1,8 @@
-
 package com.u2team.huansync.event.model.classes;
 
 /**
  *
- * @author Cristian Pardo
+ * @author Christian Pardo
  */
 public enum StatusEnum {
     ACTIVE("It is active"), FINISHED("It is Inactive"), PENDING("It is Pending");
@@ -21,5 +20,4 @@ public enum StatusEnum {
     public void setDescription(String description) {
         this.description = description;
     }
-    
 }

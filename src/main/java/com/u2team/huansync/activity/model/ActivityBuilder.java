@@ -1,5 +1,7 @@
 package com.u2team.huansync.activity.model;
 
+import com.u2team.huansync.event.staff.model.classes.Staff;
+
 import java.time.LocalTime;
 import java.util.List;
 

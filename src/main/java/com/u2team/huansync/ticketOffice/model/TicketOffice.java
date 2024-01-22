@@ -3,11 +3,11 @@ package com.u2team.huansync.ticketOffice.model;
 public class TicketOffice {
 
     private long ticketOfficeId;
-    private Event eventId;
+    private long eventId;
     private boolean location;
     private String address;
     private String contactNumber;
-    private Event staffId;
+    private long staffId;
     
     public TicketOffice() {
     }
@@ -21,22 +21,22 @@ public class TicketOffice {
         this.ticketOfficeId = ticketOfficeId;
     }
 
-    public Event getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
 
-    public void setEventId(Event eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 
 
-    public Event getStaffId() {
+    public long getStaffId() {
         return staffId;
     }
 
 
-    public void setStaffId(Event staffId) {
+    public void setStaffId(long staffId) {
         this.staffId = staffId;
     }
 

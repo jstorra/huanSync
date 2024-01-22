@@ -1,7 +1,7 @@
 package com.u2team.huansync.ticketOffice.model.builders;
 
 import com.u2team.huansync.ticketOffice.model.*;
-import com.u2team.huansync.ticketOffice.model.Event;
+
 
 
 public class TicketOfficeBuilderOficial implements TicketOfficeBuilder {
@@ -15,7 +15,7 @@ public class TicketOfficeBuilderOficial implements TicketOfficeBuilder {
     }
 
     @Override
-    public TicketOfficeBuilder eventId(Event eventId) {
+    public TicketOfficeBuilder eventId(long eventId) {
         ticketOffice.setEventId(eventId);
         return this;
     }
@@ -40,7 +40,7 @@ public class TicketOfficeBuilderOficial implements TicketOfficeBuilder {
     }
 
     @Override
-    public TicketOfficeBuilder staffId(Event staffId) {
+    public TicketOfficeBuilder staffId(long staffId) {
 
         ticketOffice.setStaffId(staffId);
         return this;
@@ -50,6 +50,8 @@ public class TicketOfficeBuilderOficial implements TicketOfficeBuilder {
     public TicketOffice build() {
         return ticketOffice;
     }
+
+
 
     
 }

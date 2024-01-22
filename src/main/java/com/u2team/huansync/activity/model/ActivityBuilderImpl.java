@@ -56,8 +56,8 @@ public class ActivityBuilderImpl implements ActivityBuilder {
 
 
     @Override
-    public ActivityBuilder staff(List<Staff> staff) {
-        activity.setStaff(staff);
+    public ActivityBuilder completed(boolean completed) {
+        activity.setCompleted(completed);
         return this;
     }
 

@@ -12,6 +12,11 @@ public class QuestionController {
         return questionDAO.getAllQuestions();
     }
 
+    //get one question by id
+    public static Question getQuestionById(long questionId){
+        return questionDAO.getQuestionById(questionId);
+    }
+
     //add or insert questions
     public static void insertQuestion(Question question){
         questionDAO.insertQuestion(question);

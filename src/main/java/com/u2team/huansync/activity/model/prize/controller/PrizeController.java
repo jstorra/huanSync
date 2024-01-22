@@ -13,7 +13,7 @@ public class PrizeController {
     }
 
      //get one prize by id
-    public Prize getPrizeById(long prizeId){
+    public static Prize getPrizeById(long prizeId){
         return prizeDAO.getPrizeById(prizeId);
     }
 

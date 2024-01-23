@@ -13,6 +13,8 @@ import java.util.List;
 public interface IDao<T> {
     
     T getById(long id);
+
+
     
     List<T> getAll();
     
@@ -21,5 +23,7 @@ public interface IDao<T> {
     void update(T t);
     
     void delete(long id);
-    
+
+    boolean searchParticipant(int id);
+
 }

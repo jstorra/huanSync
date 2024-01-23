@@ -4,14 +4,18 @@
  */
 package com.u2team.huansync.ticketOffice.client.model.DAO;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerBuilder;
 import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerConcreteBuilder;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -22,23 +26,22 @@ public class CustomerDAO implements IDao<Customer>{
     @Override
     public Customer getById(long id) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "SELECT * FROM tbl_costumers where customerId = ?;";
+        String stm = "SELECT * FROM tbl_customers WHERE customerId = ?;";
         
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
             ps.setLong(1, id);
             ResultSet rs = Operations.query_db(ps);
             if(rs.next()){
                 CustomerBuilder customerBuilder = new CustomerConcreteBuilder();
-                
                 Customer sqlCustomer = customerBuilder.customerId(rs.getLong("customerId"))
-                        .nameCustomer(rs.getString("nameCostumer"))
-                        .document(rs.getString("document"))
-                        .gender(rs.getString("gender"))
-                        .birthDate(rs.getDate("birthDate"))
-                        .email(rs.getString("emailCustomer"))
-                        .phoneNumber(rs.getString("phoneNumber"))
-                        .customerTypeEnum(rs.getString("typeCostumer"))
-                        .build();
+                .nameCustomer(rs.getString("nameCustomer"))
+                .document(rs.getString("document"))
+                .gender(rs.getString("gender"))
+                .birthDate(rs.getDate("birthDate"))
+                .email(rs.getString("emailCustomer"))
+                .phoneNumber(rs.getString("phoneNumber"))
+                .customerTypeEnum(rs.getString("typeCustomer"))
+                .build();
                 
                 return sqlCustomer;
             } else {

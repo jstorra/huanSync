@@ -1,4 +1,4 @@
-package com.u2team.huansync.ticketOffice.model;
+package com.u2team.huansync.ticketOffice.model.classes;
 
 public class TicketOffice {
 

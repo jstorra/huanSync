@@ -1,7 +1,7 @@
 package com.u2team.huansync.ticketOffice.ticketOfficeManager.model;
 
 //import com.u2team.huansync.ticketOffice.model.Event;
-import com.u2team.huansync.ticketOffice.model.TicketOffice;
+import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 
 public class TicketOfficeManager {
 

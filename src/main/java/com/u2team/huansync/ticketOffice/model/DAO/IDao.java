@@ -6,12 +6,12 @@ public interface IDao<T> {
     
     T getById(long id);
     
-    List<T> getAll();
+    List<T> getAllTicketOffice();
     
-    void save(T t);
+    void insertTicketOffice(T t);
     
-    void update(T t);
+    void updateTicketOffice(T t);
     
-    void delete(long id);
+    void deleteTicketOffice(long id);
 
 }

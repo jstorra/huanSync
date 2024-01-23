@@ -1,4 +1,6 @@
-package com.u2team.huansync.establishment.restaurant.model;
+package com.u2team.huansync.establishment.restaurant.inventory.model.classes;
+import com.u2team.huansync.establishment.restaurant.ingredient.model.classes.Ingredient;
+import com.u2team.huansync.establishment.restaurant.model.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 /**

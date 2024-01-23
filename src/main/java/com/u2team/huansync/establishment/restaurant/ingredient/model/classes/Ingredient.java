@@ -1,4 +1,4 @@
-package com.u2team.huansync.establishment.restaurant.model;
+package com.u2team.huansync.establishment.restaurant.ingredient.model.classes;
 /**
  * @author DeuryZ
  * @author dfrincong

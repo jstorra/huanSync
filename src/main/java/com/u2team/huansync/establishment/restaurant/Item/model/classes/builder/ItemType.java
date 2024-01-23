@@ -1,4 +1,4 @@
-package com.u2team.huansync.establishment.restaurant.model;
+package com.u2team.huansync.establishment.restaurant.Item.model.classes.builder;
 /**
  * @author dfrincong
  * Class to manage the types of dishes in the menu.

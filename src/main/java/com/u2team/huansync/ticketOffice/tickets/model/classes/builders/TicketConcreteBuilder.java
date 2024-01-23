@@ -1,6 +1,5 @@
 package com.u2team.huansync.ticketOffice.tickets.model.classes.builders;
 
-import com.u2team.huansync.ticketOffice.tickets.model.classes.AgeClassificationEnum;
 import com.u2team.huansync.ticketOffice.tickets.model.classes.StatusEnum;
 import com.u2team.huansync.ticketOffice.tickets.model.classes.Tickets;
 
@@ -34,8 +33,8 @@ public class TicketConcreteBuilder implements TicketBuilder{
     }
 
     @Override
-    public TicketBuilder costumerId(long costumerId) {
-        tickets.setCostumerId(costumerId);
+    public TicketBuilder customerId(long customerId) {
+        tickets.setCustomerId(customerId);
         return this;
     }
 
@@ -56,19 +55,6 @@ public class TicketConcreteBuilder implements TicketBuilder{
         return this;
     }
 
-    @Override
-    public TicketBuilder ageClassificationEnum(String ageClassificationEnum) {
-        if (ageClassificationEnum.equalsIgnoreCase("child")){
-            tickets.setAgeClassificationEnum(AgeClassificationEnum.CHILD);
-        }
-        if (ageClassificationEnum.equalsIgnoreCase("teen")){
-            tickets.setAgeClassificationEnum(AgeClassificationEnum.TEEN);
-        }
-        if (ageClassificationEnum.equalsIgnoreCase("adult")){
-            tickets.setAgeClassificationEnum(AgeClassificationEnum.ADULT);
-        }
-        return this;
-    }
 
     @Override
     public Tickets buid() {

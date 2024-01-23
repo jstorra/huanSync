@@ -8,9 +8,8 @@ public interface TicketBuilder {
     TicketBuilder nameTicket(String nameTicket);
     TicketBuilder additionalCost(double additionalCost);
     TicketBuilder statusEnum(String statusEnum);
-    TicketBuilder ageClassificationEnum(String ageClassificationEnum);
     TicketBuilder ticketTypeId(long ticketTypeId);
-    TicketBuilder costumerId(long costumerId);
+    TicketBuilder customerId(long customerId);
     TicketBuilder ticketOfficeId(long ticketOfficeId);
 
     Tickets buid();

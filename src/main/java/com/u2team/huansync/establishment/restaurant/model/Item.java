@@ -1,6 +1,6 @@
 package com.u2team.huansync.establishment.restaurant.model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,13 +11,14 @@ import java.util.List;
 public class Item {
 
     /**
-     * parameters of the Product class
+     * parameters of the Item class
      *
-     * 
+     * @param itemId identification of item.
      * @param name name of item.
      * @param price price of item.
+     * @param ingredients contains a list of ingredients for the dish (item).
      * @param type type of item. Can be: appetizer, main course, drink, dessert.
-     * @param ingredients contains a list of ingredients for the dish.
+     * @param preparationTime preparation time in minutes of the dish (item).
      */
     private long itemId;
     private String name;
@@ -95,5 +96,19 @@ public class Item {
         } else {
             this.preparationTime = preparationTime;
         }
+    }
+    
+    public void checkAvailabilityIngredients() {
+        
+    }
+
+    public String showItem() {
+        return "Item{" + 
+                "itemId=" + itemId + 
+                ", name=" + name + 
+                ", price=" + price + 
+                ", ingredients=" + ingredients + 
+                ", type=" + type + 
+                ", preparationTime=" + preparationTime + '}';
     }
 }

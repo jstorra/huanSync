@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.u2team.huansync.establishment.restaurant.model;
 import java.util.ArrayList;
 import java.util.List;
 /**
  *
  * @author DeuryZ
+ * @author dfrincong
  */
 
 public class Inventory {
+    /**
+     * 
+     */
     private List<Ingredient> ingredientList;
+    private Restaurant restaurant;
 
-    public Inventory() {
+    public Inventory(Restaurant restaurant) {
         this.ingredientList = new ArrayList<>();
+        this.restaurant = restaurant;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public void addIngredient(Ingredient ingredient) {
@@ -30,5 +40,17 @@ public class Inventory {
         }
         System.out.println("Ingredient not found: " + ingredientName);
     }
-
+    
+    public void removeIngredient() {
+        
+    }
+    
+    public void decreaseQuantity() {
+        
+    }
+    
+    public void increaseQuantity() {
+        
+    }
+    
 }

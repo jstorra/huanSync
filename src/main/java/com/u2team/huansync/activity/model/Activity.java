@@ -13,9 +13,10 @@ public class Activity {
     private int numParticipants;
     private long eventId;
     private LocalTime startTime;
-    private List<Staff> staff;
+    private long price;
+    private boolean completed;
 
-    public long getActivityIdId() {
+    public long getActivityId() {
         return activityId;
     }
 
@@ -39,7 +40,7 @@ public class Activity {
         this.typeActivity = typeActivity;
     }
 
-    public long getIdCategoryCosplay() {
+    public long getCategoryCosplayId() {
         return categoryCosplayId;
     }
 
@@ -71,12 +72,20 @@ public class Activity {
         this.startTime = startTime;
     }
 
-    public List<Staff> getStaff() {
-        return staff;
+    public long getPrice() {
+        return price;
     }
 
-    public void setStaff(List<Staff> staff) {
-        this.staff = staff;
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
@@ -84,12 +93,13 @@ public class Activity {
         return "Activity{" +
                 "activityId=" + activityId +
                 ", name='" + name + '\'' +
-                ", TypeActivity=" + typeActivity +
+                ", typeActivity=" + typeActivity +
                 ", categoryCosplayId=" + categoryCosplayId +
                 ", numParticipants=" + numParticipants +
                 ", eventId=" + eventId +
                 ", startTime=" + startTime +
-                ", staff=" + staff +
+                ", price=" + price +
+                ", completed=" + completed +
                 '}';
     }
 }

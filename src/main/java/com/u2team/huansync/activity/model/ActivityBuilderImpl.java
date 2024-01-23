@@ -48,10 +48,15 @@ public class ActivityBuilderImpl implements ActivityBuilder {
         activity.setStartTime(startTime);
         return this;
     }
-    
+
     @Override
-    public ActivityBuilder staff(List<Staff> staff) {
-        activity.setStaff(staff);
+    public ActivityBuilder price(long price) {
+        return this;
+    }
+
+    @Override
+    public ActivityBuilder completed(boolean completed) {
+        activity.setCompleted(completed);
         return this;
     }
 

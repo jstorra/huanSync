@@ -26,6 +26,4 @@ public class ActivityController {
     public void deleteActivity(Long activityId) {
         activityDAO.deleteActivity(activityId);
     }
-
-    public boolean searchActivity(int idActivity, String typeAct){return activityDAO.searchActivity(idActivity,typeAct);}
 }

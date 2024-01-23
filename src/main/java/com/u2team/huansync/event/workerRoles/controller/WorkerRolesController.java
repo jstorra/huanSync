@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class WorkerRolesController {
 
-    private WorkerRoleDAO workerRoleDao = new WorkerRoleDAO();
+    private static WorkerRoleDAO workerRoleDao = new WorkerRoleDAO();
 
     /**
      * Retrieves a WorkerRole by its ID.
@@ -22,7 +22,7 @@ public class WorkerRolesController {
      * @return The WorkerRole associated with the given ID, or null if not
      * found.
      */
-    public WorkerRole getByIdWorkerRole(long workerRoleId) {
+    public static WorkerRole getByIdWorkerRole(long workerRoleId) {
         return workerRoleDao.getById(workerRoleId);
     }
 
@@ -31,7 +31,7 @@ public class WorkerRolesController {
      *
      * @return A List of all WorkerRoles.
      */
-    public List<WorkerRole> getAllWorkerRoles() {
+    public static List<WorkerRole> getAllWorkerRoles() {
         return workerRoleDao.getAll();
     }
 

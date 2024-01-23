@@ -1,11 +1,10 @@
 package com.u2team.huansync.activity.cosplay.managementCosplay.Controller;
 
+import java.sql.SQLException;
 import java.util.List;
 import com.u2team.huansync.activity.cosplay.managementCosplay.model.Cosplay;
-import com.u2team.huansync.activity.cosplay.managementCosplay.model.CosplayBuilder;
 import com.u2team.huansync.activity.cosplay.managementCosplay.model.CosplayBuilderImpl;
 import com.u2team.huansync.activity.cosplay.managementCosplay.model.CosplayDaoOperationsCrudImpl;
-
 
 
 
@@ -19,7 +18,7 @@ public class ControllerMagnamentCosplay {
 
 
     // listar 
-    public List<Cosplay> readAllCosplays(){
+    public List<Cosplay> readAllCosplays() throws SQLException{
         /*
          * 
          * WARNING FOR FRONT - ENDS
@@ -29,7 +28,7 @@ public class ControllerMagnamentCosplay {
         return cosplayDaoOperationsCrudImpl.readCosplay();
     }
 
-    public void addCosplay(String nameCosplay , int participantId , int activitieId){
+    public void addCosplay(String nameCosplay , int participantId , int activitieId) {
          
         Cosplay dtaCosplay =
         new  CosplayBuilderImpl()
@@ -38,22 +37,38 @@ public class ControllerMagnamentCosplay {
         .activictyId(activitieId)
         .build();
 
-        cosplayDaoOperationsCrudImpl.createCosplay(dtaCosplay);
+        
+        try {
+            cosplayDaoOperationsCrudImpl.createCosplay(dtaCosplay);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private void modifyCosplay(int cosplayId , String newNameCosplay){
+    public void updateCosplay(int cosplayId , String newNameCosplay)  {
         Cosplay dtaCosplay =
         new  CosplayBuilderImpl()
         .cosplayId(cosplayId)
         .nameCosplay(newNameCosplay)
         .build();
 
-        cosplayDaoOperationsCrudImpl.updateCosplay(dtaCosplay);
+
+        try {
+            cosplayDaoOperationsCrudImpl.updateCosplay(dtaCosplay);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void desactivateCosplay(int idCosplay){
-        cosplayDaoOperationsCrudImpl.deleteCosplay(idCosplay);
+    public void deleteCosplay(int idCosplay){
+        
+
+        try {
+            cosplayDaoOperationsCrudImpl.deleteCosplay(idCosplay);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
         
 }

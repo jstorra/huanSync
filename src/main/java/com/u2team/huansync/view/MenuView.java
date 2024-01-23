@@ -48,6 +48,7 @@ public class MenuView extends javax.swing.JFrame {
         btnStaff = new javax.swing.JButton();
         btnTickets = new javax.swing.JButton();
         btnRoles = new javax.swing.JButton();
+        calendarBlack = new javax.swing.JLabel();
         tittleWelcome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -171,7 +172,10 @@ public class MenuView extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(calendarBlack)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,7 +187,9 @@ public class MenuView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(btnEstablish, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calendarBlack))
                 .addGap(18, 18, 18)
                 .addComponent(btnStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -259,7 +265,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventsActionPerformed
-        EventView initialEvent = new EventView();
+        ShowEventView initialEvent = new ShowEventView();
         initialEvent.setVisible(true);
         initialEvent.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEventsActionPerformed
@@ -337,6 +343,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btnRoles;
     private javax.swing.JButton btnStaff;
     private javax.swing.JButton btnTickets;
+    private javax.swing.JLabel calendarBlack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

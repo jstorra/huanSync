@@ -109,7 +109,11 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="btnTickets" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="btnStaff" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="btnEvents" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="calendarBlack" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnEvents" min="-2" pref="140" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -127,7 +131,10 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="btnEstablish" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="btnEvents" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnEvents" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="calendarBlack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnStaff" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -299,6 +306,8 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRolesActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="calendarBlack">
             </Component>
           </SubComponents>
         </Container>

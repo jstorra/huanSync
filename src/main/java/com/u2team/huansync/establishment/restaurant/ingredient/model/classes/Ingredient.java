@@ -13,10 +13,10 @@ public class Ingredient {
     private String name;
     private int availableQuantity;
 
-    public Ingredient(String name, int availableQuantity) {
-        this.name = name;
-        this.availableQuantity = availableQuantity;
+    public Ingredient() {
     }
+
+    
 
     public String getName() {
         return name;

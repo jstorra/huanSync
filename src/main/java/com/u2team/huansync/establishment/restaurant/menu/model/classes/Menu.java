@@ -16,9 +16,7 @@ public class Menu {
     private Restaurant restaurant;
     private List<Item> menu;
 
-    public Menu(Restaurant restaurant) {
-        this.restaurant = restaurant;
-        this.menu = new ArrayList<>();
+    public Menu() {
     }
 
     public Restaurant getRestaurant() {
@@ -27,6 +25,14 @@ public class Menu {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public List<Item> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Item> menu) {
+        this.menu = menu;
     }
     /**
      * 

@@ -16,9 +16,15 @@ public class Inventory {
     private List<Ingredient> ingredientList;
     private Restaurant restaurant;
 
-    public Inventory(Restaurant restaurant) {
-        this.ingredientList = new ArrayList<>();
-        this.restaurant = restaurant;
+    public Inventory() {
+    }
+
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
+
+    public void setIngredientList(List<Ingredient> ingredientList) {
+        this.ingredientList = ingredientList;
     }
 
     public Restaurant getRestaurant() {

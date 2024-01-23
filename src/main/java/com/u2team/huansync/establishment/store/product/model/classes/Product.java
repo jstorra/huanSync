@@ -2,62 +2,62 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.u2team.huansync.establishment.store.model.Product;
+package com.u2team.huansync.establishment.store.product.model.classes;
 
 /**
  *
- * @author sneiderEsteban
+ * @author Kevin Jimenez
  */
-
-
-//import com.u2team.huansync.establishment.store.model.Discount.Discount;
-
-//import java.util.List; 
-
 public class Product {
-
-    private Long productId;
-    private int establishmentid; 
-    private String productName;
+    
+    private long productId;
+    private long storeId;
+    private String nameProduct;
     private Double productPrice;
     private String description;
     private String manufacturer; 
     private int quantity;
-    private TypeProduct type;
+    private TypeProductEnum type;
+    
+    //Constructor vacio y uno lleno con todo
+    public Product() {
+        
+    }
 
-    public Product(Long productId, int establishmentid, String productName, Double productPrice, String description, String manufacturer, int quantity, TypeProduct type) {
+    public Product(long productId, long storeId, String nameProduct, Double productPrice, String description, String manufacturer, int quantity, TypeProductEnum type) {
         this.productId = productId;
-        this.establishmentid = establishmentid;
-        this.productName = productName;
+        this.storeId = storeId;
+        this.nameProduct = nameProduct;
         this.productPrice = productPrice;
         this.description = description;
         this.manufacturer = manufacturer;
         this.quantity = quantity;
         this.type = type;
     }
-
-    public Long getProductId() {
+    
+    //Getters y setters
+    public long getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(long productId) {
         this.productId = productId;
     }
 
-    public int getEstablishmentid() {
-        return establishmentid;
+    public long getStoreId() {
+        return storeId;
     }
 
-    public void setEstablishmentid(int establishmentid) {
-        this.establishmentid = establishmentid;
+    public void setStoreId(long storeId) {
+        this.storeId = storeId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getNameProduct() {
+        return nameProduct;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
     }
 
     public Double getProductPrice() {
@@ -92,17 +92,20 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public TypeProduct getType() {
+    public TypeProductEnum getType() {
         return type;
     }
 
-    public void setType(TypeProduct type) {
+    public void setType(TypeProductEnum type) {
         this.type = type;
     }
+    
+    //to String
+    @Override
+    public String toString() {
+        return "Product{" + "productId=" + productId + ", storeId=" + storeId + ", nameProduct=" + nameProduct + ", productPrice=" + productPrice + ", description=" + description + ", manufacturer=" + manufacturer + ", quantity=" + quantity + ", type=" + type + '}';
+    }
+    
+    
 
- // Desing patron Singleton 
-    
-    
-    
-    
 }

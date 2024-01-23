@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package com.u2team.huansync.establishment.store.model.Order;
+package com.u2team.huansync.establishment.store.product.model.classes;
 
 /**
  *
- * @author user
+ * @author Kevin Jimenez
  */
-public enum StatusOrder {
-    REGISTRADO, PAGADO, ENTREGADO 
+public enum TypeProductEnum {
+    
+    MANGA, MULTIMEDIA, ART, FIGURES, SOUVENIERS, CLOTHING, TECHNOLOGY
+    
 }

@@ -8,14 +8,14 @@ package com.u2team.huansync.ticketOffice.client.model.classes;
  *
  * @author SANTOS
  */
-public enum CostumerTypeEnum {
+public enum CustomerTypeEnum {
     PARTICIPANT("Is a participant"),
     VISITOR("Is a visitor"),
     WINNER("Is a winner");
     
     private String description;
 
-    private CostumerTypeEnum(String description) {
+    private CustomerTypeEnum(String description) {
         this.description = description;
     }
 

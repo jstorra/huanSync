@@ -2,8 +2,8 @@ package com.u2team.huansync.ticketOffice.client.model.classes;
 
 import java.util.Date;
 
-public class Costumer {
-    private long costumerId;
+public class Customer {
+    private long customerId;
     private String name;
     private String document;
     private String gender;
@@ -12,7 +12,7 @@ public class Costumer {
     private String phoneNumber;
     
     
-    private CostumerTypeEnum costumerTypeEnum;
+    private CustomerTypeEnum customerTypeEnum;
 
     public String getName() {
         return name;
@@ -22,12 +22,12 @@ public class Costumer {
         this.name = name;
     }
 
-    public long getCostumerId() {
-        return costumerId;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCostumerId(long costumerId) {
-        this.costumerId = costumerId;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public String getDocument() {
@@ -70,17 +70,17 @@ public class Costumer {
         this.phoneNumber = phoneNumber;
     }
 
-    public CostumerTypeEnum getCostumerTypeEnum() {
-        return costumerTypeEnum;
+    public CustomerTypeEnum getCustomerTypeEnum() {
+        return customerTypeEnum;
     }
 
-    public void setCostumerTypeEnum(CostumerTypeEnum costumerTypeEnum) {
-        this.costumerTypeEnum = costumerTypeEnum;
+    public void setCustomerTypeEnum(CustomerTypeEnum customerTypeEnum) {
+        this.customerTypeEnum = customerTypeEnum;
     }
 
     @Override
     public String toString() {
-        return "Costumer{" + "costumerId=" + costumerId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", costumerTypeEnum=" + costumerTypeEnum + '}';
+        return "Customer{" + "customerId=" + customerId + ", name=" + name + ", document=" + document + ", gender=" + gender + ", birthDate=" + birthDate + ", email=" + email + ", phoneNumber=" + phoneNumber + ", customerType=" + customerTypeEnum + '}';
     }
 
     

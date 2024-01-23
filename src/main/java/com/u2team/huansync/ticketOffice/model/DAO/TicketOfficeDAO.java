@@ -3,7 +3,6 @@ package com.u2team.huansync.ticketOffice.model.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -20,13 +19,6 @@ import com.u2team.huansync.ticketOffice.model.util.Validations;
 
 public class TicketOfficeDAO implements IDao<TicketOffice> {
     
-    // ----------------------------------------Creations of objects with Classes to use------------------------------------------
-    Event dateTime = (Event) EventController.getAllEvents();
-    Validations validation = new Validations();
-    LocalDate startDate = dateTime.getDateEvent();
-    LocalTime startHour = dateTime.getTimeEvent();
-
-
     //----------------------------------------Override Methods (CRUD)------------------------------------------
     /**
      * Retrieves and returns an instance of TicketOffice based on the provided ID.
@@ -98,8 +90,11 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
 
     @Override
     public void insertTicketOffice(TicketOffice ticketOffice) {     
-        
-        if (!validation.isValidDate(startDate) && !validation.isValidHour(startHour) && validation.checkedEvent(ticketOffice.getEventId())) {
+        Event eventDatas = EventController.getByIdEvent(ticketOffice.getEventId());
+        LocalDate startDate = eventDatas.getDateEvent();
+        LocalTime startHour = eventDatas.getTimeEvent();
+
+        if (!Validations.isValidDate(startDate) && !Validations.isValidHour(startHour) && Validations.checkedEvent(ticketOffice.getEventId())) {
             System.out.println("This ticketOffice was impossible to add because the event has already started or this event was assigned to another ticket office");
             return;
         }  else {
@@ -107,8 +102,9 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
             String ticketOfficeStm = "INSERT INTO tbl_ticketOffice(eventId, location, address, contactNumber, staffId) VALUES(?,?,?,?,?)";
             try (PreparedStatement ps = Operations.getConnection().prepareStatement(ticketOfficeStm)) {
                 ps.setLong(1, ticketOffice.getEventId());
-                if (ticketOffice.isLocation() == true) {
-                    ps.setNull(3, Types.VARCHAR); 
+                ps.setBoolean(2, ticketOffice.isLocation());
+                if (ticketOffice.isLocation()) {
+                    ps.setString(3, eventDatas.getAddress()); 
                 } else {
                     ps.setString(3, ticketOffice.getAddress());
                 }
@@ -130,6 +126,9 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     @Override
     public void updateTicketOffice(TicketOffice ticketOffice) {
         TicketOffice sqlTicketOffice = getById(ticketOffice.getTicketOfficeId());
+        Event eventDatas = EventController.getByIdEvent(ticketOffice.getEventId());
+        LocalDate startDate = eventDatas.getDateEvent();
+        LocalTime startHour = eventDatas.getTimeEvent();
 
         if(sqlTicketOffice != null){
             sqlTicketOffice.setEventId(ticketOffice.getEventId());
@@ -138,24 +137,23 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
             sqlTicketOffice.setContactNumber(ticketOffice.getContactNumber());
             sqlTicketOffice.setStaffId(ticketOffice.getStaffId());
         
-            if (!validation.isValidDate(startDate) && !validation.isValidHour(startHour)) {
+            if (!Validations.isValidDate(startDate) && !Validations.isValidHour(startHour)) {
                 System.out.println("This ticketOffice was impossible to update because the event has already started");
                 return;
             }  else{
                 String ticketOfficeStm = "UPDATE tbl_ticketOffice SET eventId = ?, location = ?, address = ?, contactNumber = ?, staffId = ? WHERE ticketOfficeId = ?; ";
 
                 try (PreparedStatement ps = Operations.getConnection().prepareStatement(ticketOfficeStm)){
-                    ps.setLong(1, ticketOffice.getEventId());
-                    if (ticketOffice.isLocation() == true) {
-                        ps.setNull(3, Types.VARCHAR); 
+                    ps.setLong(1, sqlTicketOffice.getEventId());
+                    ps.setBoolean(2, sqlTicketOffice.isLocation());
+                    if (sqlTicketOffice.isLocation()) {
+                        ps.setString(3, eventDatas.getAddress()); 
                     } else {
-                        ps.setString(3, ticketOffice.getAddress());
+                        ps.setString(3, sqlTicketOffice.getAddress());
                     }
-                    ps.setString(4, ticketOffice.getContactNumber());
-                    ps.setLong(5, ticketOffice.getStaffId());
-                    ps.setLong(6, ticketOffice.getTicketOfficeId());
-
-                    System.out.println(ps.toString());
+                    ps.setString(4, sqlTicketOffice.getContactNumber());
+                    ps.setLong(5, sqlTicketOffice.getStaffId());
+                    ps.setLong(6, sqlTicketOffice.getTicketOfficeId());
                     
                     int rows = Operations.insert_update_delete_db(ps);
                     if (rows <= 0) {
@@ -177,8 +175,8 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     public void deleteTicketOffice(long ticketOfficeId) {
         
         TicketOffice eventId = new TicketOffice();
-        Event event = EventController.getByIdEvent(eventId.getEventId());
-        if (event.getStatusEnum().name().equalsIgnoreCase("finished")) {
+        Event eventDatas = EventController.getByIdEvent(eventId.getEventId());
+        if (eventDatas.getStatusEnum().name().equalsIgnoreCase("finished")) {
             Operations.setConnection(BDConnection.MySQLConnection());
             String ticketOfficeStm = "DELETE FROM tbl_ticketOffice WHERE ticketOfficeId = ?";
             try (PreparedStatement ps = Operations.getConnection().prepareStatement(ticketOfficeStm)) {
@@ -188,13 +186,15 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     System.out.println("successful delete ticketOffice");
                     return;
                 } else {
-                    System.out.println("not exists ticketOffice or event's status haven't finished");
+                    System.out.println("not exists ticketOffice");
                     return;
                 }
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("Event's status haven't finished");
         }
         System.out.println("Something was wrong on delete ticketOffice");
         return;

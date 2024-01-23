@@ -1,18 +1,17 @@
-package com.u2team.huansync.ticketOffice.tickets.model.DAO;
+package com.u2team.huansync.ticketOffice.tickets.ticketType.model.DAO;
+
 
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
-import com.u2team.huansync.ticketOffice.tickets.model.classes.TicketType;
+import com.u2team.huansync.ticketOffice.tickets.ticketType.model.classes.TicketType;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class TicketTypeDAO implements IDao<TicketType>{
+public class TicketTypeDAO implements IDao<TicketType> {
 
     @Override
     public TicketType getById(long id) {
@@ -123,8 +122,26 @@ public class TicketTypeDAO implements IDao<TicketType>{
     }
 
     @Override
-    public void delete(long id) {
-        
+    public void delete(long tycketTypeId) {
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "DELETE FROM tbl_ticketType WHERE ticketTypeId = ?;";
+
+        try(PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
+            ps.setLong(1, tycketTypeId);
+            int rows = Operations.insert_update_delete_db(ps);
+            if (rows > 0){
+                System.out.println("successful delete tycketType");
+                return;
+            }else {
+                System.out.println("not exists tycketType");
+                return;
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        System.out.println("Something was wrong on delete tycketType");
+
     }
     
     

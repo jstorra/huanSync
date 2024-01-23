@@ -19,4 +19,5 @@ public class ProductController {
     public static void insertProduct(Product product){
         productDAO.save(product);
     }
+    
 }

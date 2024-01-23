@@ -51,6 +51,14 @@ public class TicketType {
     public void setPrice(double price) {
         this.price = price;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "TicketType{" +
+                "ticketTypeId=" + ticketTypeId +
+                ", nameTicketType='" + nameTicketType + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

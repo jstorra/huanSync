@@ -66,4 +66,17 @@ public class Tickets {
     public void setTicketId(long ticketId) {
         this.ticketId = ticketId;
     }
+
+    @Override
+    public String toString() {
+        return "Tickets{" +
+                "ticketId=" + ticketId +
+                ", nameTicket='" + nameTicket + '\'' +
+                ", additionalCost=" + additionalCost +
+                ", statusEnum=" + statusEnum +
+                ", ticketTypeId=" + ticketTypeId +
+                ", customerId=" + customerId +
+                ", ticketOfficeId=" + ticketOfficeId +
+                '}';
+    }
 }

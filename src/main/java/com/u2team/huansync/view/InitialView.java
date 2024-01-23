@@ -105,6 +105,7 @@ public class InitialView extends javax.swing.JFrame {
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
         MenuView menu = new MenuView();
         menu.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_buttonStartActionPerformed
 

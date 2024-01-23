@@ -6,10 +6,9 @@ public class Tickets {
     private double additionalCost;
 
     private StatusEnum statusEnum;
-    private AgeClassificationEnum ageClassificationEnum;
 
     private long ticketTypeId;
-    private long costumerId;
+    private long customerId;
     private long ticketOfficeId;
 
     public long getTicketTypeId() {
@@ -20,12 +19,12 @@ public class Tickets {
         this.ticketTypeId = ticketTypeId;
     }
 
-    public long getCostumerId() {
-        return costumerId;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCostumerId(long costumerId) {
-        this.costumerId = costumerId;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public long getTicketOfficeId() {
@@ -42,14 +41,6 @@ public class Tickets {
 
     public void setStatusEnum(StatusEnum statusEnum) {
         this.statusEnum = statusEnum;
-    }
-
-    public AgeClassificationEnum getAgeClassificationEnum() {
-        return ageClassificationEnum;
-    }
-
-    public void setAgeClassificationEnum(AgeClassificationEnum ageClassificationEnum) {
-        this.ageClassificationEnum = ageClassificationEnum;
     }
 
     public String getNameTicket() {
@@ -74,5 +65,18 @@ public class Tickets {
 
     public void setTicketId(long ticketId) {
         this.ticketId = ticketId;
+    }
+
+    @Override
+    public String toString() {
+        return "Tickets{" +
+                "ticketId=" + ticketId +
+                ", nameTicket='" + nameTicket + '\'' +
+                ", additionalCost=" + additionalCost +
+                ", statusEnum=" + statusEnum +
+                ", ticketTypeId=" + ticketTypeId +
+                ", customerId=" + customerId +
+                ", ticketOfficeId=" + ticketOfficeId +
+                '}';
     }
 }

@@ -20,12 +20,14 @@ import com.u2team.huansync.ticketOffice.model.util.Validations;
 
 public class TicketOfficeDAO implements IDao<TicketOffice> {
     
-    EventController eventControllerTicket = new EventController();
-    Event dateTime = (Event) eventControllerTicket.getAllEvents();
+    // ----------------------------------------Creations of objects with Classes to use------------------------------------------
+    Event dateTime = (Event) EventController.getAllEvents();
     Validations validation = new Validations();
     LocalDate startDate = dateTime.getDateEvent();
     LocalTime startHour = dateTime.getTimeEvent();
 
+
+    //----------------------------------------Override Methods (CRUD)------------------------------------------
     /**
      * Retrieves and returns an instance of TicketOffice based on the provided ID.
      *
@@ -97,8 +99,8 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     @Override
     public void insertTicketOffice(TicketOffice ticketOffice) {     
         
-        if (!validation.isValidDate(startDate) && !validation.isValidHour(startHour)) {
-            System.out.println("This ticketOffice was impossible to add because the event has already started");
+        if (!validation.isValidDate(startDate) && !validation.isValidHour(startHour) && validation.checkedEvent(ticketOffice.getEventId())) {
+            System.out.println("This ticketOffice was impossible to add because the event has already started or this event was assigned to another ticket office");
             return;
         }  else {
             
@@ -175,7 +177,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     public void deleteTicketOffice(long ticketOfficeId) {
         
         TicketOffice eventId = new TicketOffice();
-        Event event = eventControllerTicket.getById(eventId.getEventId());
+        Event event = EventController.getByIdEvent(eventId.getEventId());
         if (event.getStatusEnum().name().equalsIgnoreCase("finished")) {
             Operations.setConnection(BDConnection.MySQLConnection());
             String ticketOfficeStm = "DELETE FROM tbl_ticketOffice WHERE ticketOfficeId = ?";

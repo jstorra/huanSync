@@ -6,29 +6,25 @@ import com.u2team.huansync.ticketOffice.tickets.ticketType.model.classes.TicketT
 import java.util.List;
 
 public class TicketTypeController {
-    private TicketTypeDAO ticketTypeDAO;
+    private static TicketTypeDAO ticketTypeDAO = new TicketTypeDAO();
 
-    public TicketTypeController() {
-        this.ticketTypeDAO = new TicketTypeDAO();
-    }
-
-    public TicketType getByIdTicketType (long ticketTypeId){
+    public static TicketType getByIdTicketType (long ticketTypeId){
         return ticketTypeDAO.getById(ticketTypeId);
     }
 
-    public List<TicketType> getAllTicketType (){
+    public static List<TicketType> getAllTicketType (){
         return ticketTypeDAO.getAll();
     }
 
-    public void insertTicketType(TicketType ticketType){
+    public static void insertTicketType(TicketType ticketType){
         ticketTypeDAO.save(ticketType);
     }
 
-    public void updateTicketType(TicketType ticketType){
+    public static void updateTicketType(TicketType ticketType){
         ticketTypeDAO.update(ticketType);
     }
 
-    public void deleteTicketType(long ticketTypeId){
+    public static void deleteTicketType(long ticketTypeId){
         ticketTypeDAO.delete(ticketTypeId);
     }
 }

@@ -24,7 +24,7 @@ public class TicketTypeDAO implements IDao<TicketType> {
             if (rs.next()) {
                 TicketType ticketType = new TicketType();
                 ticketType.setTicketTypeId(rs.getLong("ticketTypeId"));
-                ticketType.setNameTicketType(rs.getString("staffNumberId"));
+                ticketType.setNameTicketType(rs.getString("nameTicketType"));
                 ticketType.setDescription(rs.getString("description"));
                 ticketType.setPrice(rs.getDouble("price"));
                 

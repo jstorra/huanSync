@@ -1,9 +1,16 @@
+
 package com.u2team.huansync.event.model.classes;
 
 /**
  *
- * @author Christian Pardo
+ * @author Cristian Pardo
  */
+
+/**
+ * Enumeration representing different statuses.
+ * Each status has a corresponding description.
+ */
+
 public enum StatusEnum {
     ACTIVE("It is active"), FINISHED("It is Inactive"), PENDING("It is Pending");
     
@@ -20,4 +27,5 @@ public enum StatusEnum {
     public void setDescription(String description) {
         this.description = description;
     }
+    
 }

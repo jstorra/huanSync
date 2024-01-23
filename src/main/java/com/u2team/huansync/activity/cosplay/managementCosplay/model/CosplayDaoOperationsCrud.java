@@ -1,15 +1,14 @@
 package com.u2team.huansync.activity.cosplay.managementCosplay.model;
 
-import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
 
 public interface CosplayDaoOperationsCrud {
-    
+
     public List<Cosplay> readCosplay();
 
     public void createCosplay(Cosplay cosplay);
 
-    public void updateCosplay(Cosplay cosplay) throws SQLException;
+    public void updateCosplay(Cosplay cosplay);
 
     public void deleteCosplay(int idCosplay);
 }

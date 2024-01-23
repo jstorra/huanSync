@@ -1,23 +1,23 @@
 package com.u2team.huansync.activity.model;
 
 import java.time.LocalTime;
-import java.util.List;
 
 public class Activity {
-    private long activityId;
+    private Long activityId;
     private String name;
     private TypeActivity typeActivity;
-    private long categoryCosplayId;
+    private Long categoryCosplayId;
     private int numParticipants;
-    private long eventId;
+    private Long eventId;
     private LocalTime startTime;
-    private List<Staff> staff;
+    private double price;
+    private boolean completed;
 
-    public long getActivityIdId() {
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(long activityId) {
+    public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 
@@ -37,11 +37,11 @@ public class Activity {
         this.typeActivity = typeActivity;
     }
 
-    public long getIdCategoryCosplay() {
+    public Long getCategoryCosplayId() {
         return categoryCosplayId;
     }
 
-    public void setCategoryCosplayId(long categoryCosplayId) {
+    public void setCategoryCosplayId(Long categoryCosplayId) {
         this.categoryCosplayId = categoryCosplayId;
     }
 
@@ -53,11 +53,11 @@ public class Activity {
         this.numParticipants = numParticipants;
     }
 
-    public long getEventId() {
+    public Long getEventId() {
         return eventId;
     }
 
-    public void setEventId(long eventId) {
+    public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
 
@@ -69,12 +69,20 @@ public class Activity {
         this.startTime = startTime;
     }
 
-    public List<Staff> getStaff() {
-        return staff;
+    public double getPrice() {
+        return price;
     }
 
-    public void setStaff(List<Staff> staff) {
-        this.staff = staff;
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
@@ -82,12 +90,13 @@ public class Activity {
         return "Activity{" +
                 "activityId=" + activityId +
                 ", name='" + name + '\'' +
-                ", TypeActivity=" + typeActivity +
+                ", typeActivity=" + typeActivity +
                 ", categoryCosplayId=" + categoryCosplayId +
                 ", numParticipants=" + numParticipants +
                 ", eventId=" + eventId +
                 ", startTime=" + startTime +
-                ", staff=" + staff +
+                ", price=" + price +
+                ", completed=" + completed +
                 '}';
     }
 }

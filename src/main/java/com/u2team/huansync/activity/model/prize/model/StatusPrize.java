@@ -1,7 +1,7 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 public enum StatusPrize {
-    AVAILABLE("Available"), AWARDED("Awarded");
+    AVAILABLE("available"), AWARDED("awarded");
 
     private String name;
 

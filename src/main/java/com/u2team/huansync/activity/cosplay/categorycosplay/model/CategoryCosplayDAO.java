@@ -1,15 +1,27 @@
-package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
+package com.u2team.huansync.activity.cosplay.categorycosplay.model;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import com.u2team.huansync.persistence.BDConnection;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase para acceder y manipular la tabla de categorias de cosplay en la base de datos.
+ * Data Access Object (DAO) for managing operations related to cosplay categories in the database.
  */
+
 public class CategoryCosplayDAO {
+
+    /**
+     * Retrieves all cosplay categories from the database.
+     *
+     * @return List of cosplay categories.
+     */
 
     public List<CategoryCosplay> getAllCategories() {
         List<CategoryCosplay> categories = new ArrayList<>();
@@ -32,18 +44,30 @@ public class CategoryCosplayDAO {
         return categories;
     }
 
+    /**
+     * Inserts a new cosplay category into the database.
+     *
+     * @param nameCategory Name of the new cosplay category.
+     */
+
     public void insertCategory(String nameCategory) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay) VALUES (?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, nameCategory);
                 statement.executeUpdate();
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Updates an existing cosplay category in the database.
+     *
+     * @param categoryId              Identifier of the cosplay category to be updated.
+     * @param newNameCategoryCosplay New name for the cosplay category.
+     */
 
     public void updateCategory(int categoryId, String newNameCategoryCosplay) {
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -57,6 +81,12 @@ public class CategoryCosplayDAO {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Deletes a cosplay category from the database.
+     *
+     * @param categoryId Identifier of the cosplay category to be deleted.
+     */
 
     public void deleteCategory(int categoryId) {
         try (Connection connection = BDConnection.MySQLConnection()) {

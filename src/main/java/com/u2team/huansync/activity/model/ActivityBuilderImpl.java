@@ -1,12 +1,12 @@
 package com.u2team.huansync.activity.model;
 
 import java.time.LocalTime;
-import java.util.List;
 
 public class ActivityBuilderImpl implements ActivityBuilder {
     private Activity activity =  new Activity();
 
-    public ActivityBuilder activityId(long activityId) {
+    @Override
+    public ActivityBuilder activityId(Long activityId) {
         activity.setActivityId(activityId);
         return this;
     }
@@ -24,7 +24,7 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder categoryCosplayId(long categoryCosplayId) {
+    public ActivityBuilder categoryCosplayId(Long categoryCosplayId) {
         activity.setCategoryCosplayId(categoryCosplayId);
         return this;
     }
@@ -36,9 +36,9 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder eventId(long eventId) {
+    public ActivityBuilder eventId(Long eventId) {
         activity.setEventId(eventId);
-        return null;
+        return this;
     }
 
     @Override
@@ -48,8 +48,14 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder staff(List<Staff> staff) {
-        activity.setStaff(staff);
+    public ActivityBuilder price(double price) {
+        activity.setPrice(price);
+        return this;
+    }
+
+    @Override
+    public ActivityBuilder completed(boolean completed) {
+        activity.setCompleted(completed);
         return this;
     }
 

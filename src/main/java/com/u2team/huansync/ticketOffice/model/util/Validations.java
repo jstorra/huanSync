@@ -21,11 +21,7 @@ public class Validations {
 
     public boolean checkedEvent(long eventId){
         for(Event repeated : EventController.getAllEvents()){
-            if (repeated.getEventId() == eventId){
-                return true;
-            } else {
-                return false;
-            }
+            return repeated.getEventId() == eventId;
         }
         return false;     
     }

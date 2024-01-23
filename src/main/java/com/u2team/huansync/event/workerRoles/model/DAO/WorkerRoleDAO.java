@@ -147,3 +147,4 @@ public class WorkerRoleDAO implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
     }
 
 }
+ 

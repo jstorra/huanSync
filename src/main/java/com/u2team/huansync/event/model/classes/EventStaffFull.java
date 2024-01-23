@@ -1,12 +1,9 @@
 package com.u2team.huansync.event.model.classes;
 
-import com.u2team.huansync.event.model.classes.builders.EventBuilder;
-import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import com.u2team.huansync.event.staff.model.classes.Staff;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.List;
 
 

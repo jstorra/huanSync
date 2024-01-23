@@ -168,7 +168,7 @@ public class StaffDAO implements IGetByIdDao<Staff>, IGetAllDao<Staff>, ISaveDao
                         roleWorkId = ?
                     WHERE staffId = ?;
                                  """;
-
+ 
             try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)) {
                 ps.setString(1, t.getStaffNumberId());
                 ps.setString(2, t.getNameStaff());

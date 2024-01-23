@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class WorkerRolesController {
 
-    private WorkerRoleDAO workerRoleDao = new WorkerRoleDAO();
+    private static WorkerRoleDAO workerRoleDao = new WorkerRoleDAO();
 
     /**
      * Retrieves a WorkerRole by its ID.
@@ -22,7 +22,7 @@ public class WorkerRolesController {
      * @return The WorkerRole associated with the given ID, or null if not
      * found.
      */
-    public WorkerRole getByIdWorkerRole(long workerRoleId) {
+    public static WorkerRole getByIdWorkerRole(long workerRoleId) {
         return workerRoleDao.getById(workerRoleId);
     }
 
@@ -31,7 +31,7 @@ public class WorkerRolesController {
      *
      * @return A List of all WorkerRoles.
      */
-    public List<WorkerRole> getAllWorkerRoles() {
+    public static List<WorkerRole> getAllWorkerRoles() {
         return workerRoleDao.getAll();
     }
 
@@ -40,7 +40,7 @@ public class WorkerRolesController {
      *
      * @param workerRole The WorkerRole object to insert.
      */
-    public void insertWorkerRole(WorkerRole workerRole) {
+    public static void insertWorkerRole(WorkerRole workerRole) {
         workerRoleDao.save(workerRole);
     }
 
@@ -49,7 +49,7 @@ public class WorkerRolesController {
      *
      * @param workerRole The WorkerRole object to update.
      */
-    public void updateWorkerRole(WorkerRole workerRole) {
+    public static void updateWorkerRole(WorkerRole workerRole) {
         workerRoleDao.update(workerRole);
     }
 
@@ -58,7 +58,7 @@ public class WorkerRolesController {
      *
      * @param workerRoleId The ID of the WorkerRole to delete.
      */
-    public void deleteWorkerRole(long workerRoleId) {
+    public static void deleteWorkerRole(long workerRoleId) {
         workerRoleDao.delete(workerRoleId);
     }
 

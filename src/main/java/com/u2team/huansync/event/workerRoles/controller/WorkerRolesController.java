@@ -40,7 +40,7 @@ public class WorkerRolesController {
      *
      * @param workerRole The WorkerRole object to insert.
      */
-    public void insertWorkerRole(WorkerRole workerRole) {
+    public static void insertWorkerRole(WorkerRole workerRole) {
         workerRoleDao.save(workerRole);
     }
 
@@ -49,7 +49,7 @@ public class WorkerRolesController {
      *
      * @param workerRole The WorkerRole object to update.
      */
-    public void updateWorkerRole(WorkerRole workerRole) {
+    public static void updateWorkerRole(WorkerRole workerRole) {
         workerRoleDao.update(workerRole);
     }
 
@@ -58,7 +58,7 @@ public class WorkerRolesController {
      *
      * @param workerRoleId The ID of the WorkerRole to delete.
      */
-    public void deleteWorkerRole(long workerRoleId) {
+    public static void deleteWorkerRole(long workerRoleId) {
         workerRoleDao.delete(workerRoleId);
     }
 

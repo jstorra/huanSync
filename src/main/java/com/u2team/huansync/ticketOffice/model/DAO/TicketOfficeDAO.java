@@ -20,8 +20,7 @@ import com.u2team.huansync.ticketOffice.model.util.Validations;
 
 public class TicketOfficeDAO implements IDao<TicketOffice> {
     
-    EventController eventControllerTicket = new EventController();
-    Event dateTime = (Event) eventControllerTicket.getAllEvents();
+    Event dateTime = (Event) EventController.getAllEvents();
     Validations validation = new Validations();
     LocalDate startDate = dateTime.getDateEvent();
     LocalTime startHour = dateTime.getTimeEvent();
@@ -175,7 +174,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     public void deleteTicketOffice(long ticketOfficeId) {
         
         TicketOffice eventId = new TicketOffice();
-        Event event = eventControllerTicket.getById(eventId.getEventId());
+        Event event = EventController.getByIdEvent(eventId.getEventId());
         if (event.getStatusEnum().name().equalsIgnoreCase("finished")) {
             Operations.setConnection(BDConnection.MySQLConnection());
             String ticketOfficeStm = "DELETE FROM tbl_ticketOffice WHERE ticketOfficeId = ?";

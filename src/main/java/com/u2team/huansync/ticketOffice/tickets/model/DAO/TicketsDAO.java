@@ -30,7 +30,10 @@ public class TicketsDAO implements IDao<Tickets>{
                         .nameTicket(rs.getString("nameTicket"))
                         .statusEnum(rs.getString("status"))
                         .additionalCost(rs.getDouble("additionalCost"))
-                        .ageClassificationEnum(rs.getString("ageClassification"))
+                        .customerId(rs.getLong("customerId"))
+                        .ticketOfficeId(rs.getLong("ticketOfficeId"))
+                        .ticketTypeId(rs.getLong("ticketTypeId"))
+
                         .buid();
 
                         return sqlTickets;
@@ -61,7 +64,10 @@ public class TicketsDAO implements IDao<Tickets>{
                         .nameTicket(rs.getString("nameTicket"))
                         .statusEnum(rs.getString("status"))
                         .additionalCost(rs.getDouble("additionalCost"))
-                        .ageClassificationEnum(rs.getString("ageClassification"))
+                        .customerId(rs.getLong("customerId"))
+                        .ticketOfficeId(rs.getLong("ticketOfficeId"))
+                        .ticketTypeId(rs.getLong("ticketTypeId"))
+
                         .buid();
 
                 ticketsList.add(sqlTickets);
@@ -74,13 +80,13 @@ public class TicketsDAO implements IDao<Tickets>{
 
     @Override
     public void save(Tickets tickets) {
-        String stmInsert = "INSERT INTO tbl_tickets(nameTicket, price, status, additionalCost, costumerId, ticketOfficeId, ticketTypeId) VALUES(?,?,?,?,?,?,?);";
+        String stmInsert = "INSERT INTO tbl_tickets(nameTicket, status, additionalCost, customerId, ticketOfficeId, ticketTypeId) VALUES(?,?,?,?,?,?);";
 
         try(PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)){
             ps.setString(1, tickets.getNameTicket());
             ps.setString(3, tickets.getStatusEnum().name());
             ps.setDouble(4, tickets.getAdditionalCost());
-            ps.setLong(5, tickets.getCostumerId());
+            ps.setLong(5, tickets.getCustomerId());
             ps.setLong(6, tickets.getTicketOfficeId());
             ps.setLong(7, tickets.getTicketTypeId());
 
@@ -104,17 +110,16 @@ public class TicketsDAO implements IDao<Tickets>{
             sqlTicket.setNameTicket(tickets.getNameTicket());
             sqlTicket.setStatusEnum(tickets.getStatusEnum());
             sqlTicket.setAdditionalCost(tickets.getAdditionalCost());
-            sqlTicket.setCostumerId(sqlTicket.getCostumerId());
+            sqlTicket.setCustomerId(sqlTicket.getCustomerId());
             sqlTicket.setTicketOfficeId(sqlTicket.getTicketOfficeId());
             sqlTicket.setTicketTypeId(sqlTicket.getTicketTypeId());
 
             String stmInsert = """
             UPDATE tbl_tickets
             SET nameTicket = ?,
-                price = ?,
                 status = ?,
                 additionalCost = ?,
-                costumerId = ?,
+                customerId = ?,
                 ticketOfficeId = ?,
                 ticketTypeId = ?
             WHERE ticketId = ?;
@@ -122,12 +127,12 @@ public class TicketsDAO implements IDao<Tickets>{
 
             try(PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)){
                 ps.setString(1, tickets.getNameTicket());
-                ps.setString(3, tickets.getStatusEnum().name());
-                ps.setDouble(4, tickets.getAdditionalCost());
-                ps.setLong(5, tickets.getCostumerId());
-                ps.setLong(6, tickets.getTicketOfficeId());
-                ps.setLong(7, tickets.getTicketTypeId());
-                ps.setLong(8, tickets.getTicketId());
+                ps.setString(2, tickets.getStatusEnum().name());
+                ps.setDouble(3, tickets.getAdditionalCost());
+                ps.setLong(4, tickets.getCustomerId());
+                ps.setLong(5, tickets.getTicketOfficeId());
+                ps.setLong(6, tickets.getTicketTypeId());
+                ps.setLong(7, tickets.getTicketId());
 
                 System.out.println(ps.toString());
 

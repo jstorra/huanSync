@@ -2,21 +2,23 @@ package com.u2team.huansync.event.workerRoles.model.classes;
 
 import java.util.List;
 
-
+/**
+ *
+ * @author Edgar Pinzon
+ */
 
 public class WorkerRole {
 
     private long workerRoleId;
     private String workerRoleName;
-    private List<String>activitiesWorkerRole;
+    private List<String> workerRoleActivities;
 
     public WorkerRole() {
     }
 
-    
     public WorkerRole(String workerRoleName, List<String> Activites) {
         this.workerRoleName = workerRoleName;
-        this.activitiesWorkerRole = Activites;
+        this.workerRoleActivities = Activites;
     }
 
     public long getWorkerRoleId() {
@@ -36,28 +38,17 @@ public class WorkerRole {
     }
 
     public List<String> getActivitiesWorkerRole() {
-        return activitiesWorkerRole;
+        return workerRoleActivities;
     }
 
-    public void setActivitiesWorkerRole(List<String> activitiesWorkerRole) {
-        this.activitiesWorkerRole = activitiesWorkerRole;
+    public void setWorkerRoleActivities(List<String> workerRoleActivities) {
+        this.workerRoleActivities = workerRoleActivities;
     }
-
-    
-   
 
     @Override
     public String toString() {
-        return "WorkerRole{" + "workerRoleId=" + workerRoleId + ", workerRoleName=" + workerRoleName + ", activitiesWorkerRole=" + activitiesWorkerRole + '}';
+        return "WorkerRole{" + "workerRoleId=" + workerRoleId + ", workerRoleName=" + workerRoleName + ", workerRoleActivities=" + workerRoleActivities + '}';
     }
 
-
-
     
-    
-    
-    
-    
-    
-
 }

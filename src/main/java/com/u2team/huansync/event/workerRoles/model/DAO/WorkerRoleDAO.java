@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.u2team.huansync.event.workerRoles.model.DAO;
 
 import com.u2team.huansync.event.DAO.*;
@@ -17,29 +13,29 @@ import java.util.List;
 
 /**
  *
- * @author Usuario
+ * @author Edgar Pinzon
  */
-public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<WorkerRole>, ISaveDao<WorkerRole>, IUpdateDao<WorkerRole>, IDeleteDao<WorkerRole> {
+public class WorkerRoleDAO implements IGetByIdDao<WorkerRole>, IGetAllDao<WorkerRole>, ISaveDao<WorkerRole>, IUpdateDao<WorkerRole>, IDeleteDao<WorkerRole> {
 
     @Override
-    public WorkerRole getById(long id) {
+    public WorkerRole getById(long workerRoleid) {
         Operations.setConnection(BDConnection.MySQLConnection());
         String stm = "select * from tbl_workerRoles where workerRoleId = ? ;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
-            ps.setLong(1, id);
+            ps.setLong(1, workerRoleid);
             ResultSet rs = Operations.query_db(ps);
             if (rs.next()) {
                 WorkerRole workerRole = new WorkerRole();
                 workerRole.setWorkerRoleId(rs.getLong("workerRoleId"));
-             
-                workerRole.setWorkerRoleName(rs.getString("nameWorkerRole" ));
+
+                workerRole.setWorkerRoleName(rs.getString("nameWorkerRole"));
                 List<String> listActivities = Arrays.asList(rs.getString("activitiesWorkerRole").split("\\|"));
-                workerRole.setActivitiesWorkerRole(listActivities);
+                workerRole.setWorkerRoleActivities(listActivities);
                 return workerRole;
             } else {
                 System.out.println("ERROR: The id has not been found");
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,15 +50,16 @@ public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
 
             ResultSet rs = Operations.query_db(ps);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 WorkerRole workerRole = new WorkerRole();
-                workerRole.setWorkerRoleName(rs.getString("nameWorkerRole" ));
+                workerRole.setWorkerRoleId(rs.getLong("workerRoleId"));
+                workerRole.setWorkerRoleName(rs.getString("nameWorkerRole"));
                 List<String> listActivities = Arrays.asList(rs.getString("activitiesWorkerRole").split("\\|"));
-                workerRole.setActivitiesWorkerRole(listActivities);
+                workerRole.setWorkerRoleActivities(listActivities);
                 workerRolesList.add(workerRole);
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -70,14 +67,14 @@ public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
     }
 
     @Override
-    public void save(WorkerRole t) {
+    public void save(WorkerRole workerRole) {
         Operations.setConnection(BDConnection.MySQLConnection());
         String stmInsert = "INSERT INTO tbl_workerRoles (nameWorkerRole,activitiesWorkerRole) VALUES (?,?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
-            ps.setString(1, t.getWorkerRoleName());
-            String activitiesWorkerRole = String.join("|",   t.getActivitiesWorkerRole());
+            ps.setString(1, workerRole.getWorkerRoleName());
+            String activitiesWorkerRole = String.join("|", workerRole.getActivitiesWorkerRole());
             ps.setString(2, activitiesWorkerRole);
-            
+
             int rows = Operations.insert_update_delete_db(ps);
             if (rows <= 0) {
                 System.out.println("Cannot insert worker role");
@@ -88,33 +85,29 @@ public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
             e.printStackTrace();
         }
 
-        
     }
 
-    // cambiar nombre setActivitiesWokerRole por workerRoleActivities
-    
     @Override
     public void update(WorkerRole workerRole) {
-        
-        WorkerRole sqlWorkerRole =   getById(workerRole.getWorkerRoleId());
-        
+
+        WorkerRole sqlWorkerRole = getById(workerRole.getWorkerRoleId());
+
         if (sqlWorkerRole != null) {
-            sqlWorkerRole.setWorkerRoleName(workerRole.getWorkerRoleName()); 
-            sqlWorkerRole.setActivitiesWorkerRole(workerRole.getActivitiesWorkerRole()); 
+            sqlWorkerRole.setWorkerRoleName(workerRole.getWorkerRoleName());
+            sqlWorkerRole.setWorkerRoleActivities(workerRole.getActivitiesWorkerRole());
             String stmUpdate = """
             UPDATE tbl_workerRoles
             SET nameWorkerRole = ?,
                 activitiesWorkerRole = ?
             WHERE workerRoleId = ?;
                                """;
-            
-            
-            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)){
+
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)) {
 
                 ps.setString(1, sqlWorkerRole.getWorkerRoleName());
-                String activitiesWorkerRole = String.join("|",   sqlWorkerRole.getActivitiesWorkerRole());
+                String activitiesWorkerRole = String.join("|", sqlWorkerRole.getActivitiesWorkerRole());
                 ps.setString(2, activitiesWorkerRole);
-                ps.setLong(3 , sqlWorkerRole.getWorkerRoleId());
+                ps.setLong(3, sqlWorkerRole.getWorkerRoleId());
                 System.out.println(ps.toString());
                 int rows = Operations.insert_update_delete_db(ps);
                 if (rows <= 0) {
@@ -122,13 +115,12 @@ public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
                 } else {
                     System.out.println("Successful update of worker role");
                 }
-             
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        
-        
+
     }
 
     @Override
@@ -154,7 +146,5 @@ public class WorkerRoleDao implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
 
     }
 
-   
-    
-    
 }
+ 

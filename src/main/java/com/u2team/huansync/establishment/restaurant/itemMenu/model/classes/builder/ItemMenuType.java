@@ -1,9 +1,10 @@
-package com.u2team.huansync.establishment.restaurant.Item.model.classes.builder;
+package com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.builder;
+
 /**
  * @author dfrincong
  * Class to manage the types of dishes in the menu.
  */
-public enum ItemType {
+public enum ItemMenuType {
     APPETIZER("appetizer"),
     MAIN_COURSE("main course"),
     DRINK("drink"),
@@ -13,7 +14,7 @@ public enum ItemType {
      */
     private final String name;
 
-    private ItemType(String name) {
+    private ItemMenuType(String name) {
         this.name = name;
     }
 
@@ -21,13 +22,4 @@ public enum ItemType {
         return name;
     }
     
-
-//    public boolean isValidType(String value) {
-//        for (ProductType type : ProductType.values()) {
-//            if (type.name.equalsIgnoreCase(value)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 }

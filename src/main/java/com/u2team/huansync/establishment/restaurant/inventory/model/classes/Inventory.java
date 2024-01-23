@@ -41,7 +41,7 @@ public class Inventory {
 
     public void updateIngredientQuantity(String ingredientName, int newQuantity) {
         for (Ingredient ingredient : ingredientList) {
-            if (ingredient.getName().equals(ingredientName)) {
+            if (ingredient.getNameIngredient().equals(ingredientName)) {
                 ingredient.setAvailableQuantity(newQuantity);
                 return;
             }

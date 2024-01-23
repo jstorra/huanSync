@@ -1,6 +1,6 @@
 package com.u2team.huansync.establishment.restaurant.menu.model.classes.builder;
 
-import com.u2team.huansync.establishment.restaurant.Item.model.classes.Item;
+import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.ItemMenu;
 import com.u2team.huansync.establishment.restaurant.menu.model.classes.Menu;
 import com.u2team.huansync.establishment.restaurant.model.Restaurant;
 import java.util.List;
@@ -19,7 +19,7 @@ public class MenuBuilderImpl implements MenuBuilder {
     }
 
     @Override
-    public MenuBuilder menu(List<Item> menuItems) {
+    public MenuBuilder menu(List<ItemMenu> menuItems) {
         menu.setMenu(menuItems);
         return this;
     }

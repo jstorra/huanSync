@@ -1,8 +1,7 @@
 package com.u2team.huansync.establishment.restaurant.menu.model.classes;
 
-import com.u2team.huansync.establishment.restaurant.Item.model.classes.Item;
+import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.ItemMenu;
 import com.u2team.huansync.establishment.restaurant.model.Restaurant;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ public class Menu {
      * 
      */
     private Restaurant restaurant;
-    private List<Item> menu;
+    private List<ItemMenu> menu;
 
     public Menu() {
     }
@@ -27,18 +26,18 @@ public class Menu {
         this.restaurant = restaurant;
     }
 
-    public List<Item> getMenu() {
+    public List<ItemMenu> getMenu() {
         return menu;
     }
 
-    public void setMenu(List<Item> menu) {
+    public void setMenu(List<ItemMenu> menu) {
         this.menu = menu;
     }
     /**
      * 
      * @param item 
      */
-    public void addItem(Item item) {
+    public void addItem(ItemMenu item) {
         
     }
     

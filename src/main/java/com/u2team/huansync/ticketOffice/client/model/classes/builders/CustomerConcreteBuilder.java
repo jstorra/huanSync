@@ -7,7 +7,7 @@ package com.u2team.huansync.ticketOffice.client.model.classes.builders;
 import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 import com.u2team.huansync.ticketOffice.client.model.classes.CustomerTypeEnum;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -43,7 +43,7 @@ public class CustomerConcreteBuilder implements CustomerBuilder {
     }
 
     @Override
-    public CustomerBuilder birthDate(Date birthDate) {
+    public CustomerBuilder birthDate(LocalDate birthDate) {
         customer.setBirthDate(birthDate);
         return this;
     }

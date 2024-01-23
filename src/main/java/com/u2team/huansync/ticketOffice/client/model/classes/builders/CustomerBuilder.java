@@ -6,7 +6,7 @@ package com.u2team.huansync.ticketOffice.client.model.classes.builders;
 
 import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -18,7 +18,7 @@ public interface CustomerBuilder {
     CustomerBuilder nameCustomer(String nameCustomer);
     CustomerBuilder document(String document);
     CustomerBuilder gender(String gender);
-    CustomerBuilder birthDate(Date birthDate);
+    CustomerBuilder birthDate(LocalDate birthDate);
     CustomerBuilder email(String email);
     CustomerBuilder phoneNumber(String phoneNumber);
     CustomerBuilder customerTypeEnum(String customerTypeEnum);

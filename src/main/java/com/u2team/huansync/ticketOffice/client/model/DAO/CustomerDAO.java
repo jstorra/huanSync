@@ -7,6 +7,7 @@ package com.u2team.huansync.ticketOffice.client.model.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class CustomerDAO implements IDao<Customer>{
                 .nameCustomer(rs.getString("nameCustomer"))
                 .document(rs.getString("document"))
                 .gender(rs.getString("gender"))
-                .birthDate(rs.getDate("birthDate"))
+                .birthDate(LocalDate.parse(rs.getString("birthDate")))
                 .email(rs.getString("emailCustomer"))
                 .phoneNumber(rs.getString("phoneNumber"))
                 .customerTypeEnum(rs.getString("typeCustomer"))
@@ -85,7 +86,7 @@ public class CustomerDAO implements IDao<Customer>{
                         .nameCustomer(rs.getString("nameCustomer"))
                         .document(rs.getString("document"))
                         .gender(rs.getString("gender"))
-                        .birthDate(rs.getDate("birthDate"))
+                        .birthDate(LocalDate.parse(rs.getString("birthDate")))
                         .email(rs.getString("emailCustomer"))
                         .phoneNumber(rs.getString("phoneNumber"))
                         .customerTypeEnum(rs.getString("typeCustomer"))
@@ -104,12 +105,12 @@ public class CustomerDAO implements IDao<Customer>{
     @Override
     public void save(Customer customer) {
         
-          String stmInsert = "INSERT INTO tbl_events(nameCostumer , document, gender , birthDate , emailCustomer , phoneNumber , typeCostumer) VALUES (?,?,?,?,?,?,?)";
+          String stmInsert = "INSERT INTO tbl_customers(nameCustomer , document, gender , birthDate , emailCustomer , phoneNumber , typeCustomer) VALUES (?,?,?,?,?,?,?)";
           try(PreparedStatement ps =  Operations.getConnection().prepareStatement(stmInsert)){
               ps.setString(1, customer.getName());
               ps.setString(2, customer.getDocument());
               ps.setString(3, customer.getGender());
-              ps.setDate(4, customer.getBirthDate());
+              ps.setString(4, customer.getBirthDate().toString());
               ps.setString(5, customer.getEmail());
               ps.setString(6, customer.getPhoneNumber());
               ps.setString(7, customer.getCustomerTypeEnum().name());
@@ -141,14 +142,14 @@ public class CustomerDAO implements IDao<Customer>{
             sqlCustomer.setCustomerTypeEnum(customer.getCustomerTypeEnum());
             
             String stmInsert = """
-                UPDATE tbl_costumers
-                SET nameCostumer = ?,
+                UPDATE tbl_customers
+                SET nameCustomer = ?,
                     document = ?,
                     gender = ?,
                     birthDate = ?,
                     emailCustomer = ?,
                     phoneNumber = ?,
-                    typeCostumer = ?,
+                    typeCustomer = ?
                     WHERE customerId = ?;      
                                """;
             
@@ -156,13 +157,12 @@ public class CustomerDAO implements IDao<Customer>{
                  ps.setString(1, customer.getName());
                  ps.setString(2, customer.getDocument());
                  ps.setString(3, customer.getGender());
-                 ps.setDate(4, customer.getBirthDate());
+                 ps.setString(4, customer.getBirthDate().toString());
                  ps.setString(5, customer.getEmail());
                  ps.setString(6, customer.getPhoneNumber());
                  ps.setString(7, customer.getCustomerTypeEnum().name());
-              
-                 System.out.println(ps.toString());
-                 
+                 ps.setLong(8, sqlCustomer.getCustomerId());
+
                 int rows = Operations.insert_update_delete_db(ps);
                 if (rows <= 0) {
                     System.out.println("Cannot update customer");
@@ -182,7 +182,7 @@ public class CustomerDAO implements IDao<Customer>{
     @Override
     public void delete(long customerId) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "DELETE FROM tbl_costumers WHERE customerId = ?;";
+        String stm = "DELETE FROM tbl_customers WHERE customerId = ?;";
         
         try(PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
             ps.setLong(1, customerId);

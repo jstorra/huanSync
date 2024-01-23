@@ -13,11 +13,11 @@ public class EquipmentController {
 
     private static EquipmentDAO equipmentDao = new EquipmentDAO();
 
-    public static void insertEvent(Equipment equipment) {
+    public static void insertEquipment(Equipment equipment) {
         equipmentDao.save(equipment);
     }
 
-    public static void deleteEvent(long equipmentid) {
+    public static void deleteEquipment(long equipmentid) {
         equipmentDao.delete(equipmentid);
     }
 
@@ -28,7 +28,7 @@ public class EquipmentController {
     public static List<Equipment> getAllEquipment() {
         return equipmentDao.getAll();
     }
-      public static void updateEvent(Equipment equipment) {
+      public static void updateEquipment(Equipment equipment) {
         equipmentDao.update(equipment);
     }
 }

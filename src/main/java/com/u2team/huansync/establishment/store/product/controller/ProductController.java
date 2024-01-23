@@ -6,10 +6,11 @@ package com.u2team.huansync.establishment.store.product.controller;
 
 import com.u2team.huansync.establishment.store.product.model.DAO.ProductDAO;
 import com.u2team.huansync.establishment.store.product.model.classes.Product;
+import java.util.List;
 
 /**
  *
- * @author Dereck Noa
+ * @author Kevin Esteban
  */
 public class ProductController {
     
@@ -19,5 +20,23 @@ public class ProductController {
     public static void insertProduct(Product product){
         productDAO.save(product);
     }
+    public static void delete(long productId){
+        productDAO.delete(productId);
+        
+    }
+    public static  List<Product>getAll(){
+        return productDAO.getAll();
+    }
+    
+    public static Product getById(long productId){
+        return productDAO.getById(productId); 
+    }
+    
+    
+     public void updateProduct(Product product) {
+        productDAO.update(product);
+    }
+  
     
 }
+//

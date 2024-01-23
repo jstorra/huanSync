@@ -9,7 +9,27 @@ package com.u2team.huansync.establishment.store.product.model.classes;
  * @author Kevin Jimenez
  */
 public enum TypeProductEnum {
+// llamar a enum TypeProductEnum.MANGA.getName();     
+    MANGA("manga"),
+    MULTIMEDIA("multimedia"),
+    ART("art"),
+    FIGURES("figures"),
+    SOUVENIRS("souvenirs"),
+    CLOTHING("clothing"),
+    TECHNOLOGY("technology");
+
+    private String name;
+
+    private TypeProductEnum(String name) {
+        this.name = name;
+    }
     
-    MANGA, MULTIMEDIA, ART, FIGURES, SOUVENIERS, CLOTHING, TECHNOLOGY
-    
+    public String getName() {
+        return name;
+    }
+
+    public void setName() {
+        this.name = name;
+    }
+
 }

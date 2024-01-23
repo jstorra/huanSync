@@ -25,6 +25,8 @@ public interface ProductBuilder {
     ProductBuilder type(String type);
     
     Product build();
+
+    public Object eventId(long aLong);
     
     
 }

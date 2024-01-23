@@ -79,7 +79,7 @@ public class ProductConcreteBuilder implements ProductBuilder{
         }
         
         if(type.equalsIgnoreCase("SOUVENIERS")){
-            product.setType(TypeProductEnum.SOUVENIERS);
+            product.setType(TypeProductEnum.SOUVENIRS);
         }
         
         if(type.equalsIgnoreCase("CLOTHING")){
@@ -97,6 +97,11 @@ public class ProductConcreteBuilder implements ProductBuilder{
     public Product build() {
         //Si esta bien
         return product;
+    }
+
+    @Override
+    public Object eventId(long aLong) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

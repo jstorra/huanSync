@@ -2,21 +2,21 @@ package com.u2team.huansync.activity.model.prize.model;
 
 import com.u2team.huansync.persistence.BDConnection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * The PrizeDAO class provides Data Access Object (DAO) methods to interact with the database
- * and perform CRUD operations on Prize entities.
+ * Data Access Object (DAO) for Prize entities, responsible for database operations.
  */
 public class PrizeDAO {
 
     /**
-     * Retrieves all available prizes from the database.
+     * Retrieves a list of all available prizes from the database.
      *
-     * @return A list of Prize objects representing available prizes.
+     * @return List of available prizes.
      */
     public List<Prize> getAllPrizes() {
         List<Prize> prizes = new ArrayList<>();
@@ -42,12 +42,11 @@ public class PrizeDAO {
         return prizes;
     }
 
-
     /**
-     * Retrieves a Prize from the database based on its unique identifier.
+     * Retrieves a prize by its ID from the database.
      *
-     * @param prizeId The unique identifier of the Prize.
-     * @return The Prize object representing the retrieved prize.
+     * @param prizeId The ID of the prize to retrieve.
+     * @return The prize with the specified ID.
      */
     public Prize getPrizeById(Long prizeId) {
         Prize prize = new Prize();
@@ -73,11 +72,10 @@ public class PrizeDAO {
         return prize;
     }
 
-
     /**
-     * Inserts a new Prize into the database.
+     * Inserts a new prize into the database.
      *
-     * @param prize The Prize object to be inserted.
+     * @param prize The prize to be inserted.
      */
     public void insertPrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -94,11 +92,10 @@ public class PrizeDAO {
         }
     }
 
-
     /**
-     * Updates an existing Prize in the database.
+     * Updates an existing prize in the database.
      *
-     * @param prize The Prize object with updated values.
+     * @param prize The updated prize object.
      */
     public void updatePrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -119,9 +116,9 @@ public class PrizeDAO {
     }
 
     /**
-     * Deletes a Prize from the database based on its unique identifier.
+     * Deletes a prize from the database by its ID.
      *
-     * @param prizeId The unique identifier of the Prize to be deleted.
+     * @param prizeId The ID of the prize to be deleted.
      */
     public void deletePrize(Long prizeId) {
         try (Connection connection = BDConnection.MySQLConnection()) {

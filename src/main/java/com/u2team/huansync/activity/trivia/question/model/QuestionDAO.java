@@ -2,18 +2,28 @@ package com.u2team.huansync.activity.trivia.question.model;
 
 import com.u2team.huansync.persistence.BDConnection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object (DAO) class for managing operations related to the Question entity in the database.
+ */
 public class QuestionDAO {
 
+    /**
+     * Retrieves all questions from the database.
+     *
+     * @return A list of Question objects representing all questions in the database.
+     */
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "SELECT * FROM tbl_questions";
             try (PreparedStatement statement = connection.prepareStatement(sql);
-                ResultSet resultSet = statement.executeQuery()) {
+                 ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Question question = new Question();
                     question.setQuestionId(resultSet.getLong("questionId"));
@@ -30,6 +40,12 @@ public class QuestionDAO {
         return questions;
     }
 
+    /**
+     * Retrieves a specific question by its ID from the database.
+     *
+     * @param questionId The ID of the question to retrieve.
+     * @return A Question object representing the question with the specified ID.
+     */
     public Question getQuestionById(long questionId) {
         Question question = new Question();
         try (Connection connection = BDConnection.MySQLConnection()){
@@ -52,6 +68,11 @@ public class QuestionDAO {
         return question;
     }
 
+    /**
+     * Inserts a new question into the database.
+     *
+     * @param question The Question object to insert.
+     */
     public void insertQuestion(Question question){
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_questions (question, answer, category, difficulty) VALUES (?, ?, ?, ?)";
@@ -67,6 +88,11 @@ public class QuestionDAO {
         }
     }
 
+    /**
+     * Updates an existing question in the database.
+     *
+     * @param question The updated Question object.
+     */
     public void updateQuestion(Question question){
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_questions SET question = ?, answer = ?, category = ?, difficulty = ? WHERE questionId = ?";
@@ -83,6 +109,11 @@ public class QuestionDAO {
         }
     }
 
+    /**
+     * Deletes a question from the database based on its ID.
+     *
+     * @param questionId The ID of the question to delete.
+     */
     public void deleteQuestion(long questionId){
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_questions WHERE questionId = ?";

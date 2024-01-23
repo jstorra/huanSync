@@ -1,15 +1,11 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 /**
- * The PrizeBuilderImpl class implements the PrizeBuilder interface, providing
- * a concrete implementation for constructing Prize objects using the builder pattern.
- * It allows the step-by-step construction of Prize instances with optional parameters.
+ * Implementation of the PrizeBuilder interface for constructing Prize objects.
  */
-public class PrizeBuilderImpl implements PrizeBuilder{
-    // The Prize instance being constructed
+public class PrizeBuilderImpl implements PrizeBuilder {
     private Prize prize = new Prize();
 
-    /**@return The PrizeBuilderImpl instance for method chaining.*/
     @Override
     public PrizeBuilder prizeId(Long prizeId) {
         prize.setPrizeId(prizeId);
@@ -52,11 +48,6 @@ public class PrizeBuilderImpl implements PrizeBuilder{
         return this;
     }
 
-    /**
-     * Builds and returns the Prize instance based on the provided parameters.
-     *
-     * @return The constructed Prize object.
-     */
     @Override
     public Prize build() {
         return prize;

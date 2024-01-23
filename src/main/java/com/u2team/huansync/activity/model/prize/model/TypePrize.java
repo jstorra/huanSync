@@ -1,7 +1,7 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 /**
- * The TypePrize enum represents the different types or categories of prizes that can be awarded.
+ * Enumeration representing the types of prizes.
  */
 public enum TypePrize {
     MANGA("manga"),
@@ -14,14 +14,29 @@ public enum TypePrize {
 
     private String name;
 
+    /**
+     * Constructs a TypePrize enum with the specified name.
+     *
+     * @param name The name of the prize type.
+     */
     private TypePrize(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the name of the prize type.
+     *
+     * @return The name of the prize type.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the prize type.
+     *
+     * @param name The name of the prize type to set.
+     */
     public void setName(String name) {
         this.name = name;
     }

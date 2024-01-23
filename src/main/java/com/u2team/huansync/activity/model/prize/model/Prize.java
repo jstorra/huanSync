@@ -1,94 +1,148 @@
 package com.u2team.huansync.activity.model.prize.model;
 
-/** The Prize class represents a prize that can be awarded in a certain activity
+/**
+ * Represents a prize in an activity.
  */
 public class Prize {
-    /** Unique identifier for the prize*/
     private Long prizeId;
     private TypePrize typePrize;
     private String description;
-
-    /** Monetary value of the prize*/
     private double price;
-
-    /**Status of the prize (Available, Awarded)*/
     private StatusPrize statusPrize;
-
-    /** Identifier of the activity associated with the prize*/
     private Long activityId;
-
-    /**Identifier of the winner (if applicable)*/
     private Long winnerId;
 
-
-    /**Getters and Setters*/
-
+    /**
+     * Gets the unique identifier for the prize.
+     *
+     * @return The prize ID.
+     */
     public Long getPrizeId() {
         return prizeId;
     }
 
-    /**@param prizeId The new prizeId to set*/
+    /**
+     * Sets the unique identifier for the prize.
+     *
+     * @param prizeId The prize ID to set.
+     */
     public void setPrizeId(Long prizeId) {
         this.prizeId = prizeId;
     }
 
+    /**
+     * Gets the type of the prize.
+     *
+     * @return The type of prize.
+     */
     public TypePrize getTypePrize() {
         return typePrize;
     }
 
-    /**@param typePrize The new typePrize to set.*/
+    /**
+     * Sets the type of the prize.
+     *
+     * @param typePrize The type of prize to set.
+     */
     public void setTypePrize(TypePrize typePrize) {
         this.typePrize = typePrize;
     }
 
+    /**
+     * Gets the description of the prize.
+     *
+     * @return The prize description.
+     */
     public String getDescription() {
         return description;
     }
 
-    /**@param description The new description to set.*/
+    /**
+     * Sets the description of the prize.
+     *
+     * @param description The prize description to set.
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Gets the price associated with the prize.
+     *
+     * @return The prize price.
+     */
     public double getPrice() {
         return price;
     }
 
-    /**@param price The new price to set*/
+    /**
+     * Sets the price associated with the prize.
+     *
+     * @param price The prize price to set.
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     * Gets the status of the prize.
+     *
+     * @return The status of prize.
+     */
     public StatusPrize getStatusPrize() {
         return statusPrize;
     }
 
-    /**@param statusPrize The new statusPrize to set*/
+    /**
+     * Sets the status of the prize.
+     *
+     * @param statusPrize The status of prize to set.
+     */
     public void setStatusPrize(StatusPrize statusPrize) {
         this.statusPrize = statusPrize;
     }
 
+    /**
+     * Gets the unique identifier for the activity associated with the prize.
+     *
+     * @return The activity ID.
+     */
     public Long getActivityId() {
         return activityId;
     }
 
-    /**@param activityId The new activityId to set.*/
+    /**
+     * Sets the unique identifier for the activity associated with the prize.
+     *
+     * @param activityId The activity ID to set.
+     */
     public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 
+    /**
+     * Gets the unique identifier for the winner of the prize.
+     *
+     * @return The winner ID.
+     */
     public Long getWinnerId() {
         return winnerId;
     }
 
-    /**@param winnerId The new winnerId to set.*/
+    /**
+     * Sets the unique identifier for the winner of the prize.
+     *
+     * @param winnerId The winner ID to set.
+     */
     public void setWinnerId(Long winnerId) {
         this.winnerId = winnerId;
     }
 
-
-    /**Generates a string representation of the Prize object.
-    *@return A string representation of the Prize.*/
+    /**
+     * Returns a string representation of the prize, including its attributes.
+     *
+     * @return A string representation of the prize.
+     */
     @Override
     public String toString() {
         return "Prize{" +

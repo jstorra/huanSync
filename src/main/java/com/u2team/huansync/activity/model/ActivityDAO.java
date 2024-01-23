@@ -7,8 +7,16 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object (DAO) for managing activities in the database.
+ */
 public class ActivityDAO {
 
+    /**
+     * Retrieves a list of all activities that are not completed.
+     *
+     * @return List of activities.
+     */
     public List<Activity> getAllActivities() {
         List<Activity> activities = new ArrayList<>();
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -35,6 +43,12 @@ public class ActivityDAO {
         return activities;
     }
 
+    /**
+     * Retrieves a single activity by its ID.
+     *
+     * @param activityId The ID of the activity to retrieve.
+     * @return The activity with the specified ID.
+     */
     public Activity getActivityById(Long activityId) {
         Activity activity = new Activity();
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -61,16 +75,21 @@ public class ActivityDAO {
         return activity;
     }
 
+    /**
+     * Inserts a new activity into the database.
+     *
+     * @param activity The activity to be inserted.
+     */
     public void insertActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, activity.getName());
                 statement.setString(2, activity.getTypeActivity().name());
                 statement.setObject(3, activity.getCategoryCosplayId());
                 statement.setInt(4, activity.getNumParticipants());
                 statement.setString(5, activity.getStartTime().toString());
-                statement.setDouble(6,activity.getPrice());
+                statement.setDouble(6, activity.getPrice());
                 statement.setBoolean(7, false);
                 statement.executeUpdate();
             }
@@ -79,6 +98,11 @@ public class ActivityDAO {
         }
     }
 
+    /**
+     * Updates an existing activity in the database.
+     *
+     * @param activity The updated activity object.
+     */
     public void updateActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_activities SET name = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ?, completed = ? WHERE activityId = ?";
@@ -89,7 +113,7 @@ public class ActivityDAO {
                 statement.setInt(4, activity.getNumParticipants());
                 statement.setObject(5, activity.getEventId());
                 statement.setString(6, activity.getStartTime().toString());
-                statement.setDouble(7,activity.getPrice());
+                statement.setDouble(7, activity.getPrice());
                 statement.setBoolean(8, activity.isCompleted());
                 statement.setLong(9, activity.getActivityId());
                 statement.executeUpdate();
@@ -99,6 +123,11 @@ public class ActivityDAO {
         }
     }
 
+    /**
+     * Deletes an activity from the database by its ID.
+     *
+     * @param activityId The ID of the activity to be deleted.
+     */
     public void deleteActivity(Long activityId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_activities WHERE activityId = ?";

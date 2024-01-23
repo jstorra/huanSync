@@ -1,7 +1,7 @@
 package com.u2team.huansync.activity.model.prize.model;
 
 /**
- * The StatusPrize enum represents the status of a Prize, indicating whether it is available or awarded.
+ * Enumeration representing the status of a prize.
  */
 public enum StatusPrize {
     AVAILABLE("available"), AWARDED("awarded");
@@ -17,15 +17,19 @@ public enum StatusPrize {
         this.name = name;
     }
 
+    /**
+     * Gets the name of the status.
+     *
+     * @return The name of the status.
+     */
     public String getName() {
         return name;
     }
 
-
     /**
      * Sets the name of the status.
      *
-     * @param name The new name to set.
+     * @param name The name of the status to set.
      */
     public void setName(String name) {
         this.name = name;

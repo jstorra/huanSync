@@ -4,8 +4,13 @@
  */
 package com.u2team.huansync.view;
 
+import com.u2team.huansync.view.activityView.ActivityView;
+import com.u2team.huansync.view.establishmentView.EstablishmentView;
+import com.u2team.huansync.view.eventView.EventView;
 import com.u2team.huansync.view.eventView.ShowEventView;
+import com.u2team.huansync.view.staffView.StaffView;
 import com.u2team.huansync.view.ticketView.TicketOfficeView;
+import com.u2team.huansync.view.workerRoleView.WorkerRoleView;
 import java.awt.Dimension;
 
 /**
@@ -242,27 +247,39 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketsActionPerformed
-        // TODO add your handling code here:
+        TicketOfficeView initialTicket = new TicketOfficeView();
+        initialTicket.setVisible(true);
+        initialTicket.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTicketsActionPerformed
 
     private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
-        // TODO add your handling code here:
+        StaffView initialStaff = new StaffView();
+        initialStaff.setVisible(true);
+        initialStaff.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventsActionPerformed
-        // TODO add your handling code here:
+        EventView initialEvent = new EventView();
+        initialEvent.setVisible(true);
+        initialEvent.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEventsActionPerformed
 
     private void btnActiviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiviesActionPerformed
-        // TODO add your handling code here:
+       ActivityView initialActivity = new ActivityView();
+       initialActivity.setVisible(true);
+       initialActivity.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnActiviesActionPerformed
 
     private void btnEstablishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstablishActionPerformed
-        // TODO add your handling code here:
+        EstablishmentView initialEstablishment = new EstablishmentView();
+        initialEstablishment.setVisible(true);
+        initialEstablishment.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEstablishActionPerformed
 
     private void btnRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolesActionPerformed
-        // TODO add your handling code here:
+        WorkerRoleView initialRole = new WorkerRoleView();
+        initialRole.setVisible(true);
+        initialRole.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRolesActionPerformed
 
     /** 

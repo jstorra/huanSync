@@ -54,6 +54,11 @@ public class Rounds extends javax.swing.JFrame {
         answerTwo.setText(" ");
 
         submitOne.setText("Send");
+        submitOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitOneActionPerformed(evt);
+            }
+        });
 
         submitTwo.setText("Send");
 
@@ -153,6 +158,10 @@ public class Rounds extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void submitOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitOneActionPerformed
 
     /**
      * @param args the command line arguments

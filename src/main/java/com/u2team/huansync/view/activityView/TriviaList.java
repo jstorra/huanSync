@@ -44,7 +44,9 @@ public class TriviaList extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tittleTrivia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tittleTrivia.setText("Trivia");
+        tittleTrivia.setText("TRIVIA");
+
+        jScrollPane2.setAutoscrolls(true);
 
         tblTrivia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,7 +85,7 @@ public class TriviaList extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tittleTrivia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tittleTrivia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,6 +119,7 @@ public class TriviaList extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
        ActivityView backActivity = new ActivityView();
        backActivity.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

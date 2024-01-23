@@ -50,8 +50,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="scrollPanelResponsible" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
-                              <Component id="tittleResponsible" min="-2" pref="119" max="-2" attributes="0"/>
+                              <Component id="scrollPanelResponsible" min="-2" pref="336" max="-2" attributes="0"/>
+                              <Component id="tittleResponsible" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -79,7 +79,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Responsible"/>
+            <Property name="text" type="java.lang.String" value="RESPONSIBLE"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scrollPanelResponsible">
@@ -102,6 +102,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

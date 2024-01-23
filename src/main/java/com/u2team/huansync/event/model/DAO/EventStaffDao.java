@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * Implementation of the ISaveDao interface for managing EventStaff entities in the database.
  * This class provide method for saving a EventStaff Object.
  */
-public class EventStaffDao implements ISaveDao<EventStaff> {
+public class EventStaffDAO implements ISaveDao<EventStaff> {
     /**
      * Saves the given EventStaff object to the database by inserting a new record
      * into the tbl_staff_event table.
@@ -39,3 +39,4 @@ public class EventStaffDao implements ISaveDao<EventStaff> {
         }
     }
 }
+  

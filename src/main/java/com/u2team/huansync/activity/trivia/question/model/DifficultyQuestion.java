@@ -1,7 +1,7 @@
 package com.u2team.huansync.activity.trivia.question.model;
 
 public enum DifficultyQuestion {
-    EASY("Easy"), MEDIUM("Medium"), HARD("Hard");
+    EASY("easy"), MEDIUM("medium"), HARD("hard");
 
     private String name;
 

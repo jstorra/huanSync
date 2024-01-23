@@ -11,7 +11,7 @@ public class ActivityController {
         return activityDAO.getAllActivities();
     }
 
-    public Activity getActivityById(long activityId) {
+    public Activity getActivityById(Long activityId) {
         return activityDAO.getActivityById(activityId);
     }
 
@@ -23,9 +23,7 @@ public class ActivityController {
         activityDAO.updateActivity(activity);
     }
 
-    public void deleteActivity(long activityId) {
+    public void deleteActivity(Long activityId) {
         activityDAO.deleteActivity(activityId);
     }
-
-    public boolean searchActivity(int idActivity, String typeAct){return activityDAO.searchActivity(idActivity,typeAct);}
 }

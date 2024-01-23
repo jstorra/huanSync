@@ -1,26 +1,23 @@
 package com.u2team.huansync.activity.model;
 
-import com.u2team.huansync.event.staff.model.classes.Staff;
-
 import java.time.LocalTime;
-import java.util.List;
 
 public class Activity {
-    private long activityId;
+    private Long activityId;
     private String name;
     private TypeActivity typeActivity;
-    private long categoryCosplayId;
+    private Long categoryCosplayId;
     private int numParticipants;
-    private long eventId;
+    private Long eventId;
     private LocalTime startTime;
-    private long price;
+    private double price;
     private boolean completed;
 
-    public long getActivityId() {
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(long activityId) {
+    public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 
@@ -40,11 +37,11 @@ public class Activity {
         this.typeActivity = typeActivity;
     }
 
-    public long getCategoryCosplayId() {
+    public Long getCategoryCosplayId() {
         return categoryCosplayId;
     }
 
-    public void setCategoryCosplayId(long categoryCosplayId) {
+    public void setCategoryCosplayId(Long categoryCosplayId) {
         this.categoryCosplayId = categoryCosplayId;
     }
 
@@ -56,11 +53,11 @@ public class Activity {
         this.numParticipants = numParticipants;
     }
 
-    public long getEventId() {
+    public Long getEventId() {
         return eventId;
     }
 
-    public void setEventId(long eventId) {
+    public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
 
@@ -72,11 +69,11 @@ public class Activity {
         this.startTime = startTime;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -3,6 +3,7 @@ package com.u2team.huansync.activity.trivia.question.model;
 public class QuestionBuilderImpl implements QuestionBuilder {
     Question question = new Question();
 
+    @Override
     public QuestionBuilder questionId(long questionId) {
         question.setQuestionId(questionId);
         return this;
@@ -21,14 +22,14 @@ public class QuestionBuilderImpl implements QuestionBuilder {
     }
 
     @Override
-    public QuestionBuilder category(CategoryQuestion categoryQuestion) {
-        question.setCategory(categoryQuestion);
+    public QuestionBuilder categoryQuestion(CategoryQuestion categoryQuestion) {
+        question.setCategoryQuestion(categoryQuestion);
         return this;
     }
 
     @Override
-    public QuestionBuilder difficulty(DifficultyQuestion difficultyQuestion) {
-        question.setDifficulty(difficultyQuestion);
+    public QuestionBuilder difficultyQuestion(DifficultyQuestion difficultyQuestion) {
+        question.setDifficultyQuestion(difficultyQuestion);
         return this;
     }
 

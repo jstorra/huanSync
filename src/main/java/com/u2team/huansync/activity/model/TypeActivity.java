@@ -1,7 +1,7 @@
 package com.u2team.huansync.activity.model;
 
 public enum TypeActivity {
-    COSPLAY("Cosplay"), TRIVIA("Trivia");
+    COSPLAY("cosplay"), TRIVIA("trivia");
 
     private String name;
 

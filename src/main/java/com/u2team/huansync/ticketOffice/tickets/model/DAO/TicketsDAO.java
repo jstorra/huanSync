@@ -84,11 +84,11 @@ public class TicketsDAO implements IDao<Tickets>{
 
         try(PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)){
             ps.setString(1, tickets.getNameTicket());
-            ps.setString(3, tickets.getStatusEnum().name());
-            ps.setDouble(4, tickets.getAdditionalCost());
-            ps.setLong(5, tickets.getCustomerId());
-            ps.setLong(6, tickets.getTicketOfficeId());
-            ps.setLong(7, tickets.getTicketTypeId());
+            ps.setString(2, tickets.getStatusEnum().name());
+            ps.setDouble(3, tickets.getAdditionalCost());
+            ps.setLong(4, tickets.getCustomerId());
+            ps.setLong(5, tickets.getTicketOfficeId());
+            ps.setLong(6, tickets.getTicketTypeId());
 
             int rows = Operations.insert_update_delete_db(ps);
 

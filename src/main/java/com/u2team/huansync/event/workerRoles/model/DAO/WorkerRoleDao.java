@@ -53,6 +53,7 @@ public class WorkerRoleDAO implements IGetByIdDao<WorkerRole>, IGetAllDao<Worker
 
             while (rs.next()) {
                 WorkerRole workerRole = new WorkerRole();
+                workerRole.setWorkerRoleId(rs.getLong("workerRoleId"));
                 workerRole.setWorkerRoleName(rs.getString("nameWorkerRole"));
                 List<String> listActivities = Arrays.asList(rs.getString("activitiesWorkerRole").split("\\|"));
                 workerRole.setWorkerRoleActivities(listActivities);

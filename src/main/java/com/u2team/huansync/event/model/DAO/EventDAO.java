@@ -67,7 +67,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
                         .timeEvent(LocalTime.parse(rs.getString("timeEvent")))
                         .organizerId(rs.getLong("organizerId"))
                         .ageClassificationEnum(rs.getString("ageClassification"))
-                        .statusEnum(rs.getString("status"))
+                        .statusEnum(rs.getString("statusEvent"))
                         // Build object
                         .build();
 
@@ -212,7 +212,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
             return;
         }
         // Use validation class with counterRepeated method.
-        int repeated = Validations.counterRepeated("tbl_events", "nameEvent", "asdasdasd");
+        int repeated = Validations.counterRepeated("tbl_events", "nameEvent", event.getNameEvent());
         if (repeated != 0) {
             System.out.println("nameEvent repeated");
             return;
@@ -247,7 +247,7 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
                 timeEvent = ?,  
                 organizerId = ?,
                 ageClassification = ?,
-                status = ?
+                statusEstatus = ?
             WHERE eventId = ?;
                                """;
 

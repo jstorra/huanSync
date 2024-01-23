@@ -7,6 +7,11 @@ import java.time.*;
  *
  * @author Christian Pardo
  */
+
+/**
+ * Interface for building instances of the event class.
+ * Implementing classes serve as builders, facilitating the construction of events with specific attributes.
+ */
 public interface EventBuilder {
     
     EventBuilder eventId(long eventId);

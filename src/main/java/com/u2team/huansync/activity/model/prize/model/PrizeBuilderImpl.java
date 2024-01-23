@@ -3,13 +3,14 @@ package com.u2team.huansync.activity.model.prize.model;
 public class PrizeBuilderImpl implements PrizeBuilder{
     private Prize prize = new Prize();
 
-    public PrizeBuilder prizeId(long prizeId) {
+    @Override
+    public PrizeBuilder prizeId(Long prizeId) {
         prize.setPrizeId(prizeId);
         return this;
     }
 
     @Override
-    public PrizeBuilder typePrize(String type) {
+    public PrizeBuilder typePrize(TypePrize type) {
         prize.setTypePrize(type);
         return this;
     }
@@ -33,13 +34,13 @@ public class PrizeBuilderImpl implements PrizeBuilder{
     }
 
     @Override
-    public PrizeBuilder activityId(long activityId) {
+    public PrizeBuilder activityId(Long activityId) {
         prize.setActivityId(activityId);
         return this;
     }
 
     @Override
-    public PrizeBuilder winnerId(long winnerId) {
+    public PrizeBuilder winnerId(Long winnerId) {
         prize.setWinnerId(winnerId);
         return this;
     }

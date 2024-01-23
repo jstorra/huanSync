@@ -1,11 +1,17 @@
 package com.u2team.huansync.activity.model.prize.model;
 
-public enum StatusPrize {
-    AVAILABLE("available"), AWARDED("awarded");
+public enum TypePrize {
+    MANGA("manga"),
+    MULTIMEDIA("multimedia"),
+    ART("art"),
+    FIGURES("figures"),
+    SOUVENIERS("souveniers"),
+    CLOTHINGS("clothings"),
+    TECHNOLOGY("technology");
 
     private String name;
 
-    private StatusPrize(String name) {
+    private TypePrize(String name) {
         this.name = name;
     }
 

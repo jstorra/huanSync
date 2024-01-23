@@ -4,6 +4,7 @@
  */
 package com.u2team.huansync.view;
 
+import com.u2team.huansync.view.eventView.EventView;
 import com.u2team.huansync.view.eventView.ShowEventView;
 import com.u2team.huansync.view.ticketView.TicketOfficeView;
 import java.awt.Dimension;
@@ -250,7 +251,8 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventsActionPerformed
-        // TODO add your handling code here:
+        EventView eventos = new EventView();
+        eventos.setVisible(true);
     }//GEN-LAST:event_btnEventsActionPerformed
 
     private void btnActiviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiviesActionPerformed

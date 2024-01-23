@@ -1,14 +1,19 @@
 package com.u2team.huansync.event.equipment.model.DAO;
 
 import com.u2team.huansync.event.DAO.IDeleteDao;
+import com.u2team.huansync.event.DAO.IGetAllDao;
 import com.u2team.huansync.event.DAO.IGetByIdDao;
 import com.u2team.huansync.event.DAO.ISaveDao;
+import com.u2team.huansync.event.DAO.IUpdateDao;
 import com.u2team.huansync.event.equipment.model.classes.Equipment;
+import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,7 +24,7 @@ import java.sql.SQLException;
  * IGetByIdDao interfaces for Equipment. Handles database operations for saving,
  * deleting, and retrieving Equipment objects.
  */
-public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>, IGetByIdDao<Equipment> {
+public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>, IGetByIdDao<Equipment>, IUpdateDao<Equipment>, IGetAllDao<Equipment> {
 
     /**
      * Saves an Equipment object to the database. Inserts a new equipment record
@@ -107,4 +112,85 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
         }
         return null;
     }
+
+    /**
+     * Retrieves all equipment from the database.
+     *
+     * @return a list of Equipment objects representing the equipment retrieved from the database.
+     */
+    @Override
+    public List<Equipment> getAll() {
+
+        // Create a list for equipments
+        List<Equipment> equipmentList = new ArrayList<>();
+
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "SELECT * FROM tbl_equipment";
+
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
+            ResultSet rs = Operations.query_db(ps);
+            while (rs.next()) {
+                Equipment equipment = new Equipment();
+                equipment.setEquipmentId(rs.getLong("equipmentId"));
+                equipment.setNameEquipment(rs.getString("nameEquipment"));
+                equipment.setQuantity(rs.getLong("quantity"));
+                equipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum(rs.getString("statusStaff")));
+
+                equipmentList.add(equipment);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return equipmentList;
+    }
+
+
+    /**
+     * Updates an Equipment object in the database.
+     *
+     * @param equipment the Equipment object to be updated
+     */
+    @Override
+    public void update(Equipment equipment) {
+            Equipment sqlEquipment = getById(equipment.getEquipmentId());
+
+            if (sqlEquipment != null){
+                sqlEquipment.setNameEquipment(equipment.getNameEquipment());
+                sqlEquipment.setQuantity(equipment.getQuantity());
+                sqlEquipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum());
+
+                String stmUpdate = """
+                    UPDATE tbl_equipment
+                    SET equipmentId = ?,
+                        nameEquipment = ?,
+                        quantity = ?,
+                        statusStaff = ?,
+                    WHERE equipmentId = ?;
+                                    """;
+
+                try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)){
+                    ps.setLong(1, sqlEquipment.getEquipmentId());
+                    ps.setString(2, sqlEquipment.getNameEquipment());
+                    ps.setLong(3, sqlEquipment.getQuantity());
+                    ps.setString(4, sqlEquipment.getStatusEquipmentEnum().name());
+
+                    // Show with toString method the ps (PrepareStatement)
+                    System.out.println(ps.toString());
+
+                    // use Operation class with insert_update_delete and verify if the rows in database are affected
+                    int rows = Operations.insert_update_delete_db(ps);
+                    if (rows <= 0) {
+                        System.out.println("Cannot update Equipment");
+                    } else {
+                        System.out.println("Successful update Equipment");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("not found results about equipment");
+            }
+    }
+
+
 }

@@ -5,9 +5,18 @@ import com.u2team.huansync.activity.model.prize.model.PrizeDAO;
 
 import java.util.List;
 
+/**
+ * The PrizeController class serves as a controller for Prize-related operations,
+ * providing a high-level interface between the application and the data access layer.
+ */
 public class PrizeController {
+    // Data Access Object for Prize entities
     private static PrizeDAO prizeDAO = new PrizeDAO();
 
+    /**
+     * The PrizeController class serves as a controller for Prize-related operations,
+     * providing a high-level interface between the application and the data access layer.
+     */
     //view all prizes
     public static List<Prize> getAllPrizes() {
         return prizeDAO.getAllPrizes();

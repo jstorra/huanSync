@@ -1,12 +1,15 @@
 package com.u2team.huansync.activity.model.prize.model;
 
+/**
+ * The TypePrize enum represents the different types or categories of prizes that can be awarded.
+ */
 public enum TypePrize {
     MANGA("manga"),
     MULTIMEDIA("multimedia"),
     ART("art"),
     FIGURES("figures"),
-    SOUVENIERS("souveniers"),
-    CLOTHINGS("clothings"),
+    SOUVENIRS("souvenirs"),
+    CLOTHING("clothing"),
     TECHNOLOGY("technology");
 
     private String name;

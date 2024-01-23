@@ -1,8 +1,5 @@
-package com.u2team.huansync.activity.model.prize.controller;
+package com.u2team.huansync.activity.model.prize.model;
 
-import com.u2team.huansync.activity.model.prize.model.Prize;
-import com.u2team.huansync.activity.model.prize.model.StatusPrize;
-import com.u2team.huansync.activity.model.prize.model.TypePrize;
 import com.u2team.huansync.persistence.BDConnection;
 
 import java.sql.*;
@@ -14,19 +11,19 @@ public class PrizeDAO {
     public List<Prize> getAllPrizes() {
         List<Prize> prizes = new ArrayList<>();
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "SELECT * FROM tbl_prizes WHERE statusPrize = ?";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, "available");
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    while (resultSet.next()) {
-                        Prize prize = new Prize();
-                        prize.setPrizeId(resultSet.getLong("prizeId"));
-                        prize.setTypePrize(TypePrize.valueOf(resultSet.getString("typePrize").toUpperCase()));
-                        prize.setDescription(resultSet.getString("description"));
-                        prize.setPrice(resultSet.getDouble("price"));
-                        prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
-                        prizes.add(prize);
-                    }
+            String sql = "SELECT * FROM tbl_prizes WHERE statusPrize = 'available'";
+            try (PreparedStatement statement = connection.prepareStatement(sql);
+                 ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Prize prize = new Prize();
+                    prize.setPrizeId(resultSet.getLong("prizeId"));
+                    prize.setTypePrize(TypePrize.valueOf(resultSet.getString("typePrize").toUpperCase()));
+                    prize.setDescription(resultSet.getString("description"));
+                    prize.setPrice(resultSet.getDouble("price"));
+                    prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
+                    prize.setActivityId((resultSet.getLong("activityId") == 0) ? null : resultSet.getLong("activityId"));
+                    prize.setWinnerId((resultSet.getLong("winnerId") == 0) ? null : resultSet.getLong("winnerId"));
+                    prizes.add(prize);
                 }
             }
         } catch (Exception e) {
@@ -35,7 +32,7 @@ public class PrizeDAO {
         return prizes;
     }
 
-    public Prize getPrizeById(long prizeId) {
+    public Prize getPrizeById(Long prizeId) {
         Prize prize = new Prize();
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "SELECT * FROM tbl_prizes WHERE prizeId = ?";
@@ -47,6 +44,9 @@ public class PrizeDAO {
                         prize.setTypePrize(TypePrize.valueOf(resultSet.getString("typePrize").toUpperCase()));
                         prize.setDescription(resultSet.getString("description"));
                         prize.setPrice(resultSet.getDouble("price"));
+                        prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
+                        prize.setActivityId((resultSet.getLong("activityId") == 0) ? null : resultSet.getLong("activityId"));
+                        prize.setWinnerId((resultSet.getLong("winnerId") == 0) ? null : resultSet.getLong("winnerId"));
                     }
                 }
             }
@@ -73,12 +73,15 @@ public class PrizeDAO {
 
     public void updatePrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "UPDATE tbl_prizes SET typePrize = ?, description = ?, price = ? WHERE prizeId = ?";
+            String sql = "UPDATE tbl_prizes SET typePrize = ?, description = ?, price = ?, statusPrize = ?, activityId = ?, winnerId = ? WHERE prizeId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, prize.getTypePrize().getName());
                 statement.setString(2, prize.getDescription());
                 statement.setDouble(3, prize.getPrice());
-                statement.setLong(4, prize.getPrizeId());
+                statement.setString(4, prize.getStatusPrize().getName());
+                statement.setObject(5, prize.getActivityId());
+                statement.setObject(6, prize.getWinnerId());
+                statement.setLong(7, prize.getPrizeId());
                 statement.executeUpdate();
             }
         } catch (Exception e) {
@@ -86,7 +89,7 @@ public class PrizeDAO {
         }
     }
 
-    public void deletePrize(long prizeId) {
+    public void deletePrize(Long prizeId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_prizes WHERE prizeId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {

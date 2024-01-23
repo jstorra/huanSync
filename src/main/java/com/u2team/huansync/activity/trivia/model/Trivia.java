@@ -3,58 +3,59 @@ package com.u2team.huansync.activity.trivia.model;
 import com.u2team.huansync.activity.model.Activity;
 
 public class Trivia extends Activity {
-    private long triviaId;
-    private long activityId;
-    private long participantOneId;
-    private long participantTwoId;
-    private long winnerId;
-    private long inchargedId;
+    private Long triviaId;
+    private Long activityId;
+    private Long participantOneId;
+    private Long participantTwoId;
+    private Long winnerId;
+    private Long inchargedId;
 
-    public long getTriviaId() {
+    public Long getTriviaId() {
         return triviaId;
     }
 
-    public void setTriviaId(long triviaId) {
+    public void setTriviaId(Long triviaId) {
         this.triviaId = triviaId;
     }
 
-    public long getActivityId() {
+    @Override
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(long activityId) {
+    public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 
-    public long getParticipantOneId() {
+    public Long getParticipantOneId() {
         return participantOneId;
     }
 
-    public void setParticipantOneId(long participantOneId) {
+    public void setParticipantOneId(Long participantOneId) {
         this.participantOneId = participantOneId;
     }
 
-    public long getParticipantTwoId() {
+    public Long getParticipantTwoId() {
         return participantTwoId;
     }
 
-    public void setParticipantTwoId(long participantTwoId) {
+    public void setParticipantTwoId(Long participantTwoId) {
         this.participantTwoId = participantTwoId;
     }
 
-    public long getWinnerId() {
+    public Long getWinnerId() {
         return winnerId;
     }
 
-    public void setWinnerId(long winnerId) {
+    public void setWinnerId(Long winnerId) {
         this.winnerId = winnerId;
     }
 
-    public long getInchargedId() {
+    public Long getInchargedId() {
         return inchargedId;
     }
 
-    public void setInchargedId(long inchargedId) {
+    public void setInchargedId(Long inchargedId) {
         this.inchargedId = inchargedId;
     }
 

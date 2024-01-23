@@ -1,8 +1,5 @@
-package com.u2team.huansync.activity.trivia.question.controller;
+package com.u2team.huansync.activity.trivia.question.model;
 
-import com.u2team.huansync.activity.trivia.question.model.CategoryQuestion;
-import com.u2team.huansync.activity.trivia.question.model.DifficultyQuestion;
-import com.u2team.huansync.activity.trivia.question.model.Question;
 import com.u2team.huansync.persistence.BDConnection;
 
 import java.sql.*;

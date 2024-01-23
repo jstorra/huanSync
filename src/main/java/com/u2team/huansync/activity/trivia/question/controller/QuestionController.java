@@ -1,6 +1,7 @@
 package com.u2team.huansync.activity.trivia.question.controller;
 
 import com.u2team.huansync.activity.trivia.question.model.Question;
+import com.u2team.huansync.activity.trivia.question.model.QuestionDAO;
 
 import java.util.List;
 

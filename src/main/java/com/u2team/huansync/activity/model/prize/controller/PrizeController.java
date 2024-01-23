@@ -1,6 +1,7 @@
 package com.u2team.huansync.activity.model.prize.controller;
 
 import com.u2team.huansync.activity.model.prize.model.Prize;
+import com.u2team.huansync.activity.model.prize.model.PrizeDAO;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.u2team.huansync.ticketOffice.model.builders;
 
-import com.u2team.huansync.ticketOffice.model.*;
+import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 
 public interface TicketOfficeBuilder {
     TicketOfficeBuilder ticketOfficeId(long ticketOfficeId);

@@ -6,8 +6,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * The PrizeDAO class provides Data Access Object (DAO) methods to interact with the database
+ * and perform CRUD operations on Prize entities.
+ */
 public class PrizeDAO {
 
+    /**
+     * Retrieves all available prizes from the database.
+     *
+     * @return A list of Prize objects representing available prizes.
+     */
     public List<Prize> getAllPrizes() {
         List<Prize> prizes = new ArrayList<>();
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -32,6 +42,13 @@ public class PrizeDAO {
         return prizes;
     }
 
+
+    /**
+     * Retrieves a Prize from the database based on its unique identifier.
+     *
+     * @param prizeId The unique identifier of the Prize.
+     * @return The Prize object representing the retrieved prize.
+     */
     public Prize getPrizeById(Long prizeId) {
         Prize prize = new Prize();
         try (Connection connection = BDConnection.MySQLConnection()) {
@@ -56,6 +73,12 @@ public class PrizeDAO {
         return prize;
     }
 
+
+    /**
+     * Inserts a new Prize into the database.
+     *
+     * @param prize The Prize object to be inserted.
+     */
     public void insertPrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_prizes (typePrize, description, price, statusPrize) VALUES (?, ?, ?, ?)";
@@ -71,6 +94,12 @@ public class PrizeDAO {
         }
     }
 
+
+    /**
+     * Updates an existing Prize in the database.
+     *
+     * @param prize The Prize object with updated values.
+     */
     public void updatePrize(Prize prize) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_prizes SET typePrize = ?, description = ?, price = ?, statusPrize = ?, activityId = ?, winnerId = ? WHERE prizeId = ?";
@@ -89,6 +118,11 @@ public class PrizeDAO {
         }
     }
 
+    /**
+     * Deletes a Prize from the database based on its unique identifier.
+     *
+     * @param prizeId The unique identifier of the Prize to be deleted.
+     */
     public void deletePrize(Long prizeId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_prizes WHERE prizeId = ?";

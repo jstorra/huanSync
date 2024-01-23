@@ -1,13 +1,13 @@
 package com.u2team.huansync.ticketOffice.client.model.classes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Customer {
     private long customerId;
     private String name;
     private String document;
     private String gender;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String email;
     private String phoneNumber;
     
@@ -46,11 +46,11 @@ public class Customer {
         this.gender = gender;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -11,6 +11,14 @@ import java.time.LocalTime;
  *
  * @author Cristian Pardo
  */
+
+/**
+ * This class, EventConcreteBuilder, implements the EventBuilder interface to construct instances of the Event class
+ * using the builder pattern. It maintains an internal instance of the Event class and provides methods to set various
+ * properties of the event.
+ * 
+ * The build method returns the constructed Event object.
+ */
 public class EventConcreteBuilder implements EventBuilder {
     
     private Event event = new Event();
@@ -88,31 +96,31 @@ public class EventConcreteBuilder implements EventBuilder {
 
     @Override
     public EventBuilder ageClassificationEnum(String ageClassificationEnum) {
-         if (ageClassificationEnum.equalsIgnoreCase("family")){
-             event.setAgeClassification(AgeClassificationEnum.FAMILY);
-         }
-         if (ageClassificationEnum.equalsIgnoreCase("younger")){
-             event.setAgeClassification(AgeClassificationEnum.YOUNGER);
-         }
-         if (ageClassificationEnum.equalsIgnoreCase("adult")){
-             event.setAgeClassification(AgeClassificationEnum.ADULT);
-         }
-         
-         return this;
+
+        if (ageClassificationEnum.equalsIgnoreCase("family")){
+            event.setAgeClassification(AgeClassificationEnum.FAMILY);
+        }
+        if (ageClassificationEnum.equalsIgnoreCase("younger")){
+            event.setAgeClassification(AgeClassificationEnum.YOUNGER);
+        }
+        if (ageClassificationEnum.equalsIgnoreCase("adult")){
+            event.setAgeClassification(AgeClassificationEnum.ADULT);
+        }
+            return this;
     }
 
     @Override
     public EventBuilder statusEnum(String statusEnum) {
-         if (statusEnum.equalsIgnoreCase("active")){
-             event.setStatusEnum(StatusEnum.ACTIVE);
-         }
-         if (statusEnum.equalsIgnoreCase("pending")){
-             event.setStatusEnum(StatusEnum.PENDING);
-         }
-         if (statusEnum.equalsIgnoreCase("finished")){
-             event.setStatusEnum(StatusEnum.FINISHED);
-         }
-         
+
+        if (statusEnum.equalsIgnoreCase("active")){
+            event.setStatusEnum(StatusEnum.ACTIVE);
+        }
+        if (statusEnum.equalsIgnoreCase("pending")){
+            event.setStatusEnum(StatusEnum.PENDING);
+        }
+        if (statusEnum.equalsIgnoreCase("finished")){
+            event.setStatusEnum(StatusEnum.FINISHED);
+            }
         return this;
     }
     

@@ -1,6 +1,9 @@
 package com.u2team.huansync.persistence;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public abstract class BDConnection {
     private static String url = "";
@@ -11,7 +14,7 @@ public abstract class BDConnection {
     public static Connection MySQLConnection() {
         url = "jdbc:mysql://localhost:3306/db_huansync";
         user = "root";
-        password = "arribadelmundo21";
+        password = "";
         return getConnection(url, user, password);
     }
 

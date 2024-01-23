@@ -125,7 +125,7 @@ public class ActivityDAO {
 
     public boolean searchActivity(int idActivity, String typeAct) {
         try (Connection connection = BDConnection.MySQLConnection()){
-        String sql = "SELECT * FROM tbl_activities WHERE activityId = ? AND LOWER(typeActivity) = ? AND statusActivity = true";
+        String sql = "SELECT * FROM tbl_activities WHERE activityId = ? AND LOWER(typeActivity) = ? AND statusActivity = 1";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, idActivity);
             preparedStatement.setString(2, typeAct);

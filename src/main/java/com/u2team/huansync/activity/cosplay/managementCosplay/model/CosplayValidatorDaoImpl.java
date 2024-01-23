@@ -26,15 +26,7 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao{
     }
 
 
-    // mettod clone connection
-
-    private void closeConnection() {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error closing connection", e);
-        }
-    }
+    
 
 
 
@@ -53,8 +45,6 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            closeConnection();
         }
     }
 
@@ -73,8 +63,6 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao{
         } catch (SQLException e) {
             e.printStackTrace();
             
-        }finally {
-            closeConnection();
         }
     }
 
@@ -90,7 +78,7 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao{
                     """
             );
         }
-        closeConnection();
+        
     
     }
 

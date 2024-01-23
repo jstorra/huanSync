@@ -9,9 +9,9 @@ public abstract class BDConnection {
     public static Connection con = null;
 
     public static Connection MySQLConnection() {
-        url = "jdbc:mysql://localhost:3306/db_huansync";
-        user = "root";
-        password = "";
+        url = "jdbc:mysql://192.168.110.6:3306/db_huansync";
+        user = "juan";
+        password = "Juan123";
         return getConnection(url, user, password);
     }
 

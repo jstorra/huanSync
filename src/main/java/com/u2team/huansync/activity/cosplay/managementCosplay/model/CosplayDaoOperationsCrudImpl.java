@@ -5,8 +5,7 @@ import com.u2team.huansync.persistence.BDConnection;
 
 public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
 
-    // CONFIGURATION
-    private final Connection con;
+    // VALIDATIONS
     private CosplayValidatorDaoImpl cosplayValidator  ;
 
     //QUERIS
@@ -36,113 +35,99 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
 
     // CONSTRUCTORS
     public  CosplayDaoOperationsCrudImpl() {
-        this.con = BDConnection.MySQLConnection();
+        //this.con = BDConnection.MySQLConnection();
         this.cosplayValidator= new CosplayValidatorDaoImpl();
     }
    
 
-     // mettod clone connection
-
-    private void closeConnection() {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error closing connection", e);
-        }
-    }
-
 
     //OPERACTIONS
+
+    
 
     @Override
     public List<Cosplay> readCosplay() {
         List<Cosplay> cosplayList = new ArrayList<>();
-        try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAYS)) {
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                Cosplay cosplayBuild = 
-                new CosplayBuilderImpl()
+        try (Connection con = BDConnection.MySQLConnection();
+            PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAYS)) {
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                Cosplay cosplayBuild = new CosplayBuilderImpl()
                 .cosplayId(rs.getInt("cosplay_id"))
                 .score(rs.getDouble("score_participant"))
                 .nameCosplay(rs.getString("name_cosplay"))
                 .participantName(rs.getString("name_participant"))
                 .build();
-                // add list
+                // add to list
                 cosplayList.add(cosplayBuild);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            closeConnection();
         }
-
         return cosplayList;
     }
 
-    @Override
-    public void createCosplay(Cosplay cosplay) {
-        try {
-            /*
-             * Mandatory method to validate the cosplay to be able to add it
-             */
-            cosplayValidator.validateCosplayforActPartCospl(cosplay);
-            ////
-            
-            try (PreparedStatement preparedStatement = con.prepareStatement(INSERT_TABLE_COSPLAY)) {
-                preparedStatement.setDouble(1, cosplay.getScore());
-                preparedStatement.setString(2, cosplay.getNameCosplay());
-                preparedStatement.setInt(3, cosplay.getParticipantId());
-                preparedStatement.setInt(4, cosplay.getActivictyId());
-                preparedStatement.setBoolean(5, cosplay.getStatusCosplay());
-                preparedStatement.executeUpdate();
+@Override
+public void createCosplay(Cosplay cosplay) {
+    try (Connection con = BDConnection.MySQLConnection()) {
+        /*
+         * Mandatory method to validate the cosplay to be able to add it
+         */
+        cosplayValidator.validateCosplayforActPartCospl(cosplay);
+        ////
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }finally {
-            closeConnection();
+        try (PreparedStatement preparedStatement = con.prepareStatement(INSERT_TABLE_COSPLAY)) {
+            preparedStatement.setDouble(1, cosplay.getScore());
+            preparedStatement.setString(2, cosplay.getNameCosplay());
+            preparedStatement.setInt(3, cosplay.getParticipantId());
+            preparedStatement.setInt(4, cosplay.getActivictyId());
+            preparedStatement.setBoolean(5, cosplay.getStatusCosplay());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
-    
-    @Override
-    public void updateCosplay(Cosplay cosplay) {
-        try {
-             cosplayValidator.validateCosplay(cosplay.getCosplayId());
-            try (PreparedStatement preparedStatement = con.prepareStatement(UPDATE_TABLE_COSPLAY)) {
-                preparedStatement.setString(1, cosplay.getNameCosplay());
-                preparedStatement.setInt(2, cosplay.getCosplayId());
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+}
 
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-        }finally {
-            closeConnection();
+@Override
+public void updateCosplay(Cosplay cosplay) throws SQLException {
+    try (Connection con = BDConnection.MySQLConnection()) {
+        cosplayValidator.validateCosplay(cosplay.getCosplayId());
+        try (PreparedStatement preparedStatement = con.prepareStatement(UPDATE_TABLE_COSPLAY)) {
+            preparedStatement.setString(1, cosplay.getNameCosplay());
+            preparedStatement.setInt(2, cosplay.getCosplayId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
+    } catch (RuntimeException e) {
+        System.out.println(e.getMessage());
     }
+}
 
     @Override
     public void deleteCosplay(int idCosplay) {
-        try {
+        try (Connection con = BDConnection.MySQLConnection()) {
             cosplayValidator.validateCosplay(idCosplay);
             try (PreparedStatement preparedStatement = con.prepareStatement(DELETE_TABLE_COSPLAY)) {
                 preparedStatement.setInt(1, idCosplay);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new RuntimeException("Error executing deleteCosplay query", e);
             }
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-        }finally {
-            closeConnection();
+        } catch (Exception e) {
+            throw new RuntimeException("Error in deleteCosplay", e);
         }
     }
+
+
 
    
 }

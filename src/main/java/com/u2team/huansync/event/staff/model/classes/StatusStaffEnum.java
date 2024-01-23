@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package com.u2team.huansync.event.staff.model.classes;
 
 /**
  *
- * @author criis
+ * @author Cristina Jerez Salas
  */
 public enum StatusStaffEnum {
     TASK_ASSIGNED, // Indicates the worker has a task assigned

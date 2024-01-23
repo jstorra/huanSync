@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 
 /**
  *
- * @author Usuario
+ * @author Cristina Jerez Salas
  */
 public class Validations {
     

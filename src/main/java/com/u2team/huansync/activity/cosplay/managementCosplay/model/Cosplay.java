@@ -4,25 +4,18 @@ public class Cosplay {
 
     // PROPERTIES
     private int cosplayId ;
-    private double score ;
+    private double score = 0 ;
     private String nameCosplay ;
     private int participantId ;
     private int activityId ;
+    private boolean statusCosplay = true ;
+    
+    // propertie NAME apart from the object creation which serves to give the front-end something to consume in a simpler way and thus not have to create another object as such
+    private String participantName ;
+    private String documentParticipant ;
+    
 
-    // CONSTRUCTORS
-
-
-    public Cosplay(){
-
-    }
-
-    public Cosplay (int cosplayId,double score , String nameCosplay , int participantId , int activictyId){
-        this.setCosplayId(cosplayId);
-        this.setScore(score);
-        this.setNameCosplay(nameCosplay);
-        this.setParticipantId(participantId);
-        this.setActivictyId(activictyId);
-    }
+   
 
 
     // METTODS GETTERS
@@ -51,6 +44,18 @@ public class Cosplay {
         return this.activityId ;
     }
 
+    
+    public String getparticipantName() {
+        return this.participantName ;
+    }
+
+    public String getdocumentParticipant() {
+        return this.documentParticipant ;
+    }
+
+    public boolean getStatusCosplay() {
+        return this.statusCosplay ;
+    }
 
     // METTODS SETTERS
 
@@ -76,10 +81,24 @@ public class Cosplay {
         this.activityId = activictyId ;
     }
 
+    public void setparticipantName(String participantName) {
+        this.participantName  = participantName;
+    }
+
+
+    public void setStatusCosplay(boolean statusCosplay) {
+        this.statusCosplay  = statusCosplay;
+    }
+
+    //METTOD TOSTRING
+
     @Override
     public String toString() {
-        return "Cosplay{" + "cosplayId=" + cosplayId + ", score=" + score + ", nameCosplay=" + nameCosplay + ", participantId=" + participantId + ", activityId=" + activityId + '}';
+        return "Cosplay{" + "cosplayId=" + cosplayId + ", score=" + score + ","
+                + " nameCosplay=" + nameCosplay +  ", participantName=" + participantName + '}';
     }
+
+    
 
     
     

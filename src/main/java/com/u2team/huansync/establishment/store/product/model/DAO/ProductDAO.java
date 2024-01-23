@@ -26,9 +26,12 @@ import java.util.List;
  *
  * @author Kevin Jimenez
  */
-public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetAllDao<Product>,IUpdateDao<Product>,IGetByIdDao<Product>{
 
-    //Conexion con la base de datos
+//Import the different interfaces
+public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetAllDao<Product>,IGetByIdDao<Product>,IUpdateDao<Product>{
+
+    //Connection to the database
+    //The methods that are brought here (save, delete, gettAll, etc.) are found in all Dao interfaces within the code
     
     @Override
     public void save(Product product) {
@@ -61,7 +64,7 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
     }
    
    
-    //Aca se creara el CRUD
+    //Create the CRUD
     
     // CRUD DELETE 
 
@@ -170,9 +173,67 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
     }
 
     @Override
-    public void update(Product t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public void update(Product product) {
+        Product sqlProduct = getById(product.getProductId());
+        
+        // prepare the object with set info of sqlEvent with the ?
+        // I guided myself from Product.java and changed everything except the corresponding product id
+        if (sqlProduct != null) {
+            sqlProduct.setNameProduct(product.getNameProduct());
+            sqlProduct.setProductPrice(product.getProductPrice());
+            sqlProduct.setDescription(product.getDescription());
+            sqlProduct.setManufacturer(product.getManufacturer());
+            sqlProduct.setQuantity(product.getQuantity());
+            sqlProduct.setType(product.getType());
+            sqlProduct.setStoreId(product.getStoreId());
+            
+            // Create a query ("stmInsert") and replace parameter "?" with each new info.
+            String stmInsert = """
+            UPDATE tbl_product
+            SET productName  = ?,
+                productPrice  = ?,
+                description = ?,
+                manufacturer  = ?,
+                typeProduct  = ?,
+                quantity  = ?,
+                storeId = ?
+            WHERE productId  = ?;
+                               """;
+            
+            //Also guide me by product for the type of data or the same save but knowing where it corresponds?
+            //and respecting the name
+            // Replace parameter "?" with corresponding index "(1,2,3...) and set info in each one.
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
+                ps.setString(1, product.getNameProduct());
+                ps.setDouble(2, product.getProductPrice());
+                ps.setString(3, product.getDescription());
+                ps.setString(4, product.getManufacturer());
+                ps.setString(5, product.getType().name());
+                ps.setInt(6, product.getQuantity());
+                ps.setLong(7, product.getStoreId());
+                ps.setLong(8, product.getProductId());
+
+                // Show with toString method the ps (PrepareStatement)
+                System.out.println(ps.toString());
+
+                // use Operation class with insert_update_delete and verify if the rows in database are affected
+                int rows = Operations.insert_update_delete_db(ps);
+                if (rows <= 0) {
+                    System.out.println("Cannot update event");
+                } else {
+                    System.out.println("Successful update event");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("not found results event");
+        }
+            
+          }
+
+    
     }
     
     

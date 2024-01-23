@@ -99,21 +99,6 @@ public class ActivityDAO {
         }
     }
 
-    public boolean searchActivity(int idActivity, String typeAct) {
-        try (Connection connection = BDConnection.MySQLConnection()){
-            String sql = "SELECT * FROM tbl_activities WHERE activityId = ? AND LOWER(typeActivity) = ? AND completed = TRUE";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, idActivity);
-                statement.setString(2, typeAct);
-                ResultSet rs = statement.executeQuery();
-                return rs.next();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public void deleteActivity(Long activityId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_activities WHERE activityId = ?";

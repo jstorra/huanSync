@@ -21,8 +21,8 @@ public class PrizeDAO {
                     prize.setDescription(resultSet.getString("description"));
                     prize.setPrice(resultSet.getDouble("price"));
                     prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
-                    prize.setActivityId((resultSet.getLong("activityId") == 0) ? null : resultSet.getLong("activityId"));
-                    prize.setWinnerId((resultSet.getLong("winnerId") == 0) ? null : resultSet.getLong("winnerId"));
+                    prize.setActivityId(resultSet.getLong("activityId") == 0 ? null : resultSet.getLong("activityId"));
+                    prize.setWinnerId(resultSet.getLong("winnerId") == 0 ? null : resultSet.getLong("winnerId"));
                     prizes.add(prize);
                 }
             }
@@ -45,8 +45,8 @@ public class PrizeDAO {
                         prize.setDescription(resultSet.getString("description"));
                         prize.setPrice(resultSet.getDouble("price"));
                         prize.setStatusPrize(StatusPrize.valueOf(resultSet.getString("statusPrize").toUpperCase()));
-                        prize.setActivityId((resultSet.getLong("activityId") == 0) ? null : resultSet.getLong("activityId"));
-                        prize.setWinnerId((resultSet.getLong("winnerId") == 0) ? null : resultSet.getLong("winnerId"));
+                        prize.setActivityId(resultSet.getLong("activityId") == 0 ? null : resultSet.getLong("activityId"));
+                        prize.setWinnerId(resultSet.getLong("winnerId") == 0 ? null : resultSet.getLong("winnerId"));
                     }
                 }
             }

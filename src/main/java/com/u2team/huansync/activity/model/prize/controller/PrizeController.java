@@ -14,7 +14,7 @@ public class PrizeController {
     }
 
      //get one prize by id
-    public static Prize getPrizeById(long prizeId){
+    public static Prize getPrizeById(Long prizeId){
         return prizeDAO.getPrizeById(prizeId);
     }
 
@@ -29,7 +29,7 @@ public class PrizeController {
     }
 
     //delete prize by id
-    public static void deletePrize(long prizeId){
+    public static void deletePrize(Long prizeId){
         prizeDAO.deletePrize(prizeId);
     }
 }

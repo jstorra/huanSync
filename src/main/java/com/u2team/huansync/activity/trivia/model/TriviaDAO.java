@@ -31,7 +31,7 @@ public class TriviaDAO {
         return trivias;
     }
 
-    public Trivia getTriviaById(long triviaId) {
+    public Trivia getTriviaById(Long triviaId) {
         Trivia trivia = new Trivia();
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "SELECT * FROM tbl_trivia WHERE triviaId = ?";
@@ -88,20 +88,6 @@ public class TriviaDAO {
         }
     }
 
-    public boolean searchTrivia(Long triviaId) {
-        try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "SELECT * FROM tbl_trivia WHERE triviaId = ?";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setLong(1, triviaId);
-                ResultSet rs = statement.executeQuery();
-                return rs.next();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public void deleteTrivia(Long triviaId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_trivia WHERE triviaId = ?";
@@ -112,7 +98,5 @@ public class TriviaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
 }

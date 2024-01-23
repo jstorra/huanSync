@@ -6,7 +6,6 @@ import com.u2team.huansync.event.DAO.IGetByIdDao;
 import com.u2team.huansync.event.DAO.ISaveDao;
 import com.u2team.huansync.event.DAO.IUpdateDao;
 import com.u2team.huansync.event.equipment.model.classes.Equipment;
-import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;

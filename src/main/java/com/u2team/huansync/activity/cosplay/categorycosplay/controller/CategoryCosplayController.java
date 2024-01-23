@@ -1,6 +1,8 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.controller;
 
 import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
+import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplayDAO;
+
 import java.util.List;
 
 /**

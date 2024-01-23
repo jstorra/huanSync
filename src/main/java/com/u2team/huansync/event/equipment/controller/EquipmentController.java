@@ -2,6 +2,7 @@ package com.u2team.huansync.event.equipment.controller;
 
 import com.u2team.huansync.event.equipment.model.DAO.EquipmentDAO;
 import com.u2team.huansync.event.equipment.model.classes.Equipment;
+
 import java.util.List;
 
 /**
@@ -26,5 +27,8 @@ public class EquipmentController {
 
     public static List<Equipment> getAllEquipment() {
         return equipmentDao.getAll();
+    }
+      public static void updateEvent(Equipment equipment) {
+        equipmentDao.update(equipment);
     }
 }

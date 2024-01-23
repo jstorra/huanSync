@@ -34,7 +34,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
     @Override
     public void save(Equipment equipment) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stmInsert = "INSERT INTO tbl_equipment(nameEquipment, quantity, statusStaff) VALUES (?,?,?);";
+        String stmInsert = "INSERT INTO tbl_equipment(nameEquipment, quantity, statusEquipment) VALUES (?,?,?);";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setString(1, equipment.getNameEquipment());
@@ -100,7 +100,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
                 equipment.setEquipmentId(rs.getLong("equipmentId"));
                 equipment.setNameEquipment(rs.getString("nameEquipment"));
                 equipment.setQuantity(rs.getLong("quantity"));
-                equipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum(rs.getString("statusStaff")));
+                equipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum(rs.getString("statusEquipment")));
                 return equipment;
             } else {
                 System.out.println("ERROR: The id has not been found");
@@ -133,7 +133,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
                 equipment.setEquipmentId(rs.getLong("equipmentId"));
                 equipment.setNameEquipment(rs.getString("nameEquipment"));
                 equipment.setQuantity(rs.getLong("quantity"));
-                equipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum(rs.getString("statusStaff")));
+                equipment.setStatusEquipmentEnum(equipment.getStatusEquipmentEnum(rs.getString("statusEquipment")));
 
                 equipmentList.add(equipment);
             }
@@ -163,7 +163,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
                     SET equipmentId = ?,
                         nameEquipment = ?,
                         quantity = ?,
-                        statusStaff = ?,
+                        statusEquipment = ?,
                     WHERE equipmentId = ?;
                                     """;
 

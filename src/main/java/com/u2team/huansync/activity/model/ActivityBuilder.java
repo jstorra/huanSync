@@ -1,18 +1,16 @@
 package com.u2team.huansync.activity.model;
 
-import com.u2team.huansync.event.staff.model.classes.Staff;
-
 import java.time.LocalTime;
-import java.util.List;
 
 public interface ActivityBuilder {
+    ActivityBuilder activityId(Long activityId);
     ActivityBuilder name(String name);
     ActivityBuilder typeActivity(TypeActivity typeActivity);
-    ActivityBuilder categoryCosplayId(long categoryCosplayId);
+    ActivityBuilder categoryCosplayId(Long categoryCosplayId);
     ActivityBuilder numParticipants(int numParticipants);
-    ActivityBuilder eventId(long eventId);
+    ActivityBuilder eventId(Long eventId);
     ActivityBuilder startTime(LocalTime startTime);
-    ActivityBuilder price(long price);
+    ActivityBuilder price(double price);
     ActivityBuilder completed(boolean completed);
     Activity build();
 }

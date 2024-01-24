@@ -4,14 +4,18 @@
  */
 package com.u2team.huansync.establishment.model.classes.builder;
 
-import com.u2team.huansync.establishment.model.Establishment;
+import com.u2team.huansync.establishment.model.classes.Establishment;
 
 /**
  *
  * @author misae
  */
 public class EstablishmentBuilderImpl implements EstablishmentBuilder{
-    private Establishment establishment = new Establishment();
+    private Establishment establishment;
+
+    public EstablishmentBuilderImpl() {
+        this.establishment = new Establishment();
+    }
 
     @Override
     public EstablishmentBuilder establishmentId(long establishmentId) {
@@ -27,19 +31,27 @@ public class EstablishmentBuilderImpl implements EstablishmentBuilder{
 
     @Override
     public EstablishmentBuilder managerEstablishment(long managerEstablishment) {
-     establishment.setManagerEstablishment(managerEstablishment);
+     establishment.setManagerEstablishmentId(managerEstablishment);
         return this;
     }
 
     @Override
-    public EstablishmentBuilder categoryEstablishment(CategoryEstablishment categoryEstablishment) {
-       establishment.setCategoyEstablisment(categoryEstablishment);
+    public EstablishmentBuilder categoryEstablishment(String categoryEstablishment) {
+       establishment.setCategoyEstablishment(establishment.getCategoyEstablisment(categoryEstablishment));
         return this;
     }
 
+    @Override
+    public EstablishmentBuilder establishmentEventId(long establishmentEventId) {
+        establishment.setEstablishmentEventId(establishmentEventId);
+        return this;
+    }
+    
     @Override
     public Establishment build() {
         return establishment;
     }
+
+
     
 }

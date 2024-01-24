@@ -13,7 +13,7 @@ public class ControllerMagnamentCosplay {
     }
 
     // listar
-    public List<Cosplay> readAllCosplays() {
+    public List<Cosplay> readAllCosplays(int idActivitieCosplay) {
         /*
          * 
          * WARNING FOR FRONT - ENDS
@@ -22,7 +22,7 @@ public class ControllerMagnamentCosplay {
          * of *the participant.
          */
 
-        return cosplayDaoOperationsCrudImpl.readCosplay();
+        return cosplayDaoOperationsCrudImpl.readCosplay(idActivitieCosplay);
 
     }
 

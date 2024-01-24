@@ -4,7 +4,7 @@ import java.util.*;
 
 public interface CosplayDaoOperationsCrud {
 
-    public List<Cosplay> readCosplay();
+    public List<Cosplay> readCosplay(int idActivitie);
 
     public void createCosplay(Cosplay cosplay);
 

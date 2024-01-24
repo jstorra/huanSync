@@ -7,7 +7,8 @@ import com.u2team.huansync.activity.model.ActivityDAO;
 import com.u2team.huansync.persistence.BDConnection;
 
 /**
- * Implementation of CosplayValidatorDao interface for validating Cosplay entities.
+ * Implementation of CosplayValidatorDao interface for validating Cosplay
+ * entities.
  */
 public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
@@ -41,15 +42,16 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
     /* testing methods */
 
-
     /**
-     * Validates whether the participant is participating in a specific cosplay activity.
+     * Validates whether the participant is participating in a specific cosplay
+     * activity.
      *
-     * @param activityId     The ID of the cosplay activity.
-     * @param participantId  The ID of the participant to be validated.
-     * @return True if the participant is participating in the specified activity, false otherwise.
-     */    
-    public boolean validateParticipantion(int activityId,int participantId ) {
+     * @param activityId    The ID of the cosplay activity.
+     * @param participantId The ID of the participant to be validated.
+     * @return True if the participant is participating in the specified activity,
+     *         false otherwise.
+     */
+    public boolean validateParticipantion(int activityId, int participantId) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_PARTICIPATION_QUERY)) {
             preparedStatement.setInt(1, activityId);
             preparedStatement.setInt(2, participantId);
@@ -72,10 +74,12 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
     }
 
     /**
-     * Validates whether the participant is already participating in a cosplay activity.
+     * Validates whether the participant is already participating in a cosplay
+     * activity.
      *
      * @param idParticipant The ID of the participant to be validated.
-     * @return True if the participant is not already participating, false otherwise.
+     * @return True if the participant is not already participating, false
+     *         otherwise.
      */
     public boolean validateParticipant(int idParticipant) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_CUSTOMER_QUERY)) {
@@ -133,12 +137,6 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
             System.out.println(e.getMessage());
 
         }
-    }
-
-    
-    public void validateParticipation(){
-        
-
     }
 
 }

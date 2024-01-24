@@ -19,8 +19,8 @@ public class ActivityView extends javax.swing.JFrame {
     public ActivityView() {
         initComponents();
     }
-
-    private boolean validateFields() {
+ 
+   private boolean validateFields() {
         if (txtName.getText().trim().isEmpty() || txtType.getText().trim().isEmpty() || txtCategory.getText().trim().isEmpty()
                 || txtStartTime.getText().trim().isEmpty() || txtNParticipants.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);

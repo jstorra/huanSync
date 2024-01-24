@@ -256,30 +256,36 @@ public class MenuView extends javax.swing.JFrame {
         TicketOfficeView initialTicket = new TicketOfficeView();
         initialTicket.setVisible(true);
         initialTicket.setLocationRelativeTo(null);
+         this.dispose();
     }//GEN-LAST:event_btnTicketsActionPerformed
 
     private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
         StaffView initialStaff = new StaffView();
         initialStaff.setVisible(true);
         initialStaff.setLocationRelativeTo(null);
+         this.dispose();
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventsActionPerformed
         ShowEventView initialEvent = new ShowEventView();
         initialEvent.setVisible(true);
         initialEvent.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnEventsActionPerformed
 
     private void btnActiviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiviesActionPerformed
        ActivityView initialActivity = new ActivityView();
        initialActivity.setVisible(true);
        initialActivity.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnActiviesActionPerformed
 
     private void btnEstablishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstablishActionPerformed
         EstablishmentView initialEstablishment = new EstablishmentView();
         initialEstablishment.setVisible(true);
         initialEstablishment.setLocationRelativeTo(null);
+         this.dispose();
+         
     }//GEN-LAST:event_btnEstablishActionPerformed
 
     private void btnRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolesActionPerformed

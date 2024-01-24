@@ -1,46 +1,56 @@
 package com.u2team.huansync.establishment.model;
 
+import com.u2team.huansync.establishment.model.classes.builder.CategoryEstablishment;
+
 public class Establishment {
-    private long stablishmentId;
-    private String name;
-    private int localNumber;
-//    private Employee manager;
-    private String category;
+    private long establishmentId;
+    private String nameEstablishment;
+    private long managerEstablishment;
+    private CategoryEstablishment categoyEstablisment;
 
     public Establishment() {
     }
 
-    public long getStablishmentId() {
-        return stablishmentId;
+    public Establishment(long establishmentId, String nameEstablishment, long managerEstablishment, CategoryEstablishment categoyEstablisment) {
+        this.establishmentId = establishmentId;
+        this.nameEstablishment = nameEstablishment;
+        this.managerEstablishment = managerEstablishment;
+        this.categoyEstablisment = categoyEstablisment;
     }
 
-    public void setStablishmentId(long stablishmentId) {
-        this.stablishmentId = stablishmentId;
+    public long getEstablishmentId() {
+        return establishmentId;
     }
 
-    public String getName() {
-        return name;
+    public void setEstablishmentId(long establishmentId) {
+        this.establishmentId = establishmentId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameEstablishment() {
+        return nameEstablishment;
     }
 
-    public int getLocalNumber() {
-        return localNumber;
+    public void setNameEstablishment(String nameEstablishment) {
+        this.nameEstablishment = nameEstablishment;
     }
 
-    public void setLocalNumber(int localNumber) {
-        this.localNumber = localNumber;
+    public long getManagerEstablishment() {
+        return managerEstablishment;
     }
 
-    public String getCategory() {
-        return category;
+    public void setManagerEstablishment(long managerEstablishment) {
+        this.managerEstablishment = managerEstablishment;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public CategoryEstablishment getCategoyEstablisment() {
+        return categoyEstablisment;
     }
+
+    public void setCategoyEstablisment(CategoryEstablishment categoyEstablisment) {
+        this.categoyEstablisment = categoyEstablisment;
+    }
+
+    
 
 
 }

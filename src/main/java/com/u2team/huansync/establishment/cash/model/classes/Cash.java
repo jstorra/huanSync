@@ -13,10 +13,20 @@ public class Cash {
     private long managerId;
     private double openingAmount;
     private double closingAmount;
-//    private ArrayList<Order> order;
+    private List<Long> listOrderId;
 
     public Cash() {
     }
+
+    public Cash(long cashId, boolean state, long managerId, double openingAmount, double closingAmount, List<Long> listOrderId) {
+        this.cashId = cashId;
+        this.state = state;
+        this.managerId = managerId;
+        this.openingAmount = openingAmount;
+        this.closingAmount = closingAmount;
+        this.listOrderId = listOrderId;
+    }
+    
 
     public boolean isState() {
         return state;
@@ -58,13 +68,13 @@ public class Cash {
         this.managerId = managerId;
     }
 
-//    public ArrayList<Order> getOrder() {
-//        return order;
-//    }
+    public List<Long> getListOrderId() {
+        return listOrderId;
+    }
 
-//    public void setOrder(ArrayList<Order> order) {
-//        this.order = order;
-//    }
+    public void setListOrderId(List<Long> listOrderId) {
+        this.listOrderId = listOrderId;
+    }
 
     
 }

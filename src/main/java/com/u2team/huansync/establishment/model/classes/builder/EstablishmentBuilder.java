@@ -4,15 +4,16 @@
  */
 package com.u2team.huansync.establishment.model.classes.builder;
 
+import com.u2team.huansync.establishment.model.Establishment;
+
 /**
  *
  * @author DeuryZ
  */
 public interface EstablishmentBuilder {
-      EstablishmentBuilder stablishmentId (long stablishmentId);
-      EstablishmentBuilder name (String name);
-      EstablishmentBuilder localNumber (int localNumber);
-//  EstablishmentBuilder manager (Employee manager);
-      EstablishmentBuilder category (String category);
-      EstablishmentBuilder build();
+      EstablishmentBuilder establishmentId (long establishmentId);
+      EstablishmentBuilder nameEstablishment (String nameEstablishment);
+      EstablishmentBuilder managerEstablishment (long managerEstablishment);
+      EstablishmentBuilder categoryEstablishment (CategoryEstablishment categoryEstablishment);
+      Establishment build();
 }

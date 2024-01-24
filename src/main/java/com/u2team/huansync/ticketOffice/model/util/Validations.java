@@ -3,8 +3,6 @@ package com.u2team.huansync.ticketOffice.model.util;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.u2team.huansync.event.controller.EventController;
-import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.ticketOffice.controller.TicketOfficeController;
 import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 

@@ -9,7 +9,7 @@ import com.u2team.huansync.establishment.store.product.model.classes.TypeProduct
 
 /**
  *
- * @author Dereck Noa
+ * @author Kevin Jimenez
  */
 public class ProductConcreteBuilder implements ProductBuilder{
 

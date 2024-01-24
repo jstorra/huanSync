@@ -68,6 +68,7 @@ public class CategoryCosplayDAO {
      *
      * @param categoryId              Identifier of the cosplay category to be updated.
      * @param newNameCategoryCosplay New name for the cosplay category.
+     * @param deletable              Indicates whether the category is deletable or not.
      */
 
     public void updateCategory(long categoryId, String newNameCategoryCosplay, boolean deletable) {

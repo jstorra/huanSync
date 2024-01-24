@@ -5,28 +5,57 @@ import java.util.List;
 import com.u2team.huansync.ticketOffice.model.DAO.TicketOfficeDAO;
 import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 
+/**
+ * Controller class for managing operations related to TicketOffice entities.
+ */
 public class TicketOfficeController {
-    
+
     private static TicketOfficeDAO ticketOfficeDAO = new TicketOfficeDAO();
 
-    public static TicketOffice getByIdTicketOffice(long ticketOfficeId){
+    /**
+     * Retrieves a TicketOffice entity based on the provided ticket office ID.
+     *
+     * @param ticketOfficeId The unique identifier of the TicketOffice to be retrieved.
+     * @return The TicketOffice entity if found, or null if not found.
+     */
+    public static TicketOffice getByIdTicketOffice(long ticketOfficeId) {
         return ticketOfficeDAO.getById(ticketOfficeId);
     }
 
-    public static List<TicketOffice>  getAllTicketOffice(){
+    /**
+     * Retrieves a list of all TicketOffice entities.
+     *
+     * @return A List containing all TicketOffice entities.
+     */
+    public static List<TicketOffice> getAllTicketOffice() {
         return ticketOfficeDAO.getAllTicketOffice();
-
     }
 
-    public static void insertTicketOffice(TicketOffice ticketOffice){
+    /**
+     * Inserts a new TicketOffice entity into the data store.
+     *
+     * @param ticketOffice The TicketOffice entity to be inserted.
+     */
+    public static void insertTicketOffice(TicketOffice ticketOffice) {
         ticketOfficeDAO.insertTicketOffice(ticketOffice);
     }
 
-    public static void updateTicketOffice(TicketOffice ticketOffice){
+    /**
+     * Updates an existing TicketOffice entity in the data store.
+     *
+     * @param ticketOffice The TicketOffice entity to be updated.
+     */
+    public static void updateTicketOffice(TicketOffice ticketOffice) {
         ticketOfficeDAO.updateTicketOffice(ticketOffice);
     }
 
-    public static void deleteTicketOffice(long ticketOfficeId){
+    /**
+     * Deletes a TicketOffice entity based on the provided ticket office ID.
+     *
+     * @param ticketOfficeId The unique identifier of the TicketOffice to be deleted.
+     */
+    public static void deleteTicketOffice(long ticketOfficeId) {
         ticketOfficeDAO.deleteTicketOffice(ticketOfficeId);
-    }  
+    }
 }
+

@@ -57,6 +57,11 @@ public class Promotion{
     public void setStatusPromotion(boolean statusPromotion) {
         this.statusPromotion = statusPromotion;
     }
+
+    @Override
+    public String toString() {
+        return "Promotion{" + "promotionId=" + promotionId + ", namePromotion=" + namePromotion + ", description=" + description + ", statusPromotion=" + statusPromotion + ", percent=" + percent + '}';
+    }
     
     
 

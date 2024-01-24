@@ -2,33 +2,53 @@ package com.u2team.huansync.establishment.store.promotion.controller;
 
 import com.u2team.huansync.establishment.store.promotion.model.DAO.PromotionDAO;
 import com.u2team.huansync.establishment.store.promotion.model.classes.Promotion;
+import java.util.List;
 
-
-//@author sneideresteban
+/**
+ * The {@code PromotionController} class is responsible for managing promotions
+ * and interacting with the {@code PromotionDAO}.
+ *
+ * @author sneideresteban
+ */
 public class PromotionController {
-    
-    //Instanciar
+
+    // Instance of PromotionDAO
     private static PromotionDAO promotionDAO = new PromotionDAO();
-    
-    //The methods that I created after the static or void "names" were called in HuanSync to test them
-    //save, getAll y update se encuentran en todas las interfaces de Dao dentro del codigo
-    public static void insertProduct(Promotion promotion){
+
+    /**
+     * Inserts a new promotion into the data store.
+     *
+     * @param promotion The promotion to be inserted.
+     */
+    public static void insertProduct(Promotion promotion) {
         promotionDAO.save(promotion);
     }
-    public static void delete(long promotionId){
+
+    /**
+     * Deletes a promotion based on the provided promotion ID.
+     *
+     * @param promotionId The ID of the promotion to be deleted.
+     */
+    public static void delete(long promotionId) {
         promotionDAO.delete(promotionId);
-        
     }
- 
-    
-    public static Promotion getById(long promotionId){
-        return promotionDAO.getById(promotionId); 
+
+    /**
+     * Retrieves a promotion based on the provided promotion ID.
+     *
+     * @param promotionId The ID of the promotion to be retrieved.
+     * @return The promotion with the specified ID.
+     */
+    public static Promotion getById(long promotionId) {
+        return promotionDAO.getById(promotionId);
     }
-    
-    
-     public static void updateProduct(Promotion promotion) {
-        promotionDAO.update(promotion);
+
+    /**
+     * Retrieves a list of all promotions from the data store.
+     *
+     * @return A list containing all promotions.
+     */
+    public static List<Promotion> getAll() {
+        return promotionDAO.getAll();
     }
-  
-    
 }

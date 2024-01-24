@@ -38,7 +38,6 @@ public final class Ingredient {
             System.out.println("The ingredient name could not be updated. No name was entered.");
         } else {
             this.nameIngredient = name;
-            System.out.println("Name was changed to: " + name);
         }
     }
 
@@ -51,7 +50,6 @@ public final class Ingredient {
             System.out.println("The ingredient quantity could not be updated. The amount entered was less than 0.");
         } else {
             this.availableQuantity = newQuantity;
-            System.out.println("The ingredient quantity was changed to: " + newQuantity);
         }
     }
 

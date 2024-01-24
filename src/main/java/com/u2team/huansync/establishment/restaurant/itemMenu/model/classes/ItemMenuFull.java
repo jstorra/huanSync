@@ -5,7 +5,6 @@
 package com.u2team.huansync.establishment.restaurant.itemMenu.model.classes;
 
 import com.u2team.huansync.establishment.restaurant.ingredient.model.classes.Ingredient;
-import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.ItemMenu;
 import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.builder.ItemMenuType;
 import java.util.List;
 

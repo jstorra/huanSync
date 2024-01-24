@@ -1,6 +1,5 @@
 package com.u2team.huansync.establishment.restaurant.itemMenu.model.classes;
 
-import com.u2team.huansync.establishment.restaurant.ingredient.model.classes.Ingredient;
 import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.builder.ItemMenuType;
 import java.util.List;
 
@@ -52,7 +51,6 @@ public class ItemMenu {
             System.out.println("The product name could not be updated. No name was entered.");
         } else {
             this.nameItemMenu = nameItemMenu;
-            System.out.println("Name was changed to: " + nameItemMenu);
         }
     }
 
@@ -65,7 +63,6 @@ public class ItemMenu {
             System.out.println("The product price could not be updated. The amount entered was less than 0.");
         } else {
             this.priceItemMenu = priceItemMenu;
-            System.out.println("Price was changed to: " + priceItemMenu);
         }
     }
 

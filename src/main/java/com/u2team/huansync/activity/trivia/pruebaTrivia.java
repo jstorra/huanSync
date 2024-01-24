@@ -26,28 +26,30 @@ public class pruebaTrivia {
         String respuesta = "1";
 
         while (true) {
-
             int pointsJugador1 = 0;
             int pointsJugador2 = 0;
+
             while (!jugadoresRonda1.isEmpty()) {
                 System.out.println(preguntas.get(new Random().nextInt(preguntas.size())));
                 System.out.println("Respuesta jugador " + jugadoresRonda1.get(0) + ": ");
                 String r1 = scanner.nextLine();
                 System.out.println("Respuesta jugador " + jugadoresRonda1.get(1) + ": ");
                 String r2 = scanner.nextLine();
-                
+
                 if (r1.equalsIgnoreCase(respuesta)) {
                     pointsJugador1++;
                     if (pointsJugador1 == 3) {
                         jugadoresRonda2.add(jugadoresRonda1.remove(0));
-                        jugadoresRonda1.remove(1);
+                        jugadoresRonda1.remove(0);
                         break;
                     }
-                } else if (r2.equalsIgnoreCase(respuesta)) {
-                    pointsJugador2++;
+                }
+                if (r2.equalsIgnoreCase(respuesta)) {
+                    ++pointsJugador2;
                     if (pointsJugador2 == 3) {
                         jugadoresRonda2.add(jugadoresRonda1.remove(1));
                         jugadoresRonda1.remove(0);
+                        break;
                     }
                 }
                 System.out.println("Jugador 1: " + pointsJugador1);
@@ -55,42 +57,87 @@ public class pruebaTrivia {
             }
             System.out.println(jugadoresRonda1);
             System.out.println(jugadoresRonda2);
-//
-//            pointsJugador1 = 0;
-//            pointsJugador2 = 0;
-//            System.out.println("Ronda 2");
-//            while (jugadoresRonda2.isEmpty()) {
-//                System.out.println(preguntas.get(new Random().nextInt(preguntas.size())));
-//                System.out.println("Respuesta jugador " + jugadoresRonda1.get(0) + ": ");
-//                String r1 = scanner.nextLine();
-//                System.out.println("Respuesta jugador " + jugadoresRonda1.get(1) + ": ");
-//                String r2 = scanner.nextLine();
-//                if (r1.equalsIgnoreCase(respuesta)) {
-//                    pointsJugador1++;
-//                    if (pointsJugador1 == 3) {
-//                        jugadoresRonda3.add(jugadoresRonda2.remove(0));
-//                        jugadoresRonda2.remove(1);
-//                        break;
-//                    }
-//                } else if (r2.equalsIgnoreCase(respuesta)) {
-//                    pointsJugador2++;
-//                    if (pointsJugador2 == 3) {
-//                        jugadoresRonda3.add(jugadoresRonda2.remove(1));
-//                        jugadoresRonda2.remove(0);
-//                        break;
-//                    }
-//                }
-//                System.out.println("Jugador 1: " + pointsJugador1);
-//                System.out.println("Jugador 2: " + pointsJugador2);
-//            }
-//            System.out.println(jugadoresRonda2);
-//            System.out.println(jugadoresRonda3);
-//            
-//            
-//            
-//            
-//            
-//            
+
+            if (jugadoresRonda1.isEmpty())
+                break;
         }
+
+        while (true) {
+            int pointsJugador1 = 0;
+            int pointsJugador2 = 0;
+
+            while (!jugadoresRonda2.isEmpty()) {
+                System.out.println(preguntas.get(new Random().nextInt(preguntas.size())));
+                System.out.println("Respuesta jugador " + jugadoresRonda2.get(0) + ": ");
+                String r1 = scanner.nextLine();
+                System.out.println("Respuesta jugador " + jugadoresRonda2.get(1) + ": ");
+                String r2 = scanner.nextLine();
+
+                if (r1.equalsIgnoreCase(respuesta)) {
+                    pointsJugador1++;
+                    if (pointsJugador1 == 3) {
+                        jugadoresRonda3.add(jugadoresRonda2.remove(0));
+                        jugadoresRonda2.remove(0);
+                        break;
+                    }
+                }
+                if (r2.equalsIgnoreCase(respuesta)) {
+                    ++pointsJugador2;
+                    if (pointsJugador2 == 3) {
+                        jugadoresRonda3.add(jugadoresRonda2.remove(1));
+                        jugadoresRonda2.remove(0);
+                        break;
+                    }
+                }
+                System.out.println("Jugador 1: " + pointsJugador1);
+                System.out.println("Jugador 2: " + pointsJugador2);
+            }
+            System.out.println(jugadoresRonda2);
+            System.out.println(jugadoresRonda3);
+
+            if (jugadoresRonda2.isEmpty())
+                break;
+        }
+
+        while (true) {
+            int pointsJugador1 = 0;
+            int pointsJugador2 = 0;
+
+            while (!jugadoresRonda2.isEmpty()) {
+                System.out.println(preguntas.get(new Random().nextInt(preguntas.size())));
+                System.out.println("Respuesta jugador " + jugadoresRonda2.get(0) + ": ");
+                String r1 = scanner.nextLine();
+                System.out.println("Respuesta jugador " + jugadoresRonda2.get(1) + ": ");
+                String r2 = scanner.nextLine();
+
+                if (r1.equalsIgnoreCase(respuesta)) {
+                    pointsJugador1++;
+                    if (pointsJugador1 == 3) {
+                        jugadoresRonda3.add(jugadoresRonda2.remove(0));
+                        jugadoresRonda2.remove(0);
+                        break;
+                    }
+                }
+                if (r2.equalsIgnoreCase(respuesta)) {
+                    ++pointsJugador2;
+                    if (pointsJugador2 == 3) {
+                        jugadoresRonda3.add(jugadoresRonda2.remove(1));
+                        jugadoresRonda2.remove(0);
+                        break;
+                    }
+                }
+                System.out.println("Jugador 1: " + pointsJugador1);
+                System.out.println("Jugador 2: " + pointsJugador2);
+            }
+            System.out.println(jugadoresRonda2);
+            System.out.println(jugadoresRonda3);
+
+            if (jugadoresRonda2.isEmpty())
+                break;
+        }
+
+
+
+
     }
 }

@@ -2,8 +2,11 @@ package com.u2team.huansync.activity.model;
 
 import java.time.LocalTime;
 
+/**
+ * Implementation of the ActivityBuilder interface for constructing Activity objects.
+ */
 public class ActivityBuilderImpl implements ActivityBuilder {
-    private Activity activity =  new Activity();
+    private Activity activity = new Activity();
 
     @Override
     public ActivityBuilder activityId(Long activityId) {

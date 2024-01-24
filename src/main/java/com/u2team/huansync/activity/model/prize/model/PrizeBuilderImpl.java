@@ -1,6 +1,9 @@
 package com.u2team.huansync.activity.model.prize.model;
 
-public class PrizeBuilderImpl implements PrizeBuilder{
+/**
+ * Implementation of the PrizeBuilder interface for constructing Prize objects.
+ */
+public class PrizeBuilderImpl implements PrizeBuilder {
     private Prize prize = new Prize();
 
     @Override

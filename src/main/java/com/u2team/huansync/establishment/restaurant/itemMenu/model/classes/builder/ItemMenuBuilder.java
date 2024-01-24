@@ -14,5 +14,6 @@ public interface ItemMenuBuilder {
      ItemMenuBuilder itemMenuType (String type);
       ItemMenuBuilder ingredients(List<Long> ingredients);
      ItemMenuBuilder preparationTime (int preparationTime);
+     ItemMenuBuilder establishmentId(long establishmentId);
      ItemMenu build();
 }

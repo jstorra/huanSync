@@ -28,17 +28,19 @@ public class ItemMenu {
     private List<Long> listIngredientId;
     private ItemMenuType itemMenuType;
     private int preparationTime;
+    private long establishmentId;
 
     public ItemMenu() {
     }
 
-    public ItemMenu(long itemMenuId, String nameItemMenu, double priceItemMenu, List<Long> listIngredientId, ItemMenuType itemMenuType, int preparationTime) {
+    public ItemMenu(long itemMenuId, String nameItemMenu, double priceItemMenu, List<Long> listIngredientId, ItemMenuType itemMenuType, int preparationTime, long establishmentId) {
         this.itemMenuId = itemMenuId;
         this.nameItemMenu = nameItemMenu;
         this.priceItemMenu = priceItemMenu;
         this.listIngredientId = listIngredientId;
         this.itemMenuType = itemMenuType;
         this.preparationTime = preparationTime;
+        this.establishmentId = establishmentId;
     }
 
     public String getNameItemMenu() {
@@ -116,6 +118,14 @@ public class ItemMenu {
 
     public void setListIngredientId(List<Long> listIngredientId) {
         this.listIngredientId = listIngredientId;
+    }
+
+    public long getEstablishmentId() {
+        return establishmentId;
+    }
+
+    public void setEstablishmentId(long establishmentId) {
+        this.establishmentId = establishmentId;
     }
 
     @Override

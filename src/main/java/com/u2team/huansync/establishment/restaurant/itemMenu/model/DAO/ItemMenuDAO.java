@@ -37,39 +37,54 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
         }
 
         if (allIngredients) {
-            Operations.setConnection(BDConnection.MySQLConnection());
-            // Create a query and send corresponding information in each field by replacing the character "?" with the information
-            String stmInsert = """
+            boolean forRestaurant = true;
+            for (Long ingredient : itemMenu.getListIngredientId()) {
+                Ingredient ing = IngredientController.getByIdIngredient(ingredient);
+                if (ing == null) {
+                    forRestaurant = false;
+                } else {
+                    if (ing.getEstablishmentId() != itemMenu.getEstablishmentId()) {
+                        forRestaurant = false;
+                    }
+                }
+            }
+
+            if (forRestaurant) {
+                Operations.setConnection(BDConnection.MySQLConnection());
+                // Create a query and send corresponding information in each field by replacing the character "?" with the information
+                String stmInsert = """
                            INSERT INTO tbl_itemMenu (nameItemMenu, priceItemMenu, itemMenuType, preparationTime)
                            VALUES (?, ?, ?, ?);
                            """;
-            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
-                ps.setString(1, itemMenu.getNameItemMenu());
-                ps.setDouble(2, itemMenu.getPriceItemMenu());
-                ps.setString(3, itemMenu.getItemMenuType().getName());
-                ps.setInt(4, itemMenu.getPreparationTime());
-
+                try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
+                    ps.setString(1, itemMenu.getNameItemMenu());
+                    ps.setDouble(2, itemMenu.getPriceItemMenu());
+                    ps.setString(3, itemMenu.getItemMenuType().getName());
+                    ps.setInt(4, itemMenu.getPreparationTime());
+                    ps.setLong(5, itemMenu.getEstablishmentId());
 //                 use Operation class with insert_update_delete and verify if the rows in database are affected
-                int rows = Operations.insert_update_delete_db(ps);
-                if (rows <= 0) {
-                    System.out.println("Cannot insert into itemMenu");
-                } else {
-                    System.out.println("Successful insert itemMenu");
-                    String lastRow = "SELECT * FROM tbl_itemmenu ORDER BY itemMenuId DESC LIMIT 1;";
-                    PreparedStatement ps2 = Operations.getConnection().prepareStatement(lastRow);
-                    ResultSet rs = Operations.query_db(ps2);
-                    if (rs.next()) {
-                        long lastId = rs.getLong("itemMenuId");
-                        itemMenu.setItemMenuId(lastId);
-                        insertIngredienItemMenu(itemMenu);
+                    int rows = Operations.insert_update_delete_db(ps);
+                    if (rows <= 0) {
+                        System.out.println("Cannot insert into itemMenu");
+                    } else {
+                        System.out.println("Successful insert itemMenu");
+                        String lastRow = "SELECT * FROM tbl_itemmenu ORDER BY itemMenuId DESC LIMIT 1;";
+                        PreparedStatement ps2 = Operations.getConnection().prepareStatement(lastRow);
+                        ResultSet rs = Operations.query_db(ps2);
+                        if (rs.next()) {
+                            long lastId = rs.getLong("itemMenuId");
+                            itemMenu.setItemMenuId(lastId);
+                            insertIngredienItemMenu(itemMenu);
+                        }
                     }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("An error has occurred: " + e.getMessage());
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("An error has occurred: " + e.getMessage());
             }
+
         } else {
-            System.out.println("All ingredients don't exist");
+            System.out.println("All ingredients don't exist or does not belong to the establishment");
         }
 
     }
@@ -144,6 +159,7 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
                 item.setPriceItemMenu(rs.getDouble("priceItemMenu"));
                 item.setItemMenuType(rs.getString("itemMenuType"));
                 item.setPreparationTime(rs.getInt("preparationTime"));
+                item.setEstablishmentId(rs.getLong("establishmentId"));
                 listItemMenu.add(item);
             }
 
@@ -182,6 +198,7 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
                 item.setPriceItemMenu(rs.getDouble("priceItemMenu"));
                 item.setItemMenuType(rs.getString("itemMenuType"));
                 item.setPreparationTime(rs.getInt("preparationTime"));
+                item.setEstablishmentId(rs.getLong("establishmentId"));
                 listItemMenu.add(item);
             }
 
@@ -216,7 +233,7 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
         Operations.setConnection(BDConnection.MySQLConnection());
         // Create a query and send corresponding information in each field by replacing the character "?" with the information
         String stmGet = "SELECT * FROM tbl_itemmenu WHERE itemMenuId = ?;";
-        
+
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmGet)) {
             ps.setLong(1, id);
             ResultSet rs = Operations.query_db(ps);
@@ -228,6 +245,7 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
                 item.setPriceItemMenu(rs.getDouble("priceItemMenu"));
                 item.setItemMenuType(rs.getString("itemMenuType"));
                 item.setPreparationTime(rs.getInt("preparationTime"));
+                item.setEstablishmentId(rs.getLong("establishmentId"));
             }
 
             List<Long> listIngredientsId = new ArrayList<>();
@@ -242,10 +260,10 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
             PreparedStatement ps2 = Operations.getConnection().prepareStatement(stmRelations);
             ps2.setLong(1, item.getItemMenuId());
             ResultSet rs2 = Operations.query_db(ps2);
-            
+
             while (rs2.next()) {
                 Long ingredientId = rs2.getLong("ingredientId");
-                Ingredient ing =  new Ingredient(rs2.getLong("ingredientId"), rs2.getString("nameIngredient"), rs2.getInt("availableQuantity"));
+                Ingredient ing = new Ingredient(rs2.getLong("ingredientId"), rs2.getString("nameIngredient"), rs2.getInt("availableQuantity"), rs2.getLong("establishmentId"));
                 listIngredientsId.add(ingredientId);
                 listIngredients.add(ing);
             }

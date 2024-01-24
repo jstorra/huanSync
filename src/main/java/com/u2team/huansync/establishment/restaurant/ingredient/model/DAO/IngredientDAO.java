@@ -34,6 +34,7 @@ public class IngredientDAO implements IGetAll<Ingredient>, ISaveDao<Ingredient>,
                 ing.setIngredientId(rs.getLong("ingredientId"));
                 ing.setNameIngredient(rs.getString("nameIngredient"));
                 ing.setAvailableQuantity(rs.getInt("availableQuantity"));
+                ing.setEstablishmentId(rs.getLong("establishmentId"));
                 return ing;
             } else {
                 System.out.println("Not found ingredient");
@@ -58,6 +59,7 @@ public class IngredientDAO implements IGetAll<Ingredient>, ISaveDao<Ingredient>,
                 ing.setIngredientId(rs.getLong("ingredientId"));
                 ing.setNameIngredient(rs.getString("nameIngredient"));
                 ing.setAvailableQuantity(rs.getInt("availableQuantity"));
+                ing.setEstablishmentId(rs.getLong("establishmentId"));
                 listIngredient.add(ing);
             }
             return listIngredient;
@@ -72,11 +74,11 @@ public class IngredientDAO implements IGetAll<Ingredient>, ISaveDao<Ingredient>,
     public void save(Ingredient t) {
         Operations.setConnection(BDConnection.MySQLConnection());
         // Create a query and send corresponding information in each field by replacing the character "?" with the information
-        String stmInsert = "INSERT INTO tbl_ingredients (nameIngredient, availableQuantity) VALUES(?, ?);";
+        String stmInsert = "INSERT INTO tbl_ingredients (nameIngredient, availableQuantity, establishmentId) VALUES(?, ?, ?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setString(1, t.getNameIngredient());
             ps.setInt(2, t.getAvailableQuantity());
-
+            ps.setLong(3, t.getEstablishmentId());
             // use Operation class with insert_update_delete and verify if the rows in database are affected
             int rows = Operations.insert_update_delete_db(ps);
 
@@ -118,19 +120,21 @@ public class IngredientDAO implements IGetAll<Ingredient>, ISaveDao<Ingredient>,
         if (sqlIngredient != null) {
             sqlIngredient.setNameIngredient(ingredient.getNameIngredient());
             sqlIngredient.setAvailableQuantity(ingredient.getAvailableQuantity());
-
+            sqlIngredient.setEstablishmentId(ingredient.getEstablishmentId());
             Operations.setConnection(BDConnection.MySQLConnection());
             // Create a query and send corresponding information in each field by replacing the character "?" with the information
             String stmInsert = """
                            UPDATE tbl_ingredients 
                            SET nameIngredient = ?,
-                           availableQuantity = ?
+                           availableQuantity = ?,
+                           establishmentId = ?
                            WHERE ingredientId = ?
                            """;
             try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
                 ps.setString(1, sqlIngredient.getNameIngredient());
                 ps.setInt(2, sqlIngredient.getAvailableQuantity());
-                ps.setLong(3, sqlIngredient.getIngredientId());
+                ps.setLong(3, sqlIngredient.getEstablishmentId());
+                ps.setLong(4, sqlIngredient.getIngredientId());
 
                 // use Operation class with insert_update_delete and verify if the rows in database are affected
                 int rows = Operations.insert_update_delete_db(ps);

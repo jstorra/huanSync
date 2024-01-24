@@ -20,8 +20,8 @@ public class ItemMenuFull extends ItemMenu{
     public ItemMenuFull() {
     }
 
-    public ItemMenuFull(List<Ingredient> listIngredients, long itemMenuId, String nameItemMenu, double priceItemMenu, List<Long> listIngredientId, ItemMenuType itemMenuType, int preparationTime) {
-        super(itemMenuId, nameItemMenu, priceItemMenu, listIngredientId, itemMenuType, preparationTime);
+    public ItemMenuFull(List<Ingredient> listIngredients, long itemMenuId, String nameItemMenu, double priceItemMenu, List<Long> listIngredientId, ItemMenuType itemMenuType, int preparationTime, long establishmentId) {
+        super(itemMenuId, nameItemMenu, priceItemMenu, listIngredientId, itemMenuType, preparationTime, establishmentId);
         this.listIngredients = listIngredients;
     }
 

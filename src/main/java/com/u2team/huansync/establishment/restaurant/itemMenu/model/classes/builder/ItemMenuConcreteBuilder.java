@@ -56,4 +56,10 @@ public class ItemMenuConcreteBuilder implements ItemMenuBuilder {
         return item;
     }
 
+    @Override
+    public ItemMenuBuilder establishmentId(long establishmentId) {
+        item.setEstablishmentId(establishmentId);
+        return this;
+    }
+
 }

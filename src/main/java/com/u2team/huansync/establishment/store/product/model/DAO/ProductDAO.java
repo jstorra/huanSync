@@ -76,16 +76,16 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
             ps.setLong(1, productId);
             int rows = Operations.insert_update_delete_db(ps);
             if (rows > 0) {
-                System.out.println("successful delete event");
+                System.out.println("successful delete product");
                 return;
             } else {
-                System.out.println("not exists event");
+                System.out.println("not exists product");
                 return;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("something was wrong on delete event");
+        System.out.println("something was wrong on delete product");
         return;
     }
 
@@ -219,16 +219,16 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
                 // use Operation class with insert_update_delete and verify if the rows in database are affected
                 int rows = Operations.insert_update_delete_db(ps);
                 if (rows <= 0) {
-                    System.out.println("Cannot update event");
+                    System.out.println("Cannot update products");
                 } else {
-                    System.out.println("Successful update event");
+                    System.out.println("Successful update products");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
         } else {
-            System.out.println("not found results event");
+            System.out.println("not found results products");
         }
             
           }

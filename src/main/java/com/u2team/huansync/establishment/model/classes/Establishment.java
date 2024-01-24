@@ -1,4 +1,4 @@
-package com.u2team.huansync.establishment.model;
+package com.u2team.huansync.establishment.model.classes;
 
 public class Establishment {
     

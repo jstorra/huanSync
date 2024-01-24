@@ -16,18 +16,16 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
     // query for consulting cosplays
     private static final String SELECT_COSPLAY_QUERY = "SELECT * FROM tbl_cosplay WHERE cosplayId = ? AND statusCosplay = true";
 
-    //query for consultin participantion of the user in the activitie 
+    // query for consultin participantion of the user in the activitie
 
-    private static final String SELECT_PARTICIPATION_QUERY = 
-    """
-      
-    select * from tbl_participation p 
-    JOIN tbl_activities act on  p.activityId = act.activityId  
-    where p.activityId = ? and p.customerId =? and  p.statusParticipation = 'participate' 
-    and  act.typeActivity = 'cosplay' and act.completed =false ;
+    private static final String SELECT_PARTICIPATION_QUERY = """
 
-    """;
+            select * from tbl_participation p
+            JOIN tbl_activities act on  p.activityId = act.activityId
+            where p.activityId = ? and p.customerId =? and  p.statusParticipation = 'participate'
+            and  act.typeActivity = 'cosplay' and act.completed =false ;
 
+            """;
 
     // CONSTRUCTORS
 
@@ -40,30 +38,30 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
     /* testing methods */
 
-    
-    public boolean validateParticipantion(int activityId,int participantId ) {
+    @Override
+    public boolean validateParticipantion(int activityId, int participantId) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_PARTICIPATION_QUERY)) {
             preparedStatement.setInt(1, activityId);
             preparedStatement.setInt(2, participantId);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()==false) {
-                throw new Exception(    
-                """
-                    error: the operation cannot be applied, it seems that there are 3 possibilities why this error arises
-                    1 - the type of activity is different from cosplay
-                    2 -the participant is not participating
-                    3 - the activity has already finished
-                    4 -the participant does not exist        
-                """);
+            if (rs.next() == false) {
+                throw new Exception(
+                        """
+                                error: the operation cannot be applied, it seems that there are 3 possibilities why this error arises
+                                1 - the type of activity is different from cosplay
+                                2 -the participant is not participating
+                                3 - the activity has already finished
+                                4 -the participant does not exist
+                                """);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            return false; 
+            System.out.println(e.getMessage());
+            return false;
         }
-        return true; 
+        return true;
     }
- 
 
+    @Override
     public boolean validateParticipant(int idParticipant) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_CUSTOMER_QUERY)) {
             preparedStatement.setInt(1, idParticipant);
@@ -72,7 +70,7 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
                 throw new Exception("Error: The participant is already competing");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             // Handle the exception appropriately, e.g., log the error or throw a different
             // exception
             return false; // If an exception occurs, you might want to return false here
@@ -88,16 +86,17 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAY_QUERY)) {
             preparedStatement.setInt(1, idCosplay);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            if (!rs.next()) {
                 throw new Exception("The cosplay you want to delete is not in the database.");
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
 
         }
     }
 
+    @Override
     public void validateCosplayisDesact(int idCosplay) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAY_QUERY)) {
             preparedStatement.setInt(1, idCosplay);
@@ -107,15 +106,9 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
 
         }
-    }
-
-
-    public void validateParticipation(){
-        
-
     }
 
 }

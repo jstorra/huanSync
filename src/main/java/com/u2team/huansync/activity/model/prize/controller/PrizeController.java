@@ -5,31 +5,55 @@ import com.u2team.huansync.activity.model.prize.model.PrizeDAO;
 
 import java.util.List;
 
+/**
+ * Controller class for managing prizes.
+ */
 public class PrizeController {
     private static PrizeDAO prizeDAO = new PrizeDAO();
 
-    //view all prizes
+    /**
+     * Retrieves a list of all prizes.
+     *
+     * @return List of all prizes.
+     */
     public static List<Prize> getAllPrizes() {
         return prizeDAO.getAllPrizes();
     }
 
-     //get one prize by id
-    public static Prize getPrizeById(Long prizeId){
+    /**
+     * Retrieves a single prize by its ID.
+     *
+     * @param prizeId The ID of the prize to retrieve.
+     * @return The prize with the specified ID.
+     */
+    public static Prize getPrizeById(Long prizeId) {
         return prizeDAO.getPrizeById(prizeId);
     }
 
-    //add or insert prize
-    public static void insertPrize(Prize prize){
+    /**
+     * Inserts a new prize into the system.
+     *
+     * @param prize The prize to be inserted.
+     */
+    public static void insertPrize(Prize prize) {
         prizeDAO.insertPrize(prize);
     }
 
-    //update prize by id
-    public static void updatePrize(Prize prize){
+    /**
+     * Updates an existing prize by its ID.
+     *
+     * @param prize The updated prize object.
+     */
+    public static void updatePrize(Prize prize) {
         prizeDAO.updatePrize(prize);
     }
 
-    //delete prize by id
-    public static void deletePrize(Long prizeId){
+    /**
+     * Deletes a prize by its ID.
+     *
+     * @param prizeId The ID of the prize to be deleted.
+     */
+    public static void deletePrize(Long prizeId) {
         prizeDAO.deletePrize(prizeId);
     }
 }

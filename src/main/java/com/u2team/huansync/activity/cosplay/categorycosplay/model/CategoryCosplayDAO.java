@@ -1,6 +1,5 @@
 package com.u2team.huansync.activity.cosplay.categorycosplay.model;
 
-import com.u2team.huansync.activity.cosplay.categorycosplay.model.CategoryCosplay;
 import com.u2team.huansync.persistence.BDConnection;
 
 import java.sql.Connection;

@@ -1,5 +1,6 @@
 package com.u2team.huansync.establishment.store.promotion.controller;
 
+import com.u2team.huansync.establishment.store.promotion.model.DAO.PromotionDAO;
 import com.u2team.huansync.establishment.store.promotion.model.classes.Promotion;
 
 
@@ -14,7 +15,7 @@ public class PromotionController {
     public static void insertProduct(Promotion promotion){
         promotionDAO.save(promotion);
     }
-    public static void delete(long productId){
+    public static void delete(long promotionId){
         promotionDAO.delete(promotionId);
         
     }

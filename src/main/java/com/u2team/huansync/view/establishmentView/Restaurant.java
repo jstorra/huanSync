@@ -6,6 +6,8 @@ package com.u2team.huansync.view.establishmentView;
 
 import com.u2team.huansync.establishment.model.Establishment;
 import com.u2team.huansync.view.activityView.AlertDelete;
+import com.u2team.huansync.view.activityView.Successful;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +22,14 @@ public class Restaurant extends javax.swing.JFrame {
         initComponents();
     }
 
+    private boolean validateFields() {
+        if (txtManager.getText().trim().isEmpty() || txtName.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,14 +41,14 @@ public class Restaurant extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRestaurants = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnCreateRestaurant = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        txtUpdate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        txtManager = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnMakeOrder = new javax.swing.JButton();
         btnInventoIngred = new javax.swing.JButton();
 
@@ -58,9 +68,14 @@ public class Restaurant extends javax.swing.JFrame {
                 "Name", "Manager"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblRestaurants.setViewportView(jTable1);
 
         btnCreateRestaurant.setText("Create");
+        btnCreateRestaurant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateRestaurantActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -69,16 +84,16 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Name");
+        txtName.setText("Name");
 
-        jTextField2.setText("Manager");
+        txtManager.setText("Manager");
 
-        txtUpdate.setText("Update");
+        btnUpdate.setText("Update");
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -116,14 +131,14 @@ public class Restaurant extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(btnCreateRestaurant)
                                     .addGap(30, 30, 30)
-                                    .addComponent(txtUpdate)
+                                    .addComponent(btnUpdate)
                                     .addGap(32, 32, 32)
-                                    .addComponent(jButton1))
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField1)))
+                                    .addComponent(btnDelete))
+                                .addComponent(txtManager)
+                                .addComponent(txtName)))
                         .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tblRestaurants, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(87, 87, 87))))
         );
@@ -135,15 +150,15 @@ public class Restaurant extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtManager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(93, 93, 93)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCreateRestaurant)
-                            .addComponent(txtUpdate)
-                            .addComponent(jButton1)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnUpdate)
+                            .addComponent(btnDelete)))
+                    .addComponent(tblRestaurants, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
@@ -173,18 +188,18 @@ public class Restaurant extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         AlertDelete alertDelete = new AlertDelete();
         alertDelete.setVisible(true);
         alertDelete.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
         OrderMenu order = new OrderMenu();
         order.setVisible(true);
         order.setLocationRelativeTo(null);
         this.dispose();
-        
+
     }//GEN-LAST:event_btnMakeOrderActionPerformed
 
     private void btnInventoIngredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoIngredActionPerformed
@@ -193,6 +208,14 @@ public class Restaurant extends javax.swing.JFrame {
         inventoryIngredients.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnInventoIngredActionPerformed
+
+    private void btnCreateRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRestaurantActionPerformed
+        if (validateFields()) {
+            Successful successful = new Successful();
+            successful.setVisible(true);
+            successful.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnCreateRestaurantActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,15 +255,15 @@ public class Restaurant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateRestaurant;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInventoIngred;
     private javax.swing.JButton btnMakeOrder;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton txtUpdate;
+    private javax.swing.JScrollPane tblRestaurants;
+    private javax.swing.JTextField txtManager;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

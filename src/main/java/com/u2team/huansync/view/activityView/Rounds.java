@@ -19,10 +19,12 @@ public class Rounds extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void validateFields() {
-        if (txtAnswerOne.getText().trim().isEmpty() || txtAnswerTwo.getText().trim().isEmpty()) {
+    private boolean validateFields() {
+       if (txtAnswerOne.getText().trim().isEmpty() || txtAnswerTwo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        return false;
         }
+        return true;
     }
 
     /**
@@ -167,7 +169,11 @@ public class Rounds extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        validateFields();
+        if (validateFields()) {
+           Successful successful = new Successful();
+            successful.setVisible(true);
+            successful.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_submitActionPerformed
 
     /**

@@ -6,6 +6,7 @@ package com.u2team.huansync.view.establishmentView;
 
 import com.u2team.huansync.view.MenuView;
 import com.u2team.huansync.view.activityView.AlertDelete;
+import com.u2team.huansync.view.activityView.Successful;
 import java.awt.Menu;
 import javax.swing.JOptionPane;
 
@@ -22,10 +23,12 @@ public class EstablishmentView extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void validateFields() {
+    private boolean validateFields() {
         if (txtNameEstablishment.getText().trim().isEmpty() || txtTypeEstablishment.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        return false;
         }
+        return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,7 +187,11 @@ public class EstablishmentView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatEstabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatEstabActionPerformed
-        validateFields();
+        if (validateFields()) {
+            Successful successful = new Successful();
+            successful.setVisible(true);
+            successful.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btnCreatEstabActionPerformed
 
     private void btnBackEstabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackEstabActionPerformed

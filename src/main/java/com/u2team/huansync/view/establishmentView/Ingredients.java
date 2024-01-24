@@ -5,6 +5,7 @@
 package com.u2team.huansync.view.establishmentView;
 
 import com.u2team.huansync.view.activityView.AlertDelete;
+import com.u2team.huansync.view.activityView.Successful;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,10 +21,12 @@ public class Ingredients extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void validateFields() {
+     private boolean validateFields() {
         if (txtName.getText().trim().isEmpty() || txtAmount.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        return false;
         }
+        return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,7 +161,11 @@ public class Ingredients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredienteActionPerformed
-        validateFields();
+        if (validateFields()) {
+            Successful successful = new Successful();
+            successful.setVisible(true);
+            successful.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btnAddIngredienteActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed

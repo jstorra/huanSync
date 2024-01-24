@@ -19,13 +19,15 @@ public class ActivityView extends javax.swing.JFrame {
     public ActivityView() {
         initComponents();
     }
-    private void validateFields() {
+
+    private boolean validateFields() {
         if (txtName.getText().trim().isEmpty() || txtType.getText().trim().isEmpty() || txtCategory.getText().trim().isEmpty()
                 || txtStartTime.getText().trim().isEmpty() || txtNParticipants.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        return false;
         }
+        return true;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,7 +264,11 @@ public class ActivityView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewCosplayActionPerformed
 
     private void btnCreateActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActivityActionPerformed
-        validateFields();
+        if (validateFields()) {
+            Successful successful = new Successful();
+            successful.setVisible(true);
+            successful.setLocationRelativeTo(null);
+        }
 //        CreateActivity createActi = new CreateActivity();
 //        createActi.setVisible(true);
 //        createActi.setLocationRelativeTo(null);

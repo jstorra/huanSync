@@ -31,9 +31,6 @@ public class PromotionController {
         return promotionDAO.getAll();
     }
     
-     public static void updateProduct(Promotion promotion) {
-        promotionDAO.update(promotion);
-    }
   
     
 }

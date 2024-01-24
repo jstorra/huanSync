@@ -26,7 +26,7 @@ public class QuestionController {
      * @param questionId The ID of the question to retrieve.
      * @return The question with the specified ID.
      */
-    public static Question getQuestionById(long questionId) {
+    public static Question getQuestionById(Long questionId) {
         return questionDAO.getQuestionById(questionId);
     }
 
@@ -53,7 +53,7 @@ public class QuestionController {
      *
      * @param questionId The ID of the question to be deleted.
      */
-    public static void deleteQuestion(long questionId) {
+    public static void deleteQuestion(Long questionId) {
         questionDAO.deleteQuestion(questionId);
     }
 }

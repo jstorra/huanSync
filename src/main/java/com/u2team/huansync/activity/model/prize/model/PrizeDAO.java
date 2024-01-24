@@ -5,6 +5,7 @@ import com.u2team.huansync.persistence.BDConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class PrizeDAO {
                     prizes.add(prize);
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return prizes;
@@ -66,7 +67,7 @@ public class PrizeDAO {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return prize;
@@ -87,7 +88,7 @@ public class PrizeDAO {
                 statement.setString(4, "available");
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -110,7 +111,7 @@ public class PrizeDAO {
                 statement.setLong(7, prize.getPrizeId());
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -127,7 +128,7 @@ public class PrizeDAO {
                 statement.setLong(1, prizeId);
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

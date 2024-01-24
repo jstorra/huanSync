@@ -10,7 +10,7 @@ public interface QuestionBuilder {
      * @param questionId The ID to set for the question.
      * @return The updated QuestionBuilder instance.
      */
-    QuestionBuilder questionId(long questionId);
+    QuestionBuilder questionId(Long questionId);
 
     /**
      * Sets the text of the question.

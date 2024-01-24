@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class ActivityController {
 
-    private ActivityDAO activityDAO = new ActivityDAO();
+    private static ActivityDAO activityDAO = new ActivityDAO();
 
     /**
      * Retrieves a list of all activities.
      *
      * @return A {@code List} of {@code Activity} objects representing all activities.
      */
-    public List<Activity> getAllActivities() {
+    public static List<Activity> getAllActivities() {
         return activityDAO.getAllActivities();
     }
 
@@ -27,7 +27,7 @@ public class ActivityController {
      * @param activityId The unique identifier of the activity.
      * @return An {@code Activity} object representing the activity with the given ID, or {@code null} if not found.
      */
-    public Activity getActivityById(Long activityId) {
+    public static Activity getActivityById(Long activityId) {
         return activityDAO.getActivityById(activityId);
     }
 
@@ -36,7 +36,7 @@ public class ActivityController {
      *
      * @param activity The {@code Activity} object to be inserted.
      */
-    public void insertActivity(Activity activity) {
+    public static void insertActivity(Activity activity) {
         activityDAO.insertActivity(activity);
     }
 
@@ -45,7 +45,7 @@ public class ActivityController {
      *
      * @param activity The {@code Activity} object to be updated.
      */
-    public void updateActivity(Activity activity) {
+    public static void updateActivity(Activity activity) {
         activityDAO.updateActivity(activity);
     }
 
@@ -54,7 +54,7 @@ public class ActivityController {
      *
      * @param activityId The unique identifier of the activity to be deleted.
      */
-    public void deleteActivity(Long activityId) {
+    public static void deleteActivity(Long activityId) {
         activityDAO.deleteActivity(activityId);
     }
 }

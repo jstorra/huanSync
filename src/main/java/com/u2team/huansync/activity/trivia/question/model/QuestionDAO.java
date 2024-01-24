@@ -5,6 +5,7 @@ import com.u2team.huansync.persistence.BDConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class QuestionDAO {
                     questions.add(question);
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return questions;
@@ -46,7 +47,7 @@ public class QuestionDAO {
      * @param questionId The ID of the question to retrieve.
      * @return A Question object representing the question with the specified ID.
      */
-    public Question getQuestionById(long questionId) {
+    public Question getQuestionById(Long questionId) {
         Question question = new Question();
         try (Connection connection = BDConnection.MySQLConnection()){
             String sql = "SELECT * FROM tbl_questions WHERE questionId = ?";
@@ -62,7 +63,7 @@ public class QuestionDAO {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return question;
@@ -83,7 +84,7 @@ public class QuestionDAO {
                 statement.setString(4,question.getDifficulty().getName());
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -104,7 +105,7 @@ public class QuestionDAO {
                 statement.setLong(5, question.getQuestionId());
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -114,14 +115,14 @@ public class QuestionDAO {
      *
      * @param questionId The ID of the question to delete.
      */
-    public void deleteQuestion(long questionId){
+    public void deleteQuestion(Long questionId){
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_questions WHERE questionId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, questionId);
                 statement.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

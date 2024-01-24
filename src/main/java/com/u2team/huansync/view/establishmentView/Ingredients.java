@@ -5,6 +5,7 @@
 package com.u2team.huansync.view.establishmentView;
 
 import com.u2team.huansync.view.activityView.AlertDelete;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,12 @@ public class Ingredients extends javax.swing.JFrame {
     public Ingredients() {
         initComponents();
     }
-
+    
+    private void validateFields() {
+        if (txtName.getText().trim().isEmpty() || txtAmount.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,7 +158,7 @@ public class Ingredients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredienteActionPerformed
-        // TODO add your handling code here:
+        validateFields();
     }//GEN-LAST:event_btnAddIngredienteActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -166,7 +172,10 @@ public class Ingredients extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteIgredientActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+       Restaurant restaurant = new Restaurant();
+        restaurant.setVisible(true);
+        restaurant.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

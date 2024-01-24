@@ -28,17 +28,17 @@ public class TicketAlert extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonSi = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("¿Esta seguro que quiere continuar en la misma direccion?");
 
-        jButton1.setText("SI");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonSi.setText("SI");
+        buttonSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonSiActionPerformed(evt);
             }
         });
 
@@ -55,7 +55,7 @@ public class TicketAlert extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jButton1)
+                        .addComponent(buttonSi)
                         .addGap(86, 86, 86)
                         .addComponent(jButton2)))
                 .addContainerGap(68, Short.MAX_VALUE))
@@ -67,7 +67,7 @@ public class TicketAlert extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(buttonSi)
                     .addComponent(jButton2))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -86,9 +86,12 @@ public class TicketAlert extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buttonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSiActionPerformed
+      TicketOfficeView nueva = new TicketOfficeView();
+      nueva.setVisible(true);
+      nueva.setLocationRelativeTo(null);
+      this.dispose();
+    }//GEN-LAST:event_buttonSiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,7 +129,7 @@ public class TicketAlert extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonSi;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

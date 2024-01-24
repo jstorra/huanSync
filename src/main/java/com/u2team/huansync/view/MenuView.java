@@ -10,6 +10,7 @@ import com.u2team.huansync.view.eventView.EventView;
 import com.u2team.huansync.view.eventView.ShowEventView;
 import com.u2team.huansync.view.staffView.StaffView;
 import com.u2team.huansync.view.ticketView.TicketOfficeView;
+import com.u2team.huansync.view.ticketView.TicketShow;
 import com.u2team.huansync.view.workerRoleView.WorkerRoleView;
 import java.awt.Dimension;
 
@@ -253,7 +254,7 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketsActionPerformed
-        TicketOfficeView initialTicket = new TicketOfficeView();
+        TicketShow initialTicket = new TicketShow();
         initialTicket.setVisible(true);
         initialTicket.setLocationRelativeTo(null);
          this.dispose();

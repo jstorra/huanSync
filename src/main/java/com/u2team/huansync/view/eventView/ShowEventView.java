@@ -56,7 +56,7 @@ public class ShowEventView extends javax.swing.JFrame {
             }
         });
 
-        salir.setText("atras");
+        salir.setText("Back");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);

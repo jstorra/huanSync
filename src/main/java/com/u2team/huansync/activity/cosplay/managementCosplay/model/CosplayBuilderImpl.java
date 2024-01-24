@@ -34,9 +34,18 @@ public class CosplayBuilderImpl implements CosplayBuilder {
         return this ;
     }
 
+
+    @Override
+    public CosplayBuilder participantName(String participantName) {
+        cosplay.setparticipantName(participantName);
+        return this ;
+    }
+
     @Override
     public Cosplay build() {
        return cosplay ;
     }
+
+   
     
 }

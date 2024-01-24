@@ -6,5 +6,6 @@ public interface CosplayBuilder {
     CosplayBuilder nameCosplay(String nameCosplay);
     CosplayBuilder participantId(int participantId);
     CosplayBuilder activictyId(int activictyId);
+    CosplayBuilder participantName(String participantName);
     Cosplay build();
 }

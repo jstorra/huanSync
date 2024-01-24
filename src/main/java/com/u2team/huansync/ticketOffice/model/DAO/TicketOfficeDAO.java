@@ -97,10 +97,16 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
         LocalDate startDate = eventDatas.getDateEvent();
         LocalTime startHour = eventDatas.getTimeEvent();
 
-        if (Validations.isValidDate(startDate) & Validations.isValidHour(startHour) & Validations.checkedEvent(eventDatas.getEventId()) & Validations.checkedStaff(staffDatas.getStaffId())) {
+        if (Validations.isValidDate(startDate) & Validations.isValidHour(startHour)) {
             System.out.println("This ticketOffice was impossible to add because the event has already started");
             return;
-        }  else {
+        } else if (Validations.checkedEvent(eventDatas.getEventId())) {
+            System.out.println("That event was assigned to another ticket office");
+            return;
+        } else if (Validations.checkedStaff(staffDatas.getStaffId())){
+            System.out.println("That staff was assigned to another ticket office");
+            return;
+        } else {
             
             String ticketOfficeStm = "INSERT INTO tbl_ticketOffice(eventId, location, address, contactNumber, staffId) VALUES(?,?,?,?,?)";
             try (PreparedStatement ps = Operations.getConnection().prepareStatement(ticketOfficeStm)) {

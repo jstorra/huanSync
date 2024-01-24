@@ -6,7 +6,7 @@ package com.u2team.huansync.view.activityView;
 
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class AlertDelete extends javax.swing.JFrame {
 
@@ -27,48 +27,54 @@ public class AlertDelete extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        messageAlert = new javax.swing.JLabel();
+        btnConfirm = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Confirm deletion ?");
+        messageAlert.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        messageAlert.setText("CONFIRM DELETION?");
 
-        jButton1.setText("Confirm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConfirmActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancel");
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(82, 82, 82))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(btnConfirm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(85, Short.MAX_VALUE)
+                        .addComponent(messageAlert)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jLabel1)
+                .addComponent(messageAlert)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnConfirm)
+                    .addComponent(btnCancel))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -86,9 +92,13 @@ public class AlertDelete extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,9 +136,9 @@ public class AlertDelete extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnConfirm;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel messageAlert;
     // End of variables declaration//GEN-END:variables
 }

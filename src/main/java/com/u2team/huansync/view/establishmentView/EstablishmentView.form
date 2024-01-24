@@ -23,14 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,48 +41,37 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnBackEstab" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnCreatEstab" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnUpdatEstab" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="btnDeletEstab" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel3" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField1" min="-2" pref="282" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" min="-2" pref="282" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="71" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jScrollPane1" min="-2" pref="371" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="219" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnBackEstab" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtTypeEstablishment" min="-2" pref="282" max="-2" attributes="0"/>
+                              <Component id="txtNameEstablishment" min="-2" pref="282" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnCreatEstab" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="btnUpdatEstab" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnDeletEstab" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="371" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="65" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,41 +81,28 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtNameEstablishment" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="txtTypeEstablishment" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnDeletEstab" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnUpdatEstab" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCreatEstab" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnUpdatEstab" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnDeletEstab" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Component id="jScrollPane1" min="-2" pref="297" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="61" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnBackEstab" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPane1" min="-2" pref="297" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnBackEstab" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,6 +133,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletEstabActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBackEstab">
           <Properties>
@@ -175,6 +154,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View Restaurant"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
 
@@ -192,24 +174,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JTextField" name="txtNameEstablishment">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Name: "/>
+            <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JTextField" name="txtTypeEstablishment">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Type:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
+            <Property name="text" type="java.lang.String" value="Type"/>
           </Properties>
         </Component>
       </SubComponents>

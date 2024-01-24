@@ -5,11 +5,13 @@
 package com.u2team.huansync.view.establishmentView;
 
 import com.u2team.huansync.view.MenuView;
+import com.u2team.huansync.view.activityView.AlertDelete;
 import java.awt.Menu;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author ANGIE DURAN
+ * @author NICOLAS RUIZ
  */
 public class EstablishmentView extends javax.swing.JFrame {
 
@@ -19,7 +21,12 @@ public class EstablishmentView extends javax.swing.JFrame {
     public EstablishmentView() {
         initComponents();
     }
-
+    
+    private void validateFields() {
+        if (txtNameEstablishment.getText().trim().isEmpty() || txtTypeEstablishment.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,10 +46,8 @@ public class EstablishmentView extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstablishments = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtNameEstablishment = new javax.swing.JTextField();
+        txtTypeEstablishment = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +64,11 @@ public class EstablishmentView extends javax.swing.JFrame {
         btnUpdatEstab.setText("Update");
 
         btnDeletEstab.setText("Delete");
+        btnDeletEstab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletEstabActionPerformed(evt);
+            }
+        });
 
         btnBackEstab.setText("Back");
         btnBackEstab.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +80,11 @@ public class EstablishmentView extends javax.swing.JFrame {
         jButton5.setText("View Shop");
 
         jButton6.setText("View Restaurant");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         tblEstablishments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,51 +107,39 @@ public class EstablishmentView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblEstablishments);
 
-        jLabel2.setText("Name: ");
+        txtNameEstablishment.setText("Name");
 
-        jLabel3.setText("Type:");
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
+        txtTypeEstablishment.setText("Type");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(94, 94, 94)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBackEstab))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnCreatEstab)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdatEstab)
-                                .addGap(52, 52, 52)
-                                .addComponent(btnDeletEstab)
-                                .addGap(123, 123, 123))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(74, 74, 74))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(378, 378, 378))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBackEstab)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTypeEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNameEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnCreatEstab)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnUpdatEstab)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeletEstab))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6)))
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,59 +147,65 @@ public class EstablishmentView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(60, 60, 60)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNameEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(txtTypeEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDeletEstab)
+                            .addComponent(btnCreatEstab)
                             .addComponent(btnUpdatEstab)
-                            .addComponent(btnCreatEstab)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnBackEstab)
-                        .addGap(77, 77, 77))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnDeletEstab))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton5)
-                            .addComponent(jButton6))
-                        .addGap(99, 99, 99))))
+                            .addComponent(jButton6)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(btnBackEstab)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatEstabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatEstabActionPerformed
-        // TODO add your handling code here:
+        validateFields();
     }//GEN-LAST:event_btnCreatEstabActionPerformed
 
     private void btnBackEstabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackEstabActionPerformed
         MenuView menu = new MenuView();
         menu.setVisible(true);
-        this.setVisible(false);
+        menu.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnBackEstabActionPerformed
+
+    private void btnDeletEstabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletEstabActionPerformed
+       AlertDelete alertDelete = new AlertDelete();
+        alertDelete.setVisible(true);
+        alertDelete.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnDeletEstabActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Restaurant restaurant = new Restaurant();
+        restaurant.setVisible(true);
+        restaurant.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,12 +251,10 @@ public class EstablishmentView extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblEstablishments;
+    private javax.swing.JTextField txtNameEstablishment;
+    private javax.swing.JTextField txtTypeEstablishment;
     // End of variables declaration//GEN-END:variables
 }

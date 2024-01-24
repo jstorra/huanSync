@@ -6,7 +6,7 @@ package com.u2team.huansync.view.activityView;
 
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class Cosplay extends javax.swing.JFrame {
 
@@ -26,21 +26,53 @@ public class Cosplay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        btnBackCosplay = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("COSPLAY");
+
+        btnBackCosplay.setText("Back");
+        btnBackCosplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackCosplayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(474, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBackCosplay)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                .addComponent(btnBackCosplay)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackCosplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackCosplayActionPerformed
+       ActivityView initialActivity = new ActivityView();
+        initialActivity.setVisible(true);
+        initialActivity.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnBackCosplayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +110,7 @@ public class Cosplay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackCosplay;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

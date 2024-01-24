@@ -6,7 +6,7 @@ package com.u2team.huansync.view.activityView;
 
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class ResponsibleTrivia extends javax.swing.JFrame {
 
@@ -70,16 +70,13 @@ public class ResponsibleTrivia extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnBack))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollPanelResponsible, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tittleResponsible, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBack)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tittleResponsible, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPanelResponsible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +109,8 @@ public class ResponsibleTrivia extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         TriviaList viewTriviaList = new TriviaList();
         viewTriviaList.setVisible(true);
-        this.setVisible(false);
+        viewTriviaList.setLocationRelativeTo(null);
+        this.dispose();
         
     }//GEN-LAST:event_btnBackActionPerformed
 

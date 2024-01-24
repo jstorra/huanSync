@@ -4,9 +4,11 @@
  */
 package com.u2team.huansync.view.activityView;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class Rounds extends javax.swing.JFrame {
 
@@ -15,6 +17,12 @@ public class Rounds extends javax.swing.JFrame {
      */
     public Rounds() {
         initComponents();
+    }
+    
+    private void validateFields() {
+        if (txtAnswerOne.getText().trim().isEmpty() || txtAnswerTwo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -30,10 +38,9 @@ public class Rounds extends javax.swing.JFrame {
         rounds = new javax.swing.JLabel();
         imageOne = new javax.swing.JLabel();
         imageTwo = new javax.swing.JLabel();
-        answerOne = new javax.swing.JTextField();
-        answerTwo = new javax.swing.JTextField();
-        submitOne = new javax.swing.JButton();
-        submitTwo = new javax.swing.JButton();
+        txtAnswerOne = new javax.swing.JTextField();
+        txtAnswerTwo = new javax.swing.JTextField();
+        submit = new javax.swing.JButton();
         question = new javax.swing.JLabel();
         participantOne = new javax.swing.JLabel();
         participantTwo = new javax.swing.JLabel();
@@ -45,22 +52,20 @@ public class Rounds extends javax.swing.JFrame {
         rounds.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         rounds.setText("Round");
 
-        imageOne.setText("Image");
+        imageOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/u2team/huansync/view/icons/iconsParticipant.png"))); // NOI18N
 
-        imageTwo.setText("Image");
+        imageTwo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/u2team/huansync/view/icons/iconsParticipant.png"))); // NOI18N
 
-        answerOne.setText(" ");
+        txtAnswerOne.setText(" ");
 
-        answerTwo.setText(" ");
+        txtAnswerTwo.setText(" ");
 
-        submitOne.setText("Send");
-        submitOne.addActionListener(new java.awt.event.ActionListener() {
+        submit.setText("Send");
+        submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitOneActionPerformed(evt);
+                submitActionPerformed(evt);
             }
         });
-
-        submitTwo.setText("Send");
 
         question.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         question.setText(" Quiestions");
@@ -80,37 +85,41 @@ public class Rounds extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtAnswerOne, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(pointsOne, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(participantOne, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageOne))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnswerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(participantTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(imageTwo)))
+                .addGap(58, 58, 58))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pointsTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rounds, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(answerOne)
-                                    .addComponent(participantOne, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(pointsOne, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(imageOne, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(answerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(participantTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(72, 72, 72)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(pointsTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(imageTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(submitOne)
-                        .addGap(95, 95, 95)
-                        .addComponent(submitTwo)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addGap(164, 164, 164)
+                        .addComponent(submit)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,27 +128,25 @@ public class Rounds extends javax.swing.JFrame {
                 .addComponent(rounds)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(participantOne)
                     .addComponent(participantTwo))
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imageOne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imageTwo)
+                    .addComponent(imageOne))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pointsOne)
                     .addComponent(pointsTwo))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(answerOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(answerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitOne)
-                    .addComponent(submitTwo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(txtAnswerOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnswerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(submit)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,9 +166,9 @@ public class Rounds extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitOneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitOneActionPerformed
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        validateFields();
+    }//GEN-LAST:event_submitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +206,6 @@ public class Rounds extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField answerOne;
-    private javax.swing.JTextField answerTwo;
     private javax.swing.JLabel imageOne;
     private javax.swing.JLabel imageTwo;
     private javax.swing.JPanel jPanel1;
@@ -210,7 +215,8 @@ public class Rounds extends javax.swing.JFrame {
     private javax.swing.JLabel pointsTwo;
     private javax.swing.JLabel question;
     private javax.swing.JLabel rounds;
-    private javax.swing.JButton submitOne;
-    private javax.swing.JButton submitTwo;
+    private javax.swing.JButton submit;
+    private javax.swing.JTextField txtAnswerOne;
+    private javax.swing.JTextField txtAnswerTwo;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,7 +6,7 @@ package com.u2team.huansync.view.activityView;
 
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class WinnerTrivia extends javax.swing.JFrame {
 
@@ -45,29 +45,29 @@ public class WinnerTrivia extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(winnerTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(winnerParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(154, 154, 154)
                 .addComponent(nextWinner)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(winnerParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(winnerTittle)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(41, 41, 41)
                 .addComponent(winnerTittle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(winnerParticipant)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(nextWinner)
-                .addGap(19, 19, 19))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -44,51 +44,56 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="txtAnswerOne" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="pointsOne" min="-2" pref="41" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="participantOne" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="imageOne" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtAnswerTwo" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Component id="participantTwo" min="-2" pref="129" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="imageTwo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="pointsTwo" min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="rounds" min="-2" pref="65" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="answerOne" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="participantOne" alignment="0" pref="130" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="pointsOne" min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="imageOne" min="-2" pref="80" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="answerTwo" min="-2" pref="129" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="participantTwo" min="-2" pref="129" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="pointsTwo" min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="imageTwo" min="-2" pref="80" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="question" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
+                              <Component id="question" min="-2" pref="298" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="submitOne" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                          <Component id="submitTwo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="submit" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,32 +104,29 @@
                   <Component id="rounds" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="question" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="participantOne" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="participantTwo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="imageOne" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="imageTwo" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="imageTwo" min="-2" max="-2" attributes="0"/>
+                      <Component id="imageOne" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="pointsOne" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="pointsTwo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="answerOne" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="answerTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAnswerOne" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAnswerTwo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="submit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="submitOne" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="submitTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,36 +142,35 @@
         </Component>
         <Component class="javax.swing.JLabel" name="imageOne">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Image"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/u2team/huansync/view/icons/iconsParticipant.png"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="imageTwo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Image"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/u2team/huansync/view/icons/iconsParticipant.png"/>
+            </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="answerOne">
+        <Component class="javax.swing.JTextField" name="txtAnswerOne">
           <Properties>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="answerTwo">
+        <Component class="javax.swing.JTextField" name="txtAnswerTwo">
           <Properties>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="submitOne">
+        <Component class="javax.swing.JButton" name="submit">
           <Properties>
             <Property name="text" type="java.lang.String" value="Send"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitOneActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="submitTwo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Send"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="question">
           <Properties>

@@ -4,18 +4,29 @@
  */
 package com.u2team.huansync.view.activityView;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class TriviaList extends javax.swing.JFrame {
 
     /**
      * Creates new form TriviaList
      */
-    public TriviaList() {
-        initComponents();
-    }
+//    public TriviaList() {
+//        initComponents();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,10 +40,10 @@ public class TriviaList extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
-        tittleTrivia = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTrivia = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
+        btnBackTrivia = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -43,10 +54,8 @@ public class TriviaList extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tittleTrivia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tittleTrivia.setText("TRIVIA");
-
-        jScrollPane2.setAutoscrolls(true);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("TRIVIAS");
 
         tblTrivia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,23 +65,15 @@ public class TriviaList extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Name", "Hour", " "
+                "Name", "Hour", "Actions"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(tblTrivia);
 
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnBackTrivia.setText("Back");
+        btnBackTrivia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnBackTriviaActionPerformed(evt);
             }
         });
 
@@ -81,47 +82,100 @@ public class TriviaList extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tittleTrivia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBackTrivia)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(tittleTrivia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBack)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btnBackTrivia)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       ActivityView backActivity = new ActivityView();
-       backActivity.setVisible(true);
-       this.setVisible(false);
-    }//GEN-LAST:event_btnBackActionPerformed
+    private void btnBackTriviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackTriviaActionPerformed
+        ActivityView initialActivity = new ActivityView();
+        initialActivity.setVisible(true);
+        initialActivity.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnBackTriviaActionPerformed
+    
+    //private javax.swing.JTable tblTrivia;
+    private javax.swing.table.DefaultTableModel model;
+    
+    public TriviaList() {
+        initComponents();
 
+        //initialize table and table model
+        model = new DefaultTableModel(new Object[][]{
+                {"Data 1", "Data 2", "Data 3", "Button"}
+                // you can add more rows
+        }, new String[]{"Name", "Hour", "Actions"});
+
+        tblTrivia.setModel(model);
+        tblTrivia.getColumnModel().getColumn(2).setCellRenderer(new ButtonRenderer());
+        tblTrivia.getColumnModel().getColumn(2).setCellEditor(new ButtonEditor(new JCheckBox()));
+    }
+    
+
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer() {
+            setOpaque(true);
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText((value == null) ? "" : value.toString());
+            return this;
+        }
+    }
+    
+    class ButtonEditor extends DefaultCellEditor {
+        private JButton button;
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            button = new JButton();
+            button.setOpaque(true);
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // logic when you cick the boton
+                    JOptionPane.showMessageDialog(null, "Botón en fila " + tblTrivia.getSelectedRow() + " clickeado");
+                }
+            });
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            button.setText((value == null) ? "" : value.toString());
+            return button;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -158,12 +212,12 @@ public class TriviaList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBackTrivia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblTrivia;
-    private javax.swing.JLabel tittleTrivia;
     // End of variables declaration//GEN-END:variables
 }

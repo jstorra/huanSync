@@ -5,10 +5,11 @@
 package com.u2team.huansync.view.activityView;
 
 import com.u2team.huansync.view.MenuView;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
- *
- * @author ANGIE DURAN
+ * @author NICOLAS RUIZ
  */
 public class ActivityView extends javax.swing.JFrame {
 
@@ -18,6 +19,13 @@ public class ActivityView extends javax.swing.JFrame {
     public ActivityView() {
         initComponents();
     }
+    private void validateFields() {
+        if (txtName.getText().trim().isEmpty() || txtType.getText().trim().isEmpty() || txtCategory.getText().trim().isEmpty()
+                || txtStartTime.getText().trim().isEmpty() || txtNParticipants.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +46,6 @@ public class ActivityView extends javax.swing.JFrame {
         btnBackActivities = new javax.swing.JButton();
         btnViewCosplay = new javax.swing.JButton();
         btnViewTrivia = new javax.swing.JButton();
-        name = new javax.swing.JLabel();
-        type = new javax.swing.JLabel();
-        category = new javax.swing.JLabel();
-        starTime = new javax.swing.JLabel();
-        nParticipants = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtType = new javax.swing.JTextField();
         txtCategory = new javax.swing.JTextField();
@@ -94,7 +97,7 @@ public class ActivityView extends javax.swing.JFrame {
             }
         });
 
-        btnCreateActivity.setText("Create Activity");
+        btnCreateActivity.setText("Create");
         btnCreateActivity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActivityActionPerformed(evt);
@@ -122,73 +125,63 @@ public class ActivityView extends javax.swing.JFrame {
             }
         });
 
-        name.setText("Name:");
+        txtName.setText("Name");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
-        type.setText("Type:");
+        txtType.setText("Type");
 
-        category.setText("Category:");
+        txtCategory.setText("Category");
+        txtCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoryActionPerformed(evt);
+            }
+        });
 
-        starTime.setText("Start Time:");
+        txtStartTime.setText("Start Time");
 
-        nParticipants.setText("N° Participants:");
-
-        txtName.setText("jTextField1");
-
-        txtType.setText("jTextField2");
-
-        txtCategory.setText("jTextField3");
-
-        txtStartTime.setText("jTextField4");
-
-        txtNParticipants.setText("jTextField5");
+        txtNParticipants.setText("N° Participants");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCreateActivity, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnDelActivity)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBackActivities))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(328, 328, 328)
+                        .addComponent(tittleActivities, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(38, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnUpdaActivity)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtType, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                        .addComponent(txtStartTime)
-                                        .addComponent(txtCategory)
-                                        .addComponent(txtNParticipants))))
-                            .addComponent(starTime, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCreateActivity)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnDelActivity)
+                                .addGap(22, 22, 22)
+                                .addComponent(btnUpdaActivity)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStartTime, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNParticipants, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(37, 37, 37)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nParticipants, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnViewCosplay)
-                                .addGap(49, 49, 49)
-                                .addComponent(btnViewTrivia))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBackActivities)
-                .addGap(129, 129, 129))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(414, 414, 414)
-                .addComponent(tittleActivities, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnViewTrivia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnViewCosplay))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,47 +191,40 @@ public class ActivityView extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(name)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(type)
-                            .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(category)
-                            .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(starTime)
-                            .addComponent(txtStartTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nParticipants)
-                            .addComponent(txtNParticipants, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtStartTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNParticipants, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCreateActivity)
                             .addComponent(btnDelActivity)
-                            .addComponent(btnUpdaActivity)
                             .addComponent(btnViewTrivia)
-                            .addComponent(btnViewCosplay)))
+                            .addComponent(btnViewCosplay)
+                            .addComponent(btnUpdaActivity)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(btnBackActivities)
-                .addGap(109, 109, 109))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -249,7 +235,9 @@ public class ActivityView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdaActivityActionPerformed
 
     private void btnDelActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActivityActionPerformed
-        // TODO add your handling code here:
+        AlertDelete alertDelete = new AlertDelete();
+        alertDelete.setVisible(true);
+        alertDelete.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnDelActivityActionPerformed
 
     private void btnViewTriviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTriviaActionPerformed
@@ -267,15 +255,27 @@ public class ActivityView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActivitiesActionPerformed
 
     private void btnViewCosplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCosplayActionPerformed
-        // TODO add your handling code here:
+        Cosplay cosplayview = new Cosplay();
+        cosplayview.setVisible(true);
+        cosplayview.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnViewCosplayActionPerformed
 
     private void btnCreateActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActivityActionPerformed
-        CreateActivity createActi = new CreateActivity();
-        createActi.setVisible(true);
-        createActi.setLocationRelativeTo(null);
-        this.setVisible(false);
+        validateFields();
+//        CreateActivity createActi = new CreateActivity();
+//        createActi.setVisible(true);
+//        createActi.setLocationRelativeTo(null);
+//        this.setVisible(false);
     }//GEN-LAST:event_btnCreateActivityActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,12 +323,8 @@ public class ActivityView extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdaActivity;
     private javax.swing.JButton btnViewCosplay;
     private javax.swing.JButton btnViewTrivia;
-    private javax.swing.JLabel category;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel nParticipants;
-    private javax.swing.JLabel name;
-    private javax.swing.JLabel starTime;
     private javax.swing.JTable tblActivities;
     private javax.swing.JLabel tittleActivities;
     private javax.swing.JTextField txtCategory;
@@ -336,6 +332,5 @@ public class ActivityView extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtStartTime;
     private javax.swing.JTextField txtType;
-    private javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,9 +4,11 @@
  */
 package com.u2team.huansync.view.establishmentView;
 
+import com.u2team.huansync.view.activityView.AlertDelete;
+
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class Ingredients extends javax.swing.JFrame {
 
@@ -30,14 +32,12 @@ public class Ingredients extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        txtAmount = new javax.swing.JTextField();
+        btnAddIngrediente = new javax.swing.JButton();
+        btnUpdateIngredient = new javax.swing.JButton();
+        btnDeleteIgredient = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,26 +57,37 @@ public class Ingredients extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setText("Name: ");
-
-        jLabel4.setText("Amount: ");
-
-        jTextField1.setText("jTextField1");
-
-        jTextField3.setText("jTextField3");
-
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtName.setText("Name");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Update");
+        txtAmount.setText("Amount");
 
-        jButton3.setText("Delete");
+        btnAddIngrediente.setText("Add");
+        btnAddIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddIngredienteActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Back");
+        btnUpdateIngredient.setText("Update");
+
+        btnDeleteIgredient.setText("Delete");
+        btnDeleteIgredient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteIgredientActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,77 +96,78 @@ public class Ingredients extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                            .addComponent(jTextField3)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(jButton2)
-                                        .addGap(56, 56, 56)
-                                        .addComponent(jButton3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(70, 70, 70))))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBack)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtAmount, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnAddIngrediente)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(btnUpdateIngredient)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                    .addComponent(btnDeleteIgredient))
+                                .addComponent(txtName))
+                            .addGap(63, 63, 63)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(93, 93, 93)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(jButton4)
-                .addContainerGap(45, Short.MAX_VALUE))
+                            .addComponent(btnAddIngrediente)
+                            .addComponent(btnUpdateIngredient)
+                            .addComponent(btnDeleteIgredient)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(btnBack)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddIngredienteActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnDeleteIgredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteIgredientActionPerformed
+        AlertDelete alertDelete = new AlertDelete();
+        alertDelete.setVisible(true);
+        alertDelete.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnDeleteIgredientActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,17 +205,15 @@ public class Ingredients extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAddIngrediente;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDeleteIgredient;
+    private javax.swing.JButton btnUpdateIngredient;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtAmount;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,7 +6,7 @@ package com.u2team.huansync.view.establishmentView;
 
 /**
  *
- * @author nicos
+ * @author NICOLAS RUIZ
  */
 public class OrderMenu extends javax.swing.JFrame {
 

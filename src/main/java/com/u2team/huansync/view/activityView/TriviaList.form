@@ -50,15 +50,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -69,43 +66,42 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="335" max="-2" attributes="0"/>
-                      <Component id="tittleTrivia" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnBackTrivia" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="236" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="tittleTrivia" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="187" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="235" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <Component id="btnBackTrivia" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="tittleTrivia">
+        <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+              <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="TRIVIA"/>
+            <Property name="text" type="java.lang.String" value="TRIVIAS"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-          <Properties>
-            <Property name="autoscrolls" type="boolean" value="true"/>
-          </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
@@ -113,21 +109,21 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="4">
-                    <Column editable="true" title="Name" type="java.lang.String"/>
-                    <Column editable="true" title="Hour" type="java.lang.String"/>
-                    <Column editable="true" title=" " type="java.lang.Object"/>
+                    <Column editable="true" title="Name" type="java.lang.Object"/>
+                    <Column editable="true" title="Hour" type="java.lang.Object"/>
+                    <Column editable="true" title="Actions" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnBack">
+        <Component class="javax.swing.JButton" name="btnBackTrivia">
           <Properties>
             <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackTriviaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

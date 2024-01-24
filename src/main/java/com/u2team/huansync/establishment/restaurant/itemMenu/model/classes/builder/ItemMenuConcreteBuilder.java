@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class ItemMenuConcreteBuilder implements ItemMenuBuilder {
 
-    private ItemMenu item = new ItemMenu();
+    private ItemMenu item;
 
     public ItemMenuConcreteBuilder() {
         this.item = new ItemMenu();

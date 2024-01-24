@@ -1,6 +1,10 @@
 package com.u2team.huansync.establishment.restaurant.itemMenu.model.DAO;
 
-import com.u2team.huansync.establishment.restaurant.DAO.*;
+import com.u2team.huansync.establishment.DAO.IGetAll;
+import com.u2team.huansync.establishment.DAO.IGetByIdFull;
+import com.u2team.huansync.establishment.DAO.IGetAllFull;
+import com.u2team.huansync.establishment.DAO.ISaveDao;
+import com.u2team.huansync.establishment.DAO.IDeleteDao;
 import com.u2team.huansync.establishment.restaurant.ingredient.controller.IngredientController;
 import com.u2team.huansync.establishment.restaurant.ingredient.model.classes.Ingredient;
 import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.ItemMenu;

@@ -1,5 +1,5 @@
 
-package com.u2team.huansync.establishment.restaurant.DAO;
+package com.u2team.huansync.establishment.DAO;
 
 import java.util.List;
 

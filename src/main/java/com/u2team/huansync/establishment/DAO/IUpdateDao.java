@@ -1,4 +1,4 @@
-package com.u2team.huansync.establishment.restaurant.DAO;
+package com.u2team.huansync.establishment.DAO;
 
 /**
  *

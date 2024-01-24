@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.u2team.huansync.establishment.order.model.classes.OrderStatusEnum;
+import com.u2team.huansync.event.DAO.IGetByIdDao;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,7 +25,7 @@ import java.util.List;
  */
 
 //Here implements de rest of the CRUD
-public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<Order>{
+public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<Order>, IGetByIdDao<Order>{
 
     @Override
     public void save(Order order) {
@@ -42,7 +44,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
             
             //Put name to correct the mistake
             /////////Corregir esta linea
-            //ps.setObject(6, order.getOrderStatusEnum()); // Corrected this line
+            ps.setString(6, order.getOrderStatusEnum().name()); // Corrected this line
 
 
 
@@ -62,7 +64,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
     @Override
     public void delete(long productId) {
       Operations.setConnection(BDConnection.MySQLConnection());
-      String stm = "DELETE FROM tbl_order WHERE productId = ?;";
+      String stm = "DELETE FROM tbl_order WHERE orderId = ?;";
       try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, productId);
             int rows = Operations.insert_update_delete_db(ps);
@@ -84,7 +86,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
     public List<Order> getAll() {
         List<Order> orderList = new ArrayList<>();
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "select * from tbl_order ;";
+        String stm = "select * from tbl_order;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
 
             ResultSet rs = Operations.query_db(ps);
@@ -103,12 +105,64 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
                 
                 //In order.java in the method getOrderStatusEnum I fixed the mistake
                 order.setOrderStatusEnum(order.getOrderStatusEnum(rs.getString("orderStatusEnum")));
+                
+                //Don´t forgett this to add the order
+                orderList.add(order);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return orderList;
+    }
+
+    @Override
+    public Order getById(long orderId) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        
+        //Class Operations are used to configure the connection with database and send a Query saved in variable stm
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String stm = "SELECT * FROM tbl_order where orderId = ?;";
+
+        //ps (prepareStatement) receives stm and replaces "?" for the variable with the index: "1" with "id"
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
+            ps.setLong(1, orderId);
+
+            // The result of the query is saved in the "rs" variable to apply logic.
+            ResultSet rs = Operations.query_db(ps);
+
+            // rs.next() -> Means if there is an answer, execute logic
+            if (rs.next()) {
+
+                
+                
+////                // Create builder with concrete Builder -> (Concrete builder creates the object step by step)
+////                ProductBuilder productBuilder = new ProductConcreteBuilder();
+////
+////                // Creates an event object and use eventBuilder for constructs it using the information from the query(rs) (field by field)
+////                Product sqlProduct = productBuilder
+////                        .productId(rs.getLong("productId"))
+////                        .nameProduct(rs.getString("productName"))
+////                        .storeId(rs.getLong("storeId"))
+////                        .productPrice(rs.getDouble("productPrice"))
+////                        .description(rs.getNString("description"))
+////                        .manufacturer(rs.getString("manufacturer"))
+////                        .quantity(rs.getInt("quantity"))
+////                        .build();
+////
+////                //return contructed object sqlEvent
+                
+                
+////                return sqlProduct;
+            } else {
+                System.out.println("ERROR: The id has not been found");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //Return null always because this method should return something
+        return null;
     }
     
     

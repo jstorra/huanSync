@@ -27,8 +27,9 @@ public enum TypeProductEnum {
     public String getName() {
         return name;
     }
-
-    public void setName() {
+    
+    //Corrected for Jaider
+    public void setName(String name) {
         this.name = name;
     }
 

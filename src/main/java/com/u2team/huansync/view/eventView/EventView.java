@@ -4,6 +4,12 @@
  */
 package com.u2team.huansync.view.eventView;
 
+import com.u2team.huansync.event.controller.EventController;
+import com.u2team.huansync.event.model.classes.AgeClassificationEnum;
+import com.u2team.huansync.event.model.classes.Event;
+import com.u2team.huansync.event.model.classes.StatusEnum;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,11 +48,11 @@ public class EventView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtEventAddress = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtEventPersona = new javax.swing.JTextField();
+        txtEventPeople = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtEventStore = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtEventRestaurante = new javax.swing.JTextField();
+        txtEventRestaurant = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtEventTime = new javax.swing.JTextField();
@@ -118,12 +124,12 @@ public class EventView extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("N°Person:");
 
-        txtEventPersona.setBackground(new java.awt.Color(255, 173, 58));
-        txtEventPersona.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventPersona.setForeground(new java.awt.Color(66, 57, 58));
-        txtEventPersona.addActionListener(new java.awt.event.ActionListener() {
+        txtEventPeople.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventPeople.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEventPeople.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventPeople.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEventPersonaActionPerformed(evt);
+                txtEventPeopleActionPerformed(evt);
             }
         });
 
@@ -139,9 +145,9 @@ public class EventView extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("N°Restaurants:");
 
-        txtEventRestaurante.setBackground(new java.awt.Color(255, 173, 58));
-        txtEventRestaurante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventRestaurante.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventRestaurant.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventRestaurant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEventRestaurant.setForeground(new java.awt.Color(66, 57, 58));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,7 +275,7 @@ public class EventView extends javax.swing.JFrame {
                                                     .addComponent(selectEventOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(txtEventPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEventPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +299,7 @@ public class EventView extends javax.swing.JFrame {
                                             .addComponent(txtEventAddress)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(txtEventRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2))))
@@ -321,11 +327,11 @@ public class EventView extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEventPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEventPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtEventStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(txtEventRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -380,12 +386,37 @@ public class EventView extends javax.swing.JFrame {
 
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
       if (txtEvent.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtEventCountry.getText().trim().isEmpty()
-        || txtEventAddress.getText().trim().isEmpty() || txtEventPersona.getText().trim().isEmpty()
-        || txtEventStore.getText().trim().isEmpty() || txtEventRestaurante.getText().trim().isEmpty()
-        || txtEventDate.getText().trim().isEmpty()|| txtEventTime.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
-        return; // Detiene la ejecución del método si la validación falla
-    }
+                || txtEventAddress.getText().trim().isEmpty() || txtEventPeople.getText().trim().isEmpty()
+                || txtEventStore.getText().trim().isEmpty() || txtEventRestaurant.getText().trim().isEmpty()
+                || txtEventDate.getText().trim().isEmpty() || txtEventTime.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String nameEvent = txtEvent.getText();
+            String cityEvent = txtCity.getText();
+            String countryEvent = txtEventCountry.getText();
+            String addressEvent = txtEventAddress.getText();
+            int maxPeople = Integer.parseInt(txtEventPeople.getText());
+            int maxStore = Integer.parseInt(txtEventStore.getText());
+            int maxRestaurant = Integer.parseInt(txtEventRestaurant.getText());
+            long organizerId = Long.parseLong("1");
+            LocalDate dateEvent = LocalDate.parse(txtEventDate.getText());
+            LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
+//            EventBuilder eventBuild = new EventConcreteBuilder();
+//            Event event = eventBuild.nameEvent(nameEvent)
+//                    .country(countryEvent).city(cityEvent).address(addressEvent)
+//                    .peopleCapacity(maxPeople)
+
+            Event evento = new Event(0, nameEvent,
+                    countryEvent, cityEvent,
+                    addressEvent, maxPeople,
+                    maxStore, maxRestaurant,
+                    dateEvent, timeEvent, organizerId, AgeClassificationEnum.FAMILY, StatusEnum.ACTIVE);
+            EventController.insertEvent(evento);
+
+            return; // Detiene la ejecución del método si la validación falla        
+        }
+                                               
+
     }//GEN-LAST:event_buttonCreateActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -404,9 +435,9 @@ public class EventView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEventDateActionPerformed
 
-    private void txtEventPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEventPersonaActionPerformed
+    private void txtEventPeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEventPeopleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEventPersonaActionPerformed
+    }//GEN-LAST:event_txtEventPeopleActionPerformed
 
     private void txtEventAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEventAddressActionPerformed
         // TODO add your handling code here:
@@ -479,8 +510,8 @@ public class EventView extends javax.swing.JFrame {
     private javax.swing.JTextField txtEventAddress;
     private javax.swing.JTextField txtEventCountry;
     private javax.swing.JTextField txtEventDate;
-    private javax.swing.JTextField txtEventPersona;
-    private javax.swing.JTextField txtEventRestaurante;
+    private javax.swing.JTextField txtEventPeople;
+    private javax.swing.JTextField txtEventRestaurant;
     private javax.swing.JTextField txtEventStore;
     private javax.swing.JTextField txtEventTime;
     // End of variables declaration//GEN-END:variables

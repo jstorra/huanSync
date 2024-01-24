@@ -118,7 +118,7 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="txtEventPersona" min="-2" pref="140" max="-2" attributes="0"/>
+                                          <Component id="txtEventPeople" min="-2" pref="140" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -149,7 +149,7 @@
                                                   <Component id="txtEventAddress" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      <Component id="txtEventRestaurante" min="-2" pref="75" max="-2" attributes="0"/>
+                                                      <Component id="txtEventRestaurant" min="-2" pref="75" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -191,11 +191,11 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEventPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEventPeople" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEventStore" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEventRestaurante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEventRestaurant" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -343,7 +343,7 @@
                 <Property name="text" type="java.lang.String" value="N&#xb0;Person:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEventPersona">
+            <Component class="javax.swing.JTextField" name="txtEventPeople">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3a" green="ad" red="ff" type="rgb"/>
@@ -356,7 +356,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEventPersonaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEventPeopleActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
@@ -394,7 +394,7 @@
                 <Property name="text" type="java.lang.String" value="N&#xb0;Restaurants:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEventRestaurante">
+            <Component class="javax.swing.JTextField" name="txtEventRestaurant">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3a" green="ad" red="ff" type="rgb"/>

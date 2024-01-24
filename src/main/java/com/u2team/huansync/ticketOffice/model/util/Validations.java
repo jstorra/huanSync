@@ -5,24 +5,33 @@ import java.time.LocalTime;
 
 import com.u2team.huansync.event.controller.EventController;
 import com.u2team.huansync.event.model.classes.Event;
+import com.u2team.huansync.ticketOffice.controller.TicketOfficeController;
+import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 
 
 public class Validations {
     
     public static boolean isValidHour(LocalTime startHour) {
         LocalTime currentHour = LocalTime.now();
-        return currentHour.isBefore(startHour);
+        return startHour.isAfter(currentHour);
     }
 
     public static boolean isValidDate(LocalDate startDate) {
         LocalDate currentDate = LocalDate.now();
-        return currentDate.isBefore(startDate);
+        return startDate.isAfter(currentDate);
     }
-    // Metodos para verificar dia y hora y comparar taquillas con eventos si ya estan
+
     public static boolean checkedEvent(long eventId){
-        for(Event repeated : EventController.getAllEvents()){
+        for(TicketOffice repeated : TicketOfficeController.getAllTicketOffice()){
             return repeated.getEventId() == eventId;
         }
-        return false;     
+        return false;    
+    }
+
+    public static boolean checkedStaff(long staffId){
+        for(TicketOffice repeated2 : TicketOfficeController.getAllTicketOffice()){
+            return repeated2.getStaffId() == staffId;
+        }
+        return false;    
     }
 }

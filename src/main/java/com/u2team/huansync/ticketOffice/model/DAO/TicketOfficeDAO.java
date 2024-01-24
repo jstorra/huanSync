@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.u2team.huansync.event.controller.EventController;
 import com.u2team.huansync.event.model.classes.Event;
+import com.u2team.huansync.event.staff.controller.StaffController;
+import com.u2team.huansync.event.staff.model.classes.Staff;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
@@ -91,11 +93,12 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
     @Override
     public void insertTicketOffice(TicketOffice ticketOffice) {     
         Event eventDatas = EventController.getByIdEvent(ticketOffice.getEventId());
+        Staff staffDatas = StaffController.getByIdStaff(ticketOffice.getStaffId());
         LocalDate startDate = eventDatas.getDateEvent();
         LocalTime startHour = eventDatas.getTimeEvent();
 
-        if (!Validations.isValidDate(startDate) && !Validations.isValidHour(startHour) && Validations.checkedEvent(ticketOffice.getEventId())) {
-            System.out.println("This ticketOffice was impossible to add because the event has already started or this event was assigned to another ticket office");
+        if (Validations.isValidDate(startDate) & Validations.isValidHour(startHour) & Validations.checkedEvent(eventDatas.getEventId()) & Validations.checkedStaff(staffDatas.getStaffId())) {
+            System.out.println("This ticketOffice was impossible to add because the event has already started");
             return;
         }  else {
             

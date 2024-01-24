@@ -1,37 +1,76 @@
 package com.u2team.huansync.activity.trivia.question.model;
 
+/**
+ * Implementation of the {@link QuestionBuilder} interface for building instances of {@link Question}.
+ */
 public class QuestionBuilderImpl implements QuestionBuilder {
-    Question question = new Question();
+    private Question question = new Question();
 
-    public QuestionBuilder questionId(long questionId) {
+    /**
+     * Sets the ID of the question.
+     *
+     * @param questionId The ID to set for the question.
+     * @return The updated QuestionBuilderImpl instance.
+     */
+    @Override
+    public QuestionBuilder questionId(Long questionId) {
         question.setQuestionId(questionId);
         return this;
     }
 
+    /**
+     * Sets the text of the question.
+     *
+     * @param questionText The text to set for the question.
+     * @return The updated QuestionBuilderImpl instance.
+     */
     @Override
-    public QuestionBuilder question(String question) {
-        this.question.setQuestion(question);
+    public QuestionBuilder question(String questionText) {
+        question.setQuestion(questionText);
         return this;
     }
 
+    /**
+     * Sets the answer to the question.
+     *
+     * @param answer The answer to set for the question.
+     * @return The updated QuestionBuilderImpl instance.
+     */
     @Override
     public QuestionBuilder answer(String answer) {
         question.setAnswer(answer);
         return this;
     }
 
+    /**
+     * Sets the category of the question.
+     *
+     * @param categoryQuestion The category to set for the question.
+     * @return The updated QuestionBuilderImpl instance.
+     */
     @Override
-    public QuestionBuilder category(CategoryQuestion categoryQuestion) {
-        question.setCategory(categoryQuestion);
+    public QuestionBuilder categoryQuestion(CategoryQuestion categoryQuestion) {
+        question.setCategoryQuestion(categoryQuestion);
         return this;
     }
 
+    /**
+     * Sets the difficulty level of the question.
+     *
+     * @param difficultyQuestion The difficulty level to set for the question.
+     * @return The updated QuestionBuilderImpl instance.
+     */
     @Override
-    public QuestionBuilder difficulty(DifficultyQuestion difficultyQuestion) {
-        question.setDifficulty(difficultyQuestion);
+    public QuestionBuilder difficultyQuestion(DifficultyQuestion difficultyQuestion) {
+        question.setDifficultyQuestion(difficultyQuestion);
         return this;
     }
 
+    /**
+     * Builds and returns an instance of {@link Question}.
+     *
+     * @return An instance of {@link Question}.
+     */
     @Override
     public Question build() {
         return question;

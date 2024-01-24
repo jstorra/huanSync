@@ -39,8 +39,8 @@ public class CategoryCosplayController {
      * @param newNameCategoryCosplay New name for the cosplay category.
      */
 
-    public void updateCategory(int categoryId, String newNameCategoryCosplay) {
-        categoryCosplayDAO.updateCategory(categoryId, newNameCategoryCosplay);
+    public void updateCategory(long categoryId, String newNameCategoryCosplay,boolean deletable) {
+        categoryCosplayDAO.updateCategory(categoryId, newNameCategoryCosplay,deletable);
     }
 
     /**
@@ -49,7 +49,7 @@ public class CategoryCosplayController {
      * @param categoryId Identifier of the cosplay category to be deleted.
      */
 
-    public void deleteCategory(int categoryId) {
+    public void deleteCategory(long categoryId) {
         categoryCosplayDAO.deleteCategory(categoryId);
     }
 }

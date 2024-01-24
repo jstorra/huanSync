@@ -1,39 +1,39 @@
-package com.u2team.huansync.activity.cosplay.managementQualification;
+package com.u2team.huansync.activity.cosplay.managementQualification.model;
 
 public class Qualification {
     
     private int cosplayid ;
     private int juryId ;
-    private int qualification ;
+    private int qualification = 0 ;
 
 
     //METTODS GETTERS
 
-    private int getCosplayId(){
+    public int getCosplayId(){
         return this.cosplayid ;
     }
 
-    private int getJuryId(){
+    public int getJuryId(){
         return this.juryId ;
     }
 
 
 
-    private int qualification(){
+    public int qualification(){
         return this.qualification ;
     }
 
     //METTODS SETTERS
 
-    private void setCosplayId (int cosplayid){
+    public void setCosplayId (int cosplayid){
         this.cosplayid =cosplayid ;
     }
 
-    private void setJuryId(int juryId){
+    public void setJuryId(int juryId){
         this.juryId= juryId;
     }
 
-    private void setQualification(int qualification){
+    public void setQualification(int qualification){
         this.qualification = qualification ;
     }
 

@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import com.u2team.huansync.activity.model.ActivityDAO;
 import com.u2team.huansync.persistence.BDConnection;
 
+/**
+ * Implementation of CosplayValidatorDao interface for validating Cosplay entities.
+ */
 public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
     private ActivityDAO activityDao;
@@ -40,7 +43,14 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
     /* testing methods */
 
-    
+
+    /**
+     * Validates whether the participant is participating in a specific cosplay activity.
+     *
+     * @param activityId     The ID of the cosplay activity.
+     * @param participantId  The ID of the participant to be validated.
+     * @return True if the participant is participating in the specified activity, false otherwise.
+     */    
     public boolean validateParticipantion(int activityId,int participantId ) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_PARTICIPATION_QUERY)) {
             preparedStatement.setInt(1, activityId);
@@ -64,6 +74,12 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
     }
  
 
+    /**
+     * Validates whether the participant is already participating in a cosplay activity.
+     *
+     * @param idParticipant The ID of the participant to be validated.
+     * @return True if the participant is not already participating, false otherwise.
+     */
     public boolean validateParticipant(int idParticipant) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_CUSTOMER_QUERY)) {
             preparedStatement.setInt(1, idParticipant);
@@ -83,6 +99,11 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
 
     ///////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Validates whether the cosplay with the provided ID is active.
+     *
+     * @param idCosplay The ID of the cosplay to be validated.
+     */
     @Override
     public void validateCosplayisActive(int idCosplay) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAY_QUERY)) {
@@ -98,6 +119,11 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
         }
     }
 
+    /**
+     * Validates whether the cosplay with the provided ID is deactivated.
+     *
+     * @param idCosplay The ID of the cosplay to be validated.
+     */
     public void validateCosplayisDesact(int idCosplay) {
         try (PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAY_QUERY)) {
             preparedStatement.setInt(1, idCosplay);
@@ -112,7 +138,7 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
         }
     }
 
-
+    
     public void validateParticipation(){
         
 

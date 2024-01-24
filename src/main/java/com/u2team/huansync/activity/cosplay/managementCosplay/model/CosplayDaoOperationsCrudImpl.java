@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.*;
 import com.u2team.huansync.persistence.BDConnection;
 
+/**
+ * Implementation of CosplayDaoOperationsCrud interface for CRUD operations on Cosplay entities.
+ */
 public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
 
     // VALIDATIONS
@@ -42,6 +45,13 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
     }
 
     // OPERACTIONS
+
+    /**
+     * Retrieves a list of cosplays based on the provided activity ID.
+     *
+     * @param idActivity The ID of the activity associated with the cosplays.
+     * @return A list of cosplays.
+     */
     @Override
     public List<Cosplay> readCosplay(int idActivitie) {
         List<Cosplay> cosplayList = new ArrayList<>();
@@ -70,6 +80,11 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
     }
     
 
+    /**
+     * Creates a new cosplay entity in the database.
+     *
+     * @param cosplay The cosplay entity to be created.
+     */
     @Override
     public void createCosplay(Cosplay cosplay) {
         try (Connection con = BDConnection.MySQLConnection()) {
@@ -94,6 +109,11 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
         }
     }
 
+    /**
+     * Updates an existing cosplay entity in the database.
+     *
+     * @param cosplay The cosplay entity to be updated.
+     */
     @Override
     public void updateCosplay(Cosplay cosplay) {
         try (Connection con = BDConnection.MySQLConnection()) {
@@ -109,6 +129,11 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
         }
     }
 
+    /**
+     * Deletes a cosplay entity from the database based on the provided cosplay ID.
+     *
+     * @param idCosplay The ID of the cosplay to be deleted.
+     */
     @Override
     public void deleteCosplay(int idCosplay) {
         try (Connection con = BDConnection.MySQLConnection()) {

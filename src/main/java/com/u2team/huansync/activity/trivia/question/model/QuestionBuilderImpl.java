@@ -13,7 +13,7 @@ public class QuestionBuilderImpl implements QuestionBuilder {
      * @return The updated QuestionBuilderImpl instance.
      */
     @Override
-    public QuestionBuilder questionId(long questionId) {
+    public QuestionBuilder questionId(Long questionId) {
         question.setQuestionId(questionId);
         return this;
     }

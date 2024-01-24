@@ -4,7 +4,7 @@ package com.u2team.huansync.activity.trivia.question.model;
  * Model class representing a trivia question.
  */
 public class Question {
-    private long questionId;
+    private Long questionId;
     private String question;
     private String answer;
     private CategoryQuestion categoryQuestion;
@@ -15,7 +15,7 @@ public class Question {
      *
      * @return The ID of the question.
      */
-    public long getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
@@ -24,7 +24,7 @@ public class Question {
      *
      * @param questionId The ID to set for the question.
      */
-    public void setQuestionId(long questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 

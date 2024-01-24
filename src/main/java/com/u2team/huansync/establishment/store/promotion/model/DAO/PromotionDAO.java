@@ -20,7 +20,7 @@ import java.util.List;
 
 
 
-public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>, IGetAllDao<Promotion>,IGetByIdDao<Promotion>,IUpdateDao<Promotion>{
+public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>, IGetAllDao<Promotion>,IGetByIdDao<Promotion>{
 
     @Override
     public void save(Promotion promotion) {
@@ -36,9 +36,9 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
             // use Operation class with insert_update_delete and verify if the rows in database are affected
             int rows = Operations.insert_update_delete_db(ps);
             if (rows <= 0) {
-                System.out.println("Cannot push event");
+                System.out.println("Cannot push promotion");
             } else {
-                System.out.println("Successful push event");
+                System.out.println("Successful push promotion");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -144,10 +144,6 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
 
     }
 
-    @Override
-    public void update(Promotion t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     }
 

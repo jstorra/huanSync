@@ -4,10 +4,12 @@
  */
 package com.u2team.huansync.establishment.restaurant.DAO;
 
+import java.util.List;
+
 /**
  *
  * @author misae
  */
-public interface IDeleteDao <T>  extends IDao {
-    void delete(long id);
+public interface IGetAllFull <T> extends IDao{
+    List<T> getAllFull();
 }

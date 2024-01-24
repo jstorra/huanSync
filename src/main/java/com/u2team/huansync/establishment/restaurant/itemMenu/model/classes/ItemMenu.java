@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * @author DeuryZ
  * @author dfrincong
- * Class to manage the dishes (item). The dishes are part of the menu.
+ *  Class to manage the dishes (item). The dishes are part of
+ * the menu.
  */
 public class ItemMenu {
 
@@ -24,11 +25,20 @@ public class ItemMenu {
     private long itemMenuId;
     private String nameItemMenu;
     private double priceItemMenu;
-    private List<Ingredient> listIngredient;
+    private List<Long> listIngredientId;
     private ItemMenuType itemMenuType;
     private int preparationTime;
 
     public ItemMenu() {
+    }
+
+    public ItemMenu(long itemMenuId, String nameItemMenu, double priceItemMenu, List<Long> listIngredientId, ItemMenuType itemMenuType, int preparationTime) {
+        this.itemMenuId = itemMenuId;
+        this.nameItemMenu = nameItemMenu;
+        this.priceItemMenu = priceItemMenu;
+        this.listIngredientId = listIngredientId;
+        this.itemMenuType = itemMenuType;
+        this.preparationTime = preparationTime;
     }
 
     public String getNameItemMenu() {
@@ -65,6 +75,21 @@ public class ItemMenu {
         this.itemMenuType = itemMenuType;
     }
 
+    public void setItemMenuType(String itemMenuType) {
+        if (itemMenuType.equalsIgnoreCase("appetizer")) {
+            this.setItemMenuType(ItemMenuType.APPETIZER);
+        }
+        if (itemMenuType.equalsIgnoreCase("main course")) {
+            this.setItemMenuType(ItemMenuType.MAIN_COURSE);
+        }
+        if (itemMenuType.equalsIgnoreCase("drink")) {
+            this.setItemMenuType(ItemMenuType.DRINK);
+        }
+        if (itemMenuType.equalsIgnoreCase("dessert")) {
+            this.setItemMenuType(ItemMenuType.DESSERT);
+        }
+    }
+
     public int getPreparationTime() {
         return preparationTime;
     }
@@ -77,14 +102,6 @@ public class ItemMenu {
         }
     }
 
-    public List<Ingredient> getListIngredient() {
-        return listIngredient;
-    }
-
-    public void setListIngredient(List<Ingredient> listIngredient) {
-        this.listIngredient = listIngredient;
-    }
-
     public long getItemMenuId() {
         return itemMenuId;
     }
@@ -92,15 +109,18 @@ public class ItemMenu {
     public void setItemMenuId(long itemMenuId) {
         this.itemMenuId = itemMenuId;
     }
-    
-    @Override
-        public String toString() {
-        return "Item{" + 
-                "itemId=" + itemMenuId + 
-                ", name=" + nameItemMenu + 
-                ", price=" + priceItemMenu + 
-                ", type=" + itemMenuType + 
-                ", preparationTime=" + preparationTime + '}';
+
+    public List<Long> getListIngredientId() {
+        return listIngredientId;
     }
-    
+
+    public void setListIngredientId(List<Long> listIngredientId) {
+        this.listIngredientId = listIngredientId;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemMenu{" + "itemMenuId=" + itemMenuId + ", nameItemMenu=" + nameItemMenu + ", priceItemMenu=" + priceItemMenu + ", listIngredientId=" + listIngredientId + ", itemMenuType=" + itemMenuType + ", preparationTime=" + preparationTime + '}';
+    }
+
 }

@@ -8,6 +8,6 @@ package com.u2team.huansync.establishment.restaurant.DAO;
  *
  * @author misae
  */
-public interface IGetByIdDao <T>{
+public interface IGetByIdDao <T>  extends IDao {
    T getById(long id);
 }

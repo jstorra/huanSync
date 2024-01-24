@@ -17,17 +17,17 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
     // query for list cosplays
 
     private static final String SELECT_COSPLAYS = """
-        select
-        c.cosplayId as cosplay_id ,
-        c.score as score_participant ,
-        c.nameCosplay as name_cosplay,
-        cst.nameCustomer as name_participant
-        from tbl_cosplay c
-        join tbl_customers cst on cst.customerId = c.participantId
-        join tbl_activities act on act.activityId = c.activityId
-        where c.statusCosplay = true and act.completed = false and act.typeActivity = 'cosplay'
-        and act.activityId = ?
-        """;
+            select
+            c.cosplayId as cosplay_id ,
+            c.score as score_participant ,
+            c.nameCosplay as name_cosplay,
+            cst.nameCustomer as name_participant
+            from tbl_cosplay c
+            join tbl_customers cst on cst.customerId = c.participantId
+            join tbl_activities act on act.activityId = c.activityId
+            where c.statusCosplay = true and act.completed = false and act.typeActivity = 'cosplay'
+            and act.activityId = ?
+            """;
 
     // query of inserts cosplay in database for the table tbl_cosplays
     private static final String INSERT_TABLE_COSPLAY = "INSERT INTO tbl_cosplay (score,nameCosplay,participantId,activityId,statusCosplay ) VALUES (?,?,?,?,?)";
@@ -56,10 +56,10 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
     public List<Cosplay> readCosplay(int idActivitie) {
         List<Cosplay> cosplayList = new ArrayList<>();
         try (Connection con = BDConnection.MySQLConnection();
-             PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAYS)) {
+                PreparedStatement preparedStatement = con.prepareStatement(SELECT_COSPLAYS)) {
             // Agrega el parámetro al PreparedStatement
             preparedStatement.setInt(1, idActivitie);
-    
+
             // Ejecuta la consulta y obtén el ResultSet
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
@@ -74,11 +74,10 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return cosplayList;
     }
-    
 
     /**
      * Creates a new cosplay entity in the database.
@@ -88,9 +87,9 @@ public class CosplayDaoOperationsCrudImpl implements CosplayDaoOperationsCrud {
     @Override
     public void createCosplay(Cosplay cosplay) {
         try (Connection con = BDConnection.MySQLConnection()) {
-            if (cosplayValidator.validateParticipant(cosplay.getParticipantId()) 
-            && cosplayValidator.validateParticipantion(cosplay.getActivictyId(),
-             cosplay.getParticipantId())) {
+            if (cosplayValidator.validateParticipant(cosplay.getParticipantId())
+                    && cosplayValidator.validateParticipantion(cosplay.getActivictyId(),
+                            cosplay.getParticipantId())) {
 
                 try (PreparedStatement preparedStatement = con.prepareStatement(INSERT_TABLE_COSPLAY)) {
                     preparedStatement.setDouble(1, cosplay.getScore());

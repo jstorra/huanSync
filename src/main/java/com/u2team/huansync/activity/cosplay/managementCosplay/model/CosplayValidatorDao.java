@@ -5,7 +5,9 @@ package com.u2team.huansync.activity.cosplay.managementCosplay.model;
  * object.
  */
 public interface CosplayValidatorDao {
-    // void validateCosplayforActPartCospl(Cosplay cosplay);
+    boolean validateParticipantion(int activityId, int participantId);
+
+    boolean validateParticipant(int idParticipant);
 
     /**
      * Validates whether the cosplay with the provided ID is active.

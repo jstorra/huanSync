@@ -103,41 +103,34 @@ public class pruebaTrivia {
             int pointsJugador1 = 0;
             int pointsJugador2 = 0;
 
-            while (!jugadoresRonda2.isEmpty()) {
+            while (!(jugadoresRonda3.size() == 1)) {
                 System.out.println(preguntas.get(new Random().nextInt(preguntas.size())));
-                System.out.println("Respuesta jugador " + jugadoresRonda2.get(0) + ": ");
+                System.out.println("Respuesta jugador " + jugadoresRonda3.get(0) + ": ");
                 String r1 = scanner.nextLine();
-                System.out.println("Respuesta jugador " + jugadoresRonda2.get(1) + ": ");
+                System.out.println("Respuesta jugador " + jugadoresRonda3.get(1) + ": ");
                 String r2 = scanner.nextLine();
 
                 if (r1.equalsIgnoreCase(respuesta)) {
                     pointsJugador1++;
                     if (pointsJugador1 == 3) {
-                        jugadoresRonda3.add(jugadoresRonda2.remove(0));
-                        jugadoresRonda2.remove(0);
+                        jugadoresRonda3.remove(1);
                         break;
                     }
                 }
                 if (r2.equalsIgnoreCase(respuesta)) {
                     ++pointsJugador2;
                     if (pointsJugador2 == 3) {
-                        jugadoresRonda3.add(jugadoresRonda2.remove(1));
-                        jugadoresRonda2.remove(0);
+                        jugadoresRonda3.remove(0);
                         break;
                     }
                 }
                 System.out.println("Jugador 1: " + pointsJugador1);
                 System.out.println("Jugador 2: " + pointsJugador2);
             }
-            System.out.println(jugadoresRonda2);
             System.out.println(jugadoresRonda3);
 
-            if (jugadoresRonda2.isEmpty())
+            if ((jugadoresRonda3.size() == 1))
                 break;
         }
-
-
-
-
     }
 }

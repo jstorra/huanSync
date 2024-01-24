@@ -164,7 +164,7 @@ public class EventView extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(8, 69, 106));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Personal");
+        jButton1.setText("Staff");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -174,7 +174,7 @@ public class EventView extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(8, 69, 106));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Actividades");
+        jButton3.setText("Activity");
 
         buttonCreate.setBackground(new java.awt.Color(8, 69, 106));
         buttonCreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -333,10 +333,10 @@ public class EventView extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
                     .addComponent(buttonCreate)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addGap(16, 16, 16))
         );
 
@@ -382,7 +382,7 @@ public class EventView extends javax.swing.JFrame {
         || txtEventAddress.getText().trim().isEmpty() || txtEventPersona.getText().trim().isEmpty()
         || txtEventStore.getText().trim().isEmpty() || txtEventRestaurante.getText().trim().isEmpty()
         || txtEventDate.getText().trim().isEmpty()|| txtEventTime.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(this, "You must complete all fields.", "Validation error!!", JOptionPane.ERROR_MESSAGE);
         return; // Detiene la ejecución del método si la validación falla
     }
     }//GEN-LAST:event_buttonCreateActionPerformed

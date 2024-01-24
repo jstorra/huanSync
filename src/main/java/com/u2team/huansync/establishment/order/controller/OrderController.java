@@ -31,8 +31,12 @@ public class OrderController {
         return orderDao.getAll();
     }
     
-    public static Order getById(long orderId){
+    public static Order getByIdOrder(long orderId){
         return orderDao.getById(orderId); 
+    }
+    
+    public static void updateOrder(Order order) {
+        orderDao.update(order);
     }
     
     

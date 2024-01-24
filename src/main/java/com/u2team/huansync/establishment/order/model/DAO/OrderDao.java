@@ -10,8 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.u2team.huansync.establishment.order.model.classes.OrderStatusEnum;
 import com.u2team.huansync.event.DAO.IGetByIdDao;
+import com.u2team.huansync.event.DAO.IUpdateDao;
+import java.util.Arrays;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,7 +26,7 @@ import com.u2team.huansync.event.DAO.IGetByIdDao;
  */
 
 //Here implements de rest of the CRUD
-public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<Order>, IGetByIdDao<Order>{
+public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<Order>, IGetByIdDao<Order>, IUpdateDao<Order>{
 
     @Override
     public void save(Order order) {
@@ -44,7 +45,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
             
             //Put name to correct the mistake
             /////////Corregir esta linea
-            ps.setString(6, order.getOrderStatusEnum().name()); // Corrected this line
+            ps.setString(6, order.getOrderStatusEnum().name()); 
 
 
 
@@ -118,51 +119,96 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
 
     @Override
     public Order getById(long orderId) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         
         
-        //Class Operations are used to configure the connection with database and send a Query saved in variable stm
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "SELECT * FROM tbl_order where orderId = ?;";
-
-        //ps (prepareStatement) receives stm and replaces "?" for the variable with the index: "1" with "id"
+        String stm = "select * from tbl_order where orderId = ? ;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, orderId);
-
-            // The result of the query is saved in the "rs" variable to apply logic.
             ResultSet rs = Operations.query_db(ps);
-
-            // rs.next() -> Means if there is an answer, execute logic
             if (rs.next()) {
-
+                Order order = new Order();
+                order.setOrderId(rs.getLong("orderId"));
+                order.setCustomerId(rs.getInt("customerId"));
+                order.setEstablishmentId(rs.getInt("establishmentId"));
+                order.setCashId(rs.getInt("cashRegisterId"));
+                order.setCashierOperatorId(rs.getInt("cashierOperatorId"));
                 
+                order.setOrderStatusEnum(order.getOrderStatusEnum(rs.getString("orderStatusEnum")));
                 
-////                // Create builder with concrete Builder -> (Concrete builder creates the object step by step)
-////                ProductBuilder productBuilder = new ProductConcreteBuilder();
-////
-////                // Creates an event object and use eventBuilder for constructs it using the information from the query(rs) (field by field)
-////                Product sqlProduct = productBuilder
-////                        .productId(rs.getLong("productId"))
-////                        .nameProduct(rs.getString("productName"))
-////                        .storeId(rs.getLong("storeId"))
-////                        .productPrice(rs.getDouble("productPrice"))
-////                        .description(rs.getNString("description"))
-////                        .manufacturer(rs.getString("manufacturer"))
-////                        .quantity(rs.getInt("quantity"))
-////                        .build();
-////
-////                //return contructed object sqlEvent
+//                List<String> listActivities = Arrays.asList(rs.getString("activitiesWorkerRole").split("\\|"));
+//                order.setWorkerRoleActivities(listActivities);
                 
-                
-////                return sqlProduct;
+                return order;
             } else {
                 System.out.println("ERROR: The id has not been found");
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //Return null always because this method should return something
         return null;
+    }
+
+    @Override
+    public void update(Order order) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+        
+        
+        Order sqlOrder = getById(order.getOrderId());
+
+        if (sqlOrder != null) {
+            
+            //Without orderId for now
+            sqlOrder.setCustomerId(order.getCustomerId());
+            sqlOrder.setEstablishmentId(order.getEstablishmentId());
+            sqlOrder.setCashId(order.getCashId());
+            sqlOrder.setCashierOperatorId(order.getCashierOperatorId());
+            
+            //Verified if it is okay
+            sqlOrder.setOrderStatusEnum(order.getOrderStatusEnum());
+            
+            
+            String stmUpdate = """
+            UPDATE tbl_order
+            SET customerId = ?,
+                establishmentId = ?,
+                cashRegisterId = ?,
+                cashierOperatorId = ?,
+                orderStatusEnum = ?
+            WHERE orderId = ?;
+                               """;
+
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmUpdate)) {
+
+                ps.setInt(1, sqlOrder.getCustomerId());
+                ps.setInt(2, sqlOrder.getEstablishmentId());
+                ps.setInt(3, sqlOrder.getCashId());
+                ps.setInt(4, sqlOrder.getCashierOperatorId());
+                
+                //Verified if it is okay
+                
+                ps.setString(5, sqlOrder.getOrderStatusEnum().name());
+                
+                ps.setLong(6, sqlOrder.getOrderId());
+                
+                System.out.println(ps.toString());
+                int rows = Operations.insert_update_delete_db(ps);
+                if (rows <= 0) {
+                    System.out.println("Cannot update worker role");
+                } else {
+                    System.out.println("Successful update of worker role");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        
+        
+    
     }
     
     

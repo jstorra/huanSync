@@ -39,6 +39,8 @@ public class Restaurant extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         txtUpdate = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnMakeOrder = new javax.swing.JButton();
+        btnInventoIngred = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +82,20 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
+        btnMakeOrder.setText("Make Order");
+        btnMakeOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeOrderActionPerformed(evt);
+            }
+        });
+
+        btnInventoIngred.setText(" Ingredients Inventory");
+        btnInventoIngred.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoIngredActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,19 +108,23 @@ public class Restaurant extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnBack)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnCreateRestaurant)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txtUpdate)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jButton1))
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1))
-                                .addGap(40, 40, 40)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnMakeOrder)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnInventoIngred))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnCreateRestaurant)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(txtUpdate)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(jButton1))
+                                .addComponent(jTextField2)
+                                .addComponent(jTextField1)))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(87, 87, 87))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +145,10 @@ public class Restaurant extends javax.swing.JFrame {
                             .addComponent(jButton1)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(btnBack)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnMakeOrder)
+                    .addComponent(btnInventoIngred))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -155,6 +178,21 @@ public class Restaurant extends javax.swing.JFrame {
         alertDelete.setVisible(true);
         alertDelete.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
+        OrderMenu order = new OrderMenu();
+        order.setVisible(true);
+        order.setLocationRelativeTo(null);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnMakeOrderActionPerformed
+
+    private void btnInventoIngredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoIngredActionPerformed
+        Ingredients inventoryIngredients = new Ingredients();
+        inventoryIngredients.setVisible(true);
+        inventoryIngredients.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnInventoIngredActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +232,8 @@ public class Restaurant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateRestaurant;
+    private javax.swing.JButton btnInventoIngred;
+    private javax.swing.JButton btnMakeOrder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

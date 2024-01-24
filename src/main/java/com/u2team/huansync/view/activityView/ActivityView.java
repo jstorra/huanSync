@@ -250,7 +250,7 @@ public class ActivityView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewTriviaActionPerformed
 
     private void btnBackActivitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActivitiesActionPerformed
-         MenuView menu = new MenuView();
+        MenuView menu = new MenuView();
         menu.setVisible(true);
         menu.setLocationRelativeTo(null);
         this.setVisible(false);

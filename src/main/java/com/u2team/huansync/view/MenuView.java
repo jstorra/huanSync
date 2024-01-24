@@ -293,6 +293,7 @@ public class MenuView extends javax.swing.JFrame {
         WorkerRoleView initialRole = new WorkerRoleView();
         initialRole.setVisible(true);
         initialRole.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnRolesActionPerformed
 
     /** 

@@ -57,4 +57,11 @@ public class CashFull extends Cash {
     public void setListOrders(List<Long> listOrders) {
         this.listOrders = listOrders;
     }
+
+    @Override
+    public String toString() {
+        return "CashFull{" + "listOrders=" + listOrders + '}';
+    }
+
+    
 }

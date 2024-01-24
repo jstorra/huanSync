@@ -4,7 +4,7 @@
  */
 package com.u2team.huansync.establishment.model.classes.builder;
 
-import com.u2team.huansync.establishment.model.Establishment;
+import com.u2team.huansync.establishment.model.classes.Establishment;
 
 /**
  *
@@ -14,6 +14,7 @@ public interface EstablishmentBuilder {
       EstablishmentBuilder establishmentId (long establishmentId);
       EstablishmentBuilder nameEstablishment (String nameEstablishment);
       EstablishmentBuilder managerEstablishment (long managerEstablishment);
-      EstablishmentBuilder categoryEstablishment (CategoryEstablishment categoryEstablishment);
+      EstablishmentBuilder categoryEstablishment (String categoryEstablishment);
+      EstablishmentBuilder establishmentEventId (long establishmentEventId);
       Establishment build();
 }

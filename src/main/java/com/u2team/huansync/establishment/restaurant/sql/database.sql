@@ -24,8 +24,12 @@ CREATE TABLE `tbl_ingredients_itemMenu` (
   `ingredientId` int NOT NULL
 );
 
-CREATE TABLE `tbl_establishments` (
-  `establishmentId` int PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE tbl_establishments (
+   establishmentId INT PRIMARY KEY AUTO_INCREMENT,
+   categoryEstablishment ENUM('restaurant', 'store') NOT NULL,
+   nameEstablishment VARCHAR(40) NOT NULL,
+   eventId INT,
+    managerEstablishmentId INT
 );
 
 CREATE UNIQUE INDEX `tbl_ingredients_itemMenu_index_0` ON `tbl_ingredients_itemMenu` (`itemMenuId`, `ingredientId`);
@@ -38,9 +42,10 @@ ALTER TABLE `tbl_itemMenu` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_e
 
 ALTER TABLE `tbl_ingredients` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_establishments` (`establishmentId`);
 
-SELECT * FROM tbl_ingredients;
-SELECT * FROM tbl_establishments;
-SELECT * FROM tbl_itemMenu;
+
+-- SELECT * FROM tbl_ingredients;
+-- SELECT * FROM tbl_establishments;
+-- SELECT * FROM tbl_itemMenu;
 
 -- INSERT INTO tbl_establishments VALUES(1),(2),(3);
 

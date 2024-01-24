@@ -10,7 +10,6 @@ import com.u2team.huansync.establishment.store.promotion.model.classes.builder.P
 //@author sneideresteban
 
 
-// FALTA TERMINAR 
 
 public class PromotionConcreteBuilder implements PromotionBuilder{
 
@@ -26,34 +25,39 @@ public class PromotionConcreteBuilder implements PromotionBuilder{
 
     @Override
     public PromotionBuilder namePromotion(String namePromotion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        promotion.setNamePromotion(namePromotion); 
+        return this; 
     }
 
     @Override
     public PromotionBuilder description(String description) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        promotion.setDescription(description); 
+        return this; 
     }
 
     @Override
     public PromotionBuilder statusPromotion(boolean statusPromotion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        promotion.setStatusPromotion(statusPromotion);
+        return this; 
     }
 
     @Override
     public PromotionBuilder percent(int percent) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        promotion.getPercent();
+        return this;
+              
     }
 
     @Override
     public Promotion build() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return promotion; 
     }
 
     @Override
     public Object eventId(long aLong) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
    
     
 }

@@ -2,6 +2,7 @@ package com.u2team.huansync.establishment.store.promotion.controller;
 
 import com.u2team.huansync.establishment.store.promotion.model.DAO.PromotionDAO;
 import com.u2team.huansync.establishment.store.promotion.model.classes.Promotion;
+import java.util.List;
 
 
 //@author sneideresteban
@@ -25,6 +26,10 @@ public class PromotionController {
         return promotionDAO.getById(promotionId); 
     }
     
+    
+      public static  List<Promotion>getAll(){
+        return promotionDAO.getAll();
+    }
     
      public static void updateProduct(Promotion promotion) {
         promotionDAO.update(promotion);

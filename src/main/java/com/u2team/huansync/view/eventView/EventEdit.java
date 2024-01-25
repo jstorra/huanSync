@@ -11,6 +11,7 @@ import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,8 @@ public class EventEdit extends javax.swing.JFrame {
     /**
      * Creates new form EventEdit
      */
+    int idEvento;
+
     public EventEdit() {
         initComponents();
     }
@@ -180,7 +183,7 @@ public class EventEdit extends javax.swing.JFrame {
 
         selectEventAgeClass.setBackground(new java.awt.Color(255, 195, 114));
         selectEventAgeClass.setForeground(new java.awt.Color(0, 0, 0));
-        selectEventAgeClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY", "YOUNG", "ADULT" }));
+        selectEventAgeClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY", "YOUNGER", "ADULT" }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -325,60 +328,61 @@ public class EventEdit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
- if (txtEvent.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtEventCountry.getText().trim().isEmpty()
-            || txtEventAddress.getText().trim().isEmpty() || txtEventPerson.getText().trim().isEmpty()
-            || txtEventStore.getText().trim().isEmpty() || txtEventRestaurant.getText().trim().isEmpty()
-            || txtEventDate.getText().trim().isEmpty() || txtEventTime.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-    } else {
-        try {
-            
-            String nameEvent = txtEvent.getText();
-            String cityEvent = txtCity.getText();
-            String countryEvent = txtEventCountry.getText();
-            String addressEvent = txtEventAddress.getText();
-            int maxPeople = Integer.parseInt(txtEventPerson.getText());
-            int maxStore = Integer.parseInt(txtEventStore.getText());
-            int maxRestaurant = Integer.parseInt(txtEventRestaurant.getText());
-            long organizerId = Long.parseLong("1");
-            LocalDate dateEvent = LocalDate.parse(txtEventDate.getText());
-            LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
-            String ageClassification = selectEventAgeClass.getSelectedItem().toString();
-            long organizer = Long.parseLong((String) selectEventOrganizer.getSelectedItem());
-            
-            EventBuilder eventBuild = new EventConcreteBuilder();
-            Event event = eventBuild.nameEvent(nameEvent)
-                    .country(countryEvent).city(cityEvent).address(addressEvent)
-                    .peopleCapacity(maxPeople)
-                    .storeCapacity(maxStore)
-                    .restaurantCapacity(maxRestaurant)
-                    .dateEvent(dateEvent)
-                    .timeEvent(timeEvent)
-                    .organizerId(organizer)
-                    .ageClassificationEnum(ageClassification)
-                    .statusEnum("active").build();
+        if (txtEvent.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtEventCountry.getText().trim().isEmpty()
+                || txtEventAddress.getText().trim().isEmpty() || txtEventPerson.getText().trim().isEmpty()
+                || txtEventStore.getText().trim().isEmpty() || txtEventRestaurant.getText().trim().isEmpty()
+                || txtEventDate.getText().trim().isEmpty() || txtEventTime.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
 
-            // Llama al método del controlador para actualizar el evento en la base de datos
-            EventController.updateEvent(event);
+                String nameEvent = txtEvent.getText();
+                String cityEvent = txtCity.getText();
+                String countryEvent = txtEventCountry.getText();
+                String addressEvent = txtEventAddress.getText();
+                int maxPeople = Integer.parseInt(txtEventPerson.getText());
+                int maxStore = Integer.parseInt(txtEventStore.getText());
+                int maxRestaurant = Integer.parseInt(txtEventRestaurant.getText());
+                // long organizerId = Long.parseLong("1");
+                LocalDate dateEvent = LocalDate.parse(txtEventDate.getText());
+                LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
+                String ageClassification = selectEventAgeClass.getSelectedItem().toString();
+                long organizer = Long.parseLong((String) selectEventOrganizer.getSelectedItem());
 
-            JOptionPane.showMessageDialog(this, "Event updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                EventBuilder eventBuild = new EventConcreteBuilder();
+                System.out.println(idEvento);
+                Event event = eventBuild.eventId(idEvento).nameEvent(nameEvent)
+                        .country(countryEvent).city(cityEvent).address(addressEvent)
+                        .peopleCapacity(maxPeople)
+                        .storeCapacity(maxStore)
+                        .restaurantCapacity(maxRestaurant)
+                        .dateEvent(dateEvent)
+                        .timeEvent(timeEvent)
+                        .organizerId(organizer)
+                        .ageClassificationEnum(ageClassification)
+                        .statusEnum("ACTIVE").build();
+                idEvento = 0;
+                // Llama al método del controlador para actualizar el evento en la base de datos
+                EventController.updateEvent(event);
 
-            // Restablecer campos después de la actualización exitosa
-            txtEvent.setText("");
-            txtCity.setText("");
-            txtEventAddress.setText("");
-            txtEventCountry.setText("");
-            txtEventDate.setText("");
-            txtEventPerson.setText("");
-            txtEventRestaurant.setText("");
-            txtEventStore.setText("");
-            txtEventTime.setText("");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid numeric input.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-        } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Invalid date or time format.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Event updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // Restablecer campos después de la actualización exitosa
+                txtEvent.setText("");
+                txtCity.setText("");
+                txtEventAddress.setText("");
+                txtEventCountry.setText("");
+                txtEventDate.setText("");
+                txtEventPerson.setText("");
+                txtEventRestaurant.setText("");
+                txtEventStore.setText("");
+                txtEventTime.setText("");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid numeric input.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Invalid date or time format.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-    }
 
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -392,37 +396,37 @@ public class EventEdit extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EventEdit().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(EventEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new EventEdit().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -455,11 +459,13 @@ public class EventEdit extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void initData(int eventId) {
- EventController eventController = new EventController();
-    Event eventData = eventController.getByIdEvent(eventId);
 
-    if (eventData != null) {
-            
+        idEvento = eventId;
+        EventController eventController = new EventController();
+        Event eventData = eventController.getByIdEvent(eventId);
+        System.out.println(eventData);
+        if (eventData != null) {
+
             txtEvent.setText(eventData.getNameEvent());
             txtCity.setText(eventData.getCity());
             txtEventCountry.setText(eventData.getCountry());
@@ -470,11 +476,10 @@ public class EventEdit extends javax.swing.JFrame {
             txtEventDate.setText(eventData.getDateEvent().toString());
             txtEventTime.setText(eventData.getTimeEvent().toString());
             selectEventAgeClass.setSelectedItem(eventData.getAgeClassification());
-              selectEventOrganizer.setSelectedItem(eventData.getOrganizerId());
- } else {
-        JOptionPane.showMessageDialog(this, "Event not found.", "Error", JOptionPane.ERROR_MESSAGE);
-        this.dispose(); 
+            selectEventOrganizer.setSelectedItem(eventData.getOrganizerId());
+        } else {
+            JOptionPane.showMessageDialog(this, "Event not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
+        }
     }
 }
-}
-

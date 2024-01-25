@@ -221,6 +221,10 @@ private void populateTable(){
         if (selectedRow != -1) {
             // Asegúrate de tener acceso al ID del evento, puede ser la primera columna (índice 0)
             selectedEventId = Integer.parseInt(tableModel.getValueAt(selectedRow, 0).toString());
+            
+           Event eventId =  EventController.getByIdEvent(selectedEventId);
+            System.out.println();
+            
         }
     
     }//GEN-LAST:event_tableModelMouseClicked

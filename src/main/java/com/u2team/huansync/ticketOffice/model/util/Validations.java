@@ -108,7 +108,7 @@ public class Validations {
      * @return {@code true} if the staff status is successfully updated; otherwise,
      *         {@code false}.
      */
-    public static boolean updateStaff(String statusChange, long staffId) {
+    public static boolean updateStaff(long staffId) {
         // Set up the connection to the MySQL database.
         Operations.setConnection(BDConnection.MySQLConnection());
 
@@ -117,7 +117,7 @@ public class Validations {
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
             // Set parameters for the prepared statement.
-            ps.setLong(2, staffId);
+            ps.setLong(1, staffId);
 
             // Execute the update query.
             ps.execute();

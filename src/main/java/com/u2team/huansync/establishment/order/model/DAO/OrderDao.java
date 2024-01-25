@@ -32,7 +32,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
     public void save(Order order) {
         
         
-        // Create a query and send corresponding information in each field by replacing the character "?" with the information
+        /// Create a query and send corresponding information in each field by replacing the character "?" with the information
         String stmInsert = "INSERT INTO tbl_order(orderId,customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?,?);";
         
         //PreparedStatement es de sql y Operations de Mariño

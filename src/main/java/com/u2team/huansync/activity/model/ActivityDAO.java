@@ -26,7 +26,7 @@ public class ActivityDAO {
                 while (resultSet.next()) {
                     Activity activity = new Activity();
                     activity.setActivityId(resultSet.getLong("activityId"));
-                    activity.setName(resultSet.getString("name"));
+                    activity.setNameActivity(resultSet.getString("name"));
                     activity.setTypeActivity(TypeActivity.valueOf(resultSet.getString("typeActivity").toUpperCase()));
                     activity.setCategoryCosplayId((resultSet.getLong("categoryCosplayId") == 0) ? null : resultSet.getLong("categoryCosplayId"));
                     activity.setNumParticipants(resultSet.getInt("numParticipants"));
@@ -58,7 +58,7 @@ public class ActivityDAO {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
                         activity.setActivityId(resultSet.getLong("activityId"));
-                        activity.setName(resultSet.getString("name"));
+                        activity.setNameActivity(resultSet.getString("name"));
                         activity.setTypeActivity(TypeActivity.valueOf(resultSet.getString("typeActivity").toUpperCase()));
                         activity.setCategoryCosplayId(resultSet.getLong("categoryCosplayId") == 0 ? null : resultSet.getLong("categoryCosplayId"));
                         activity.setNumParticipants(resultSet.getInt("numParticipants"));
@@ -84,7 +84,7 @@ public class ActivityDAO {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, activity.getName());
+                statement.setString(1, activity.getNameActivity());
                 statement.setString(2, activity.getTypeActivity().name());
                 statement.setObject(3, activity.getCategoryCosplayId());
                 statement.setInt(4, activity.getNumParticipants());
@@ -107,7 +107,7 @@ public class ActivityDAO {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "UPDATE tbl_activities SET name = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ?, completed = ? WHERE activityId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, activity.getName());
+                statement.setString(1, activity.getNameActivity());
                 statement.setString(2, activity.getTypeActivity().name());
                 statement.setObject(3, activity.getCategoryCosplayId());
                 statement.setInt(4, activity.getNumParticipants());

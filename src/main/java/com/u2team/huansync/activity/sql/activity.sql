@@ -17,9 +17,7 @@ CREATE TABLE tbl_activities (
     eventId INT,
     startTime TIME NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    completed BOOLEAN NOT NULL,
-    FOREIGN KEY (categoryCosplayId) REFERENCES tbl_categoryCosplay(categoryCosplayId)
-    -- FOREIGN KEY (eventId) REFERENCES tbl_events(eventId)
+    completed BOOLEAN NOT NULL
 );
 
 CREATE TABLE tbl_trivias (
@@ -29,8 +27,6 @@ CREATE TABLE tbl_trivias (
     participantTwoId INT NOT NULL,
     winnerId INT NOT NULL,
     inchargedId INT NOT NULL
-    -- FOREIGN KEY (winnerId) REFERENCES tbl_customers(customerId),
-    -- FOREIGN KEY (inchargedId) REFERENCES tbl_staff(staffId)
 );
 
 CREATE TABLE tbl_prizes (
@@ -40,14 +36,12 @@ CREATE TABLE tbl_prizes (
     price DECIMAL(10, 2) NOT NULL,
     statusPrize ENUM("available", "awarded") NOT NULL,
     activityId INT,
-    winnerId INT,
-    FOREIGN KEY (activityId) REFERENCES tbl_activities(activityId)
-    -- FOREIGN KEY (winnerId) REFERENCES tbl_customers(customerId)
+    winnerId INT
 );
 
 CREATE TABLE tbl_questions (
     questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    question TEXT NOT NULL UNIQUE,
+    question VARCHAR(255) NOT NULL UNIQUE,
     answer VARCHAR(255) NOT NULL,
     category ENUM("Naruto", "SPYxFamily", "Jujutsu Kaisen", "Harry Potter", "Comics") NOT NULL,
     difficulty ENUM("easy", "medium", "hard") NOT NULL

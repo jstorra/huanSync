@@ -25,7 +25,7 @@ public class Promotion{
         this.statusPromotion = statusPromotion;
         this.percent = percent;
     }
-
+    
     public long getPromotionId() {
         return promotionId;
     }

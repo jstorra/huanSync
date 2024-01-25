@@ -21,7 +21,7 @@ import java.util.List;
  * The {@code PromotionDAO} class implements various data access operations
  * (CRUD) for the {@code Promotion} entity using SQL queries.
  */
-public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>, IGetAllDao<Promotion>, IGetByIdDao<Promotion> {
+public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>, IGetAllDao<Promotion>, IGetByIdDao<Promotion>,IUpdateDao<Promotion> {
 
     /**
      * Saves a new promotion to the database.
@@ -30,7 +30,7 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
      */
     @Override
     public void save(Promotion promotion) {
-        String stmInsert = "INSERT INTO tbl_promotion(promotionId, namePromotion, description, statusPromotion, percent) VALUES(?,?,?,?,?);";
+        String stmInsert = "INSERT INTO promotion(promotionId, namePromotion, description, statusPromotion, percent) VALUES(?,?,?,?,?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, promotion.getPromotionId());
             ps.setString(2, promotion.getNamePromotion());
@@ -57,7 +57,7 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
     @Override
     public void delete(long promotionId) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "DELETE FROM tbl_promotion WHERE promotionId = ?;";
+        String stm = "DELETE FROM promotion WHERE promotionId = ?;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, promotionId);
             int rows = Operations.insert_update_delete_db(ps);
@@ -83,7 +83,7 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
     public List<Promotion> getAll() {
         List<Promotion> promotionList = new ArrayList<>();
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "SELECT * FROM tbl_promotion";
+        String stm = "SELECT * FROM promotion";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ResultSet rs = Operations.query_db(ps);
 
@@ -115,7 +115,7 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
     @Override
     public Promotion getById(long id) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "SELECT * FROM tbl_promotion where promotionId = ?;";
+        String stm = "SELECT * FROM promotion where promotionId = ?;";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, id);
@@ -140,5 +140,60 @@ public class PromotionDAO implements ISaveDao<Promotion>, IDeleteDao<Promotion>,
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void update(Promotion promotion) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    
+        Promotion sqlPromotion = getById(promotion.getPromotionId());
+
+        if (sqlPromotion != null) {
+            
+            //Without promotionId
+            sqlPromotion.setNamePromotion(promotion.getNamePromotion());
+            sqlPromotion.setDescription(promotion.getDescription());
+            sqlPromotion.setStatusPromotion(promotion.isStatusPromotion());
+            sqlPromotion.setPercent(promotion.getPercent());
+
+            String stmInsert = """
+            UPDATE promotion
+            SET namePromotion  = ?,
+                description  = ?,
+                statusPromotion = ?,
+                percent  = ?
+            WHERE promotionId  = ?;
+            """;
+            
+//            private long promotionId;
+//            private String namePromotion; 
+//            private String description ; 
+//            private boolean statusPromotion; 
+//            private int percent; 
+
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
+                ps.setString(1, promotion.getNamePromotion());
+                ps.setString(2, promotion.getDescription());
+                ps.setBoolean(3, promotion.isStatusPromotion());
+                ps.setInt(4, promotion.getPercent());
+                ps.setLong(5, promotion.getPromotionId());
+
+                System.out.println(ps.toString());
+
+                int rows = Operations.insert_update_delete_db(ps);
+                if (rows <= 0) {
+                    System.out.println("Cannot update products");
+                } else {
+                    System.out.println("Successful update products");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("not found results products");
+        }
+    
     }
 }

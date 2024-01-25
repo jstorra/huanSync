@@ -39,7 +39,7 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
      */
     @Override
     public void save(Product product) {
-        String stmInsert = "INSERT INTO tbl_product(productId, productName, productPrice, description, manufacturer, typeProduct, quantity, storeId) VALUES(?,?,?,?,?,?,?,?);";
+        String stmInsert = "INSERT INTO tbl_product(productId, productName, productPrice, description, manufacturer, typeProduct, quantity, establishmentsId) VALUES(?,?,?,?,?,?,?,?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, product.getProductId());
             ps.setString(2, product.getNameProduct());
@@ -105,11 +105,12 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
                 Product sqlProduct = eventBuilder
                         .productId(rs.getLong("productId"))
                         .nameProduct(rs.getString("productName"))
-                        .storeId(rs.getLong("storeId"))
+                        .storeId(rs.getLong("establishmentsId"))
                         .productPrice(rs.getDouble("productPrice"))
                         .description(rs.getNString("description"))
                         .manufacturer(rs.getString("manufacturer"))
                         .quantity(rs.getInt("quantity"))
+                        .type(rs.getString("typeProduct"))
                         .build();
 
                 productList.add(sqlProduct);
@@ -141,11 +142,12 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
                 Product sqlProduct = productBuilder
                         .productId(rs.getLong("productId"))
                         .nameProduct(rs.getString("productName"))
-                        .storeId(rs.getLong("storeId"))
+                        .storeId(rs.getLong("establishmentsId"))
                         .productPrice(rs.getDouble("productPrice"))
                         .description(rs.getNString("description"))
                         .manufacturer(rs.getString("manufacturer"))
                         .quantity(rs.getInt("quantity"))
+                        .type(rs.getString("typeProduct"))
                         .build();
 
                 return sqlProduct;
@@ -184,7 +186,7 @@ public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetA
                 manufacturer  = ?,
                 typeProduct  = ?,
                 quantity  = ?,
-                storeId = ?
+                establishmentsId = ?
             WHERE productId  = ?;
             """;
 

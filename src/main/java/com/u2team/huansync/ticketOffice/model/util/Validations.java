@@ -1,6 +1,5 @@
 package com.u2team.huansync.ticketOffice.model.util;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

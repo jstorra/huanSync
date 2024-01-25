@@ -430,7 +430,7 @@ public class EventView extends javax.swing.JFrame {
             txtEventRestaurant.setText("");
             txtEventStore.setText("");
             txtEventTime.setText("");
-            return; // Detiene la ejecución del método si la validación falla        
+            return;  
         }
     }//GEN-LAST:event_buttonCreateActionPerformed
 

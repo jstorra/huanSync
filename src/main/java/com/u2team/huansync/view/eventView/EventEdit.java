@@ -4,6 +4,13 @@
  */
 package com.u2team.huansync.view.eventView;
 
+import com.u2team.huansync.event.controller.EventController;
+import com.u2team.huansync.event.model.classes.Event;
+import com.u2team.huansync.event.model.classes.builders.EventBuilder;
+import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,17 +35,18 @@ public class EventEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
         txtEventDate = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtEventTime = new javax.swing.JTextField();
-        txtEventRestaurante = new javax.swing.JTextField();
+        txtEventRestaurant = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEventStore = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtEventPersona = new javax.swing.JTextField();
+        txtEventPerson = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtEventAddress = new javax.swing.JTextField();
@@ -51,21 +59,23 @@ public class EventEdit extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        selectEventClassification = new javax.swing.JComboBox<>();
+        selectEventAgeClass = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        selectEventOrganizerId = new javax.swing.JComboBox<>();
+        selectEventOrganizer = new javax.swing.JComboBox<>();
+
+        jLabel13.setText("jLabel13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 148, 50));
 
-        jButton2.setBackground(new java.awt.Color(31, 69, 106));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(31, 69, 106));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Save");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -87,10 +97,10 @@ public class EventEdit extends javax.swing.JFrame {
         txtEventTime.setForeground(new java.awt.Color(51, 51, 51));
         txtEventTime.setText("00:00:00");
 
-        txtEventRestaurante.setBackground(new java.awt.Color(255, 195, 114));
-        txtEventRestaurante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventRestaurante.setForeground(new java.awt.Color(51, 51, 51));
-        txtEventRestaurante.setText("Restaurant");
+        txtEventRestaurant.setBackground(new java.awt.Color(255, 195, 114));
+        txtEventRestaurant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEventRestaurant.setForeground(new java.awt.Color(51, 51, 51));
+        txtEventRestaurant.setText("Restaurant");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,10 +115,10 @@ public class EventEdit extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("N°Store");
 
-        txtEventPersona.setBackground(new java.awt.Color(255, 195, 114));
-        txtEventPersona.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventPersona.setForeground(new java.awt.Color(51, 51, 51));
-        txtEventPersona.setText("Person");
+        txtEventPerson.setBackground(new java.awt.Color(255, 195, 114));
+        txtEventPerson.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEventPerson.setForeground(new java.awt.Color(51, 51, 51));
+        txtEventPerson.setText("Person");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -168,17 +178,17 @@ public class EventEdit extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Classification:");
 
-        selectEventClassification.setBackground(new java.awt.Color(255, 195, 114));
-        selectEventClassification.setForeground(new java.awt.Color(0, 0, 0));
-        selectEventClassification.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY", "YOUNG", "ADULT" }));
+        selectEventAgeClass.setBackground(new java.awt.Color(255, 195, 114));
+        selectEventAgeClass.setForeground(new java.awt.Color(0, 0, 0));
+        selectEventAgeClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY", "YOUNG", "ADULT" }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Organizer:");
 
-        selectEventOrganizerId.setBackground(new java.awt.Color(255, 195, 114));
-        selectEventOrganizerId.setForeground(new java.awt.Color(0, 0, 0));
-        selectEventOrganizerId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        selectEventOrganizer.setBackground(new java.awt.Color(255, 195, 114));
+        selectEventOrganizer.setForeground(new java.awt.Color(0, 0, 0));
+        selectEventOrganizer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,19 +205,9 @@ public class EventEdit extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(204, 204, 204))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addGap(74, 74, 74))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(393, 393, 393)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +229,7 @@ public class EventEdit extends javax.swing.JFrame {
                                         .addGap(11, 11, 11)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(51, 51, 51)
                                                 .addComponent(jButton1))
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,22 +241,29 @@ public class EventEdit extends javax.swing.JFrame {
                                                     .addComponent(jLabel5)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(txtEventStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(txtEventPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEventRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEventPerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(selectEventOrganizerId, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(selectEventClassification, javax.swing.GroupLayout.Alignment.LEADING, 0, 128, Short.MAX_VALUE))
+                                        .addComponent(selectEventOrganizer, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(selectEventAgeClass, javax.swing.GroupLayout.Alignment.LEADING, 0, 128, Short.MAX_VALUE))
                                     .addComponent(txtEventAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(63, 63, 63))))
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -273,30 +280,30 @@ public class EventEdit extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtEventPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEventPerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtEventStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtEventRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtEventDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(txtEventTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectEventClassification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectEventAgeClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(selectEventOrganizerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectEventOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(29, 29, 29))
         );
@@ -317,15 +324,63 @@ public class EventEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   if (txtEvent.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtEventCountry.getText().trim().isEmpty()
-        || txtEventAddress.getText().trim().isEmpty() || txtEventPersona.getText().trim().isEmpty()
-        || txtEventStore.getText().trim().isEmpty() || txtEventRestaurante.getText().trim().isEmpty()
-        || txtEventDate.getText().trim().isEmpty()|| txtEventTime.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "You must complete all fields.", "Validation error!!", JOptionPane.ERROR_MESSAGE);
-        return; // Detiene la ejecución del método si la validación falla
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+ if (txtEvent.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtEventCountry.getText().trim().isEmpty()
+            || txtEventAddress.getText().trim().isEmpty() || txtEventPerson.getText().trim().isEmpty()
+            || txtEventStore.getText().trim().isEmpty() || txtEventRestaurant.getText().trim().isEmpty()
+            || txtEventDate.getText().trim().isEmpty() || txtEventTime.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        try {
+            
+            String nameEvent = txtEvent.getText();
+            String cityEvent = txtCity.getText();
+            String countryEvent = txtEventCountry.getText();
+            String addressEvent = txtEventAddress.getText();
+            int maxPeople = Integer.parseInt(txtEventPerson.getText());
+            int maxStore = Integer.parseInt(txtEventStore.getText());
+            int maxRestaurant = Integer.parseInt(txtEventRestaurant.getText());
+            long organizerId = Long.parseLong("1");
+            LocalDate dateEvent = LocalDate.parse(txtEventDate.getText());
+            LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
+            String ageClassification = selectEventAgeClass.getSelectedItem().toString();
+            long organizer = Long.parseLong((String) selectEventOrganizer.getSelectedItem());
+            
+            EventBuilder eventBuild = new EventConcreteBuilder();
+            Event event = eventBuild.nameEvent(nameEvent)
+                    .country(countryEvent).city(cityEvent).address(addressEvent)
+                    .peopleCapacity(maxPeople)
+                    .storeCapacity(maxStore)
+                    .restaurantCapacity(maxRestaurant)
+                    .dateEvent(dateEvent)
+                    .timeEvent(timeEvent)
+                    .organizerId(organizer)
+                    .ageClassificationEnum(ageClassification)
+                    .statusEnum("active").build();
+
+            // Llama al método del controlador para actualizar el evento en la base de datos
+            EventController.updateEvent(event);
+
+            JOptionPane.showMessageDialog(this, "Event updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // Restablecer campos después de la actualización exitosa
+            txtEvent.setText("");
+            txtCity.setText("");
+            txtEventAddress.setText("");
+            txtEventCountry.setText("");
+            txtEventDate.setText("");
+            txtEventPerson.setText("");
+            txtEventRestaurant.setText("");
+            txtEventStore.setText("");
+            txtEventTime.setText("");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid numeric input.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Invalid date or time format.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-    }//GEN-LAST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ShowEventView show = new ShowEventView();
@@ -371,11 +426,11 @@ public class EventEdit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -385,16 +440,41 @@ public class EventEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> selectEventClassification;
-    private javax.swing.JComboBox<String> selectEventOrganizerId;
+    private javax.swing.JComboBox<String> selectEventAgeClass;
+    private javax.swing.JComboBox<String> selectEventOrganizer;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEvent;
     private javax.swing.JTextField txtEventAddress;
     private javax.swing.JTextField txtEventCountry;
     private javax.swing.JTextField txtEventDate;
-    private javax.swing.JTextField txtEventPersona;
-    private javax.swing.JTextField txtEventRestaurante;
+    private javax.swing.JTextField txtEventPerson;
+    private javax.swing.JTextField txtEventRestaurant;
     private javax.swing.JTextField txtEventStore;
     private javax.swing.JTextField txtEventTime;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    void initData(int eventId) {
+ EventController eventController = new EventController();
+    Event eventData = eventController.getByIdEvent(eventId);
+
+    if (eventData != null) {
+            
+            txtEvent.setText(eventData.getNameEvent());
+            txtCity.setText(eventData.getCity());
+            txtEventCountry.setText(eventData.getCountry());
+            txtEventAddress.setText(eventData.getAddress());
+            txtEventPerson.setText(String.valueOf(eventData.getPeopleCapacity()));
+            txtEventStore.setText(String.valueOf(eventData.getStoreCapacity()));
+            txtEventRestaurant.setText(String.valueOf(eventData.getRestaurantCapacity()));
+            txtEventDate.setText(eventData.getDateEvent().toString());
+            txtEventTime.setText(eventData.getTimeEvent().toString());
+            selectEventAgeClass.setSelectedItem(eventData.getAgeClassification());
+              selectEventOrganizer.setSelectedItem(eventData.getOrganizerId());
+ } else {
+        JOptionPane.showMessageDialog(this, "Event not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        this.dispose(); 
+    }
 }
+}
+

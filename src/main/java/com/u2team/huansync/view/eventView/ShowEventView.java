@@ -8,6 +8,7 @@ import com.u2team.huansync.event.controller.EventController;
 import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.view.MenuView;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -18,7 +19,7 @@ import javax.swing.table.TableModel;
  */
 public class ShowEventView extends javax.swing.JFrame {
         private final EventController eventController; 
-      
+       private int selectedEventId;
 public ShowEventView(){
       initComponents();
       this.eventController = new EventController();
@@ -83,6 +84,11 @@ private void populateTable(){
         ));
         tableModel.setGridColor(new java.awt.Color(71, 48, 40));
         tableModel.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        tableModel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableModelMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableModel);
 
         jButton1.setBackground(new java.awt.Color(255, 148, 50));
@@ -198,11 +204,26 @@ private void populateTable(){
     }//GEN-LAST:event_salirActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-      EventEdit edit = new EventEdit();
-      edit.setVisible(true);
-      edit.setLocationRelativeTo(null);
-      this.dispose();
+     if (selectedEventId != 0) {
+            EventEdit edit = new EventEdit();
+            edit.initData(selectedEventId); // Pasa el ID al formulario de edición
+            edit.setVisible(true);
+            edit.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Select an event to edit.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void tableModelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableModelMouseClicked
+  int selectedRow = tableModel.getSelectedRow();
+        if (selectedRow != -1) {
+            // Asegúrate de tener acceso al ID del evento, puede ser la primera columna (índice 0)
+            selectedEventId = Integer.parseInt(tableModel.getValueAt(selectedRow, 0).toString());
+        }
+    
+    }//GEN-LAST:event_tableModelMouseClicked
 
     /**
      * @param args the command line arguments

@@ -1,5 +1,7 @@
 package com.u2team.huansync.activity.trivia;
 
+import com.u2team.huansync.activity.trivia.question.controller.QuestionController;
+import com.u2team.huansync.activity.trivia.question.model.Question;
 import java.util.*;
 
 public class pruebaTrivia {
@@ -9,7 +11,8 @@ public class pruebaTrivia {
         List<String> jugadoresRonda2 = new ArrayList<>();
         List<String> jugadoresRonda3 = new ArrayList<>();
         
-
+        List<Question> questions = QuestionController.getAllQuestions();
+        System.out.println(questions.get(49));
         List<String> preguntas = Arrays.asList(
                 "¿Cuál es tu película favorita y por qué la consideras especial?",
                 "¿Tienes alguna meta específica que estés trabajando actualmente?",

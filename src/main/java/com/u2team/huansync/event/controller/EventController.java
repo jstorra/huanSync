@@ -84,4 +84,9 @@ public class EventController {
     public static void insertEventStaffDAO(EventStaff eventStaff) {
         eventStaffDao.save(eventStaff);
     }
+    
+    
+    public static EventStaffFull getByIdFull(long id) {
+        return eventDao.getByIdFull(id);
+    }
 }

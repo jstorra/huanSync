@@ -79,9 +79,9 @@ public class EventView extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("City:");
 
-        txtEvent.setBackground(new java.awt.Color(255, 173, 58));
+        txtEvent.setBackground(new java.awt.Color(255, 195, 114));
         txtEvent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEvent.setForeground(new java.awt.Color(66, 57, 58));
+        txtEvent.setForeground(new java.awt.Color(51, 51, 51));
         txtEvent.setToolTipText("");
         txtEvent.setName("Event"); // NOI18N
         txtEvent.addActionListener(new java.awt.event.ActionListener() {
@@ -90,9 +90,9 @@ public class EventView extends javax.swing.JFrame {
             }
         });
 
-        txtCity.setBackground(new java.awt.Color(255, 173, 58));
+        txtCity.setBackground(new java.awt.Color(255, 195, 114));
         txtCity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtCity.setForeground(new java.awt.Color(66, 57, 58));
+        txtCity.setForeground(new java.awt.Color(51, 51, 51));
         txtCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCityActionPerformed(evt);
@@ -103,17 +103,17 @@ public class EventView extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Country:");
 
-        txtEventCountry.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventCountry.setBackground(new java.awt.Color(255, 195, 114));
         txtEventCountry.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventCountry.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventCountry.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Address:");
 
-        txtEventAddress.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventAddress.setBackground(new java.awt.Color(255, 195, 114));
         txtEventAddress.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventAddress.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventAddress.setForeground(new java.awt.Color(51, 51, 51));
         txtEventAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEventAddressActionPerformed(evt);
@@ -124,9 +124,9 @@ public class EventView extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("N°Person:");
 
-        txtEventPeople.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventPeople.setBackground(new java.awt.Color(255, 195, 114));
         txtEventPeople.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventPeople.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventPeople.setForeground(new java.awt.Color(51, 51, 51));
         txtEventPeople.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEventPeopleActionPerformed(evt);
@@ -137,17 +137,17 @@ public class EventView extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("N°Stores:");
 
-        txtEventStore.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventStore.setBackground(new java.awt.Color(255, 195, 114));
         txtEventStore.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventStore.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventStore.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("N°Restaurants:");
 
-        txtEventRestaurant.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventRestaurant.setBackground(new java.awt.Color(255, 195, 114));
         txtEventRestaurant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventRestaurant.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventRestaurant.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -157,9 +157,9 @@ public class EventView extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Time:");
 
-        txtEventTime.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventTime.setBackground(new java.awt.Color(255, 195, 114));
         txtEventTime.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventTime.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventTime.setForeground(new java.awt.Color(51, 51, 51));
 
         buttonCreate.setBackground(new java.awt.Color(8, 69, 106));
         buttonCreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -181,9 +181,9 @@ public class EventView extends javax.swing.JFrame {
             }
         });
 
-        txtEventDate.setBackground(new java.awt.Color(255, 173, 58));
+        txtEventDate.setBackground(new java.awt.Color(255, 195, 114));
         txtEventDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtEventDate.setForeground(new java.awt.Color(66, 57, 58));
+        txtEventDate.setForeground(new java.awt.Color(51, 51, 51));
         txtEventDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEventDateActionPerformed(evt);
@@ -201,33 +201,33 @@ public class EventView extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(305, 305, 305)
                 .addComponent(jLabel1)
-                .addGap(352, 352, 352))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         ageClasification.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ageClasification.setForeground(new java.awt.Color(0, 0, 0));
         ageClasification.setText("Age Clasfication:");
 
-        selectEventAgeClass.setBackground(new java.awt.Color(255, 173, 58));
-        selectEventAgeClass.setForeground(new java.awt.Color(0, 0, 0));
+        selectEventAgeClass.setBackground(new java.awt.Color(255, 195, 114));
+        selectEventAgeClass.setForeground(new java.awt.Color(51, 51, 51));
         selectEventAgeClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY", "YOUNGER", "ADULT" }));
 
         organizer.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         organizer.setForeground(new java.awt.Color(0, 0, 0));
         organizer.setText("Organizer:");
 
-        selectEventOrganizer.setBackground(new java.awt.Color(255, 173, 58));
-        selectEventOrganizer.setForeground(new java.awt.Color(0, 0, 0));
+        selectEventOrganizer.setBackground(new java.awt.Color(255, 195, 114));
+        selectEventOrganizer.setForeground(new java.awt.Color(51, 51, 51));
         selectEventOrganizer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -273,38 +273,36 @@ public class EventView extends javax.swing.JFrame {
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(buttonCreate)
                                                     .addComponent(selectEventOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGap(0, 162, Short.MAX_VALUE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(txtEventPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(397, 397, 397)
-                                        .addComponent(jLabel3)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtEvent, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(txtEventCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(txtEventAddress)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2))))
-                            .addComponent(jLabel2))
-                        .addGap(0, 58, Short.MAX_VALUE))))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5))
+                                    .addGap(74, 74, 74)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(txtEventCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(2, 2, 2))
+                                        .addComponent(txtEvent, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtEventAddress)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                            .addGap(0, 454, Short.MAX_VALUE)
+                                            .addComponent(txtEventRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel2)))
+                        .addGap(24, 24, 24))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

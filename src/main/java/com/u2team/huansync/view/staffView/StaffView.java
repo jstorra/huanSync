@@ -133,34 +133,34 @@ public class StaffView extends javax.swing.JFrame {
             }
         });
 
-        selectWorkRole.setBackground(new java.awt.Color(255, 173, 58));
+        selectWorkRole.setBackground(new java.awt.Color(255, 195, 114));
         selectWorkRole.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        selectWorkRole.setForeground(new java.awt.Color(255, 255, 255));
+        selectWorkRole.setForeground(new java.awt.Color(51, 51, 51));
         selectWorkRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Work Role 1", "Work Role 2", "Work Role 3", "Work Role 4" }));
 
-        selectEvent.setBackground(new java.awt.Color(255, 173, 58));
+        selectEvent.setBackground(new java.awt.Color(255, 195, 114));
         selectEvent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        selectEvent.setForeground(new java.awt.Color(255, 255, 255));
+        selectEvent.setForeground(new java.awt.Color(51, 51, 51));
         selectEvent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Event 1", "Event 2", "Event 3", "Event 4" }));
 
-        selectStatus.setBackground(new java.awt.Color(255, 173, 58));
+        selectStatus.setBackground(new java.awt.Color(255, 195, 114));
         selectStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        selectStatus.setForeground(new java.awt.Color(255, 255, 255));
+        selectStatus.setForeground(new java.awt.Color(51, 51, 51));
         selectStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "inactive", "assigned", "on hold", "fired", "disable" }));
 
-        txtName.setBackground(new java.awt.Color(255, 173, 58));
+        txtName.setBackground(new java.awt.Color(255, 195, 114));
         txtName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.setText("Name:");
 
-        txtNumberId.setBackground(new java.awt.Color(255, 173, 58));
+        txtNumberId.setBackground(new java.awt.Color(255, 195, 114));
         txtNumberId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtNumberId.setForeground(new java.awt.Color(255, 255, 255));
+        txtNumberId.setForeground(new java.awt.Color(51, 51, 51));
         txtNumberId.setText("id");
 
-        txtBirthday.setBackground(new java.awt.Color(255, 173, 58));
+        txtBirthday.setBackground(new java.awt.Color(255, 195, 114));
         txtBirthday.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtBirthday.setForeground(new java.awt.Color(255, 255, 255));
+        txtBirthday.setForeground(new java.awt.Color(51, 51, 51));
         txtBirthday.setText("dd/mm/aa");
 
         jPanel3.setBackground(new java.awt.Color(144, 19, 33));
@@ -173,17 +173,17 @@ public class StaffView extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tittelStaff)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(174, 174, 174))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(tittelStaff)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

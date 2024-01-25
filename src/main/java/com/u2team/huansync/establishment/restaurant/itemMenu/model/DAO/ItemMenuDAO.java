@@ -57,8 +57,8 @@ public class ItemMenuDAO implements ISaveDao<ItemMenu>, IDeleteDao<ItemMenu>, IG
                 Operations.setConnection(BDConnection.MySQLConnection());
                 // Create a query and send corresponding information in each field by replacing the character "?" with the information
                 String stmInsert = """
-                           INSERT INTO tbl_itemMenu (nameItemMenu, priceItemMenu, itemMenuType, preparationTime)
-                           VALUES (?, ?, ?, ?);
+                           INSERT INTO tbl_itemMenu (nameItemMenu, priceItemMenu, itemMenuType, preparationTime, establishmentId)
+                           VALUES (?, ?, ?, ?, ?);
                            """;
                 try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
                     ps.setString(1, itemMenu.getNameItemMenu());

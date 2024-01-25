@@ -7,21 +7,23 @@ CREATE TABLE `tbl_ingredients` (
   `ingredientId` int PRIMARY KEY AUTO_INCREMENT,
   `nameIngredient` varchar(50) NOT NULL,
   `availableQuantity` int NOT NULL,
-  `establishmentId` int
+  `establishmentId` int 
 );
 
 CREATE TABLE `tbl_itemMenu` (
   `itemMenuId` int PRIMARY KEY AUTO_INCREMENT,
-  `nameItemMenu` varchar(50) UNIQUE NOT NULL,
+  `nameItemMenu` varchar(50) NOT NULL,
   `priceItemMenu` decimal(10,2) NOT NULL,
   `itemMenuType` ENUM ('appetizer', 'main course', 'drink', 'dessert') NOT NULL,
   `preparationTime` int NOT NULL,
-  `establishmentId` int
+  `establishmentId` int NOT NULL,
+UNIQUE( `nameItemMenu`, `establishmentId`)
 );
 
 CREATE TABLE `tbl_ingredients_itemMenu` (
   `itemMenuId` int NOT NULL,
-  `ingredientId` int NOT NULL
+  `ingredientId` int NOT NULL,
+UNIQUE( `itemMenuId`, `ingredientId`)
 );
 
 CREATE TABLE tbl_establishments (
@@ -32,15 +34,13 @@ CREATE TABLE tbl_establishments (
     managerEstablishmentId INT
 );
 
-CREATE UNIQUE INDEX `tbl_ingredients_itemMenu_index_0` ON `tbl_ingredients_itemMenu` (`itemMenuId`, `ingredientId`);
+ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`ingredientId`) REFERENCES `tbl_ingredients` (`ingredientId`) ON DELETE CASCADE;
 
-ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`ingredientId`) REFERENCES `tbl_ingredients` (`ingredientId`);
+ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`itemMenuId`) REFERENCES `tbl_itemMenu` (`itemMenuId`)  ON DELETE CASCADE;
 
-ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`itemMenuId`) REFERENCES `tbl_itemMenu` (`itemMenuId`);
+ALTER TABLE `tbl_itemMenu` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_establishments` (`establishmentId`)  ON DELETE CASCADE;
 
-ALTER TABLE `tbl_itemMenu` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_establishments` (`establishmentId`);
-
-ALTER TABLE `tbl_ingredients` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_establishments` (`establishmentId`);
+ALTER TABLE `tbl_ingredients` ADD FOREIGN KEY (`establishmentId`) REFERENCES `tbl_establishments` (`establishmentId`) ON DELETE CASCADE;
 
 
 -- SELECT * FROM tbl_ingredients;

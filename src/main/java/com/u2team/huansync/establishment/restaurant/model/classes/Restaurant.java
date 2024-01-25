@@ -31,5 +31,12 @@ public class Restaurant extends Establishment
         this.listItemMenu = listItemMenu;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +  "  Restaurant{" + "listItemMenu=" + listItemMenu + '}';
+    }
+    
+    
+
 
 }

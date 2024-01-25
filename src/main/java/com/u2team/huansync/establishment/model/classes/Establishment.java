@@ -71,4 +71,11 @@ public class Establishment {
         this.establishmentEventId = establishmentEventId;
     }
 
+    @Override
+    public String toString() {
+        return "Establishment{" + "establishmentId=" + establishmentId + ", nameEstablishment=" + nameEstablishment + ", managerEstablishmentId=" + managerEstablishmentId + ", categoyEstablishment=" + categoyEstablishment + ", establishmentEventId=" + establishmentEventId + '}';
+    }
+
+    
+    
 }

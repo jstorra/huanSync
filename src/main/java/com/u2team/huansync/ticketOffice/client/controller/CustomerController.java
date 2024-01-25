@@ -44,14 +44,7 @@ public class CustomerController {
     /**
      * The CustomerDAO instance for interacting with the data model.
      */
-    private CustomerDAO customerDAO;
-
-    /**
-     * Constructs a new CustomerController instance with a default CustomerDAO.
-     */
-    public CustomerController() {
-        this.customerDAO = new CustomerDAO();
-    }
+    private static CustomerDAO customerDAO = new CustomerDAO();
 
     /**
      * Retrieves a customer by its unique identifier.
@@ -59,7 +52,7 @@ public class CustomerController {
      * @param customerId The unique identifier of the customer.
      * @return The customer with the specified identifier, or null if not found.
      */
-    public Customer getByIdCustomer(long customerId) {
+    public static Customer getByIdCustomer(long customerId) {
         return customerDAO.getById(customerId);
     }
 
@@ -68,7 +61,7 @@ public class CustomerController {
      *
      * @return A list containing all customers.
      */
-    public List<Customer> getAllCustomer() {
+    public static List<Customer> getAllCustomer() {
         return customerDAO.getAll();
     }
 
@@ -77,7 +70,7 @@ public class CustomerController {
      *
      * @param customer The customer to be inserted.
      */
-    public void insertCustomer(Customer customer) {
+    public static void insertCustomer(Customer customer) {
         customerDAO.save(customer);
     }
 
@@ -86,7 +79,7 @@ public class CustomerController {
      *
      * @param customerId The unique identifier of the customer to be deleted.
      */
-    public void deleteCustomer(long customerId) {
+    public static void deleteCustomer(long customerId) {
         customerDAO.delete(customerId);
     }
 
@@ -95,7 +88,7 @@ public class CustomerController {
      *
      * @param customer The customer to be updated.
      */
-    public void updateCustomer(Customer customer) {
+    public static void updateCustomer(Customer customer) {
         customerDAO.update(customer);
     }
 }

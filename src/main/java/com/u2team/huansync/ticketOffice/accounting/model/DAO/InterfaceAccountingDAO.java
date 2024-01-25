@@ -1,4 +1,4 @@
-package com.u2team.huansync.ticketOffice.accounting.model;
+package com.u2team.huansync.ticketOffice.accounting.model.DAO;
 
 public interface InterfaceAccountingDAO {
     void generateTotalSalesReport();

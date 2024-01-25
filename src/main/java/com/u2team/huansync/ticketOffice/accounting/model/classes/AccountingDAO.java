@@ -2,7 +2,7 @@ package com.u2team.huansync.ticketOffice.accounting.model.classes;
 
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
-import com.u2team.huansync.ticketOffice.accounting.model.InterfaceAccountingDAO;
+import com.u2team.huansync.ticketOffice.accounting.model.DAO.InterfaceAccountingDAO;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;

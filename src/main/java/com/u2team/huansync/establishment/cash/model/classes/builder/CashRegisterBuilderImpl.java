@@ -1,11 +1,11 @@
 package com.u2team.huansync.establishment.cash.model.classes.builder;
 import com.u2team.huansync.establishment.cash.model.classes.CashRegister;
 
-public class CashBuilderImpl implements CashRegisterBuilder {
+public class CashRegisterBuilderImpl implements CashRegisterBuilder {
 
     private CashRegister cash;
 
-    public CashBuilderImpl(CashRegister cash) {
+    public CashRegisterBuilderImpl() {
         this.cash = new CashRegister();
     }
 

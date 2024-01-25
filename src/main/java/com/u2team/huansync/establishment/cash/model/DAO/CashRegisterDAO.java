@@ -1,4 +1,5 @@
 package com.u2team.huansync.establishment.cash.model.DAO;
+
 import com.u2team.huansync.establishment.DAO.*;
 import com.u2team.huansync.establishment.cash.model.classes.CashRegister;
 import com.u2team.huansync.establishment.model.classes.Establishment;
@@ -9,13 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<CashRegister>, IGetAll<CashRegister>, IDeleteDao<CashRegister>{
+public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<CashRegister>, IGetAll<CashRegister>, IDeleteDao<CashRegister> {
 
     @Override
     public void save(CashRegister t) {
-          Operations.setConnection(BDConnection.MySQLConnection());
+        Operations.setConnection(BDConnection.MySQLConnection());
         // Create a query and send corresponding information in each field by replacing the character "?" with the information
-        String stmInsert = "INSERT INTO tbl_cashRegister (cashRegisterId , statusCash, openingAmount, closingAmount, cashierOperatorId, establishmentsId ) VALUES(?, ?, ?, ?, ?);";
+        String stmInsert = "INSERT INTO tbl_cashRegister (cashRegisterId , statusCash, openingAmount, closingAmount, cashierOperatorId, establishmentsId ) VALUES(?, ?, ?, ?, ?,?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, t.getCashRegisterId());
             ps.setBoolean(2, t.isStatusCash());
@@ -39,7 +40,7 @@ public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<Cash
 
     @Override
     public CashRegister getById(long id) {
-       Operations.setConnection(BDConnection.MySQLConnection());
+        Operations.setConnection(BDConnection.MySQLConnection());
         String stmInsert = "SELECT * FROM tbl_cashRegister WHERE cashRegisterId = ?;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, id);
@@ -54,13 +55,12 @@ public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<Cash
                 cas.setEstablishmentsId(rs.getLong("establishmentsId"));
                 return cas;
             }
-        } 
-            catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("An error has occurred: " + e.getMessage());
         }
-    
-     return null;
+
+        return null;
     }
 
     @Override

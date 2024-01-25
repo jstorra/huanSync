@@ -4,6 +4,11 @@
  */
 package com.u2team.huansync.view.ticketView;
 
+import com.u2team.huansync.ticketOffice.client.controller.CustomerController;
+import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
+import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerBuilder;
+import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerConcreteBuilder;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -465,8 +470,36 @@ public class TicketOfficeView extends javax.swing.JFrame {
             || txtNumber.getText().trim().isEmpty() || txttype.getSelectedItem()==null){
             JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
             return; // Detiene la ejecución del método si la validación falla
-        }
-
+        }else{
+            String name = txtName.getText();
+            String document = txtDocument.getText();
+            LocalDate  dateCustomer = LocalDate.parse(txtDate.getText());
+            String gender = txtGender.getText();
+            String email = txtEmail.getText();
+            String phoneNumber = txtNumber.getText();
+            String typeEnum = txttype.getSelectedItem().toString();
+            
+            
+        
+    
+                CustomerBuilder customerbuil = new CustomerConcreteBuilder();
+                Customer  customers  = customerbuil.nameCustomer(name)
+                        .document(document)
+                        .birthDate(dateCustomer)
+                        .gender(gender)
+                        .email(email)
+                        .phoneNumber(phoneNumber)
+                        .customerTypeEnum(typeEnum).build();
+                
+                
+                /*Se genera el controller*/
+                
+          //    CustomerController.insertCustomer(customers);
+             //   txtName.setText(name);
+                
+                
+        
+                        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txttypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttypeActionPerformed

@@ -141,7 +141,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     System.out.println("Cannot push ticketOffice");
                 } else {
                     System.out.println("Successful push ticketOffice");
-                    Validations.updateStaff("TASK_ASSIGNED", ticketOffice.getStaffId());
+                    Validations.updateStaff(ticketOffice.getStaffId());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -178,12 +178,6 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
             if (Validations.isValidDateTime(startHour, startDate)) {
                 System.out.println("This ticketOffice was impossible to update because the event has already started");
                 return;
-            } else if (Validations.checkedEvent(eventDatas.getEventId())) {
-                System.out.println("That event was assigned to another ticket office");
-                return;
-            } else if (Validations.checkedStaff(staffDatas.getStaffId())) {
-                System.out.println("That staff was assigned to another ticket office");
-                return;
             } else if (eventDatas.getStatusEnum().name().equalsIgnoreCase("finished")) {
                 System.out.println("Sorry, the event was finished, so create one ticket office with another active event");
                 return;
@@ -212,7 +206,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     } else {
                         ps.execute();
                         System.out.println("Successful update ticketOffice");
-                        Validations.updateStaff("TASK_ASSIGNED", ticketOffice.getStaffId());
+                        Validations.updateStaff(ticketOffice.getStaffId());
                     }
 
                 } catch (SQLException e) {

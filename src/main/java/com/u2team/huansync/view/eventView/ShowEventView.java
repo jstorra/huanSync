@@ -4,20 +4,47 @@
  */
 package com.u2team.huansync.view.eventView;
 
+import com.u2team.huansync.event.controller.EventController;
+import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.view.MenuView;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 
 /**
  *
  * @author ANGIE DURAN
  */
 public class ShowEventView extends javax.swing.JFrame {
+        private final EventController eventController; 
+      
+public ShowEventView(){
+      initComponents();
+      this.eventController = new EventController();
+       populateTable();
 
-    /**
-     * Creates new form ShowEventView
-     */
-    public ShowEventView() {
-        initComponents();
+}
+
+private void populateTable(){
+    List<Event> eventData = eventController.getAllEvents();
+     DefaultTableModel model = (DefaultTableModel) tableModel.getModel();
+      model.setRowCount(0); 
+
+ for (Event event : eventData) {
+            Object[] row = {
+                event.getEventId(),
+                event.getNameEvent(),
+                event.getCity(),
+                event.getCountry(),
+                event.getAddress(),
+                event.getPeopleCapacity()
+            };
+            model.addRow(row);
+        }
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,33 +58,32 @@ public class ShowEventView extends javax.swing.JFrame {
         jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableModel = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(144, 19, 33));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableModel.setBackground(new java.awt.Color(255, 255, 255));
+        tableModel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "City", "Country", "Address", "N°Person", "Delete", "Edit"
+                "ID", "Name", "City", "Country", "Address", "N°Person"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(71, 48, 40));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
+        tableModel.setGridColor(new java.awt.Color(71, 48, 40));
+        tableModel.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        jScrollPane1.setViewportView(tableModel);
 
         jButton1.setBackground(new java.awt.Color(255, 148, 50));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,16 +138,6 @@ public class ShowEventView extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(255, 148, 50));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,11 +148,9 @@ public class ShowEventView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(103, 103, 103)
-                        .addComponent(btnUpdate)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate)
+                        .addGap(175, 175, 175)
                         .addComponent(salir))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
@@ -151,8 +165,7 @@ public class ShowEventView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salir)
                     .addComponent(jButton1)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
+                    .addComponent(btnUpdate))
                 .addGap(77, 77, 77))
         );
 
@@ -191,13 +204,6 @@ public class ShowEventView extends javax.swing.JFrame {
       this.dispose();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        EventAlert alert = new EventAlert();
-        alert.setVisible(true);
-        alert.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -234,7 +240,6 @@ public class ShowEventView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -242,7 +247,7 @@ public class ShowEventView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton salir;
+    private javax.swing.JTable tableModel;
     // End of variables declaration//GEN-END:variables
 }

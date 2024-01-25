@@ -32,9 +32,15 @@ public class Successful extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(144, 19, 33));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SUCCESSFUL OPERATION!!");
 
+        btnOK.setBackground(new java.awt.Color(255, 148, 50));
+        btnOK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnOK.setForeground(new java.awt.Color(255, 255, 255));
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

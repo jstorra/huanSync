@@ -33,11 +33,19 @@ public class WinnerTrivia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        winnerTittle.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(144, 19, 33));
+
+        winnerTittle.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        winnerTittle.setForeground(new java.awt.Color(255, 255, 255));
         winnerTittle.setText("WINNER!!!");
 
+        winnerParticipant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        winnerParticipant.setForeground(new java.awt.Color(255, 255, 255));
         winnerParticipant.setText("ParticipantWinner");
 
+        nextWinner.setBackground(new java.awt.Color(8, 69, 106));
+        nextWinner.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nextWinner.setForeground(new java.awt.Color(255, 255, 255));
         nextWinner.setText("Next");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -56,7 +64,7 @@ public class WinnerTrivia extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(winnerTittle)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

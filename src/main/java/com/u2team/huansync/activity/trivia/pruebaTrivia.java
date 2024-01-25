@@ -8,6 +8,7 @@ public class pruebaTrivia {
         List<String> jugadoresRonda1 = new ArrayList<>(Arrays.asList("Juan", "Cristina", "Gonzalo", "Santiago", "Pedro", "Camilo", "Violeta", "Pedro"));
         List<String> jugadoresRonda2 = new ArrayList<>();
         List<String> jugadoresRonda3 = new ArrayList<>();
+        
 
         List<String> preguntas = Arrays.asList(
                 "¿Cuál es tu película favorita y por qué la consideras especial?",

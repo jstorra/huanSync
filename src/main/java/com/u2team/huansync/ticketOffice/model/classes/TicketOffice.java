@@ -71,7 +71,7 @@ public class TicketOffice {
 
     @Override
     public String toString() {
-        return "TicketOfficeId was assigned to:"+
+        return "\n TicketOfficeId was assigned to:"+
                 "\n ticketOfficeId: " + ticketOfficeId +
                 "\n eventId: " + eventId + 
                 "\n InPlace: " + location + 

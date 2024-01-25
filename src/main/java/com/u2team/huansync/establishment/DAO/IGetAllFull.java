@@ -4,10 +4,12 @@
  */
 package com.u2team.huansync.establishment.DAO;
 
+import java.util.List;
+
 /**
  *
  * @author misae
  */
-public interface IGetByIdFull<T> extends IDao{
-    T getByIdFull(long id  );
+public interface IGetAllFull <T> extends IDao{
+    List<T> getAllFull();
 }

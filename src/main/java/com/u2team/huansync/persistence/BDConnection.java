@@ -1,5 +1,4 @@
 package com.u2team.huansync.persistence;
-
 import java.sql.*;
 
 public abstract class BDConnection {

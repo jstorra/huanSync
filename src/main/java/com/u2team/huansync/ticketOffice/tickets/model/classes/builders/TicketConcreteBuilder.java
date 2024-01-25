@@ -58,7 +58,7 @@ public class TicketConcreteBuilder implements TicketBuilder{
 
     @Override
     public Tickets buid() {
-        return null;
+        return tickets;
     }
 
 }

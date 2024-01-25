@@ -78,6 +78,6 @@ public class TicketOffice {
                 "\n Address: " + address + 
                 "\n ContactNumber: " + contactNumber + 
                 "\n staffId: " + staffId + 
-                "****************************************";
+                "\n ****************************************";
     }    
 }

@@ -148,6 +148,7 @@ public class CustomerDAO implements IDao<Customer> {
      */
     @Override
     public void save(Customer customer) {
+        Operations.setConnection(BDConnection.MySQLConnection());
         String stmInsert = "INSERT INTO tbl_customers(nameCustomer , document, gender , birthDate , emailCustomer , phoneNumber , typeCustomer) VALUES (?,?,?,?,?,?,?)";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setString(1, customer.getName());

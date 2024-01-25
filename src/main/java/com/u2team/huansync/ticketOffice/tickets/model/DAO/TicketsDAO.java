@@ -6,6 +6,7 @@ import com.u2team.huansync.ticketOffice.tickets.model.classes.Tickets;
 import com.u2team.huansync.ticketOffice.tickets.model.classes.builders.TicketBuilder;
 import com.u2team.huansync.ticketOffice.tickets.model.classes.builders.TicketConcreteBuilder;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -81,23 +82,25 @@ public class TicketsDAO implements IDao<Tickets>{
     @Override
     public void save(Tickets tickets) {
         String stmInsert = "INSERT INTO tbl_tickets(nameTicket, status, additionalCost, customerId, ticketOfficeId, ticketTypeId) VALUES(?,?,?,?,?,?);";
+        try (Connection connection = BDConnection.MySQLConnection()) {
+            try(PreparedStatement ps = connection.prepareStatement(stmInsert)){
+                System.out.printf(tickets.getNameTicket());
+                ps.setString(1, tickets.getNameTicket());
+                ps.setString(2, tickets.getStatusEnum().name());
+                ps.setDouble(3, tickets.getAdditionalCost());
+                ps.setLong(4, tickets.getCustomerId());
+                ps.setLong(5, tickets.getTicketOfficeId());
+                ps.setLong(6, tickets.getTicketTypeId());
 
-        try(PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)){
-            ps.setString(1, tickets.getNameTicket());
-            ps.setString(2, tickets.getStatusEnum().name());
-            ps.setDouble(3, tickets.getAdditionalCost());
-            ps.setLong(4, tickets.getCustomerId());
-            ps.setLong(5, tickets.getTicketOfficeId());
-            ps.setLong(6, tickets.getTicketTypeId());
+                int rows = Operations.insert_update_delete_db(ps);
 
-            int rows = Operations.insert_update_delete_db(ps);
-
-            if (rows <= 0){
-                System.out.println("Cannot push ticket");
-            } else{
-                System.out.println("Successful push ticket");
+                if (rows <= 0){
+                    System.out.println("Cannot push ticket");
+                } else{
+                    System.out.println("Successful push ticket");
+                }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

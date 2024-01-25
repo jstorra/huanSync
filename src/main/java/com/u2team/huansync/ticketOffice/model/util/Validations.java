@@ -27,15 +27,14 @@ public class Validations {
         LocalDate currentDate = LocalDate.now();
         LocalTime currentHour = LocalTime.now();
 
-        if (currentDate.isBefore(startDate)) {
+        if(currentDate.isBefore(currentDate)){
             return true;
-        } else if (currentHour.isBefore(starHour)) {
-            return true;
-        } else if (currentDate.equals(startDate)) {
-            return false;
-        } else {
-            return false;
+        }else if(currentDate.isEqual(currentDate)){
+            if(currentHour.isBefore(currentHour)){
+                return true;
+            }
         }
+        return false;
     }
 
     /**
@@ -66,7 +65,7 @@ public class Validations {
 
     public static boolean checkedStaffStatus(long staffId) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String query = "SELECT staffId, statusStaff FROM tbl_staff WHERE statusStaff = 'no_task_assigned';";
+        String query = "SELECT staffId, statusStaff FROM tbl_staff WHERE statusStaff = 'NO_TASK_ASSIGNED';";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
             ResultSet rs = Operations.query_db(ps);
@@ -87,16 +86,14 @@ public class Validations {
 
     public static boolean updateStaff(String statusChange, long staffId) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String query = "UPDATE tbl_staff SET statusStaff = ? WHERE staffId = ?";
+        String query = "UPDATE tbl_staff SET statusStaff = 'TASK_ASSIGNED' WHERE staffId = ?";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
-            ps.setString(1, statusChange);
-            ps.setLong(2, staffId);
-
+            ps.setLong(1, staffId);
+            ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 }
-

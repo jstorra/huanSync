@@ -33,19 +33,21 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
         
         
         /// Create a query and send corresponding information in each field by replacing the character "?" with the information
-        String stmInsert = "INSERT INTO tbl_order(orderId,customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?,?);";
+        //String stmInsert = "INSERT INTO tbl_order(orderId,customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?,?);";
+        //Test if save data for autoincrement
+        String stmInsert = "INSERT INTO tbl_order(customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?);";
         
         //PreparedStatement es de sql y Operations de Mariño
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
-            ps.setLong(1, order.getOrderId());
-            ps.setInt(2, order.getCustomerId());
-            ps.setInt(3, order.getEstablishmentId());
-            ps.setInt(4, order.getCashId());
-            ps.setInt(5, order.getCashierOperatorId());
+            //ps.setLong(1, order.getOrderId());
+            ps.setInt(1, order.getCustomerId());
+            ps.setInt(2, order.getEstablishmentId());
+            ps.setInt(3, order.getCashId());
+            ps.setInt(4, order.getCashierOperatorId());
             
             //Put name to correct the mistake
             /////////Corregir esta linea
-            ps.setString(6, order.getOrderStatusEnum().name()); 
+            ps.setString(5, order.getOrderStatusEnum().name()); 
 
 
 

@@ -6,7 +6,7 @@ package com.u2team.huansync.establishment.store.product.model.classes;
 
 /**
  *
- * @author Kevin Jimenez
+ * @author Kevin Jimenez and sneiderEsteban
  */
 public class Product {
     

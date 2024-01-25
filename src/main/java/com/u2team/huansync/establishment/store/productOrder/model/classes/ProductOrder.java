@@ -11,6 +11,15 @@ public class ProductOrder {
     private long orderId;
     private long productId;
     private int quantity;
+    private long promotionId;
+
+    public long getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(long promotionId) {
+        this.promotionId = promotionId;
+    }
 
     public ProductOrder() {
     }
@@ -47,11 +56,13 @@ public class ProductOrder {
 
     @Override
     public String toString() {
-        return "ProductOrder{" +
-                "orderId=" + orderId +
+        return "ProductOrder{" + "orderId=" + orderId +
                 ", productId=" + productId +
                 ", quantity=" + quantity +
+                ", promotionId=" + promotionId +
                 '}';
     }
+
+    
 }
 

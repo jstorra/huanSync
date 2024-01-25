@@ -141,7 +141,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     System.out.println("Cannot push ticketOffice");
                 } else {
                     System.out.println("Successful push ticketOffice");
-                    Validations.updateStaff("task_assigned", ticketOffice.getStaffId());
+                    Validations.updateStaff("TASK_ASSIGNED", ticketOffice.getStaffId());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -205,13 +205,14 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     ps.setString(4, sqlTicketOffice.getContactNumber());
                     ps.setLong(5, sqlTicketOffice.getStaffId());
                     ps.setLong(6, sqlTicketOffice.getTicketOfficeId());
-
+                    
                     int rows = Operations.insert_update_delete_db(ps);
                     if (rows <= 0) {
                         System.out.println("Cannot update ticketOffice");
                     } else {
+                        ps.execute();
                         System.out.println("Successful update ticketOffice");
-                        Validations.updateStaff("task_assigned", ticketOffice.getStaffId());
+                        Validations.updateStaff("TASK_ASSIGNED", ticketOffice.getStaffId());
                     }
 
                 } catch (SQLException e) {

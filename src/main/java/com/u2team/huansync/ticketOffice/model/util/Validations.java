@@ -1,8 +1,14 @@
 package com.u2team.huansync.ticketOffice.model.util;
 
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.u2team.huansync.persistence.BDConnection;
+import com.u2team.huansync.persistence.Operations;
 import com.u2team.huansync.ticketOffice.controller.TicketOfficeController;
 import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
 
@@ -55,6 +61,41 @@ public class Validations {
     public static boolean checkedStaff(long staffId) {
         for (TicketOffice repeated2 : TicketOfficeController.getAllTicketOffice()) {
             return repeated2.getStaffId() == staffId;
+        }
+        return false;
+    }
+
+    public static boolean checkedStaffStatus(long staffId) {
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String query = "SELECT staffId, statusStaff FROM tbl_staff WHERE statusStaff = 'no_task_assigned';";
+
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
+            ResultSet rs = Operations.query_db(ps);
+
+            while (rs.next()) {
+                long idStaff = rs.getLong("staffId");
+                //String typeStatus = rs.getString("statusStaff");
+
+                for(TicketOffice repeated3 : TicketOfficeController.getAllTicketOffice()){
+                        return repeated3.getStaffId() == idStaff;
+                }                
+            }           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updateStaff(String statusChange, long staffId) {
+        Operations.setConnection(BDConnection.MySQLConnection());
+        String query = "UPDATE tbl_staff SET statusStaff = ? WHERE staffId = ?";
+
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
+            ps.setString(1, statusChange);
+            ps.setLong(2, staffId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
     }

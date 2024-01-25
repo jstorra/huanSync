@@ -31,8 +31,9 @@ public class CategoryCosplayDAO {
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 while (resultSet.next()) {
                     CategoryCosplay category = new CategoryCosplay();
-                    category.setCategoryCosplayId(resultSet.getInt("categoryCosplayId"));
+                    category.setCategoryCosplayId(resultSet.getLong("categoryCosplayId"));
                     category.setNameCategoryCosplay(resultSet.getString("nameCosplay"));
+                    category.setDeletable(resultSet.getBoolean("deletable"));
                     categories.add(category);
                 }
             }
@@ -51,9 +52,10 @@ public class CategoryCosplayDAO {
 
     public void insertCategory(String nameCategory) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay) VALUES (?)";
+            String sql = "INSERT INTO tbl_categoryCosplay (nameCosplay,deletable) VALUES (?,?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, nameCategory);
+                statement.setBoolean(2,true);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -66,14 +68,16 @@ public class CategoryCosplayDAO {
      *
      * @param categoryId              Identifier of the cosplay category to be updated.
      * @param newNameCategoryCosplay New name for the cosplay category.
+     * @param deletable              Indicates whether the category is deletable or not.
      */
 
-    public void updateCategory(int categoryId, String newNameCategoryCosplay) {
+    public void updateCategory(long categoryId, String newNameCategoryCosplay, boolean deletable) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "UPDATE tbl_categoryCosplay SET nameCosplay = ? WHERE categoryCosplayId = ?";
+            String sql = "UPDATE tbl_categoryCosplay SET nameCosplay = ?, deletable = ? WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, newNameCategoryCosplay);
-                statement.setInt(2, categoryId);
+                statement.setBoolean(2, deletable);
+                statement.setLong(3,categoryId);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -87,11 +91,11 @@ public class CategoryCosplayDAO {
      * @param categoryId Identifier of the cosplay category to be deleted.
      */
 
-    public void deleteCategory(int categoryId) {
+    public void deleteCategory(long categoryId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
             String sql = "DELETE FROM tbl_categoryCosplay WHERE categoryCosplayId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, categoryId);
+                statement.setLong(1, categoryId);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {

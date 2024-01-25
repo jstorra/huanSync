@@ -30,7 +30,13 @@ public class QuestionDAO {
                     question.setQuestionId(resultSet.getLong("questionId"));
                     question.setQuestion(resultSet.getString("question"));
                     question.setAnswer(resultSet.getString("answer"));
-                    question.setCategoryQuestion(CategoryQuestion.valueOf(resultSet.getString("category").toUpperCase()));
+                    if (resultSet.getString("category").equalsIgnoreCase("jujutsu kaisen")) {
+                        question.setCategoryQuestion(CategoryQuestion.valueOf("JUJUTSU_KAISEN"));
+                    } else if (resultSet.getString("category").equalsIgnoreCase("harry potter")) {
+                        question.setCategoryQuestion(CategoryQuestion.valueOf("HARRY_POTTER"));
+                    } else {
+                        question.setCategoryQuestion(CategoryQuestion.valueOf(resultSet.getString("category").toUpperCase()));
+                    }
                     question.setDifficultyQuestion(DifficultyQuestion.valueOf(resultSet.getString("difficulty").toUpperCase()));
                     questions.add(question);
                 }
@@ -58,7 +64,13 @@ public class QuestionDAO {
                         question.setQuestionId(resultSet.getLong("questionId"));
                         question.setQuestion(resultSet.getString("question"));
                         question.setAnswer(resultSet.getString("answer"));
-                        question.setCategoryQuestion(CategoryQuestion.valueOf(resultSet.getString("category").toUpperCase()));
+                        if (resultSet.getString("category").equalsIgnoreCase("jujutsu kaisen")) {
+                            question.setCategoryQuestion(CategoryQuestion.valueOf("JUJUTSU_KAISEN"));
+                        } else if (resultSet.getString("category").equalsIgnoreCase("harry potter")) {
+                            question.setCategoryQuestion(CategoryQuestion.valueOf("HARRY_POTTER"));
+                        } else {
+                            question.setCategoryQuestion(CategoryQuestion.valueOf(resultSet.getString("category").toUpperCase()));
+                        }
                         question.setDifficultyQuestion(DifficultyQuestion.valueOf(resultSet.getString("difficulty").toUpperCase()));
                     }
                 }

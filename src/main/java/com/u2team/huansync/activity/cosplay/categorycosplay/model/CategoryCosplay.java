@@ -7,13 +7,10 @@ package com.u2team.huansync.activity.cosplay.categorycosplay.model;
 public class CategoryCosplay {
     private long categoryCosplayId;
     private String nameCategoryCosplay;
+    private boolean deletable;
 
-    /**
-     * Default constructor for CategoryCosplay.
-     */
 
     public CategoryCosplay() {
-
     }
 
     /**
@@ -23,9 +20,10 @@ public class CategoryCosplay {
      * @param nameCategoryCosplay The name of the cosplay category.
      */
 
-    public CategoryCosplay(Long categoryCosplayId, String nameCategoryCosplay) {
+    public CategoryCosplay(long categoryCosplayId, String nameCategoryCosplay, boolean deletable) {
         this.categoryCosplayId = categoryCosplayId;
         this.nameCategoryCosplay = nameCategoryCosplay;
+        this.deletable = deletable;
     }
 
     /**
@@ -66,5 +64,14 @@ public class CategoryCosplay {
 
     public void setNameCategoryCosplay(String nameCategoryCosplay) {
         this.nameCategoryCosplay = nameCategoryCosplay;
+    }
+
+    //fabian documenta esto plis
+    public boolean isDeletable() {
+        return deletable;
+    }
+
+    public void setDeletable(boolean deletable) {
+        this.deletable = deletable;
     }
 }

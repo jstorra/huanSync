@@ -6,7 +6,7 @@ package com.u2team.huansync.activity.trivia.question.model;
 public enum CategoryQuestion {
     NARUTO("Naruto"),
     SPYXFAMILY("SPYxFamily"),
-    JUJUTSU_KAIZEN("Jujutsu Kaizen"),
+    JUJUTSU_KAISEN("Jujutsu Kaisen"),
     HARRY_POTTER("Harry Potter"),
     COMICS("Comics");
 

@@ -7,7 +7,7 @@ import java.time.LocalTime;
  */
 public class Activity {
     private Long activityId;
-    private String name;
+    private String nameActivity;
     private TypeActivity typeActivity;
     private Long categoryCosplayId;
     private int numParticipants;
@@ -39,17 +39,17 @@ public class Activity {
      *
      * @return The activity name.
      */
-    public String getName() {
-        return name;
+    public String getNameActivity() {
+        return nameActivity;
     }
 
     /**
      * Sets the name of the activity.
      *
-     * @param name The activity name to set.
+     * @param nameActivity The activity name to set.
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setNameActivity(String nameActivity) {
+        this.nameActivity = nameActivity;
     }
 
     /**
@@ -187,7 +187,7 @@ public class Activity {
     public String toString() {
         return "Activity{" +
                 "activityId=" + activityId +
-                ", name='" + name + '\'' +
+                ", name='" + nameActivity + '\'' +
                 ", typeActivity=" + typeActivity +
                 ", categoryCosplayId=" + categoryCosplayId +
                 ", numParticipants=" + numParticipants +

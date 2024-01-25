@@ -20,7 +20,7 @@ public class PromotionController {
      *
      * @param promotion The promotion to be inserted.
      */
-    public static void insertProduct(Promotion promotion) {
+    public static void insertPromotion(Promotion promotion) {
         promotionDAO.save(promotion);
     }
 
@@ -51,4 +51,9 @@ public class PromotionController {
     public static List<Promotion> getAll() {
         return promotionDAO.getAll();
     }
+    
+    public static void updatePromotion(Promotion promotion) {
+        promotionDAO.update(promotion);
+    }
+    
 }

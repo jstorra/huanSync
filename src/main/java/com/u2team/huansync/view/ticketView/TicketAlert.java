@@ -33,15 +33,15 @@ public class TicketAlert extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 148, 50));
+        jPanel1.setBackground(new java.awt.Color(144, 19, 33));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Are you sure you want to continue in the same location?");
 
-        buttonSi.setBackground(new java.awt.Color(231, 0, 33));
+        buttonSi.setBackground(new java.awt.Color(255, 148, 50));
         buttonSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonSi.setForeground(new java.awt.Color(255, 255, 255));
+        buttonSi.setForeground(new java.awt.Color(0, 0, 0));
         buttonSi.setText("yes");
         buttonSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,9 +49,9 @@ public class TicketAlert extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(231, 0, 33));
+        jButton2.setBackground(new java.awt.Color(255, 148, 50));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("no");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

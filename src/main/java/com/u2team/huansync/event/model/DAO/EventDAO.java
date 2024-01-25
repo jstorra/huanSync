@@ -1,12 +1,15 @@
 package com.u2team.huansync.event.model.DAO;
 
 import com.u2team.huansync.event.DAO.*;
+import com.u2team.huansync.event.model.classes.AgeClassificationEnum;
 import com.u2team.huansync.event.model.classes.EventStaffFull;
+import com.u2team.huansync.event.model.classes.StatusEnum;
 import com.u2team.huansync.event.model.classes.builders.EventBuilder;
 import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
 import com.u2team.huansync.event.model.classes.Event;
 import com.u2team.huansync.event.model.util.Validations;
 import com.u2team.huansync.event.staff.model.classes.Staff;
+import com.u2team.huansync.event.staff.model.classes.StatusStaffEnum;
 import com.u2team.huansync.persistence.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +24,7 @@ import java.util.List;
  *
  * EventDao =  implements abstract methods of iDao (interface)
  */
-public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao<Event>, IUpdateDao<Event>, IDeleteDao<Event>, IGetAllFull<EventStaffFull> {
+public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao<Event>, IUpdateDao<Event>, IDeleteDao<Event>, IGetAllFull<EventStaffFull>, IGetByIdFullDao<EventStaffFull> {
 
     /**
      * Retrieves an event from the database based on its unique identifier (ID).
@@ -375,5 +378,72 @@ public class EventDAO implements IGetByIdDao<Event>, IGetAllDao<Event>, ISaveDao
             }
         }
         return listEventsFull;
+    }
+
+    @Override
+    public EventStaffFull getByIdFull(long id) {
+        EventStaffFull eventStaffFull = new EventStaffFull();
+        Operations.setConnection(BDConnection.MySQLConnection());
+
+        
+        String eventQuery = "SELECT * FROM tbl_events WHERE eventId = ?";
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(eventQuery)) {
+            ps.setLong(1, id);
+            ResultSet rs = Operations.query_db(ps);
+
+            if (rs.next()) {
+                
+                eventStaffFull.setEventId(rs.getLong("eventId"));
+                eventStaffFull.setNameEvent(rs.getString("nameEvent"));
+                eventStaffFull.setCountry(rs.getString("countryEvent"));
+                eventStaffFull.setCity(rs.getString("cityEvent"));
+                eventStaffFull.setAddress(rs.getString("addressEvent"));
+                eventStaffFull.setPeopleCapacity(rs.getInt("peopleCapacity"));
+                eventStaffFull.setStoreCapacity(rs.getInt("storeCapacity"));
+                eventStaffFull.setRestaurantCapacity(rs.getInt("restaurantCapacity"));
+                eventStaffFull.setDateEvent(rs.getDate("dateEvent").toLocalDate());
+                eventStaffFull.setTimeEvent(rs.getTime("timeEvent").toLocalTime());
+                eventStaffFull.setOrganizerId(rs.getLong("organizerId"));
+                eventStaffFull.setAgeClassification(AgeClassificationEnum.valueOf(rs.getString("ageClassification").toUpperCase()));
+                eventStaffFull.setStatusEnum(StatusEnum.valueOf(rs.getString("statusEvent").toUpperCase()));
+
+                
+                String str = """
+                    SELECT ts.* FROM tbl_staff_event tse
+                    INNER JOIN tbl_events te ON te.eventId = tse.eventId
+                    INNER JOIN tbl_staff ts ON ts.staffId = tse.staffId
+                    WHERE te.eventId = ?;
+                """;
+
+                try (PreparedStatement staffPs = Operations.getConnection().prepareStatement(str)) {
+                    staffPs.setLong(1, id);
+                    
+                    ResultSet staffRs = Operations.query_db(staffPs);
+                    System.out.println(staffRs);
+                    
+                    List<Staff> listStaff = new ArrayList<>();
+
+                    while (staffRs.next()) {
+                        Staff staff = new Staff();
+                        staff.setStaffId(staffRs.getLong("staffId"));
+                        staff.setStaffNumberId(staffRs.getString("staffNumberId"));
+                        staff.setNameStaff(staffRs.getString("nameStaff"));
+                        staff.setBirthdayStaff(staffRs.getDate("birthdayStaff").toLocalDate());
+                        staff.setStatusStaffEnum(StatusStaffEnum.valueOf(staffRs.getString("statusStaff")));
+                        staff.setWorkerRoleId(staffRs.getInt("roleWorkId"));
+                        listStaff.add(staff);
+                    }
+
+                    
+                    eventStaffFull.setStaff(listStaff);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventStaffFull;
     }
 }

@@ -118,6 +118,10 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
             return;
         } else if (eventDatas.getStatusEnum().name().equalsIgnoreCase("finished")) {
             System.out.println("Sorry, the event was finished, so create one ticket office with another active event");
+            return;
+        } else if (Validations.checkedStaffStatus(staffDatas.getStaffId())){
+            System.out.println("Sorry, that staff was assigned or dismissed or incapacited");
+            return;
         } else {
 
             String ticketOfficeStm = "INSERT INTO tbl_ticketOffice(eventId, location, address, contactNumber, staffId) VALUES(?,?,?,?,?)";
@@ -137,6 +141,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                     System.out.println("Cannot push ticketOffice");
                 } else {
                     System.out.println("Successful push ticketOffice");
+                    Validations.updateStaff("task_assigned", ticketOffice.getStaffId());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -179,6 +184,12 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
             } else if (Validations.checkedStaff(staffDatas.getStaffId())) {
                 System.out.println("That staff was assigned to another ticket office");
                 return;
+            } else if (eventDatas.getStatusEnum().name().equalsIgnoreCase("finished")) {
+                System.out.println("Sorry, the event was finished, so create one ticket office with another active event");
+                return;
+            } else if (Validations.checkedStaffStatus(staffDatas.getStaffId())){
+                System.out.println("Sorry, that staff was assigned or dismissed or incapacited");
+                return;
             } else {
                 // If validations pass, proceed with the update
                 String ticketOfficeStm = "UPDATE tbl_ticketOffice SET eventId = ?, location = ?, address = ?, contactNumber = ?, staffId = ? WHERE ticketOfficeId = ?; ";
@@ -200,6 +211,7 @@ public class TicketOfficeDAO implements IDao<TicketOffice> {
                         System.out.println("Cannot update ticketOffice");
                     } else {
                         System.out.println("Successful update ticketOffice");
+                        Validations.updateStaff("task_assigned", ticketOffice.getStaffId());
                     }
 
                 } catch (SQLException e) {

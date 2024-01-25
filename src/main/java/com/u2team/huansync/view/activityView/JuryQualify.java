@@ -29,7 +29,6 @@ public class JuryQualify extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         insputNameCosplay = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -64,27 +63,23 @@ public class JuryQualify extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Jury");
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("nameCosplay:");
+        jLabel3.setText("Name cosplay:");
 
         insputNameCosplay.setBackground(new java.awt.Color(255, 173, 58));
         insputNameCosplay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         insputNameCosplay.setForeground(new java.awt.Color(51, 51, 51));
-        insputNameCosplay.setText("nameCosplay");
+        insputNameCosplay.setText("Cosplay");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("IdActivity:");
+        jLabel4.setText("Activity Id:");
 
         jTextField2.setBackground(new java.awt.Color(255, 173, 58));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.setText("IdActivity");
+        jTextField2.setText("1");
 
         btnContinue.setBackground(new java.awt.Color(8, 69, 106));
         btnContinue.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -117,18 +112,12 @@ public class JuryQualify extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(48, 48, 48))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addGap(12, 12, 12)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(insputNameCosplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,7 +187,6 @@ public class JuryQualify extends javax.swing.JFrame {
     private javax.swing.JButton btnContinue;
     private javax.swing.JTextField insputNameCosplay;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

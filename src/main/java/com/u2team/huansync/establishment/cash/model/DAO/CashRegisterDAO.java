@@ -16,7 +16,7 @@ public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<Cash
     public void save(CashRegister t) {
         Operations.setConnection(BDConnection.MySQLConnection());
         // Create a query and send corresponding information in each field by replacing the character "?" with the information
-        String stmInsert = "INSERT INTO tbl_cashRegister (cashRegisterId , statusCash, openingAmount, closingAmount, cashierOperatorId, establishmentsId ) VALUES(?, ?, ?, ?, ?,?);";
+        String stmInsert = "INSERT INTO tbl_cashregister (cashRegisterId , statusCash, openingAmount, closingAmount, cashierOperatorId, establishmentsId ) VALUES(?, ?, ?, ?, ?,?);";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, t.getCashRegisterId());
             ps.setBoolean(2, t.isStatusCash());
@@ -65,7 +65,9 @@ public class CashRegisterDAO implements ISaveDao<CashRegister>, IGetByIdDao<Cash
 
     @Override
     public List<CashRegister> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        Operations.setConnection(BDConnection.MySQLConnection());
+//        String stmInsert = "SELECT * FROM tbl_cashRegister";
+return null;
     }
 
     @Override

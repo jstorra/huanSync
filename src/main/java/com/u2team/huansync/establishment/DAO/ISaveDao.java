@@ -6,8 +6,12 @@ package com.u2team.huansync.establishment.DAO;
 
 /**
  *
- * @author misae
+ * @author sneideresteban
  */
-public interface ISaveDao <T> extends IDao{
-    void save(T t);
+public interface ISaveDao<T> extends IDao{
+    /**
+     
+Saves a new object to the database.*
+@param t The object to be saved.*/
+void save(T t);
 }

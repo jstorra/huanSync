@@ -11,7 +11,7 @@ public class TriviaDAO {
     public List<Trivia> getAllTrivia() {
         List<Trivia> trivias = new ArrayList<>();
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "SELECT * FROM tbl_trivia";
+            String sql = "SELECT * FROM tbl_trivias";
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 while (resultSet.next()) {
@@ -34,7 +34,7 @@ public class TriviaDAO {
     public Trivia getTriviaById(Long triviaId) {
         Trivia trivia = new Trivia();
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "SELECT * FROM tbl_trivia WHERE triviaId = ?";
+            String sql = "SELECT * FROM tbl_trivias WHERE triviaId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, triviaId);
                 try (ResultSet resultSet = statement.executeQuery()) {
@@ -56,7 +56,7 @@ public class TriviaDAO {
 
     public void insertTrivia(Trivia trivia) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "INSERT INTO tbl_trivia (activityId, participantOneId, participantTwoId, winnerId, inchargedId) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_trivias (activityId, participantOneId, participantTwoId, winnerId, inchargedId) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, trivia.getActivityId());
                 statement.setLong(2, trivia.getParticipantOneId());
@@ -72,7 +72,7 @@ public class TriviaDAO {
 
     public void updateTrivia(Trivia trivia) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "UPDATE tbl_trivia SET participantOneId = ? , participantTwoId = ? , winnerId = ? , inchargedId = ? WHERE triviaId = ?";
+            String sql = "UPDATE tbl_trivias SET participantOneId = ? , participantTwoId = ? , winnerId = ? , inchargedId = ? WHERE triviaId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, trivia.getParticipantOneId());
                 statement.setLong(2, trivia.getParticipantTwoId());
@@ -88,7 +88,7 @@ public class TriviaDAO {
 
     public void deleteTrivia(Long triviaId) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "DELETE FROM tbl_trivia WHERE triviaId = ?";
+            String sql = "DELETE FROM tbl_trivias WHERE triviaId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, triviaId);
                 statement.executeUpdate();

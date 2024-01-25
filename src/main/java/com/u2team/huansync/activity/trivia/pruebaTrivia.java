@@ -3,7 +3,6 @@ package com.u2team.huansync.activity.trivia;
 import java.util.*;
 
 public class pruebaTrivia {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> jugadoresRonda1 = new ArrayList<>(Arrays.asList("Juan", "Cristina", "Gonzalo", "Santiago", "Pedro", "Camilo", "Violeta", "Pedro"));
@@ -43,9 +42,8 @@ public class pruebaTrivia {
                         jugadoresRonda1.remove(0);
                         break;
                     }
-                }
-                if (r2.equalsIgnoreCase(respuesta)) {
-                    ++pointsJugador2;
+                } else if (r2.equalsIgnoreCase(respuesta)) {
+                    pointsJugador2++;
                     if (pointsJugador2 == 3) {
                         jugadoresRonda2.add(jugadoresRonda1.remove(1));
                         jugadoresRonda1.remove(0);
@@ -80,9 +78,8 @@ public class pruebaTrivia {
                         jugadoresRonda2.remove(0);
                         break;
                     }
-                }
-                if (r2.equalsIgnoreCase(respuesta)) {
-                    ++pointsJugador2;
+                } else if (r2.equalsIgnoreCase(respuesta)) {
+                    pointsJugador2++;
                     if (pointsJugador2 == 3) {
                         jugadoresRonda3.add(jugadoresRonda2.remove(1));
                         jugadoresRonda2.remove(0);
@@ -116,9 +113,8 @@ public class pruebaTrivia {
                         jugadoresRonda3.remove(1);
                         break;
                     }
-                }
-                if (r2.equalsIgnoreCase(respuesta)) {
-                    ++pointsJugador2;
+                } else if (r2.equalsIgnoreCase(respuesta)) {
+                    pointsJugador2++;
                     if (pointsJugador2 == 3) {
                         jugadoresRonda3.remove(0);
                         break;

@@ -10,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author user
- */
 public class EstablishmentDAO implements IGetByIdDao<Establishment>, IGetAll<Establishment>, ISaveDao<Establishment>, IDeleteDao<Establishment> {
 
     @Override

@@ -1,12 +1,7 @@
 package com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.builder;
-
 import com.u2team.huansync.establishment.restaurant.itemMenu.model.classes.ItemMenu;
 import java.util.List;
 
-/**
- * @author DeuryZ
- * @author dfrincong
- */
 public class ItemMenuConcreteBuilder implements ItemMenuBuilder {
 
     private ItemMenu item;
@@ -50,16 +45,15 @@ public class ItemMenuConcreteBuilder implements ItemMenuBuilder {
         item.setListIngredientId(ingredients);
         return this;
     }
-
-    @Override
-    public ItemMenu build() {
-        return item;
-    }
-
     @Override
     public ItemMenuBuilder establishmentId(long establishmentId) {
         item.setEstablishmentId(establishmentId);
         return this;
     }
+    @Override
+    public ItemMenu build() {
+        return item;
+    }
+
 
 }

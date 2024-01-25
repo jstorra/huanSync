@@ -34,6 +34,16 @@ CREATE TABLE tbl_establishments (
     managerEstablishmentId INT
 );
 
+CREATE TABLE tbl_cash (
+   cashId INT PRIMARY KEY AUTO_INCREMENT,
+   statusCash BOOLEAN NOT NULL,
+   openingAmount DOUBLE NOT NULL,
+   cashierOperatorId INT,
+   establishmentsId INT,
+   FOREIGN KEY (cashierOperatorId) REFERENCES tbl_staff(staffId),
+   FOREIGN KEY (establishmentsId) REFERENCES tbl_establishments(establishmentId)
+);
+
 ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`ingredientId`) REFERENCES `tbl_ingredients` (`ingredientId`) ON DELETE CASCADE;
 
 ALTER TABLE `tbl_ingredients_itemMenu` ADD FOREIGN KEY (`itemMenuId`) REFERENCES `tbl_itemMenu` (`itemMenuId`)  ON DELETE CASCADE;

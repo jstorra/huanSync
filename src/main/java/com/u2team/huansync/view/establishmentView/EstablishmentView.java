@@ -131,13 +131,13 @@ public class EstablishmentView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblEstablishments);
 
-        txtNameEstablishment.setBackground(new java.awt.Color(255, 255, 255));
+        txtNameEstablishment.setBackground(new java.awt.Color(255, 195, 114));
         txtNameEstablishment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtNameEstablishment.setForeground(new java.awt.Color(0, 0, 0));
         txtNameEstablishment.setText("Name: ");
         txtNameEstablishment.setToolTipText("");
 
-        txtTypeEstablishment.setBackground(new java.awt.Color(255, 255, 255));
+        txtTypeEstablishment.setBackground(new java.awt.Color(255, 195, 114));
         txtTypeEstablishment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtTypeEstablishment.setForeground(new java.awt.Color(0, 0, 0));
         txtTypeEstablishment.setText("Type");
@@ -147,7 +147,7 @@ public class EstablishmentView extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(31, 69, 106));
+        jPanel1.setBackground(new java.awt.Color(144, 19, 33));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,14 +160,14 @@ public class EstablishmentView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(389, 389, 389))
+                .addGap(404, 404, 404))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -204,11 +204,10 @@ public class EstablishmentView extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
+                        .addGap(69, 69, 69)
                         .addComponent(txtNameEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtTypeEstablishment, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +223,7 @@ public class EstablishmentView extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(btnBackEstab)
                 .addContainerGap(51, Short.MAX_VALUE))
         );

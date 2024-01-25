@@ -73,7 +73,7 @@ public class Restaurant extends javax.swing.JFrame {
         ));
         tblRestaurants.setViewportView(jTable1);
 
-        btnCreateRestaurant.setBackground(new java.awt.Color(14, 15, 25));
+        btnCreateRestaurant.setBackground(new java.awt.Color(8, 69, 106));
         btnCreateRestaurant.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCreateRestaurant.setForeground(new java.awt.Color(255, 255, 255));
         btnCreateRestaurant.setText("Create");
@@ -83,7 +83,7 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(14, 15, 25));
+        btnBack.setBackground(new java.awt.Color(8, 69, 106));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
@@ -103,12 +103,12 @@ public class Restaurant extends javax.swing.JFrame {
         txtManager.setForeground(new java.awt.Color(0, 0, 0));
         txtManager.setText("Manager:");
 
-        btnUpdate.setBackground(new java.awt.Color(14, 15, 25));
+        btnUpdate.setBackground(new java.awt.Color(8, 69, 106));
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
 
-        btnDelete.setBackground(new java.awt.Color(14, 15, 25));
+        btnDelete.setBackground(new java.awt.Color(8, 69, 106));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
@@ -118,7 +118,7 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
-        btnMakeOrder.setBackground(new java.awt.Color(14, 15, 25));
+        btnMakeOrder.setBackground(new java.awt.Color(8, 69, 106));
         btnMakeOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnMakeOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnMakeOrder.setText("Make Order");
@@ -128,7 +128,7 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
-        btnInventoIngred.setBackground(new java.awt.Color(14, 15, 25));
+        btnInventoIngred.setBackground(new java.awt.Color(8, 69, 106));
         btnInventoIngred.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnInventoIngred.setForeground(new java.awt.Color(255, 255, 255));
         btnInventoIngred.setText(" Ingredients Inventory");
@@ -138,7 +138,7 @@ public class Restaurant extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(14, 15, 25));
+        jPanel2.setBackground(new java.awt.Color(144, 19, 33));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,17 +148,17 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(339, 339, 339))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

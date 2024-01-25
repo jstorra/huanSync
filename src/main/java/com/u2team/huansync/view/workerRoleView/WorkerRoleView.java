@@ -55,7 +55,7 @@ public class WorkerRoleView extends javax.swing.JFrame {
         name.setForeground(new java.awt.Color(0, 0, 0));
         name.setText("Name:");
 
-        txtNameWorkRole.setBackground(new java.awt.Color(255, 173, 58));
+        txtNameWorkRole.setBackground(new java.awt.Color(255, 195, 114));
         txtNameWorkRole.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtNameWorkRole.setForeground(new java.awt.Color(51, 51, 51));
         txtNameWorkRole.setText("Work Role");
@@ -64,7 +64,7 @@ public class WorkerRoleView extends javax.swing.JFrame {
         activity.setForeground(new java.awt.Color(0, 0, 0));
         activity.setText("Activity:");
 
-        selectActivity.setBackground(new java.awt.Color(255, 173, 58));
+        selectActivity.setBackground(new java.awt.Color(255, 195, 114));
         selectActivity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         selectActivity.setForeground(new java.awt.Color(51, 51, 51));
         selectActivity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -129,10 +129,10 @@ public class WorkerRoleView extends javax.swing.JFrame {
                             .addComponent(selectActivity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(59, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAssign)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)
-                        .addGap(29, 29, 29))))
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,11 +147,11 @@ public class WorkerRoleView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(activity)
                     .addComponent(selectActivity, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnAssign))
-                .addGap(47, 47, 47))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnAssign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

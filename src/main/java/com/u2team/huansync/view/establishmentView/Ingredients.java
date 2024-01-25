@@ -66,7 +66,7 @@ public class Ingredients extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setBackground(new java.awt.Color(255, 195, 114));
         txtName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtName.setForeground(new java.awt.Color(0, 0, 0));
         txtName.setText("Name");
@@ -76,12 +76,12 @@ public class Ingredients extends javax.swing.JFrame {
             }
         });
 
-        txtAmount.setBackground(new java.awt.Color(255, 255, 255));
+        txtAmount.setBackground(new java.awt.Color(255, 195, 114));
         txtAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtAmount.setForeground(new java.awt.Color(0, 0, 0));
         txtAmount.setText("Amount");
 
-        btnAddIngrediente.setBackground(new java.awt.Color(71, 48, 40));
+        btnAddIngrediente.setBackground(new java.awt.Color(31, 69, 106));
         btnAddIngrediente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddIngrediente.setForeground(new java.awt.Color(255, 255, 255));
         btnAddIngrediente.setText("Add");
@@ -91,12 +91,12 @@ public class Ingredients extends javax.swing.JFrame {
             }
         });
 
-        btnUpdateIngredient.setBackground(new java.awt.Color(71, 48, 40));
+        btnUpdateIngredient.setBackground(new java.awt.Color(31, 69, 106));
         btnUpdateIngredient.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdateIngredient.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateIngredient.setText("Update");
 
-        btnDeleteIgredient.setBackground(new java.awt.Color(71, 48, 40));
+        btnDeleteIgredient.setBackground(new java.awt.Color(31, 69, 106));
         btnDeleteIgredient.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDeleteIgredient.setText("Delete");
         btnDeleteIgredient.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class Ingredients extends javax.swing.JFrame {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(71, 48, 40));
+        btnBack.setBackground(new java.awt.Color(31, 69, 106));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
@@ -115,7 +115,7 @@ public class Ingredients extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(71, 48, 40));
+        jPanel2.setBackground(new java.awt.Color(144, 19, 33));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,17 +125,17 @@ public class Ingredients extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(228, 228, 228))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -166,11 +166,10 @@ public class Ingredients extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addGap(69, 69, 69)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,8 +179,8 @@ public class Ingredients extends javax.swing.JFrame {
                             .addComponent(btnUpdateIngredient)
                             .addComponent(btnDeleteIgredient))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(btnBack)

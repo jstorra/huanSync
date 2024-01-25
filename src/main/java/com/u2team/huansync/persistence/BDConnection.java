@@ -14,7 +14,7 @@ public abstract class BDConnection {
     public static Connection MySQLConnection() {
         url = "jdbc:mysql://localhost:3306/db_huansync";
         user = "root";
-        password = "";
+        password = "0129";
         return getConnection(url, user, password);
     }
 

@@ -4,8 +4,13 @@
  */
 package com.u2team.huansync.view.workerRoleView;
 
+import com.u2team.huansync.event.workerRoles.controller.WorkerRolesController;
+import com.u2team.huansync.event.workerRoles.model.DAO.WorkerRoleDAO;
+import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.view.MenuView;
 import com.u2team.huansync.view.activityView.Successful;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +18,8 @@ import javax.swing.JOptionPane;
  * @author ANGIE DURAN
  */
 public class WorkerRoleView extends javax.swing.JFrame {
+    
+    private List<String> selectedRoles;
 
     /**
      * Creates new form WorkerRoleView
@@ -24,10 +31,11 @@ public class WorkerRoleView extends javax.swing.JFrame {
     private boolean validateFields() {
         if (txtNameWorkRole.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
-        return false;
+            return false;
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,11 +49,15 @@ public class WorkerRoleView extends javax.swing.JFrame {
         name = new javax.swing.JLabel();
         txtNameWorkRole = new javax.swing.JTextField();
         activity = new javax.swing.JLabel();
-        selectActivity = new javax.swing.JComboBox<>();
         btnBack = new javax.swing.JButton();
         btnAssign = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tittleWorkRole = new javax.swing.JLabel();
+        chbKitchen = new javax.swing.JCheckBox();
+        chbTicketOffice = new javax.swing.JCheckBox();
+        chbManager = new javax.swing.JCheckBox();
+        chbContest = new javax.swing.JCheckBox();
+        chbCashier = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,18 +68,13 @@ public class WorkerRoleView extends javax.swing.JFrame {
         name.setText("Name:");
 
         txtNameWorkRole.setBackground(new java.awt.Color(255, 195, 114));
-        txtNameWorkRole.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtNameWorkRole.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtNameWorkRole.setForeground(new java.awt.Color(51, 51, 51));
         txtNameWorkRole.setText("Work Role");
 
         activity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         activity.setForeground(new java.awt.Color(0, 0, 0));
         activity.setText("Activity:");
-
-        selectActivity.setBackground(new java.awt.Color(255, 195, 114));
-        selectActivity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        selectActivity.setForeground(new java.awt.Color(51, 51, 51));
-        selectActivity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnBack.setBackground(new java.awt.Color(8, 69, 106));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -112,28 +119,52 @@ public class WorkerRoleView extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        chbKitchen.setForeground(new java.awt.Color(0, 0, 0));
+        chbKitchen.setText("Kitchen");
+        chbKitchen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbKitchenActionPerformed(evt);
+            }
+        });
+
+        chbTicketOffice.setForeground(new java.awt.Color(0, 0, 0));
+        chbTicketOffice.setText("Ticket office");
+
+        chbManager.setForeground(new java.awt.Color(0, 0, 0));
+        chbManager.setText("Manager");
+
+        chbContest.setForeground(new java.awt.Color(0, 0, 0));
+        chbContest.setText("Contest");
+
+        chbCashier.setForeground(new java.awt.Color(0, 0, 0));
+        chbCashier.setText("Cashier");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(activity)
                             .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNameWorkRole, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                            .addComponent(selectActivity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(59, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNameWorkRole, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbTicketOffice, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbKitchen, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbManager, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbContest, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbCashier, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(59, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,15 +174,23 @@ public class WorkerRoleView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name)
                     .addComponent(txtNameWorkRole, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(activity)
-                    .addComponent(selectActivity, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chbKitchen))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(btnAssign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(chbTicketOffice)
+                .addGap(18, 18, 18)
+                .addComponent(chbManager)
+                .addGap(18, 18, 18)
+                .addComponent(chbContest)
+                .addGap(18, 18, 18)
+                .addComponent(chbCashier)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,9 +209,48 @@ public class WorkerRoleView extends javax.swing.JFrame {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         if (validateFields()) {
-            Successful successful = new Successful();
-            successful.setVisible(true);
-            successful.setLocationRelativeTo(null);
+            
+            selectedRoles = new ArrayList<>();
+            int selectedCount = 0;
+            
+            if (chbKitchen.isSelected()) {
+                String kitchen = chbKitchen.getText();
+                selectedRoles.add(kitchen);
+                selectedCount++;
+            }
+            if (chbCashier.isSelected()) {
+                String cashier = chbCashier.getText();
+                selectedRoles.add(cashier);
+                selectedCount++;
+            }
+            if (chbContest.isSelected()) {
+                String contest = chbContest.getText();
+                selectedRoles.add(contest);
+                selectedCount++;
+            }
+            if (chbManager.isSelected()) {
+                String manager = chbManager.getText();
+                selectedRoles.add(manager);
+                selectedCount++;
+            }
+            if (chbTicketOffice.isSelected()) {
+                String tickerOffice = chbTicketOffice.getText();
+                selectedRoles.add(tickerOffice);
+                selectedCount++;
+            }
+            
+            if (selectedCount >= 2) {
+                Successful successful = new Successful();
+                successful.setVisible(true);
+                successful.setLocationRelativeTo(null);
+                
+                WorkerRole workerRole = new WorkerRole(txtNameWorkRole.getText(), selectedRoles);
+                
+                WorkerRolesController.insertWorkerRole(workerRole);
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select at least two checkboxes.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -182,6 +260,10 @@ public class WorkerRoleView extends javax.swing.JFrame {
         menu.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void chbKitchenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbKitchenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chbKitchenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,10 +304,14 @@ public class WorkerRoleView extends javax.swing.JFrame {
     private javax.swing.JLabel activity;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnBack;
+    private javax.swing.JCheckBox chbCashier;
+    private javax.swing.JCheckBox chbContest;
+    private javax.swing.JCheckBox chbKitchen;
+    private javax.swing.JCheckBox chbManager;
+    private javax.swing.JCheckBox chbTicketOffice;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel name;
-    private javax.swing.JComboBox<String> selectActivity;
     private javax.swing.JLabel tittleWorkRole;
     private javax.swing.JTextField txtNameWorkRole;
     // End of variables declaration//GEN-END:variables

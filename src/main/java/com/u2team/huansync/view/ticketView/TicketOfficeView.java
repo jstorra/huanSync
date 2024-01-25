@@ -23,13 +23,15 @@ public class TicketOfficeView extends javax.swing.JFrame {
     public TicketOfficeView() {
         initComponents();
     }
+
     private boolean validateFields() {
         if (txtNameTicket.getText().trim().isEmpty() || (!rbPaid.isSelected() && !rbReserved.isSelected())) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
-        return false;
+            return false;
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +60,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txttype = new javax.swing.JComboBox<>();
+        selectType = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -156,13 +158,13 @@ public class TicketOfficeView extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("User Type:");
 
-        txttype.setBackground(new java.awt.Color(255, 195, 114));
-        txttype.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txttype.setForeground(new java.awt.Color(51, 51, 51));
-        txttype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visitante", "Participante" }));
-        txttype.addActionListener(new java.awt.event.ActionListener() {
+        selectType.setBackground(new java.awt.Color(255, 195, 114));
+        selectType.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        selectType.setForeground(new java.awt.Color(51, 51, 51));
+        selectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PARTICIPANT", "VISITOR" }));
+        selectType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttypeActionPerformed(evt);
+                selectTypeActionPerformed(evt);
             }
         });
 
@@ -320,7 +322,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
                                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txttype, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(41, 41, 41)
@@ -345,7 +347,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(83, 83, 83)
+                                                        .addGap(89, 89, 89)
                                                         .addComponent(rbPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +402,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txttype, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -435,7 +437,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
 
@@ -466,52 +468,55 @@ public class TicketOfficeView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (txtName.getText().trim().isEmpty() || txtDocument.getText().trim().isEmpty() || txtGender.getText().trim().isEmpty()
-            || txtDate.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
-            || txtNumber.getText().trim().isEmpty() || txttype.getSelectedItem()==null){
-            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
-            return; // Detiene la ejecución del método si la validación falla
-        }else{
+                || txtDate.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
+                || txtNumber.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             String name = txtName.getText();
             String document = txtDocument.getText();
-            LocalDate  dateCustomer = LocalDate.parse(txtDate.getText());
+            LocalDate dateCustomer = LocalDate.parse(txtDate.getText());
             String gender = txtGender.getText();
             String email = txtEmail.getText();
             String phoneNumber = txtNumber.getText();
-            String typeEnum = txttype.getSelectedItem().toString();
-            
-            
-        
-    
-                CustomerBuilder customerbuil = new CustomerConcreteBuilder();
-                Customer  customers  = customerbuil.nameCustomer(name)
-                        .document(document)
-                        .birthDate(dateCustomer)
-                        .gender(gender)
-                        .email(email)
-                        .phoneNumber(phoneNumber)
-                        .customerTypeEnum(typeEnum).build();
-                
-                
-                /*Se genera el controller*/
-                
-          //    CustomerController.insertCustomer(customers);
-             //   txtName.setText(name);
-                
-                
-        
-                        }
+            String typeEnum = selectType.getSelectedItem().toString();
+
+            CustomerBuilder customerbuil = new CustomerConcreteBuilder();
+            Customer customers = customerbuil.nameCustomer(name)
+                    .document(document)
+                    .birthDate(dateCustomer)
+                    .gender(gender)
+                    .email(email)
+                    .phoneNumber(phoneNumber)
+                    .customerTypeEnum(typeEnum)
+                    .build();
+
+// Check if the customer's customerTypeEnum is not null
+            if (customers.getCustomerTypeEnum() != null) {
+                // Your existing code here
+                CustomerController.insertCustomer(customers);
+                txtName.setText("");
+                txtDocument.setText("");
+                txtDate.setText("");
+                txtGender.setText("");
+                txtEmail.setText("");
+                txtNumber.setText("");
+               } else {
+    // Handle the case where customerTypeEnum is null
+    JOptionPane.showMessageDialog(this, "Customer type is not selected.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+}
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txttypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttypeActionPerformed
+    private void selectTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txttypeActionPerformed
+    }//GEN-LAST:event_selectTypeActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYesActionPerformed
-         if (validateFields()) {
+        if (validateFields()) {
             TicketCostAditional ticketCost = new TicketCostAditional();
             ticketCost.setVisible(true);
             ticketCost.setLocationRelativeTo(null);
@@ -592,6 +597,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbPaid;
     private javax.swing.JRadioButton rbReserved;
     private javax.swing.JComboBox<String> selectBoxOffice;
+    private javax.swing.JComboBox<String> selectType;
     private javax.swing.JTextField txtContactNumber;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDocument;
@@ -601,6 +607,5 @@ public class TicketOfficeView extends javax.swing.JFrame {
     private javax.swing.JTextField txtNameTicket;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtNumberEvent;
-    private javax.swing.JComboBox<String> txttype;
     // End of variables declaration//GEN-END:variables
 }

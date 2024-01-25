@@ -401,6 +401,8 @@ public class EventView extends javax.swing.JFrame {
             LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
             String ageClassification = selectEventAgeClass.getSelectedItem().toString();
             long organizer = Long.parseLong((String) selectEventOrganizer.getSelectedItem());
+            
+            
             EventBuilder eventBuild = new EventConcreteBuilder();
             Event event = eventBuild.nameEvent(nameEvent)
                     .country(countryEvent).city(cityEvent).address(addressEvent)

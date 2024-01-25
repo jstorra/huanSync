@@ -35,7 +35,7 @@ public class OrderDao implements ISaveDao<Order>, IDeleteDao<Order>,IGetAllDao<O
         /// Create a query and send corresponding information in each field by replacing the character "?" with the information
         //String stmInsert = "INSERT INTO tbl_order(orderId,customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?,?);";
         //Test if save data for autoincrement
-        String stmInsert = "INSERT INTO tbl_order(customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?,?);";
+        String stmInsert = "INSERT INTO tbl_order(customerId,establishmentId,cashRegisterId,cashierOperatorId,orderStatusEnum) VALUES(?,?,?,?,?);";
         
         //PreparedStatement es de sql y Operations de Mariño
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {

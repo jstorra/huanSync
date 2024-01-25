@@ -21,6 +21,7 @@ public class ProductOrderDAO implements ISaveDao<ProductOrder>, IDeleteDao<Produ
     public void save(ProductOrder productOrder) {
         Operations.setConnection(BDConnection.MySQLConnection());
         String stmInsert = "INSERT INTO tbl_product_order (orderId, productId, quantity, promotionId) VALUES (?, ?, ?, ?)";
+        //String stmInsert = "INSERT INTO tbl_product_order (productId, quantity, promotionId) VALUES (?, ?, ?)";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, productOrder.getOrderId());
             ps.setLong(2, productOrder.getProductId());
@@ -70,7 +71,7 @@ public class ProductOrderDAO implements ISaveDao<ProductOrder>, IDeleteDao<Produ
         
         List<ProductOrder> productOrderList = new ArrayList<>();
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "select * from tbl_order;";
+        String stm = "select * from tbl_product_order;";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
 
             ResultSet rs = Operations.query_db(ps);

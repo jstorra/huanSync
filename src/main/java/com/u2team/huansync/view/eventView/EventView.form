@@ -95,7 +95,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtEventDate" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="selectEventAgeClasf" min="-2" pref="140" max="-2" attributes="0"/>
+                                                  <Component id="selectEventAgeClass" min="-2" pref="140" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="organizer" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
@@ -209,7 +209,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="selectEventAgeClasf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="selectEventAgeClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ageClasification" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="selectEventOrganizer" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="organizer" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -547,7 +547,7 @@
                 <Property name="text" type="java.lang.String" value="Age Clasfication:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="selectEventAgeClasf">
+            <Component class="javax.swing.JComboBox" name="selectEventAgeClass">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3a" green="ad" red="ff" type="rgb"/>

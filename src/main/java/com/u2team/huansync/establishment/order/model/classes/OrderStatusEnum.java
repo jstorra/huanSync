@@ -10,8 +10,23 @@ package com.u2team.huansync.establishment.order.model.classes;
  */
 public enum OrderStatusEnum {
     
-    REGISTERED, // The order has been placed and recorded in the system.
-    PAID,       // The order has been paid for by the customer.
-    DELIVERED   // The order has been delivered to the customer.
+    //Modified
+    REGISTERED("REGISTERED"), // The order has been placed and recorded in the system.
+    PAID("PAID"),       // The order has been paid for by the customer.
+    DELIVERED("DELIVERED");   // The order has been delivered to the customer.
+    
+    private String name;
+    
+    private OrderStatusEnum(String name) {
+        this.name = name;
+    }
+    
+    public String getNameOrder() {
+        return name;
+    }
+
+    public void setName() {
+        this.name = name;
+    }
     
 }

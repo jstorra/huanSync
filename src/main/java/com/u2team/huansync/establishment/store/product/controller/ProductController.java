@@ -18,7 +18,7 @@ public class ProductController {
     private static ProductDAO productDAO = new ProductDAO();
     
     //The methods that I created after the static or void "names" were called in HuanSync to test them
-    //save, getAll y update se encuentran en todas las interfaces de Dao dentro del codigo
+    //save, getAll and update are found in all Dao interfaces within the code
     public static void insertProduct(Product product){
         productDAO.save(product);
     }

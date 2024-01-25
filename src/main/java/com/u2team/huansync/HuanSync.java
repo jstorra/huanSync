@@ -25,6 +25,7 @@ public class HuanSync  {
 
         InitialView initial = new InitialView();
         initial.setVisible(true); 
+        initial.setLocationRelativeTo(null);
         
         
 

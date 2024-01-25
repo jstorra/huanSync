@@ -76,6 +76,11 @@ public class TicketCostAditional extends javax.swing.JFrame {
         txtTicketOffice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtTicketOffice.setForeground(new java.awt.Color(0, 0, 0));
         txtTicketOffice.setText("1");
+        txtTicketOffice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTicketOfficeActionPerformed(evt);
+            }
+        });
 
         nametypeTicket.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nametypeTicket.setForeground(new java.awt.Color(0, 0, 0));
@@ -250,6 +255,10 @@ public class TicketCostAditional extends javax.swing.JFrame {
             successful.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void txtTicketOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTicketOfficeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTicketOfficeActionPerformed
 
     /**
      * @param args the command line arguments

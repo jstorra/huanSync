@@ -28,8 +28,8 @@ public class TicketAlert extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        buttonSi = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnYes = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,23 +39,23 @@ public class TicketAlert extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Are you sure you want to continue in the same location?");
 
-        buttonSi.setBackground(new java.awt.Color(255, 148, 50));
-        buttonSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonSi.setForeground(new java.awt.Color(0, 0, 0));
-        buttonSi.setText("yes");
-        buttonSi.addActionListener(new java.awt.event.ActionListener() {
+        btnYes.setBackground(new java.awt.Color(255, 148, 50));
+        btnYes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnYes.setForeground(new java.awt.Color(0, 0, 0));
+        btnYes.setText("yes");
+        btnYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSiActionPerformed(evt);
+                btnYesActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 148, 50));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("no");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNo.setBackground(new java.awt.Color(255, 148, 50));
+        btnNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnNo.setForeground(new java.awt.Color(0, 0, 0));
+        btnNo.setText("no");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNoActionPerformed(evt);
             }
         });
 
@@ -67,9 +67,9 @@ public class TicketAlert extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonSi)
+                        .addComponent(btnYes)
                         .addGap(61, 61, 61)
-                        .addComponent(jButton2)
+                        .addComponent(btnNo)
                         .addGap(125, 125, 125))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -82,8 +82,8 @@ public class TicketAlert extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonSi)
-                    .addComponent(jButton2))
+                    .addComponent(btnYes)
+                    .addComponent(btnNo))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -101,19 +101,16 @@ public class TicketAlert extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSiActionPerformed
-      Ticketlocation nueva = new Ticketlocation();
-      nueva.setVisible(true);
-      nueva.setLocationRelativeTo(null);
-      this.dispose();
-    }//GEN-LAST:event_buttonSiActionPerformed
+    private void btnYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYesActionPerformed
+      Ticketlocation otherLocation = new Ticketlocation();
+        otherLocation.setVisible(true);
+        otherLocation.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnYesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      TicketCreateOffice nuevo = new TicketCreateOffice();
-      nuevo.setVisible(true);
-      nuevo.setLocationRelativeTo(null);
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
       this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,8 +148,8 @@ public class TicketAlert extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonSi;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnYes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

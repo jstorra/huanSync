@@ -27,16 +27,18 @@ public class QualificationDao {
         """
             select sff.staffId as juryId from tbl_staff sff JOIN tbl_workerRoles wr on sff.workerRoleId =wr.workerRoleId where lower(wr.nameWorkerRole) = "judge" and lower(sff.statusStaff) = "on hold" ORDER BY sff.staffId asc     
         """;
-      
+      // limitar la cantidad de jurados
         try (Connection con = BDConnection.MySQLConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query)) {
             try (ResultSet rs = preparedStatement.executeQuery()) {
-                while (rs.next()) {
-                    Qualification qualification =new Qualification();
+                int count = 0;
+                while (count<5) {
+                    Qualification qualification = new Qualification();
                     qualification.setCosplayId(idCosplay);
                     qualification.setJuryId(rs.getInt("juryId"));
                     // add list
                     jurysList.add(qualification);
+                    count++;
                 }
             }
         } catch (Exception e) {

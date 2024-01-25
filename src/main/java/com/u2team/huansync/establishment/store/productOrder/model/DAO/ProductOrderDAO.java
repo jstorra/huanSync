@@ -13,11 +13,12 @@ public class ProductOrderDAO implements ISaveDao<ProductOrder> {
     @Override
     public void save(ProductOrder productOrder) {
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stmInsert = "INSERT INTO tbl_product_order (order_id, product_id, quantity) VALUES (?, ?, ?)";
+        String stmInsert = "INSERT INTO tbl_product_order (order_id, product_id, quantity, promotionId) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, productOrder.getOrderId());
             ps.setLong(2, productOrder.getProductId());
             ps.setInt(3, productOrder.getQuantity());
+            ps.setLong(4, productOrder.getProductId());
 
 
             int rows = Operations.insert_update_delete_db(ps);

@@ -65,7 +65,7 @@ CREATE TABLE `tbl_customers` (
 );
 
 CREATE TABLE `tbl_tickets` (
-  `ticketId` INT PRIMARY KEY NOT NULL,
+  `ticketId` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nameTicket` VARCHAR(50) DEFAULT NULL,
   `status` ENUM ('paid', 'reserved') DEFAULT NULL,
   `additionalCost` DECIMAL(10,2) DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `promotion` (
 );
 
 CREATE TABLE `tbl_cashRegister` (
-  `cashRegisterId` int PRIMARY KEY NOT NULL,
+  `cashRegisterId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `statusCash` boolean NOT NULL,
   `openingAmount` decimal(10,2) NOT NULL,
   `closingAmount` decimal(10,2) NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE `tbl_cashRegister` (
 );
 
 CREATE TABLE `tbl_order` (
-  `orderId` int PRIMARY KEY NOT NULL,
+  `orderId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `customerId` int,
   `establishmentId` int,
   `cashRegisterId` int,

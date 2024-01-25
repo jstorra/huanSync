@@ -249,3 +249,5 @@ ALTER TABLE `tbl_cosplay` ADD FOREIGN KEY (`participantId`) REFERENCES `tbl_cust
 ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`cosplayId`) REFERENCES `tbl_cosplay` (`cosplayId`);
 
 ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`juryId`) REFERENCES `tbl_staff` (`staffId`);
+
+ALTER TABLE `tbl_cashRegister` ADD FOREIGN KEY (`cashierOperatorId`) REFERENCES `tbl_staff` (`staffId`);

@@ -1,11 +1,8 @@
 package com.u2team.huansync.ticketOffice.tickets.model.util;
 
-import com.u2team.huansync.event.model.DAO.EventDAO;
-import com.u2team.huansync.event.model.classes.Event;
+
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
-import com.u2team.huansync.ticketOffice.tickets.model.DAO.TicketsDAO;
-import com.u2team.huansync.ticketOffice.tickets.model.classes.Tickets;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

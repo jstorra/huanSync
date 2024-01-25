@@ -10,4 +10,6 @@ package com.u2team.huansync.establishment.store.orderProduct.model.classes;
  */
 public class OrderProduct {
     
+    
+    
 }

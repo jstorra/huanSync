@@ -16,6 +16,21 @@ public class Activity {
     private double price;
     private boolean completed;
 
+    public Activity() {
+
+    }
+
+    public Activity(String nameActivity, TypeActivity typeActivity, Long categoryCosplayId, int numParticipants, Long eventId, LocalTime startTime, double price, boolean completed) {
+        this.nameActivity = nameActivity;
+        this.typeActivity = typeActivity;
+        this.categoryCosplayId = categoryCosplayId;
+        this.numParticipants = numParticipants;
+        this.eventId = eventId;
+        this.startTime = startTime;
+        this.price = price;
+        this.completed = completed;
+    }
+
     /**
      * Gets the unique identifier for the activity.
      *

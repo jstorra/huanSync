@@ -26,12 +26,12 @@ public class ActivityDAO {
                 while (resultSet.next()) {
                     Activity activity = new Activity();
                     activity.setActivityId(resultSet.getLong("activityId"));
-                    activity.setNameActivity(resultSet.getString("name"));
+                    activity.setNameActivity(resultSet.getString("nameActivity"));
                     activity.setTypeActivity(TypeActivity.valueOf(resultSet.getString("typeActivity").toUpperCase()));
                     activity.setCategoryCosplayId((resultSet.getLong("categoryCosplayId") == 0) ? null : resultSet.getLong("categoryCosplayId"));
                     activity.setNumParticipants(resultSet.getInt("numParticipants"));
                     activity.setEventId(resultSet.getLong("eventId") == 0  ? null : resultSet.getLong("eventId"));
-                    activity.setPrice(resultSet.getLong("price"));
+                    activity.setPrice(resultSet.getDouble("price"));
                     activity.setStartTime(LocalTime.parse(resultSet.getString("startTime")));
                     activity.setCompleted(resultSet.getBoolean("completed"));
                     activities.add(activity);
@@ -58,12 +58,12 @@ public class ActivityDAO {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
                         activity.setActivityId(resultSet.getLong("activityId"));
-                        activity.setNameActivity(resultSet.getString("name"));
+                        activity.setNameActivity(resultSet.getString("nameActivity"));
                         activity.setTypeActivity(TypeActivity.valueOf(resultSet.getString("typeActivity").toUpperCase()));
                         activity.setCategoryCosplayId(resultSet.getLong("categoryCosplayId") == 0 ? null : resultSet.getLong("categoryCosplayId"));
                         activity.setNumParticipants(resultSet.getInt("numParticipants"));
                         activity.setEventId(resultSet.getLong("eventId") == 0  ? null : resultSet.getLong("eventId"));
-                        activity.setPrice(resultSet.getLong("price"));
+                        activity.setPrice(resultSet.getDouble("price"));
                         activity.setStartTime(LocalTime.parse(resultSet.getString("startTime")));
                         activity.setCompleted(resultSet.getBoolean("completed"));
                     }
@@ -82,7 +82,7 @@ public class ActivityDAO {
      */
     public void insertActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "INSERT INTO tbl_activities (name, typeActivity, categoryCosplayId, numParticipants, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_activities (nameActivity, typeActivity, categoryCosplayId, numParticipants, startTime, price, completed) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, activity.getNameActivity());
                 statement.setString(2, activity.getTypeActivity().name());
@@ -105,7 +105,7 @@ public class ActivityDAO {
      */
     public void updateActivity(Activity activity) {
         try (Connection connection = BDConnection.MySQLConnection()) {
-            String sql = "UPDATE tbl_activities SET name = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ?, completed = ? WHERE activityId = ?";
+            String sql = "UPDATE tbl_activities SET nameActivity = ?, typeActivity = ?, categoryCosplayId = ?, numParticipants = ?, eventId = ?, startTime = ?, price = ?, completed = ? WHERE activityId = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, activity.getNameActivity());
                 statement.setString(2, activity.getTypeActivity().name());

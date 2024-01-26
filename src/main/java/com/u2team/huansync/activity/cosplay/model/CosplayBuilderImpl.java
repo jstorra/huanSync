@@ -1,4 +1,4 @@
-package com.u2team.huansync.activity.cosplay.managementCosplay.model;
+package com.u2team.huansync.activity.cosplay.model;
 
 /**
  * Implementation of the CosplayBuilder interface for constructing instances of the Cosplay class.

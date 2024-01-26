@@ -4,6 +4,8 @@
  */
 package com.u2team.huansync.view.ticketView;
 
+import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
+
 /**
  *
  * @author ANGIE DURAN
@@ -109,7 +111,11 @@ public class TicketAlert extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYesActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-      this.dispose();
+        TicketOfficeView back = new TicketOfficeView();
+        back.setVisible(true);
+        back.setLocationRelativeTo(null);
+        this.dispose();
+
     }//GEN-LAST:event_btnNoActionPerformed
 
     /**

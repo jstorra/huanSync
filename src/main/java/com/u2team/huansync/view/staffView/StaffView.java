@@ -4,10 +4,21 @@
  */
 package com.u2team.huansync.view.staffView;
 
+import com.u2team.huansync.event.staff.controller.StaffController;
+import com.u2team.huansync.event.staff.model.classes.Staff;
+import com.u2team.huansync.event.workerRoles.controller.WorkerRolesController;
+import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.view.MenuView;
 import com.u2team.huansync.view.activityView.AlertDelete;
 import com.u2team.huansync.view.activityView.Successful;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,20 +26,46 @@ import javax.swing.JOptionPane;
  */
 public class StaffView extends javax.swing.JFrame {
 
+    private List<WorkerRole> workRoles;
+    Long workId;
+
     /**
      * Creates new form StaffView
      */
     public StaffView() {
+        workRoles = new ArrayList<>();
         initComponents();
+        workRoles = WorkerRolesController.getAllWorkerRoles();
+
+        for (WorkerRole workerRole : workRoles) {
+            selectWorkRole.addItem(workerRole.getWorkerRoleName());
+        }
+
+        selectWorkRole.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtiene el ID del rol seleccionado
+                String selectedRoleName = (String) selectWorkRole.getSelectedItem();
+                if (selectedRoleName != null) {
+                    for (WorkerRole workerRole : workRoles) {
+                        if (selectedRoleName.equals(workerRole.getWorkerRoleName())) {
+                            workId = workerRole.getWorkerRoleId();
+                            break;
+                        }
+                    }
+                }
+            }
+        });
     }
-    
+
     private boolean validateFields() {
         if (txtName.getText().trim().isEmpty() || txtNumberId.getText().trim().isEmpty() || txtBirthday.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
-        return false;
+            return false;
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,20 +81,17 @@ public class StaffView extends javax.swing.JFrame {
         numberId = new javax.swing.JLabel();
         birthday = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
-        event = new javax.swing.JLabel();
         workRole = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         selectWorkRole = new javax.swing.JComboBox<>();
-        selectEvent = new javax.swing.JComboBox<>();
         selectStatus = new javax.swing.JComboBox<>();
         txtName = new javax.swing.JTextField();
         txtNumberId = new javax.swing.JTextField();
         txtBirthday = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         tittelStaff = new javax.swing.JLabel();
+        btnViewStaff = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,10 +124,6 @@ public class StaffView extends javax.swing.JFrame {
         status.setForeground(new java.awt.Color(0, 0, 0));
         status.setText("Status:");
 
-        event.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        event.setForeground(new java.awt.Color(0, 0, 0));
-        event.setText("Event:");
-
         workRole.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         workRole.setForeground(new java.awt.Color(0, 0, 0));
         workRole.setText("Work Role:");
@@ -105,21 +135,6 @@ public class StaffView extends javax.swing.JFrame {
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setBackground(new java.awt.Color(8, 69, 106));
-        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update");
-
-        btnDelete.setBackground(new java.awt.Color(8, 69, 106));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -136,32 +151,26 @@ public class StaffView extends javax.swing.JFrame {
         selectWorkRole.setBackground(new java.awt.Color(255, 195, 114));
         selectWorkRole.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         selectWorkRole.setForeground(new java.awt.Color(51, 51, 51));
-        selectWorkRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Work Role 1", "Work Role 2", "Work Role 3", "Work Role 4" }));
-
-        selectEvent.setBackground(new java.awt.Color(255, 195, 114));
-        selectEvent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        selectEvent.setForeground(new java.awt.Color(51, 51, 51));
-        selectEvent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Event 1", "Event 2", "Event 3", "Event 4" }));
 
         selectStatus.setBackground(new java.awt.Color(255, 195, 114));
-        selectStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        selectStatus.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         selectStatus.setForeground(new java.awt.Color(51, 51, 51));
-        selectStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "inactive", "assigned", "on hold", "fired", "disable" }));
+        selectStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TASK_ASSIGNED", "NO_TASK_ASSIGNED", "DISMISSED", "INCAPACITED" }));
 
         txtName.setBackground(new java.awt.Color(255, 195, 114));
-        txtName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.setText("Name:");
 
         txtNumberId.setBackground(new java.awt.Color(255, 195, 114));
-        txtNumberId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtNumberId.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtNumberId.setForeground(new java.awt.Color(51, 51, 51));
         txtNumberId.setText("id");
 
         txtBirthday.setBackground(new java.awt.Color(255, 195, 114));
-        txtBirthday.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtBirthday.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtBirthday.setForeground(new java.awt.Color(51, 51, 51));
-        txtBirthday.setText("dd/mm/aa");
+        txtBirthday.setText("yyyy-mm-dd");
 
         jPanel3.setBackground(new java.awt.Color(144, 19, 33));
 
@@ -186,44 +195,49 @@ public class StaffView extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        btnViewStaff.setBackground(new java.awt.Color(8, 69, 106));
+        btnViewStaff.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnViewStaff.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewStaff.setText("View Staff");
+        btnViewStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewStaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnBack)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewStaff))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(event, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(birthday, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(numberId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(workRole)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(btnAdd)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDelete))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(workRole)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(birthday, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(numberId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNumberId, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectWorkRole, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(selectWorkRole, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtBirthday, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(selectStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, 168, Short.MAX_VALUE))))
+                            .addComponent(btnBack))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,25 +261,17 @@ public class StaffView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(status))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(event)
-                        .addGap(18, 18, 18)
-                        .addComponent(workRole)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAdd)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnDelete)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(selectEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(selectWorkRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(workRole)
+                    .addComponent(selectWorkRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnViewStaff))
+                .addGap(29, 29, 29)
                 .addComponent(btnBack)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,11 +289,21 @@ public class StaffView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+
         if (validateFields()) {
+            String numberId = txtNumberId.getText();
+            String nameStaff = txtName.getText();
+            LocalDate birthday = LocalDate.parse(txtBirthday.getText());
+            String statusStaff = (String) selectStatus.getSelectedItem();
+            
+            Staff staff = new Staff(0, numberId, nameStaff, birthday, statusStaff, workId);
+            StaffController.insertStaff(staff);
+            System.out.println(staff);
             Successful successful = new Successful();
             successful.setVisible(true);
             successful.setLocationRelativeTo(null);
         }
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -297,11 +313,12 @@ public class StaffView extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        AlertDelete alertDelete = new AlertDelete();
-        alertDelete.setVisible(true);
-        alertDelete.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnDeleteActionPerformed
+    private void btnViewStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStaffActionPerformed
+        StaffShow staffview = new StaffShow();
+        staffview.setVisible(true);
+        staffview.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnViewStaffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,15 +359,12 @@ public class StaffView extends javax.swing.JFrame {
     private javax.swing.JLabel birthday;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel event;
+    private javax.swing.JButton btnViewStaff;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel name;
     private javax.swing.JLabel numberId;
-    private javax.swing.JComboBox<String> selectEvent;
     private javax.swing.JComboBox<String> selectStatus;
     private javax.swing.JComboBox<String> selectWorkRole;
     private javax.swing.JLabel status;

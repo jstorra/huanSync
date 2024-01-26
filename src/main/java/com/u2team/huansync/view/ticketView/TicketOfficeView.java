@@ -4,11 +4,24 @@
  */
 package com.u2team.huansync.view.ticketView;
 
+import com.u2team.huansync.event.staff.controller.StaffController;
+import com.u2team.huansync.event.staff.model.classes.Staff;
 import com.u2team.huansync.ticketOffice.client.controller.CustomerController;
 import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerBuilder;
 import com.u2team.huansync.ticketOffice.client.model.classes.builders.CustomerConcreteBuilder;
+import com.u2team.huansync.ticketOffice.controller.TicketOfficeController;
+import com.u2team.huansync.ticketOffice.model.builders.TicketOfficeBuilder;
+import com.u2team.huansync.ticketOffice.model.builders.TicketOfficeBuilderOficial;
+import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
+import com.u2team.huansync.ticketOffice.tickets.controller.TicketsController;
+import com.u2team.huansync.ticketOffice.tickets.model.classes.Tickets;
+import com.u2team.huansync.ticketOffice.tickets.model.classes.builders.TicketBuilder;
+import com.u2team.huansync.ticketOffice.tickets.model.classes.builders.TicketConcreteBuilder;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,12 +33,21 @@ public class TicketOfficeView extends javax.swing.JFrame {
     /**
      * Creates new form TicketOffice
      */
+    private List<Staff> listStaff;
+
     public TicketOfficeView() {
         initComponents();
+        listStaff = new ArrayList<>();
+        listStaff = StaffController.getAllStaff();
+
+        for (Staff staff : listStaff) {
+            selectBoxOffice1.addItem(String.valueOf(staff.getStaffId()));
+        }
+
     }
 
     private boolean validateFields() {
-        if (txtNameTicket.getText().trim().isEmpty() || (!rbPaid.isSelected() && !rbReserved.isSelected())) {
+        if (txtNameTicket.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You must complete all fields", "Validation error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -72,16 +94,17 @@ public class TicketOfficeView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtNumberEvent = new javax.swing.JTextField();
         txtContactNumber = new javax.swing.JTextField();
-        selectBoxOffice = new javax.swing.JComboBox<>();
+        selectBoxOffice1 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtNameTicket = new javax.swing.JTextField();
-        rbPaid = new javax.swing.JRadioButton();
-        rbReserved = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         btnYes = new javax.swing.JButton();
-        btnOtherLocation = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        txtLocation = new javax.swing.JButton();
+        statusSelect = new javax.swing.JComboBox<>();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -239,9 +262,13 @@ public class TicketOfficeView extends javax.swing.JFrame {
             }
         });
 
-        selectBoxOffice.setBackground(new java.awt.Color(255, 195, 114));
-        selectBoxOffice.setForeground(new java.awt.Color(0, 0, 0));
-        selectBoxOffice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectBoxOffice1.setBackground(new java.awt.Color(255, 195, 114));
+        selectBoxOffice1.setForeground(new java.awt.Color(0, 0, 0));
+        selectBoxOffice1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectBoxOffice1ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -254,14 +281,6 @@ public class TicketOfficeView extends javax.swing.JFrame {
         txtNameTicket.setBackground(new java.awt.Color(255, 195, 114));
         txtNameTicket.setForeground(new java.awt.Color(0, 0, 0));
         txtNameTicket.setText("Name Ticket");
-
-        buttonGroup1.add(rbPaid);
-        rbPaid.setForeground(new java.awt.Color(0, 0, 0));
-        rbPaid.setText("Paid");
-
-        buttonGroup1.add(rbReserved);
-        rbReserved.setForeground(new java.awt.Color(0, 0, 0));
-        rbReserved.setText("Reserved");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
@@ -281,14 +300,26 @@ public class TicketOfficeView extends javax.swing.JFrame {
             }
         });
 
-        btnOtherLocation.setBackground(new java.awt.Color(255, 195, 114));
-        btnOtherLocation.setForeground(new java.awt.Color(0, 0, 0));
-        btnOtherLocation.setText("Other");
-        btnOtherLocation.addActionListener(new java.awt.event.ActionListener() {
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Address");
+
+        txtAddress.setBackground(new java.awt.Color(255, 195, 114));
+        txtAddress.setForeground(new java.awt.Color(0, 0, 0));
+        txtAddress.setText("Address");
+
+        txtLocation.setBackground(new java.awt.Color(255, 195, 114));
+        txtLocation.setForeground(new java.awt.Color(0, 0, 0));
+        txtLocation.setText("Other");
+        txtLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOtherLocationActionPerformed(evt);
+                txtLocationActionPerformed(evt);
             }
         });
+
+        statusSelect.setBackground(new java.awt.Color(255, 195, 114));
+        statusSelect.setForeground(new java.awt.Color(0, 0, 0));
+        statusSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESERVED", "PAID" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,76 +327,71 @@ public class TicketOfficeView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDocument, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(25, 25, 25)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(txtNumberEvent)
-                                                    .addComponent(txtContactNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                                                    .addComponent(selectBoxOffice, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(btnOtherLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(57, 57, 57)
-                                                .addComponent(txtNameTicket))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(89, 89, 89)
-                                                        .addComponent(rbPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                        .addGap(70, 70, 70)
-                                                        .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGap(16, 16, 16)
-                                                        .addComponent(rbReserved))))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(159, 159, 159)
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton2)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDocument, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel13))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(selectBoxOffice1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNameTicket, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(txtNumberEvent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                                .addComponent(txtContactNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                                .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(103, 103, 103)
+                                                .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(statusSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(jButton1)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton2)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,73 +409,84 @@ public class TicketOfficeView extends javax.swing.JFrame {
                     .addComponent(txtNumberEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtLocation))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDocument, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnOtherLocation)
-                            .addComponent(txtDocument, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(128, 128, 128))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(selectBoxOffice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel14))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(txtNameTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbPaid)
-                            .addComponent(rbReserved)
-                            .addComponent(jLabel16))
-                        .addGap(32, 32, 32)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnYes)
-                    .addComponent(jLabel17))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(selectBoxOffice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel14)
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(txtNameTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16)
+                                    .addComponent(statusSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addGap(93, 93, 93)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel17)
+                                    .addComponent(btnYes)
+                                    .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))))
+                        .addGap(57, 57, 57)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30))
+                .addGap(75, 75, 75))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -467,44 +504,103 @@ public class TicketOfficeView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (txtName.getText().trim().isEmpty() || txtDocument.getText().trim().isEmpty() || txtGender.getText().trim().isEmpty()
-                || txtDate.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
-                || txtNumber.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            String name = txtName.getText();
-            String document = txtDocument.getText();
-            LocalDate dateCustomer = LocalDate.parse(txtDate.getText());
-            String gender = txtGender.getText();
-            String email = txtEmail.getText();
-            String phoneNumber = txtNumber.getText();
-            String typeEnum = selectType.getSelectedItem().toString();
+        try {
+            if (txtName.getText().trim().isEmpty() || txtDocument.getText().trim().isEmpty() || txtGender.getText().trim().isEmpty()
+                    || txtDate.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
+                    || txtNumber.getText().trim().isEmpty() || txtNumberEvent.getText().trim().isEmpty() || txtContactNumber.getText().trim().isEmpty() || txtAddress.getText().trim().isEmpty() || txtNameTicket.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please, you must complete all fields.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                String name = txtName.getText();
+                String document = txtDocument.getText();
 
-            CustomerBuilder customerbuil = new CustomerConcreteBuilder();
-            Customer customers = customerbuil.nameCustomer(name)
-                    .document(document)
-                    .birthDate(dateCustomer)
-                    .gender(gender)
-                    .email(email)
-                    .phoneNumber(phoneNumber)
-                    .customerTypeEnum(typeEnum)
-                    .build();
+                // Handle date parsing with try-catch
+                try {
+                    LocalDate dateCustomer = LocalDate.parse(txtDate.getText());
 
-// Check if the customer's customerTypeEnum is not null
-            if (customers.getCustomerTypeEnum() != null) {
-                // Your existing code here
-                CustomerController.insertCustomer(customers);
-                txtName.setText("");
-                txtDocument.setText("");
-                txtDate.setText("");
-                txtGender.setText("");
-                txtEmail.setText("");
-                txtNumber.setText("");
-               } else {
-    // Handle the case where customerTypeEnum is null
-    JOptionPane.showMessageDialog(this, "Customer type is not selected.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-}
+                    String gender = txtGender.getText();
+                    String email = txtEmail.getText();
+                    String phoneNumber = txtNumber.getText();
+                    String typeEnum = selectType.getSelectedItem().toString();
+
+                    /*office*/
+                    long eventId = Long.parseLong(txtNumberEvent.getText());
+                    String contactNumber = txtContactNumber.getText();
+                    String address = txtAddress.getText();
+                    long staff = Long.parseLong((String) selectBoxOffice1.getSelectedItem());
+
+                    /*ticket*/
+                    String nameTicket = txtNameTicket.getText();
+                    String statusEnum = statusSelect.getSelectedItem().toString();
+
+                    CustomerBuilder customerbuil = new CustomerConcreteBuilder();
+                    Customer customers = customerbuil.nameCustomer(name)
+                            .document(document)
+                            .birthDate(dateCustomer)
+                            .gender(gender)
+                            .email(email)
+                            .phoneNumber(phoneNumber)
+                            .customerTypeEnum(typeEnum)
+                            .build();
+
+                    TicketOfficeBuilder ticketnew = new TicketOfficeBuilderOficial();
+                    TicketOffice ticket = ticketnew.eventId(eventId)
+                            .address(address)
+                            .contactNumber(contactNumber)
+                            .eventId(eventId)
+                            .location(true)
+                            .contactNumber(contactNumber)
+                            .staffId(staff)
+                            .build();
+
+                    TicketBuilder ticketBuild = new TicketConcreteBuilder();
+                    Tickets tickets = ticketBuild.nameTicket(nameTicket)
+                            
+                            .statusEnum(statusEnum)
+                            .customerId(staff)
+                            .ticketId(eventId)
+                            .ticketTypeId(eventId)
+                            
+                            
+                            .buid();
+
+                    // Check both conditions before proceeding with insertion
+                    if (customers.getCustomerTypeEnum() != null && ticket.getStaffId() != 0) {
+                        // Insert customer and ticket office
+                        CustomerController.insertCustomer(customers);
+                        TicketOfficeController.insertTicketOffice(ticket);
+
+                        // Check if the statusEnum is not null before inserting tickets
+                        if (tickets.getStatusEnum() != null) {
+//                            TicketsController.insertTickets(tickets);
+
+                            // Clear text fields
+                            txtName.setText("");
+                            txtDocument.setText("");
+                            txtDate.setText("");
+                            txtGender.setText("");
+                            txtEmail.setText("");
+                            txtNumber.setText("");
+                            txtNumberEvent.setText("");
+                            txtContactNumber.setText("");
+                            txtAddress.setText("");
+                            txtNameTicket.setText("");
+                        } else {
+                            // Handle the case where statusEnum is null
+                            JOptionPane.showMessageDialog(this, "Ticket status is not selected.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        // Handle the case where either customer type or staff is not selected
+                        JOptionPane.showMessageDialog(this, "Customer type or staff is not selected.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (DateTimeParseException e) {
+                    JOptionPane.showMessageDialog(this, "Invalid date format. Please enter the date in the correct format.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle other exceptions, if necessary
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void selectTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTypeActionPerformed
@@ -523,11 +619,16 @@ public class TicketOfficeView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnYesActionPerformed
 
-    private void btnOtherLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtherLocationActionPerformed
-        TicketAlert ticketAlert = new TicketAlert();
-        ticketAlert.setVisible(true);
-        ticketAlert.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnOtherLocationActionPerformed
+    private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
+        TicketAlert newAlert = new TicketAlert();
+        newAlert.setVisible(true);
+        newAlert.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_txtLocationActionPerformed
+
+    private void selectBoxOffice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBoxOffice1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectBoxOffice1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,7 +667,6 @@ public class TicketOfficeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOtherLocation;
     private javax.swing.JButton btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -580,6 +680,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -594,15 +695,16 @@ public class TicketOfficeView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JRadioButton rbPaid;
-    private javax.swing.JRadioButton rbReserved;
-    private javax.swing.JComboBox<String> selectBoxOffice;
+    private javax.swing.JComboBox<String> selectBoxOffice1;
     private javax.swing.JComboBox<String> selectType;
+    private javax.swing.JComboBox<String> statusSelect;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtContactNumber;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDocument;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGender;
+    private javax.swing.JButton txtLocation;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNameTicket;
     private javax.swing.JTextField txtNumber;

@@ -1,4 +1,4 @@
-package com.u2team.huansync.activity.cosplay.managementCosplay.model;
+package com.u2team.huansync.activity.cosplay.model;
 
 /**
  * Interface defining methods for validating Cosplay entities in a data access

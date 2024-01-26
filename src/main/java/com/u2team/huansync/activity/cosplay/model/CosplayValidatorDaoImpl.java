@@ -1,4 +1,4 @@
-package com.u2team.huansync.activity.cosplay.managementCosplay.model;
+package com.u2team.huansync.activity.cosplay.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

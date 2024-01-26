@@ -1,9 +1,9 @@
-package com.u2team.huansync.activity.cosplay.managementCosplay.Controller;
+package com.u2team.huansync.activity.cosplay.Controller;
 
 import java.util.*;
-import com.u2team.huansync.activity.cosplay.managementCosplay.model.Cosplay;
-import com.u2team.huansync.activity.cosplay.managementCosplay.model.CosplayBuilderImpl;
-import com.u2team.huansync.activity.cosplay.managementCosplay.model.CosplayDaoOperationsCrudImpl;
+import com.u2team.huansync.activity.cosplay.model.Cosplay;
+import com.u2team.huansync.activity.cosplay.model.CosplayBuilderImpl;
+import com.u2team.huansync.activity.cosplay.model.CosplayDaoOperationsCrudImpl;
 
 /**
  * Controller class for managing cosplay operations.

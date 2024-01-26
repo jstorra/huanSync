@@ -1,44 +1,62 @@
-
-[Repite esta estructura para cada uno de los 8 grupos en tu proyecto, llenando los detalles específicos de cada uno. Asegúrate de proporcionar información detallada y relevante para cada grupo en su respectiva sección del README.]
-
-
-[Se recuerda a los grupos que tiene cosas en comun hacer un seccion y en ella colocar cada sub seccion :
-   Ejemplo: 
-   - [Actividades]: [Estructura del modulo]
-        - Cosplay
-            - [Estructura del modulo]
-        - Trivia
-            - [Estructura del modulo]
-              
-]
-
----
-
-
-# [Nombre del Grupo] (Esto es estructura del modulo)          ----------> todo hecho en Ingles!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Trivia Module
 
 ## Description
-[Describe brevemente lo que hace este módulo o grupo en tu proyecto]
 
-## OOP (Object Oriented Programming)        ----------> todo hecho en Ingles!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-[Explica cómo aplicaste la Programación Orientada a Objetos en este grupo. Enumera las clases creadas y proporciona una breve descripción de sus métodos y funcionalidades]
+Our team, Team 6, is responsible for developing the trivia module within our project. The trivia module hosts a competition with questions related to various animes, movies, and comics. Each competition involves two participants, one from each group. Participants are randomly organized based on the total number of participants. The competition consists of a total of 5 randomly selected questions, and the first participant to answer correctly to 3 questions advances to the next round. The trivia is categorized into three difficulty levels: easy, intermediate, and difficult. As the trivia tournament progresses, the difficulty level increases. The winner receives a prize from the merchandise store.
 
-## Design pattern       ----------> todo hecho en Ingles!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-[Explica qué patrón de diseño se implementó en este grupo y por qué se eligió. Detalla cómo se aplicó en el código]
+## Object-Oriented Programming (OOP)
 
-## SOLID application        ---------->todo hecho en Ingles!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-[Habla sobre cómo se aplicaron los principios SOLID en este módulo, especialmente enfocándote en la creación de DAO (Data Access Object). Explica cómo se logró la separación de responsabilidades y la modularidad]
+### Class Hierarchy
 
-## Package Structure        ---------->todo hecho en Ingles!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-[Indica dónde se encuentra el código fuente o los archivos relacionados con este grupo en el repositorio del proyecto, ademas de enlazar a sus respectivas carpetas]
+- **Activity (Main Class)**
+- **Cosplay (Secondary Class)**
+- **Trivia (Secondary Class)**
 
+### Trivia Class
 
-[Nombre del Grupo]
-   - Controller
-   - DAO
-      - model
-   - staff
-      - controller
-      - model
-         - classes
-         - DAO
+The `Trivia` class extends the `Activity` class and contains attributes specific to organizing trivia competitions. CRUD operations for trivia are handled by the `TriviaDAO` class, which uses the Builder pattern for efficient creation.
+
+### Controller
+
+The `TriviaController` class contains methods to handle CRUD operations for trivia instances.
+
+## Design Pattern: Builder
+
+The Builder design pattern is implemented in the `TriviaBuilder` interface and its corresponding implementation, `TriviaBuilderImpl`.
+
+## SOLID Principles Applied
+
+SOLID principles are followed in the development of the trivia module.
+
+- Each class was created to do only one thing.
+- No class depends on interfaces that are not used.
+- High-level modules do not depend on low-level modules; both depend on abstractions.
+- Abstractions do not depend on details.
+
+## Package Structure
+
+The trivia module is organized within the project repository as follows:
+
+- Team 6
+  - Activity
+    - Controller
+      - TriviaController
+    - Model
+      - Trivia
+      - TriviaBuilder
+      - TriviaBuilderImpl
+      - TriviaDAO
+
+# Cosplay Module (Shared Features)
+
+## CategoryCosplayController
+
+The `CategoryCosplayController` class manages CRUD operations for cosplay categories.
+
+## CategoryCosplay
+
+The `CategoryCosplay` class represents a cosplay category with a unique identifier, name, and deletion status.
+
+## CategoryCosplayDAO
+
+The `CategoryCosplayDAO` class is a Data Access Object (DAO) responsible for managing operations related to cosplay categories in the database.

@@ -47,7 +47,45 @@ In the context of DAO (Data Access Object) creation, we applied SOLID principles
                     * TypeProductEnum.java
                 * DAO
                     * ProductDAO
+        * productOrder
+        * promotion
+        * sql 
+        * README.md
+
 This structure is generalized and applied to other components such as productOrder and promotion.
+
+# System Requirements for the Stores Section
+
+## 1. Inventory Management: completed
+
+- Create a store type of establishment that allows the management of product inventory.
+- Include fields in the inventory such as store identifier, product name, description, manufacturer, product type (figure, poster, button, clothing, etc.), available quantity, and individual price.
+- Automatically update the inventory each time a sale is made, adjusting the available quantities.
+
+## 2. Discounts and Promotions:not tested
+
+
+- Implement the ability to manage discounts and promotions specifically for stores.
+- Allow the creation of discounts such as combos, better prices for quantity, etc., and reflect these in the calculation of order values when applied.
+
+## 3. Order Detail Query: completed
+
+- Enable the possibility to query the details of each order made in a store.
+- Display detailed information, including all items in the sale, the quantity sold, and the individual value of each product.
+
+## 4. General Balance Reports: incomplete
+
+- Integrate the ability to generate general balance reports for the event, specifically focused on stores.
+- Allow the generation of reports both at a general level and individually for each store, showing relevant data such as total income, product sales, and any other pertinent metrics.
+
+## 5. Establishment Administration: no tested 
+
+- Enable the registration of multiple stores per event.
+- Assign a responsible person to each store, selecting from the personnel previously registered in the system.
+- Categorize each establishment as a "Store" to distinguish its function within the event.
+
+
+
 
 ##
 

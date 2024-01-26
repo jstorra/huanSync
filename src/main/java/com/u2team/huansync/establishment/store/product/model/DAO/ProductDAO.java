@@ -28,7 +28,7 @@ import java.util.List;
  * a product, retrieving all products, retrieving a product by its ID, and
  * updating a product's information.
  * 
- * @author sneiderEsteban
+ * @author SneiderEsteban
  */
 public class ProductDAO implements ISaveDao<Product>, IDeleteDao<Product>, IGetAllDao<Product>, IGetByIdDao<Product>, IUpdateDao<Product> {
 

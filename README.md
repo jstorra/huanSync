@@ -88,11 +88,11 @@ Si deseas contribuir a este proyecto, sigue estos pasos:
    - [Dabrox02](https://github.com/Dabrox02) (leader)
    - [johanp0308](https://github.com/johanp0308)
 2. Team 2
-   - [JCristinaJSalas](https://github.com/JCristinaJSalas) (leader)
+   - [duranangie](https://github.com/duranangie) (leader)
    - [RCNicolas](https://github.com/RCNicolas)
    - [AitsuYuyu](https://github.com/AitsuYuyu)
 3. Team 3
-   - []()
+   - [JCristinaJSalas](https://github.com/JCristinaJSalas) (leader)
    - [kazeventum](https://github.com/kazeventum)
    - [EMpinzon](https://github.com/EMpinzon)
 4. Team 4
@@ -100,13 +100,13 @@ Si deseas contribuir a este proyecto, sigue estos pasos:
    - [Ancreem](https://github.com/Ancreem)
    - [DavidSantos004](https://github.com/DavidSantos004)
 5. Team 5
-   - []()
+   - [Santiago24x](https://github.com/Santiago24x) (leader)
    - [robersks](https://github.com/robersks)
-   - []()
+   - [JUANDGG](https://github.com/JUANDGG)
 6. Team 6
    - [jstorra](https://github.com/jstorra) (leader)
    - [leidert11](https://github.com/leidert11)
-   - []()
+   - [violetavillamizara](https://github.com/violetavillamizara)
 7. Team 7
    - [Kevin-Jimenez-D](https://github.com/Kevin-Jimenez-D) (leader)
    - [BarbatosLopux](https://github.com/BarbatosLopux)

@@ -1,3 +1,7 @@
+/**
+ * The `TriviaManagement` class provides a console-based user interface for managing trivia activities.
+ * Users can add, list, update, and delete trivia activities through a menu-driven interface.
+ */
 package com.u2team.huansync.activity.trivia;
 
 import com.u2team.huansync.activity.controller.ActivityController;
@@ -13,6 +17,9 @@ import java.util.Scanner;
 public class TriviaManagement {
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Initializes the trivia management application and provides a menu for users to perform various actions related to trivia activities.
+     */
     public static void initAppTrivia() {
         while (true) {
             System.out.println("""
@@ -54,6 +61,11 @@ public class TriviaManagement {
         }
     }
 
+    /**
+     * Adds a new trivia activity by collecting necessary information from the user.
+     *
+     * @throws Exception If there is an error in the input or during the activity creation.
+     */
     private static void addTrivia() throws Exception {
         System.out.println("\n------------ ADD TRIVIA ------------\n");
         System.out.print("Enter the trivia name: ");
@@ -82,6 +94,11 @@ public class TriviaManagement {
         ActivityController.insertActivity(trivia);
     }
 
+    /**
+     * Lists all available trivias to play and prompts the user to select a trivia for playing.
+     *
+     * @throws Exception If there are no available trivias or if the selected trivia does not exist.
+     */
     private static void listTriviasToPlay() throws Exception {
         System.out.println("\n------------ TRIVIAS TO PLAY ------------\n");
 
@@ -101,6 +118,11 @@ public class TriviaManagement {
         TriviaGame.initTriviaGame(triviaId);
     }
 
+    /**
+     * Updates an existing trivia activity by collecting updated information from the user.
+     *
+     * @throws Exception If there is an error in the input, if there are no trivias to update, or if the selected trivia does not exist.
+     */
     private static void updateTrivia() throws Exception {
         System.out.println("\n------------ UPDATE TRIVIA ------------\n");
 
@@ -151,6 +173,11 @@ public class TriviaManagement {
         ActivityController.updateActivity(triviaToUpdate);
     }
 
+    /**
+     * Deletes an existing trivia activity by prompting the user to select a trivia for deletion.
+     *
+     * @throws Exception If there are no trivias to delete or if the selected trivia does not exist.
+     */
     private static void deleteTrivia() throws Exception {
         System.out.println("\n------------ DELETE TRIVIA ------------\n");
 
@@ -169,6 +196,11 @@ public class TriviaManagement {
         ActivityController.deleteActivity(triviaId);
     }
 
+    /**
+     * Lists all available trivias to play and returns the list of activities.
+     *
+     * @return The list of trivias available to play.
+     */
     private static List<Activity> listTrivias() {
         List<Activity> triviasToPlay = ActivityController.getAllActivities().stream()
                 .filter(activity -> !activity.isCompleted() && activity.getTypeActivity().getName().equalsIgnoreCase("trivia")).toList();

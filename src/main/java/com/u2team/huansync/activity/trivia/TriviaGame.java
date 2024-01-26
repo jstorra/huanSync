@@ -5,6 +5,7 @@ import com.u2team.huansync.activity.trivia.model.Trivia;
 import com.u2team.huansync.activity.trivia.model.TriviaBuilderImpl;
 import com.u2team.huansync.activity.trivia.question.controller.QuestionController;
 import com.u2team.huansync.activity.trivia.question.model.Question;
+
 import java.util.*;
 
 public class TriviaGame {
@@ -26,7 +27,7 @@ public class TriviaGame {
 
         List<TestParticipant> playersRound2 = new ArrayList<>();
         List<TestParticipant> playersRound3 = new ArrayList<>();
-        
+
         List<Question> questions = QuestionController.getAllQuestions();
 
         List<Question> questionsEasy = new ArrayList<>(questions.stream().filter(question -> "easy".equalsIgnoreCase(question.getDifficulty().getName())).toList());
@@ -35,8 +36,8 @@ public class TriviaGame {
 
         System.out.println("\n------------ ROUND 1 ------------");
         do {
-            int pointsJugador1 = 0;
-            int pointsJugador2 = 0;
+            int pointsPlayer1 = 0;
+            int pointsPlayer2 = 0;
 
             while (!playersRound1.isEmpty()) {
                 int indexQuestion = new Random().nextInt(questionsEasy.size());
@@ -53,8 +54,8 @@ public class TriviaGame {
                     questionsEasy.remove(indexQuestion);
 
                 if (r1.equalsIgnoreCase(answer)) {
-                    pointsJugador1++;
-                    if (pointsJugador1 == 3) {
+                    pointsPlayer1++;
+                    if (pointsPlayer1 == 3) {
                         System.out.println("\nWINNER: " + playersRound1.get(0).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound1.get(0).getParticipantId())
@@ -68,8 +69,8 @@ public class TriviaGame {
                         break;
                     }
                 } else if (r2.equalsIgnoreCase(answer)) {
-                    pointsJugador2++;
-                    if (pointsJugador2 == 3) {
+                    pointsPlayer2++;
+                    if (pointsPlayer2 == 3) {
                         System.out.println("\nWINNER: " + playersRound1.get(1).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound1.get(0).getParticipantId())
@@ -85,16 +86,15 @@ public class TriviaGame {
                 }
 
                 System.out.println("\nPOINTS");
-                System.out.println("Player 1: " + pointsJugador1);
-                System.out.println("Player 2: " + pointsJugador2);
+                System.out.println("Player 1: " + pointsPlayer1);
+                System.out.println("Player 2: " + pointsPlayer2);
             }
-
         } while (!playersRound1.isEmpty());
 
         System.out.println("\n------------ ROUND 2 ------------");
         do {
-            int pointsJugador1 = 0;
-            int pointsJugador2 = 0;
+            int pointsPlayer1 = 0;
+            int pointsPlayer2 = 0;
 
             while (!playersRound2.isEmpty()) {
                 int indexQuestion = new Random().nextInt(questionsMedium.size());
@@ -111,8 +111,8 @@ public class TriviaGame {
                     questionsMedium.remove(indexQuestion);
 
                 if (r1.equalsIgnoreCase(answer)) {
-                    pointsJugador1++;
-                    if (pointsJugador1 == 3) {
+                    pointsPlayer1++;
+                    if (pointsPlayer1 == 3) {
                         System.out.println("\nWINNER: " + playersRound2.get(0).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound2.get(0).getParticipantId())
@@ -126,8 +126,8 @@ public class TriviaGame {
                         break;
                     }
                 } else if (r2.equalsIgnoreCase(answer)) {
-                    pointsJugador2++;
-                    if (pointsJugador2 == 3) {
+                    pointsPlayer2++;
+                    if (pointsPlayer2 == 3) {
                         System.out.println("\nWINNER: " + playersRound2.get(1).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound2.get(0).getParticipantId())
@@ -143,16 +143,15 @@ public class TriviaGame {
                 }
 
                 System.out.println("\nPOINTS");
-                System.out.println("Player 1: " + pointsJugador1);
-                System.out.println("Player 2: " + pointsJugador2);
+                System.out.println("Player 1: " + pointsPlayer1);
+                System.out.println("Player 2: " + pointsPlayer2);
             }
-
         } while (!playersRound2.isEmpty());
 
         System.out.println("\n------------ ROUND 3 ------------");
         do {
-            int pointsJugador1 = 0;
-            int pointsJugador2 = 0;
+            int pointsPlayer1 = 0;
+            int pointsPlayer2 = 0;
 
             while (!(playersRound3.size() == 1)) {
                 int indexQuestion = new Random().nextInt(questionsHard.size());
@@ -169,8 +168,8 @@ public class TriviaGame {
                     questionsHard.remove(indexQuestion);
 
                 if (r1.equalsIgnoreCase(answer)) {
-                    pointsJugador1++;
-                    if (pointsJugador1 == 3) {
+                    pointsPlayer1++;
+                    if (pointsPlayer1 == 3) {
                         System.out.println("\nWINNER: " + playersRound3.get(0).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound3.get(0).getParticipantId())
@@ -183,8 +182,8 @@ public class TriviaGame {
                         break;
                     }
                 } else if (r2.equalsIgnoreCase(answer)) {
-                    pointsJugador2++;
-                    if (pointsJugador2 == 3) {
+                    pointsPlayer2++;
+                    if (pointsPlayer2 == 3) {
                         System.out.println("\nWINNER: " + playersRound3.get(1).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
                                 .participantOneId(playersRound3.get(0).getParticipantId())
@@ -197,10 +196,11 @@ public class TriviaGame {
                         break;
                     }
                 }
-                System.out.println("Jugador 1: " + pointsJugador1);
-                System.out.println("Jugador 2: " + pointsJugador2);
-            }
 
+                System.out.println("\nPOINTS");
+                System.out.println("Player 1: " + pointsPlayer1);
+                System.out.println("Player 2: " + pointsPlayer2);
+            }
         } while ((playersRound3.size() != 1));
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * The `ActivityManagement` class provides a console-based user interface for managing different types of activities.
+ * Users can choose to manage Cosplay or Trivia activities through a menu-driven interface.
+ */
 package com.u2team.huansync.activity;
 
 import com.u2team.huansync.activity.trivia.TriviaManagement;
@@ -8,6 +12,9 @@ import java.util.Scanner;
 public class ActivityManagement {
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Initializes the activity management application and provides a menu for users to choose the type of activity to manage.
+     */
     public static void initApp() {
         while (true) {
             System.out.println("""
@@ -28,7 +35,7 @@ public class ActivityManagement {
                     System.out.println("\nLeaving out...");
                     break;
                 } else if (option == 1) {
-
+                    // Implement Cosplay management functionality here
                 } else if (option == 2) {
                     TriviaManagement.initAppTrivia();
                 } else {

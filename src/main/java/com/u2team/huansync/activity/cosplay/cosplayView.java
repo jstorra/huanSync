@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.u2team.huansync.activity.cosplay.Controller.ControllerMagnamentCosplay;
 import com.u2team.huansync.activity.cosplay.model.Cosplay;
 
-public class cosplayView {
+public class CosplayView {
 
     private ControllerMagnamentCosplay controllerCosplay = new ControllerMagnamentCosplay();
 
@@ -96,6 +96,8 @@ public class cosplayView {
         controllerCosplay.deleteCosplay(idCosplay);
         System.out.println("Cosplay deleted successfully.\n");
     }
+
+
 
     
 }

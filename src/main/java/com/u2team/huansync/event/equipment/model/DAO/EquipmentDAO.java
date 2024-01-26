@@ -163,7 +163,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
                     SET equipmentId = ?,
                         nameEquipment = ?,
                         quantity = ?,
-                        statusEquipment = ?,
+                        statusEquipment = ?
                     WHERE equipmentId = ?;
                                     """;
 
@@ -172,6 +172,7 @@ public class EquipmentDAO implements ISaveDao<Equipment>, IDeleteDao<Equipment>,
                     ps.setString(2, sqlEquipment.getNameEquipment());
                     ps.setLong(3, sqlEquipment.getQuantity());
                     ps.setString(4, sqlEquipment.getStatusEquipmentEnum().name());
+                    ps.setLong(5, sqlEquipment.getEquipmentId());
 
                     // Show with toString method the ps (PrepareStatement)
                     System.out.println(ps.toString());

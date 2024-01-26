@@ -65,7 +65,7 @@ CREATE TABLE `tbl_customers` (
 );
 
 CREATE TABLE `tbl_tickets` (
-  `ticketId` INT PRIMARY KEY NOT NULL,
+  `ticketId` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nameTicket` VARCHAR(50) DEFAULT NULL,
   `status` ENUM ('paid', 'reserved') DEFAULT NULL,
   `additionalCost` DECIMAL(10,2) DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `promotion` (
 );
 
 CREATE TABLE `tbl_cashRegister` (
-  `cashRegisterId` int PRIMARY KEY NOT NULL,
+  `cashRegisterId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `statusCash` boolean NOT NULL,
   `openingAmount` decimal(10,2) NOT NULL,
   `closingAmount` decimal(10,2) NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE `tbl_cashRegister` (
 );
 
 CREATE TABLE `tbl_order` (
-  `orderId` int PRIMARY KEY NOT NULL,
+  `orderId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `customerId` int,
   `establishmentId` int,
   `cashRegisterId` int,
@@ -148,21 +148,28 @@ CREATE TABLE `tbl_product_order` (
 );
 
 CREATE TABLE `tbl_categoryCosplay` (
-  `categoryCosplayId` INT PRIMARY KEY AUTO_INCREMENT,
-  `nameCosplay` VARCHAR(255) UNIQUE NOT NULL,
-  `deletable` boolean NOT NULL
+  `categoryCosplayId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nameCosplay` VARCHAR(255) NOT NULL UNIQUE,
+  `deletable` BOOLEAN NOT NULL
 );
 
 CREATE TABLE `tbl_activities` (
-  `activityId` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nameActivity` VARCHAR(50),
-  `typeActivity` ENUM ('Cosplay', 'Trivia'),
+  `activityId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nameActivity` VARCHAR(255) NOT NULL,
+  `typeActivity` ENUM("cosplay", "trivia") NOT NULL,
+  `activityId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nameActivity` VARCHAR(255) NOT NULL,
+  `typeActivity` ENUM("cosplay", "trivia") NOT NULL,
   `categoryCosplayId` INT,
-  `startTime` TIME UNIQUE NOT NULL,
   `numParticipants` INT NOT NULL,
-  `price` DECIMAL NOT NULL,
-  `completed` boolean,
-  `eventId` INT
+  `eventId` INT,
+  `numParticipants` INT NOT NULL,
+  `eventId` INT,
+  `startTime` TIME UNIQUE NOT NULL,
+  `price` DECIMAL(10, 2) NOT NULL,
+  `completed` BOOLEAN NOT NULL
+  `price` DECIMAL(10, 2) NOT NULL,
+  `completed` BOOLEAN NOT NULL
 );
 
 CREATE TABLE `tbl_participation` (
@@ -186,9 +193,38 @@ CREATE TABLE `tbl_juryQualification` (
   `qualification` int
 );
 
-CREATE UNIQUE INDEX `tbl_itemMenu_index_0` ON `tbl_itemMenu` (`nameItemMenu`, `establishmentId`);
+CREATE TABLE `tbl_trivias` (
+  `triviaId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `activityId` INT NOT NULL,
+  `participantOneId` INT NOT NULL,
+  `participantTwoId` INT NOT NULL,
+  `winnerId` INT NOT NULL,
+  `inchargedId` INT NOT NULL
+);
 
-CREATE UNIQUE INDEX `tbl_ingredients_itemMenu_index_1` ON `tbl_ingredients_itemMenu` (`itemMenuId`, `ingredientId`);
+CREATE TABLE `tbl_prizes` (
+  `prizeId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `typePrize` ENUM("manga", "multimedia", "art", "figures", "souvenirs", "clothing", "technology") NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `price` DECIMAL(10, 2) NOT NULL,
+  `statusPrize` ENUM("available", "awarded") NOT NULL,
+  `activityId` INT,
+  `winnerId` INT
+);
+
+CREATE TABLE `tbl_questions` (
+  `questionId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `question` VARCHAR(255) NOT NULL UNIQUE,
+  `answer` VARCHAR(255) NOT NULL,
+  `category` ENUM("Naruto", "SPYxFamily", "Jujutsu Kaisen", "Harry Potter", "Comics") NOT NULL,
+  `difficulty` ENUM("easy", "medium", "hard") NOT NULL
+);
+
+CREATE TABLE `tbl_itemMenu_order` (
+  `orderId` int,
+  `itemMenuId` int,
+  `quantity` int
+);
 
 ALTER TABLE `tbl_ticketoffice` ADD FOREIGN KEY (`eventId`) REFERENCES `tbl_events` (`eventId`);
 
@@ -249,3 +285,25 @@ ALTER TABLE `tbl_cosplay` ADD FOREIGN KEY (`participantId`) REFERENCES `tbl_cust
 ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`cosplayId`) REFERENCES `tbl_cosplay` (`cosplayId`);
 
 ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`juryId`) REFERENCES `tbl_staff` (`staffId`);
+
+ALTER TABLE `tbl_cashRegister` ADD FOREIGN KEY (`cashierOperatorId`) REFERENCES `tbl_staff` (`staffId`);
+
+ALTER TABLE `tbl_itemMenu_order` ADD FOREIGN KEY (`orderId`) REFERENCES `tbl_order` (`orderId`);
+
+ALTER TABLE `tbl_itemMenu_order` ADD FOREIGN KEY (`itemMenuId`) REFERENCES `tbl_itemMenu` (`itemMenuId`);
+
+-- ACTIVITY
+
+ALTER TABLE `tbl_activities` ADD FOREIGN KEY (`categoryCosplayId`) REFERENCES `tbl_categoryCosplay` (`categoryCosplayId`);
+
+ALTER TABLE `tbl_activities` ADD FOREIGN KEY (`eventId`) REFERENCES `tbl_events` (`eventId`);
+
+ALTER TABLE `tbl_trivias` ADD FOREIGN KEY (`activityId`) REFERENCES `tbl_activities` (`activityId`);
+
+ALTER TABLE `tbl_trivias` ADD FOREIGN KEY (`winnerId`) REFERENCES `tbl_customers` (`customerId`);
+
+ALTER TABLE `tbl_trivias` ADD FOREIGN KEY (`inchargedId`) REFERENCES `tbl_staff` (`staffId`);
+
+ALTER TABLE `tbl_prizes` ADD FOREIGN KEY (`activityId`) REFERENCES `tbl_activities` (`activityId`);
+
+ALTER TABLE `tbl_prizes` ADD FOREIGN KEY (`winnerId`) REFERENCES `tbl_customers` (`customerId`);

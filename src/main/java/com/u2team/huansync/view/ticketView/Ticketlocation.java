@@ -113,14 +113,16 @@ public class Ticketlocation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-         if (txtLocation.getText().trim().isEmpty()){
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
-        return; // Detiene la ejecución del método si la validación falla
-         }
+        if (txtLocation.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error.", "Error ", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución del método si la validación falla
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        TicketOfficeView back = new TicketOfficeView();
+        back.setVisible(true);
+        back.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 

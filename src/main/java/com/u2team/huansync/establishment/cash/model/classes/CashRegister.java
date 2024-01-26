@@ -1,8 +1,5 @@
 package com.u2team.huansync.establishment.cash.model.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * The Cash class represents a cash register within an establishment.
  * It contains information about the state of the cash register, the manager's identifier,

@@ -13,25 +13,25 @@ import java.util.List;
  * @author dfrincong
  */
 public class ItemMenuOrderController {
-//    private static ItemMenuOrderDAO itemMenuOrderDAO = new ItemMenuOrderDAO();
-//    
-//    public static void insertItemMenuOrder(ItemMenuOrder itemMenuOrder){
-//        itemMenuOrderDAO.save(itemMenuOrder);
-//    }
-//    
-//    public static void deleteItemMenuOrder(long itemMenuOrderId){
-//        itemMenuOrderDAO.delete(itemMenuOrderId);
-//    }
-//    
-//    public static  List<ItemMenuOrder> getAllItemMenuOrder(){
-//        return itemMenuOrderDAO.getAll();
-//    }
-//    
-//    public static ItemMenuOrder getByIdItemMenuOrder(long itemMenuOrderId){
-//        return itemMenuOrderDAO.getById(itemMenuOrderId); 
-//    }
-//    
-//    public static void updateItemMenuOrder(ItemMenuOrder itemMenuOrder) {
-//        itemMenuOrderDAO.update(itemMenuOrder);
-//    }
+   private static ItemMenuOrderDAO itemMenuOrderDAO = new ItemMenuOrderDAO();
+   
+   public static void insertItemMenuOrder(ItemMenuOrder itemMenuOrder){
+       itemMenuOrderDAO.save(itemMenuOrder);
+   }
+   
+   public static void deleteItemMenuOrder(long itemMenuOrderId){
+       itemMenuOrderDAO.delete(itemMenuOrderId);
+   }
+   
+   public static  List<ItemMenuOrder> getAllItemMenuOrder(){
+       return itemMenuOrderDAO.getAll();
+   }
+   
+   public static ItemMenuOrder getByIdItemMenuOrder(long itemMenuOrderId){
+       return itemMenuOrderDAO.getById(itemMenuOrderId); 
+   }
+   
+   public static void updateItemMenuOrder(ItemMenuOrder itemMenuOrder) {
+       itemMenuOrderDAO.update(itemMenuOrder);
+   }
 }

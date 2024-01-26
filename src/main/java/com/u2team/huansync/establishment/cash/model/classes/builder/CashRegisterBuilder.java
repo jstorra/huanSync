@@ -2,8 +2,6 @@ package com.u2team.huansync.establishment.cash.model.classes.builder;
 
 import com.u2team.huansync.establishment.cash.model.classes.CashRegister;
 
-import java.util.ArrayList;
-
 public interface CashRegisterBuilder {
 
     CashRegisterBuilder statusCash(boolean statusCash);

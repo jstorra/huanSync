@@ -6,7 +6,6 @@ package com.u2team.huansync.establishment.restaurant.itemMenuOrder.model.DAO;
 
 import com.u2team.huansync.establishment.DAO.IDeleteDao;
 import com.u2team.huansync.establishment.DAO.ISaveDao;
-import com.u2team.huansync.establishment.restaurant.ingredient.model.classes.Ingredient;
 import com.u2team.huansync.establishment.restaurant.itemMenuOrder.model.classes.ItemMenuOrder;
 import com.u2team.huansync.event.DAO.IGetAllDao;
 import com.u2team.huansync.event.DAO.IGetByIdDao;

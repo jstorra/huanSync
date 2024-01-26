@@ -2,7 +2,6 @@ package com.u2team.huansync.establishment.cash.model.DAO;
 
 import com.u2team.huansync.establishment.DAO.*;
 import com.u2team.huansync.establishment.cash.model.classes.CashRegister;
-import com.u2team.huansync.establishment.model.classes.Establishment;
 import com.u2team.huansync.persistence.BDConnection;
 import com.u2team.huansync.persistence.Operations;
 import java.sql.PreparedStatement;

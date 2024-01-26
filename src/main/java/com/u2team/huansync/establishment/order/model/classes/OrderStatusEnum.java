@@ -24,9 +24,4 @@ public enum OrderStatusEnum {
     public String getNameOrder() {
         return name;
     }
-
-    public void setName() {
-        this.name = name;
-    }
-    
 }

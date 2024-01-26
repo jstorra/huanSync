@@ -61,7 +61,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
         txtNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         selectType = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -168,13 +168,13 @@ public class TicketOfficeView extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(31, 69, 106));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Create");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setBackground(new java.awt.Color(31, 69, 106));
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
@@ -362,7 +362,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btnCreate)
                         .addGap(28, 28, 28)
                         .addComponent(jButton2)))
                 .addContainerGap(81, Short.MAX_VALUE))
@@ -436,8 +436,8 @@ public class TicketOfficeView extends javax.swing.JFrame {
                     .addComponent(jLabel17))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
 
@@ -466,7 +466,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         if (txtName.getText().trim().isEmpty() || txtDocument.getText().trim().isEmpty() || txtGender.getText().trim().isEmpty()
                 || txtDate.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty()
                 || txtNumber.getText().trim().isEmpty()) {
@@ -505,7 +505,7 @@ public class TicketOfficeView extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(this, "Customer type is not selected.", "Validation Error", JOptionPane.ERROR_MESSAGE);
 }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     private void selectTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTypeActionPerformed
         // TODO add your handling code here:
@@ -566,10 +566,10 @@ public class TicketOfficeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnOtherLocation;
     private javax.swing.JButton btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

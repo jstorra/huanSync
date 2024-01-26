@@ -4,6 +4,13 @@
  */
 package com.u2team.huansync.view.ticketView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.table.DefaultTableModel;
+
+import com.u2team.huansync.ticketOffice.client.controller.CustomerController;
+import com.u2team.huansync.ticketOffice.client.model.classes.Customer;
 import com.u2team.huansync.view.MenuView;
 
 /**
@@ -12,11 +19,30 @@ import com.u2team.huansync.view.MenuView;
  */
 public class TicketShow extends javax.swing.JFrame {
 
+    private List<Customer> allCustomerList;
     /**
      * Creates new form TicketCreate
      */
     public TicketShow() {
+        allCustomerList = new ArrayList<>();
+
         initComponents();
+        allCustomerList = CustomerController.getAllCustomer();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Customer customer : allCustomerList) {
+            Object[] row = {
+                customer.getCustomerId(),
+                customer.getName(),
+                customer.getEmail(),
+                customer.getPhoneNumber()
+            };
+            
+            model.addRow(row);
+
+        }
+
+
     }
 
     /**
@@ -44,13 +70,13 @@ public class TicketShow extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(255, 195, 114));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "name", "ticket", "ticket office", "type ticket", "Delete", "Update"
+                "ID", "name", "email", "phone Nummber"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -79,7 +105,7 @@ public class TicketShow extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("TICKETS");
+        jLabel1.setText("Clients");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

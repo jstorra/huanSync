@@ -133,4 +133,4 @@ The Ticket Office source code is located at: *src\main\java\com\u2team\huansync\
 
 ### Class Diagram
 
-![Class Diagram](/src/main/java/com/u2team/huansync/ticketOffice/img/DiagramUML.jpg)
+![Class Diagram](/src/main/java/com/u2team/huansync/ticketOffice/img/UML.jpg)

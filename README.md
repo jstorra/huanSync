@@ -75,25 +75,28 @@ git clone https://github.com/Dabrox02/huanSync.git
 ## Modules
 
 ### Database
-- []()
+- [See Database](sql/README%20Database.md)
 
-### Events
-- []()
+### Event
+- [See Event](src/main/java/com/u2team/huansync/event/)
 
 ### TicketOffice
-- []()
+- [See TicketOffice](src/main/java/com/u2team/huansync/ticketOffice/README%20TicketOffice.md)
+
+### Activity
+- [See Activity](src/main/java/com/u2team/huansync/activity/README_Activity.md)
 
 ### Trivia
-- []()
+- [See Trivia](src/main/java/com/u2team/huansync/activity/trivia/)
 
 ### Cosplay
-- []()
+- [See Cosplay](src/main/java/com/u2team/huansync/activity/cosplay/)
 
 ### Store
-- []()
+- [See Store](src/main/java/com/u2team/huansync/establishment/store/README.md)
 
 ### Restaurant
-- []()
+- [See Restaurant](src/main/java/com/u2team/huansync/establishment/restaurant/README%20Restaurant.md)
 
 
 ## How to Contribute

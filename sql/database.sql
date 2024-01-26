@@ -1,3 +1,4 @@
+DROP DATABASE db_huansync;
 CREATE DATABASE db_huansync;
 USE db_huansync;
 
@@ -157,17 +158,10 @@ CREATE TABLE `tbl_activities` (
   `activityId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nameActivity` VARCHAR(255) NOT NULL,
   `typeActivity` ENUM("cosplay", "trivia") NOT NULL,
-  `activityId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nameActivity` VARCHAR(255) NOT NULL,
-  `typeActivity` ENUM("cosplay", "trivia") NOT NULL,
   `categoryCosplayId` INT,
   `numParticipants` INT NOT NULL,
   `eventId` INT,
-  `numParticipants` INT NOT NULL,
-  `eventId` INT,
   `startTime` TIME UNIQUE NOT NULL,
-  `price` DECIMAL(10, 2) NOT NULL,
-  `completed` BOOLEAN NOT NULL
   `price` DECIMAL(10, 2) NOT NULL,
   `completed` BOOLEAN NOT NULL
 );

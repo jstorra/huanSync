@@ -5,13 +5,15 @@
 package com.u2team.huansync.view.eventView;
 
 import com.u2team.huansync.event.controller.EventController;
-import com.u2team.huansync.event.model.classes.AgeClassificationEnum;
 import com.u2team.huansync.event.model.classes.Event;
-import com.u2team.huansync.event.model.classes.StatusEnum;
 import com.u2team.huansync.event.model.classes.builders.EventBuilder;
 import com.u2team.huansync.event.model.classes.builders.EventConcreteBuilder;
+import com.u2team.huansync.event.staff.controller.StaffController;
+import com.u2team.huansync.event.staff.model.classes.Staff;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,11 +22,21 @@ import javax.swing.JOptionPane;
  */
 public class EventView extends javax.swing.JFrame {
 
+    private List<Staff> allOrganizerId;
+
     /**
      * Creates new form eventos
      */
     public EventView() {
+        allOrganizerId = new ArrayList<>();
         initComponents();
+
+        allOrganizerId = StaffController.getAllStaff();
+
+        for (Staff staff : allOrganizerId) {
+            selectEventOrganizer.addItem(String.valueOf(staff.getStaffId()));
+        }
+
     }
 
     /**
@@ -228,7 +240,6 @@ public class EventView extends javax.swing.JFrame {
 
         selectEventOrganizer.setBackground(new java.awt.Color(255, 195, 114));
         selectEventOrganizer.setForeground(new java.awt.Color(51, 51, 51));
-        selectEventOrganizer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -401,8 +412,7 @@ public class EventView extends javax.swing.JFrame {
             LocalTime timeEvent = LocalTime.parse(txtEventTime.getText());
             String ageClassification = selectEventAgeClass.getSelectedItem().toString();
             long organizer = Long.parseLong((String) selectEventOrganizer.getSelectedItem());
-            
-            
+
             EventBuilder eventBuild = new EventConcreteBuilder();
             Event event = eventBuild.nameEvent(nameEvent)
                     .country(countryEvent).city(cityEvent).address(addressEvent)
@@ -430,7 +440,7 @@ public class EventView extends javax.swing.JFrame {
             txtEventRestaurant.setText("");
             txtEventStore.setText("");
             txtEventTime.setText("");
-            return;  
+            return;
         }
     }//GEN-LAST:event_buttonCreateActionPerformed
 

@@ -18,10 +18,10 @@ public interface ActivityBuilder {
     /**
      * Sets the name for the ActivityBuilder.
      *
-     * @param name The name to set.
+     * @param nameActivity The name to set.
      * @return The ActivityBuilder instance.
      */
-    ActivityBuilder name(String name);
+    ActivityBuilder nameActivity(String nameActivity);
 
     /**
      * Sets the type of activity for the ActivityBuilder.
@@ -86,4 +86,3 @@ public interface ActivityBuilder {
      */
     Activity build();
 }
-

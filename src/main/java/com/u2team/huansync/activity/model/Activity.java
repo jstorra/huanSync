@@ -7,7 +7,7 @@ import java.time.LocalTime;
  */
 public class Activity {
     private Long activityId;
-    private String name;
+    private String nameActivity;
     private TypeActivity typeActivity;
     private Long categoryCosplayId;
     private int numParticipants;
@@ -15,6 +15,21 @@ public class Activity {
     private LocalTime startTime;
     private double price;
     private boolean completed;
+
+    public Activity() {
+
+    }
+
+    public Activity(String nameActivity, TypeActivity typeActivity, Long categoryCosplayId, int numParticipants, Long eventId, LocalTime startTime, double price, boolean completed) {
+        this.nameActivity = nameActivity;
+        this.typeActivity = typeActivity;
+        this.categoryCosplayId = categoryCosplayId;
+        this.numParticipants = numParticipants;
+        this.eventId = eventId;
+        this.startTime = startTime;
+        this.price = price;
+        this.completed = completed;
+    }
 
     /**
      * Gets the unique identifier for the activity.
@@ -39,17 +54,17 @@ public class Activity {
      *
      * @return The activity name.
      */
-    public String getName() {
-        return name;
+    public String getNameActivity() {
+        return nameActivity;
     }
 
     /**
      * Sets the name of the activity.
      *
-     * @param name The activity name to set.
+     * @param nameActivity The activity name to set.
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setNameActivity(String nameActivity) {
+        this.nameActivity = nameActivity;
     }
 
     /**
@@ -187,7 +202,7 @@ public class Activity {
     public String toString() {
         return "Activity{" +
                 "activityId=" + activityId +
-                ", name='" + name + '\'' +
+                ", name='" + nameActivity + '\'' +
                 ", typeActivity=" + typeActivity +
                 ", categoryCosplayId=" + categoryCosplayId +
                 ", numParticipants=" + numParticipants +

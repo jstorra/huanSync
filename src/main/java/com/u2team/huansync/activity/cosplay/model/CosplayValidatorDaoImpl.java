@@ -58,12 +58,12 @@ public class CosplayValidatorDaoImpl implements CosplayValidatorDao {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next() == false) {
                 throw new Exception(
-                        """
-                                error: the operation cannot be applied, it seems that there are 3 possibilities why this error arises
-                                1 - the type of activity is different from cosplay
-                                2 -the participant is not participating
-                                3 - the activity has already finished
-                                4 -the participant does not exist
+                """
+                        error: the operation cannot be applied, it seems that there are 3 possibilities why this error arises
+                        1 - the type of activity is different from cosplay
+                        2 -the participant is not participating
+                        3 - the activity has already finished
+                        4 -the participant does not exist
                                 """);
             }
         } catch (Exception e) {

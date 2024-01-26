@@ -7,14 +7,14 @@ import com.u2team.huansync.persistence.BDConnection;
 public class QualificationDaoImp implements QualificationDao{
 
     @Override
-    public List<Qualification> listJuryCalifications(int idCosplay) {
+    public List<Qualification> listJuryQualifications(int idCosplay) {
         List<Qualification> jurysList = new ArrayList<>();
         String query = """
             SELECT sff.staffId AS juryId FROM tbl_staff sff 
             JOIN tbl_workerRoles wr ON sff.roleWorkId = wr.workerRoleId 
             WHERE LOWER(wr.nameWorkerRole) = 'jury' AND LOWER(sff.statusStaff) = 'NO_TASK_ASSIGNED' 
-            ORDER BY sff.staffId ASC LIMIT 3 ;
-                """;;
+            ORDER BY sff.staffId ASC LIMIT 3;
+            """;;
 
         try (Connection con = BDConnection.MySQLConnection();
              PreparedStatement preparedStatement = con.prepareStatement(query);
@@ -35,7 +35,7 @@ public class QualificationDaoImp implements QualificationDao{
 
     @Override
     public List<Qualification> assignQualification(int idCosplay, List<Integer> qualificationList) {
-        List<Qualification> cosplayQualifications = listJuryCalifications(idCosplay);
+        List<Qualification> cosplayQualifications = listJuryQualifications(idCosplay);
         List<Qualification> assignedQualifications = new ArrayList<>();
 
         if (cosplayQualifications.size() != qualificationList.size()) {

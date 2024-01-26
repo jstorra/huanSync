@@ -13,18 +13,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketsDAO implements IDao<Tickets>{
+/**
+ * Data Access Object (DAO) for handling operations related to Tickets in the database.
+ */
+public class TicketsDAO implements IDao<Tickets> {
 
+    /**
+     * Retrieves a Tickets object by its ID from the database.
+     *
+     * @param id The ID of the Tickets object to retrieve.
+     * @return The Tickets object with the specified ID.
+     */
     @Override
     public Tickets getById(long id) {
-
         Operations.setConnection(BDConnection.MySQLConnection());
-        String stm = "SELECT * FROM tbl_tickets where ticketId = ?;";
+        String stm = "SELECT * FROM tbl_tickets WHERE ticketId = ?;";
 
-        try(PreparedStatement ps = Operations.getConnection().prepareStatement(stm)){
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, id);
             ResultSet rs = Operations.query_db(ps);
-            if (rs.next()){
+            if (rs.next()) {
                 TicketBuilder ticketBuilder = new TicketConcreteBuilder();
 
                 Tickets sqlTickets = ticketBuilder.ticketId(rs.getLong("ticketId"))
@@ -34,12 +42,10 @@ public class TicketsDAO implements IDao<Tickets>{
                         .customerId(rs.getLong("customerId"))
                         .ticketOfficeId(rs.getLong("ticketOfficeId"))
                         .ticketTypeId(rs.getLong("ticketTypeId"))
-
                         .buid();
 
-                        return sqlTickets;
-            }
-            else {
+                return sqlTickets;
+            } else {
                 System.out.println("ERROR: The id has not been found");
             }
         } catch (SQLException e) {
@@ -48,6 +54,11 @@ public class TicketsDAO implements IDao<Tickets>{
         return null;
     }
 
+    /**
+     * Retrieves a list of all Tickets objects from the database.
+     *
+     * @return A list containing all Tickets objects.
+     */
     @Override
     public List<Tickets> getAll() {
         List<Tickets> ticketsList = new ArrayList<>();
@@ -55,10 +66,10 @@ public class TicketsDAO implements IDao<Tickets>{
         Operations.setConnection(BDConnection.MySQLConnection());
         String stm = "SELECT * FROM tbl_tickets;";
 
-        try(PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
+        try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ResultSet rs = Operations.query_db(ps);
 
-            while (rs.next()){
+            while (rs.next()) {
                 TicketBuilder ticketBuilder = new TicketConcreteBuilder();
 
                 Tickets sqlTickets = ticketBuilder.ticketId(rs.getLong("ticketId"))
@@ -68,7 +79,6 @@ public class TicketsDAO implements IDao<Tickets>{
                         .customerId(rs.getLong("customerId"))
                         .ticketOfficeId(rs.getLong("ticketOfficeId"))
                         .ticketTypeId(rs.getLong("ticketTypeId"))
-
                         .buid();
 
                 ticketsList.add(sqlTickets);
@@ -79,12 +89,16 @@ public class TicketsDAO implements IDao<Tickets>{
         return ticketsList;
     }
 
+    /**
+     * Saves a Tickets object to the database.
+     *
+     * @param tickets The Tickets object to save.
+     */
     @Override
     public void save(Tickets tickets) {
         String stmInsert = "INSERT INTO tbl_tickets(nameTicket, status, additionalCost, customerId, ticketOfficeId, ticketTypeId) VALUES(?,?,?,?,?,?);";
         try (Connection connection = BDConnection.MySQLConnection()) {
-            try(PreparedStatement ps = connection.prepareStatement(stmInsert)){
-                System.out.printf(tickets.getNameTicket());
+            try (PreparedStatement ps = connection.prepareStatement(stmInsert)) {
                 ps.setString(1, tickets.getNameTicket());
                 ps.setString(2, tickets.getStatusEnum().name());
                 ps.setDouble(3, tickets.getAdditionalCost());
@@ -94,9 +108,9 @@ public class TicketsDAO implements IDao<Tickets>{
 
                 int rows = Operations.insert_update_delete_db(ps);
 
-                if (rows <= 0){
+                if (rows <= 0) {
                     System.out.println("Cannot push ticket");
-                } else{
+                } else {
                     System.out.println("Successful push ticket");
                 }
             }
@@ -105,11 +119,16 @@ public class TicketsDAO implements IDao<Tickets>{
         }
     }
 
+    /**
+     * Updates a Tickets object in the database.
+     *
+     * @param tickets The Tickets object to update.
+     */
     @Override
     public void update(Tickets tickets) {
         Tickets sqlTicket = getById(tickets.getTicketId());
 
-        if (sqlTicket != null){
+        if (sqlTicket != null) {
             sqlTicket.setNameTicket(tickets.getNameTicket());
             sqlTicket.setStatusEnum(tickets.getStatusEnum());
             sqlTicket.setAdditionalCost(tickets.getAdditionalCost());
@@ -126,9 +145,9 @@ public class TicketsDAO implements IDao<Tickets>{
                 ticketOfficeId = ?,
                 ticketTypeId = ?
             WHERE ticketId = ?;
-                    """;
+            """;
 
-            try(PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)){
+            try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
                 ps.setString(1, tickets.getNameTicket());
                 ps.setString(2, tickets.getStatusEnum().name());
                 ps.setDouble(3, tickets.getAdditionalCost());
@@ -140,7 +159,7 @@ public class TicketsDAO implements IDao<Tickets>{
                 System.out.println(ps.toString());
 
                 int rows = Operations.insert_update_delete_db(ps);
-                if (rows <= 0){
+                if (rows <= 0) {
                     System.out.println("Cannot update ticket");
                 } else {
                     System.out.println("Successful update ticket");
@@ -154,12 +173,16 @@ public class TicketsDAO implements IDao<Tickets>{
         }
     }
 
+    /**
+     * Deletes a Tickets object from the database by its ID.
+     *
+     * @param ticketId The ID of the Tickets object to delete.
+     */
     @Override
     public void delete(long ticketId) {
         Operations.setConnection(BDConnection.MySQLConnection());
         String stm = "DELETE FROM tbl_tickets WHERE ticketId = ?;";
 
-        // use Operation class with insert_update_delete and verify if the rows in database are affected
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stm)) {
             ps.setLong(1, ticketId);
             int rows = Operations.insert_update_delete_db(ps);
@@ -176,6 +199,4 @@ public class TicketsDAO implements IDao<Tickets>{
         System.out.println("something was wrong on delete ticket");
         return;
     }
-
 }
-

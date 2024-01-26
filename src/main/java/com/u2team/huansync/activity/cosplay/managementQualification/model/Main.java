@@ -1,27 +1,18 @@
 package com.u2team.huansync.activity.cosplay.managementQualification.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     
     public static void main(String[] args) {
         
-        QualificationDao qd = new QualificationDao();
+        QualificationDaoImp qualifications = new QualificationDaoImp();
 
-        List<Integer> cl =new ArrayList<>();
-        cl.add(1);
-        cl.add(2);
-
-        //List<Qualification> assCalif = qd.asignCalificacion(1, cl);
-
-        List<Qualification> assCalif = qd.listJugesCalification(1);
-
-
-        for(Qualification i :assCalif){
-            System.out.println(i.toString());
-        }
-
+    
+        List<Integer> calificaciones = new ArrayList<>(Arrays.asList(3, 3, 3));
+        qualifications.send(1,calificaciones);
 
 
     }

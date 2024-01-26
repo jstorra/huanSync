@@ -1,6 +1,9 @@
 package com.u2team.huansync.activity.trivia.model;
 
 import com.u2team.huansync.activity.model.Activity;
+import com.u2team.huansync.activity.model.TypeActivity;
+
+import java.time.LocalTime;
 
 /**
  * The {@code Trivia} class represents a trivia entity, extending the base class {@code Activity}.
@@ -14,6 +17,14 @@ public class Trivia extends Activity {
     private Long participantTwoId;
     private Long winnerId;
     private Long inchargedId;
+
+    public Trivia() {
+
+    }
+
+    public Trivia(String nameActivity, TypeActivity typeActivity, Long categoryCosplayId, int numParticipants, Long eventId, LocalTime startTime, double price, boolean completed) {
+        super(nameActivity,typeActivity,categoryCosplayId,numParticipants,eventId,startTime,price,completed);
+    }
 
     /**
      * Gets the unique identifier of the trivia.

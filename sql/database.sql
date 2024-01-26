@@ -1,3 +1,4 @@
+DROP DATABASE db_huansync;
 CREATE DATABASE db_huansync;
 USE db_huansync;
 

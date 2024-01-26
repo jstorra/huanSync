@@ -1,13 +1,16 @@
-
 package com.u2team.huansync.event.model.classes.builders;
 
 import com.u2team.huansync.event.model.classes.Event;
 import java.time.*;
 
-
 /**
  *
- * @author Cristian Pardo
+ * @author Christian Pardo
+ */
+
+/**
+ * Interface for building instances of the event class.
+ * Implementing classes serve as builders, facilitating the construction of events with specific attributes.
  */
 public interface EventBuilder {
     

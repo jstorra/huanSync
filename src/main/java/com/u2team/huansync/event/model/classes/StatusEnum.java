@@ -5,6 +5,12 @@ package com.u2team.huansync.event.model.classes;
  *
  * @author Cristian Pardo
  */
+
+/**
+ * Enumeration representing different statuses.
+ * Each status has a corresponding description.
+ */
+
 public enum StatusEnum {
     ACTIVE("It is active"), FINISHED("It is Inactive"), PENDING("It is Pending");
     

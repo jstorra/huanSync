@@ -15,8 +15,8 @@ public class ActivityBuilderImpl implements ActivityBuilder {
     }
 
     @Override
-    public ActivityBuilder name(String name) {
-        activity.setName(name);
+    public ActivityBuilder nameActivity(String nameActivity) {
+        activity.setNameActivity(nameActivity);
         return this;
     }
 

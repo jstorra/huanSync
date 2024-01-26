@@ -79,7 +79,6 @@ ALTER TABLE `tbl_ticketoffice` ADD FOREIGN KEY (`eventId`) REFERENCES `tbl_event
     <meta charset="UTF-8" />
     <meta name="author" content="WB DataDic" />
     <meta name="description" content="db_huansync Data Dictionary." />
-    <title>db_huansync Data Dictionary</title>
 </head>
 <body>
 <div id="title-sect">

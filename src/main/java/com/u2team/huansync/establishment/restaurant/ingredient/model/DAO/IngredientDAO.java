@@ -28,7 +28,6 @@ public class IngredientDAO implements IGetAll<Ingredient>, ISaveDao<Ingredient>,
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(stmInsert)) {
             ps.setLong(1, ingredientId);
             ResultSet rs = Operations.query_db(ps);
-            List<Ingredient> listIngredient = new ArrayList<>();
             if (rs.next()) {
                 Ingredient ing = new Ingredient();
                 ing.setIngredientId(rs.getLong("ingredientId"));

@@ -6,13 +6,14 @@ package com.u2team.huansync.establishment.DAO;
 
 /**
  *
- * @autho sneiderEsteban
-
+ * @author user
  */
-public interface IDeleteDao<T> extends IDao{
+import java.util.List;
+
+public interface IGetAllDao<T> extends IDao{
     /**
      
-Deletes an object from the database based on its unique identifier.*
-@param id The unique identifier of the object to be deleted.*/
-void delete(long id);
+Retrieves a list of all objects of the specified type.*
+@return A list containing all objects of the specified type.*/
+List<T> getAll();
 }

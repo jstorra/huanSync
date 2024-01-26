@@ -72,27 +72,49 @@ git clone https://github.com/Dabrox02/huanSync.git
 │                           └───model
 
 ```
-## How I Contributed
-### Cómo Contribuir
-Si deseas contribuir a este proyecto, sigue estos pasos:
+## Modules
 
-   1. Realiza un fork del repositorio.
-   2. Crea una rama para tu contribución: `git checkout -b nombre-de-tu-rama`.
-   3. Realiza los cambios y commitea: `git commit -m "Descripción de tus cambios"`.
-   4. Haz push a tu rama: `git push origin nombre-de-tu-rama`.
-   5. Abre un pull request explicando tus cambios.
+### Database
+- []()
 
+### Events
+- []()
+
+### TicketOffice
+- []()
+
+### Trivia
+- []()
+
+### Cosplay
+- []()
+
+### Store
+- []()
+
+### Restaurant
+- []()
+
+
+## How to Contribute
+If you want to contribute to this project, follow these steps:
+
+   1. Fork the repository.
+   2. Create a branch for your contribution: `git checkout -b your-branch-name`.
+   3. Make the changes and commit: `git commit -m "Description of your changes"`.
+   4. Push your branch: `git push origin your-branch-name`.
+   5. Open a pull request explaining your changes.
 ## Contributors
 
-1. Team 1
+1. Team 1 
    - [Dabrox02](https://github.com/Dabrox02) (leader)
    - [johanp0308](https://github.com/johanp0308)
 2. Team 2
-   - [JCristinaJSalas](https://github.com/JCristinaJSalas) (leader)
+   - [duranangie](https://github.com/duranangie) (leader)
    - [RCNicolas](https://github.com/RCNicolas)
    - [AitsuYuyu](https://github.com/AitsuYuyu)
 3. Team 3
-   - []()
+   - [JCristinaJSalas](https://github.com/JCristinaJSalas) (leader)
    - [kazeventum](https://github.com/kazeventum)
    - [EMpinzon](https://github.com/EMpinzon)
 4. Team 4
@@ -100,13 +122,13 @@ Si deseas contribuir a este proyecto, sigue estos pasos:
    - [Ancreem](https://github.com/Ancreem)
    - [DavidSantos004](https://github.com/DavidSantos004)
 5. Team 5
-   - []()
+   - [Santiago24x](https://github.com/Santiago24x) (leader)
    - [robersks](https://github.com/robersks)
-   - []()
+   - [JUANDGG](https://github.com/JUANDGG)
 6. Team 6
    - [jstorra](https://github.com/jstorra) (leader)
    - [leidert11](https://github.com/leidert11)
-   - []()
+   - [violetavillamizara](https://github.com/violetavillamizara)
 7. Team 7
    - [Kevin-Jimenez-D](https://github.com/Kevin-Jimenez-D) (leader)
    - [BarbatosLopux](https://github.com/BarbatosLopux)

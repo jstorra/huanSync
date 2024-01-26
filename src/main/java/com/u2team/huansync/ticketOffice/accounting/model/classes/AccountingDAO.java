@@ -106,14 +106,14 @@ public class AccountingDAO implements InterfaceAccountingDAO {
     public void generateParticipantsReport() {
         Operations.setConnection(BDConnection.MySQLConnection());
         String query = "SELECT\n" +
-                "    a.name AS activity,\n" +
+                "    a.nameActivity AS activity,\n" +
                 "    COUNT(p.customerId) AS participant_count\n" +
                 "FROM\n" +
                 "    tbl_activities a\n" +
                 "LEFT JOIN\n" +
                 "    tbl_participation p ON a.activityId = p.activityId\n" +
                 "GROUP BY\n" +
-                "    a.name;";
+                "    a.nameActivity;";
 
         try (PreparedStatement ps = Operations.getConnection().prepareStatement(query)) {
             ResultSet rs = Operations.query_db(ps);
@@ -121,11 +121,16 @@ public class AccountingDAO implements InterfaceAccountingDAO {
             System.out.println("Participants Report:");
             System.out.println("--------------------");
 
-            while (rs.next()) {
-                String activity = rs.getString("activity");
-                int participantCount = rs.getInt("participant_count");
+            // Verificar si el ResultSet no es nulo
+            if (rs != null) {
+                while (rs.next()) {
+                    String activity = rs.getString("activity");
+                    int participantCount = rs.getInt("participant_count");
 
-                System.out.println(activity + ": " + participantCount + " participants");
+                    System.out.println(activity + ": " + participantCount + " participants");
+                }
+            } else {
+                System.out.println("No results found for the query.");
             }
         } catch (SQLException e) {
             e.printStackTrace();

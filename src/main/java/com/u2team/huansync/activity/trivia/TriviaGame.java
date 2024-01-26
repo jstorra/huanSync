@@ -115,9 +115,9 @@ public class TriviaGame {
                     if (pointsJugador1 == 3) {
                         System.out.println("\nWINNER: " + playersRound2.get(0).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
-                                .participantOneId(playersRound1.get(0).getParticipantId())
-                                .participantTwoId(playersRound1.get(1).getParticipantId())
-                                .winnerId(playersRound1.get(0).getParticipantId())
+                                .participantOneId(playersRound2.get(0).getParticipantId())
+                                .participantTwoId(playersRound2.get(1).getParticipantId())
+                                .winnerId(playersRound2.get(0).getParticipantId())
                                 .inchargedId(inchargedId)
                                 .build();
                         TriviaController.insertTrivia(trivia);
@@ -130,9 +130,9 @@ public class TriviaGame {
                     if (pointsJugador2 == 3) {
                         System.out.println("\nWINNER: " + playersRound2.get(1).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
-                                .participantOneId(playersRound1.get(0).getParticipantId())
-                                .participantTwoId(playersRound1.get(1).getParticipantId())
-                                .winnerId(playersRound1.get(1).getParticipantId())
+                                .participantOneId(playersRound2.get(0).getParticipantId())
+                                .participantTwoId(playersRound2.get(1).getParticipantId())
+                                .winnerId(playersRound2.get(1).getParticipantId())
                                 .inchargedId(inchargedId)
                                 .build();
                         TriviaController.insertTrivia(trivia);
@@ -173,9 +173,9 @@ public class TriviaGame {
                     if (pointsJugador1 == 3) {
                         System.out.println("\nWINNER: " + playersRound3.get(0).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
-                                .participantOneId(playersRound1.get(0).getParticipantId())
-                                .participantTwoId(playersRound1.get(1).getParticipantId())
-                                .winnerId(playersRound1.get(0).getParticipantId())
+                                .participantOneId(playersRound3.get(0).getParticipantId())
+                                .participantTwoId(playersRound3.get(1).getParticipantId())
+                                .winnerId(playersRound3.get(0).getParticipantId())
                                 .inchargedId(inchargedId)
                                 .build();
                         TriviaController.insertTrivia(trivia);
@@ -187,9 +187,9 @@ public class TriviaGame {
                     if (pointsJugador2 == 3) {
                         System.out.println("\nWINNER: " + playersRound3.get(1).getName());
                         Trivia trivia = new TriviaBuilderImpl().activityId(activityId)
-                                .participantOneId(playersRound1.get(0).getParticipantId())
-                                .participantTwoId(playersRound1.get(1).getParticipantId())
-                                .winnerId(playersRound1.get(1).getParticipantId())
+                                .participantOneId(playersRound3.get(0).getParticipantId())
+                                .participantTwoId(playersRound3.get(1).getParticipantId())
+                                .winnerId(playersRound3.get(1).getParticipantId())
                                 .inchargedId(inchargedId)
                                 .build();
                         TriviaController.insertTrivia(trivia);

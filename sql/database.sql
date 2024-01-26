@@ -65,7 +65,7 @@ CREATE TABLE `tbl_customers` (
 );
 
 CREATE TABLE `tbl_tickets` (
-  `ticketId` INT PRIMARY KEY NOT NULL,
+  `ticketId` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nameTicket` VARCHAR(50) DEFAULT NULL,
   `status` ENUM ('paid', 'reserved') DEFAULT NULL,
   `additionalCost` DECIMAL(10,2) DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `promotion` (
 );
 
 CREATE TABLE `tbl_cashRegister` (
-  `cashRegisterId` int PRIMARY KEY NOT NULL,
+  `cashRegisterId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `statusCash` boolean NOT NULL,
   `openingAmount` decimal(10,2) NOT NULL,
   `closingAmount` decimal(10,2) NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE `tbl_cashRegister` (
 );
 
 CREATE TABLE `tbl_order` (
-  `orderId` int PRIMARY KEY NOT NULL,
+  `orderId` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `customerId` int,
   `establishmentId` int,
   `cashRegisterId` int,
@@ -213,6 +213,12 @@ CREATE TABLE `tbl_questions` (
   `difficulty` ENUM("easy", "medium", "hard") NOT NULL
 );
 
+CREATE TABLE `tbl_itemMenu_order` (
+  `orderId` int,
+  `itemMenuId` int,
+  `quantity` int
+);
+
 ALTER TABLE `tbl_ticketoffice` ADD FOREIGN KEY (`eventId`) REFERENCES `tbl_events` (`eventId`);
 
 ALTER TABLE `tbl_ticketoffice` ADD FOREIGN KEY (`staffId`) REFERENCES `tbl_staff` (`staffId`);
@@ -274,6 +280,10 @@ ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`cosplayId`) REFERENCES `tb
 ALTER TABLE `tbl_juryQualification` ADD FOREIGN KEY (`juryId`) REFERENCES `tbl_staff` (`staffId`);
 
 ALTER TABLE `tbl_cashRegister` ADD FOREIGN KEY (`cashierOperatorId`) REFERENCES `tbl_staff` (`staffId`);
+
+ALTER TABLE `tbl_itemMenu_order` ADD FOREIGN KEY (`orderId`) REFERENCES `tbl_order` (`orderId`);
+
+ALTER TABLE `tbl_itemMenu_order` ADD FOREIGN KEY (`itemMenuId`) REFERENCES `tbl_itemMenu` (`itemMenuId`);
 
 -- ACTIVITY
 

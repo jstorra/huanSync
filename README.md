@@ -48,29 +48,155 @@ git clone https://github.com/Dabrox02/huanSync.git
 │                       ├───activity
 │                       │   ├───controller
 │                       │   ├───cosplay
-│                       │   │   ├───controller
+│                       │   │   ├───categorycosplay
+│                       │   │   │   ├───controller
+│                       │   │   │   └───model
+│                       │   │   ├───Controller
+│                       │   │   ├───managementQualification
+│                       │   │   │   ├───controller
+│                       │   │   │   └───model
 │                       │   │   └───model
 │                       │   ├───model
+│                       │   │   └───prize
+│                       │   │       ├───controller
+│                       │   │       └───model
+│                       │   ├───sql
 │                       │   └───trivia
 │                       │       ├───controller
-│                       │       └───model
+│                       │       ├───img
+│                       │       ├───informs
+│                       │       ├───model
+│                       │       └───question
+│                       │           ├───controller
+│                       │           └───model
 │                       ├───establishment
-│                       │   ├───controller
-│                       │   ├───model
-│                       │   ├───restaurant
+│                       │   ├───cash
 │                       │   │   ├───controller
 │                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       │   └───builder
+│                       │   │       └───DAO
+│                       │   ├───controller
+│                       │   ├───DAO
+│                       │   ├───model
+│                       │   │   ├───classes
+│                       │   │   │   └───builder
+│                       │   │   └───DAO
+│                       │   ├───order
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       └───DAO
+│                       │   ├───restaurant
+│                       │   │   ├───controller
+│                       │   │   ├───ingredient
+│                       │   │   │   ├───controller
+│                       │   │   │   └───model
+│                       │   │   │       ├───classes
+│                       │   │   │       └───DAO
+│                       │   │   ├───itemMenu
+│                       │   │   │   ├───controller
+│                       │   │   │   └───model
+│                       │   │   │       ├───classes
+│                       │   │   │       │   └───builder
+│                       │   │   │       └───DAO
+│                       │   │   ├───itemMenuOrder
+│                       │   │   │   ├───controller
+│                       │   │   │   └───model
+│                       │   │   │       ├───classes
+│                       │   │   │       └───DAO
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       └───DAO
 │                       │   └───store
 │                       │       ├───controller
-│                       │       └───model
+│                       │       ├───product
+│                       │       │   ├───controller
+│                       │       │   └───model
+│                       │       │       ├───classes
+│                       │       │       │   └───builder
+│                       │       │       └───DAO
+│                       │       ├───productOrder
+│                       │       │   ├───controller
+│                       │       │   └───model
+│                       │       │       ├───classes
+│                       │       │       └───DAO
+│                       │       ├───promotion
+│                       │       │   ├───controller
+│                       │       │   └───model
+│                       │       │       ├───classes
+│                       │       │       │   └───builder
+│                       │       │       └───DAO
+│                       │       └───sql
 │                       ├───event
 │                       │   ├───controller
-│                       │   └───model
+│                       │   ├───DAO
+│                       │   ├───equipment
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       └───DAO
+│                       │   ├───model
+│                       │   │   ├───classes
+│                       │   │   │   └───builders
+│                       │   │   ├───DAO
+│                       │   │   └───util
+│                       │   ├───staff
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       └───DAO
+│                       │   └───workerRoles
+│                       │       ├───controller
+│                       │       └───model
+│                       │           ├───classes
+│                       │           └───DAO
 │                       ├───persistence
-│                       └───ticketOffice
-│                           ├───controller
-│                           └───model
-
+│                       ├───ticketOffice
+│                       │   ├───accounting
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       └───DAO
+│                       │   ├───client
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       │   └───builders
+│                       │   │       └───DAO
+│                       │   ├───controller
+│                       │   ├───img
+│                       │   ├───model
+│                       │   │   ├───builders
+│                       │   │   ├───classes
+│                       │   │   ├───DAO
+│                       │   │   └───util
+│                       │   ├───participation
+│                       │   │   ├───controller
+│                       │   │   └───model
+│                       │   │       ├───classes
+│                       │   │       │   └───buildes
+│                       │   │       └───DAO
+│                       │   └───tickets
+│                       │       ├───controller
+│                       │       ├───model
+│                       │       │   ├───classes
+│                       │       │   │   └───builders
+│                       │       │   ├───DAO
+│                       │       │   └───util
+│                       │       └───ticketType
+│                       │           ├───controller
+│                       │           └───model
+│                       │               ├───classes
+│                       │               └───DAO
+│                       └───view
+│                           ├───activityView
+│                           ├───establishmentView
+│                           ├───eventView
+│                           ├───icons
+│                           ├───staffView
+│                           ├───ticketView
+│                           └───workerRoleView
 ```
 ## Modules
 

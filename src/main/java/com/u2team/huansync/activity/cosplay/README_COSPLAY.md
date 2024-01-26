@@ -1,173 +1,168 @@
 
 # COSPLAY 🎭         
 ## DESCRIPTION
-El módulo de Sistema de Gestión de Cosplays y Calificación se enfoca en proporcionar a los usuarios un sistema integral para administrar categorías de cosplays, realizar el registro de participantes y gestionar el proceso de calificación mediante la asignación de jurados. Este módulo se diseñó con el objetivo de facilitar la organización y evaluación eficiente de eventos de cosplay.
+The Cosplay Management and Qualification System module focuses on providing users with a comprehensive system to manage cosplay categories, register participants, and manage the qualification process by assigning juries. This module was designed with the objective of facilitating the efficient organization and evaluation of cosplay events.
 
-**Gestión de Categorías:**
-El sistema permite a los usuarios definir y personalizar categorías de cosplays según sus necesidades específicas. La flexibilidad del sistema se refleja en la capacidad de crear y eliminar categorías de manera intuitiva. Además, se proporcionan métodos de listado que permiten a los usuarios visualizar todas las categorías creadas, brindando una visión general de las actividades relacionadas con los cosplays. El método de actualización incluye una característica adicional que brinda a los usuarios la opción de marcar una categoría como no eliminable, garantizando así la integridad de los datos y considerando futuras integraciones del sistema.
+**Category Management:**
+The system allows users to define and customize categories of cosplays according to their specific needs. The flexibility of the system is reflected in the ability to create and delete categories intuitively. Additionally, listing methods are provided that allow users to view all created categories, providing an overview of cosplay-related activities. The update method includes an additional feature that gives users the option to mark a category as non-deletable, thus ensuring data integrity and considering future system integrations.
 
-**Registro de Participantes:**
-El sistema mantiene un registro detallado por cada participante, que incluye información clave como el cosplay con el que van a concursar, la categoría a la que pertenecen y el puntaje obtenido. Para facilitar el proceso de inscripción, al llegar un participante a la mesa, se le solicita su número de participante y el nombre de su cosplay. Esta funcionalidad asegura un seguimiento preciso de la participación y los resultados de cada concursante.
+**Registration of participants:**
+The system maintains a detailed record for each participant, which includes key information such as the cosplay they are going to compete with, the category to which they belong, and the score obtained. To facilitate the registration process, when a participant arrives at the table, they are asked for their participant number and the name of their cosplay. This functionality ensures accurate tracking of the participation and results of each contestant.
 
-**Sistema de Calificación y Jurados:**
-El módulo gestiona un sistema de calificación que involucra la asignación de jurados a cada participante. Los calificadores tienen la capacidad de evaluar a cada participante de manera individual. Después de la calificación de los jurados, el sistema realiza automáticamente el cálculo del promedio y asigna este puntaje total al participante correspondiente. Se destaca la precisión de la presentación de la calificación, que se muestra con dos decimales, asegurando una representación exacta y detallada de los resultados de la evaluación.
+**Qualification System and Juries:**
+The module manages a qualification system that involves assigning jurors to each participant. Raters have the ability to evaluate each participant individually. After the judges' qualification, the system automatically calculates the average and assigns this total score to the corresponding participant. The precision of the presentation of the score is highlighted, which is shown with two decimal places, ensuring an accurate and detailed representation of the evaluation results.
 
 ## OOP (Object Oriented Programming)
 
 ## Cosplay
 ### ControllerMagnamentCosplay
 
-- La clase ControllerMagnamentCosplay es un controlador que esta diseñado para gestionar operaciones relacionadas con cosplays en el contexto de alguna actividad. Utiliza una instancia de CosplayDaoOperationsCrudImpl para realizar operaciones de Crear, Leer, Actualizar y Eliminar (CRUD)
+- The ControllerMagnamentCosplay class is a controller that is designed to manage operations related to cosplays in the context of some activity. Uses a CosplayDaoOperationsCrudImpl instance to perform Create, Read, Update, and Delete (CRUD) operations
 
 ### Cosplay
 
-- la clase Cosplay encapsula la información relacionada con un cosplay, proporcionando métodos para acceder y modificar sus propiedades, así como un método toString para obtener una representación de cadena del objeto
+- The Cosplay class encapsulates information related to a cosplay, providing methods to access and modify its properties, as well as a toString method to obtain a string representation of the object
 
 ### CosplayBuilder
 
-- la interfaz CosplayBuilder proporciona un conjunto de métodos para configurar gradualmente las propiedades de un cosplay y facilita la construcción de instancias de la clase Cosplay utilizando el patrón Builder.
+- The CosplayBuilder interface provides a set of methods to gradually configure the properties of a cosplay and makes it easy to build instances of the Cosplay class using the Builder pattern.
 
 ### CosplayBuilderImpl
 - la clase CosplayBuilderImpl proporciona una implementación del patrón Builder para facilitar la construcción gradual de instancias de la clase Cosplay, permitiendo una forma más legible y mantenible de crear objetos Cosplay con propiedades específicas.
 
 ### CosplayDaoOperationsCrud
-- Esta interfaz proporciona un contrato para interactuar con la capa de persistencia y realizar las operaciones CRUD necesarias para gestionar entidades de cosplay en una base de datos.
-
+- This interface provides a contract to interact with the persistence layer and perform the CRUD operations necessary to manage cosplay entities in a database.
 
 ### CosplayDaoOperationsCrudImpl
-- Esta clase proporciona una implementación concreta de las operaciones CRUD para las entidades de cosplay, utilizando consultas SQL predefinidas y validaciones específicas antes de realizar operaciones en la base de datos
+- This class provides a concrete implementation of CRUD operations for cosplay entities, using predefined SQL queries and specific validations before performing operations on the database
 
 ### CosplayValidatorDao
-- La interfaz CosplayValidatorDao establece un contrato para implementar operaciones de validación específicas para las entidades de cosplay en un entorno de acceso a datos
+- The CosplayValidatorDao interface establishes a contract to implement specific validation operations for cosplay entities in a data access environment
 
 ### CosplayValidatorDaoImpl
-- Esta clase proporciona lógica de validación específica para garantizar que las entidades de cosplay cumplan con ciertas condiciones antes de realizar operaciones en la base de datos.
+- This class provides specific validation logic to ensure that cosplay entities meet certain conditions before performing operations on the database.
 
 ### CosplayView
-- CosplayView actúa como una interfaz de usuario simple para gestionar cosplays, interactuando con la lógica de negocio a través del controlador y permitiendo al usuario realizar operaciones básicas en la base de dato
+- CosplayView acts as a simple user interface to manage cosplays, interacting with the business logic through the controller and allowing the user to perform basic operations on the database
 
 ## Category cosplay 
-
 ### CategoryCosplayController
 
-- CategoryCosplayController proporciona una interfaz para que otras partes del programa realicen operaciones relacionadas con las categorías de cosplays, interactuando con la capa de acceso a datos para realizar operaciones en la base de datos.
+- CategoryCosplayController provides an interface for other parts of the program to perform operations related to cosplay categories, interacting with the data access layer to perform operations on the database.
 
-### CategoryCosplay 
-- CategoryCosplay proporciona una representación de las categorías de cosplay con métodos para acceder y modificar sus atributos. La propiedad deletable puede utilizarse para determinar si una categoría puede ser eliminada, según la lógica de negocio de la aplicación
+### CategoryCosplay
+- CategoryCosplay provides a representation of cosplay categories with methods to access and modify their attributes. The deletable property can be used to determine whether a category can be deleted, depending on the business logic of the application
 
 ### CategoryCosplayDAO
- - CategoryCosplayDAO proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la base de datos para las categorías de cosplay.
+  - CategoryCosplayDAO provides methods to perform CRUD (Create, Read, Update, Delete) operations on the database for cosplay categories.
 
 ### cosplayCategoryView
-- CosplayCategoryView proporciona una interfaz de consola para que el usuario interactúe con las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de las categorías de cosplay, utilizando el controlador CategoryCosplayController
+- CosplayCategoryView provides a console interface for the user to interact with CRUD (Create, Read, Update, Delete) operations of cosplay categories, using the CategoryCosplayController controller
 
 ##  Management Qualification
-
-
-### controllerQualification
-- ControllerQualification se encarga de gestionar las operaciones relacionadas con las calificaciones de cosplays. Proporciona métodos para obtener el número de calificaciones y enviar nuevas calificaciones para un cosplay específico utilizando la instancia de QualificationDaoImp.
+### ControllerQualification
+- ControllerQualification is responsible for managing operations related to cosplay qualifications. Provides methods to get the number of ratings and submit new ratings for a specific cosplay using the QualificationDaoImp instance.
 
 ### Qualification
-- la clase Qualification modela una calificación específica para un cosplay, con detalles sobre el cosplay al que se refiere, el miembro del jurado que proporciona la calificación y la puntuación misma. La implementación incluye métodos getters y setters para acceder y modificar estos atributos.
+- the Qualification class models a specific rating for a cosplay, with details about the cosplay it refers to, the jury member providing the rating, and the score itself. The implementation includes getters and setters methods to access and modify these attributes.
 
-### QualificationDao
-- QualificationDao define las operaciones que pueden realizarse en relación con las calificaciones de cosplay. Aquí hay un resumen de los métodos definidos en la interfaz
+###QualificationDao
+- QualificationDao defines the operations that can be performed regarding cosplay qualifications. Here is a summary of the methods defined in the interface
 
 ### QualificationDaoImp
 
-- La clase QualificationDaoImp implementa la interfaz QualificationDao y se encarga de gestionar las calificaciones para los cosplays en un sistema
+- The QualificationDaoImp class implements the QualificationDao interface and is responsible for managing qualifications for cosplays in a system
 
 ### QualificationDaoView
 
-- La clase QualificationCosplayView maneja la interacción con el usuario para la gestión de calificaciones de cosplays.
-
+- The QualificationCosplayView class handles user interaction for managing cosplay ratings.
+  
 ## DESING PATTERN
-**Patrón DAO (Data Access Object):**
+**DAO (Data Access Object) Pattern:**
 
-Clases Relevantes:
+Relevant Classes:
 CosplayValidatorDao, CosplayValidatorDaoImpl
 CategoryCosplayDAO
 QualificationDao, QualificationDaoImp
-Explicación:
-Se utiliza para separar la lógica de acceso a datos de la lógica empresarial. Las interfaces (CosplayValidatorDao, QualificationDao) definen operaciones relacionadas con la validación y acceso a datos, mientras que las clases concretas (CosplayValidatorDaoImpl, CategoryCosplayDAO, QualificationDaoImp) implementan estas operaciones.
+Explanation:
+It is used to separate data access logic from business logic. The interfaces (CosplayValidatorDao, QualificationDao) define operations related to data validation and access, while the concrete classes (CosplayValidatorDaoImpl, CategoryCosplayDAO, QualificationDaoImp) implement these operations.
 
-**Patrón MVC (Modelo-Vista-Controlador):**
+**MVC (Model-View-Controller) Pattern:**
 
-Clases Relevantes:
+Relevant Classes:
 CosplayView, CosplayCategoryView, QualificationCosplayView
 ControllerMagnamentCosplay, CategoryCosplayController, ControllerQualification
-Explicación:
-El patrón MVC se utiliza para separar la lógica de presentación de la lógica de negocio y el manejo de datos. Las vistas (CosplayView, CosplayCategoryView, QualificationCosplayView) manejan la interacción con el usuario, los controladores (ControllerMagnamentCosplay, CategoryCosplayController, ControllerQualification) gestionan la lógica de negocio y los modelos (como Cosplay y CategoryCosplay) representan los datos.
+Explanation:
+The MVC pattern is used to separate presentation logic from business logic and data handling. Views (CosplayView, CosplayCategoryView, QualificationCosplayView) handle user interaction, controllers (ControllerMagnamentCosplay, CategoryCosplayController, ControllerQualification) handle business logic, and models (such as Cosplay and CategoryCosplay) represent data.
 
-**Patrón Singleton:**
+**Singleton Pattern:**
 
-Clases Relevantes:
+Relevant Classes:
 BDConnection
-Explicación:
-La clase BDConnection actúa como un Singleton para garantizar que solo haya una instancia de la conexión a la base de datos. Este enfoque es común para manejar conexiones a la base de datos de manera eficiente.
+Explanation:
+The BDConnection class acts as a Singleton to ensure that there is only one instance of the database connection. This approach is common to handle database connections efficiently.
 
-**patron builder:**
+**Builder pattern:**
 
-En las clases CosplayBuilder e CosplayBuilderImpl, se implementa el patrón de diseño Builder. Este patrón es útil cuando la construcción de un objeto es compleja y tiene múltiples parámetros. El patrón Builder separa la construcción de un objeto de su representación, permitiendo crear diferentes representaciones del objeto utilizando el mismo proceso de construcción.
-A continuación, analicemos cómo se implementa el patrón Builder en estas clases:
-CosplayBuilder (Interfaz Builder):
-Interfaz para construir instancias de la clase Cosplay: Define los métodos para configurar las propiedades de un objeto Cosplay.
-
+In the CosplayBuilder and CosplayBuilderImpl classes, the Builder design pattern is implemented. This pattern is useful when the construction of an object is complex and has multiple parameters. The Builder pattern separates the construction of an object from its representation, allowing different representations of the object to be created using the same construction process.
+Next, let's analyze how the Builder pattern is implemented in these classes:
+CosplayBuilder (Builder Interface):
+Interface to build instances of the Cosplay class: Defines the methods to configure the properties of a Cosplay object.
 
 ## SOLID 
-**Principio de Responsabilidad Única (SRP):**
+**Single Responsibility Principle (SRP):**
 
-El principio SRP establece que una clase debe tener solo una razón para cambiar. En los scripts proporcionados:
+The SRP principle states that a class should have only one reason to change. In the provided scripts:
 
-CosplayValidatorDaoImpl: Esta clase tiene la responsabilidad de validar cosplays y tiene métodos específicos para validar participación, participante y el estado del cosplay. Su única razón de cambio sería si las reglas de validación cambian.
+CosplayValidatorDaoImpl: This class has the responsibility of validating cosplays and has specific methods to validate participation, participant and the state of the cosplay. Your only reason for change would be if the validation rules change.
 
-CategoryCosplayController: Se encarga de gestionar las categorías de cosplays. Su única razón de cambio sería si las reglas de gestión de categorías cambian.
+CategoryCosplayController: Responsible for managing cosplay categories. Your only reason for change would be if the category management rules change.
 
-CosplayCategoryView: Maneja la interacción con el usuario para las categorías de cosplays. Su única razón de cambio sería si los requisitos de la interfaz de usuario para las categorías cambian.
+CosplayCategoryView: Handles user interaction for cosplay categories. Your only reason for changing would be if the UI requirements for the categories change.
 
-ControllerQualification: Se encarga de la lógica relacionada con la gestión de calificaciones. Su única razón de cambio sería si las reglas para el manejo de calificaciones cambian.
+ControllerQualification: Handles the logic related to qualification management. Your only reason for change would be if the rules for handling grades change.
 
-QualificationDaoImp: Implementa la interfaz para acceder y gestionar las calificaciones en la base de datos. Su única razón de cambio sería si las operaciones relacionadas con las calificaciones cambian.
+QualificationDaoImp: Implements the interface to access and manage qualifications in the database. Your only reason for change would be if operations related to the ratings change.
 
-QualificationCosplayView: Maneja la interacción con el usuario para las calificaciones de cosplays. Su única razón de cambio sería si los requisitos de la interfaz de usuario para las calificaciones cambian.
+QualificationCosplayView: Handles user interaction for cosplay ratings. Your only reason for change would be if the UI requirements for ratings change.
 
-Cada clase tiene una responsabilidad única y está centrada en un aspecto específico de la aplicación.
+Each class has a unique responsibility and is focused on a specific aspect of the application.
 
-**Principio de Abierto/Cerrado (OCP):**
+**Open/Closed Principle (OCP):**
 
-El principio OCP establece que las clases deben estar abiertas para la extensión pero cerradas para la modificación. En los scripts proporcionados:
+The OCP principle states that classes should be open for extension but closed for modification. In the provided scripts:
 
-CategoryCosplayController: La capacidad de gestionar categorías está abierta para extenderse mediante la adición de nuevos métodos o funcionalidades, pero está cerrada para modificar la forma en que se gestionan las categorías.
+CategoryCosplayController: The ability to manage categories is open to extending by adding new methods or functionality, but is closed to modifying the way categories are managed.
 
-CosplayValidatorDaoImpl: Puede extenderse para agregar nuevas validaciones sin cambiar su estructura existente.
+CosplayValidatorDaoImpl: Can be extended to add new validations without changing its existing structure.
 
-ControllerQualification: La lógica para el manejo de calificaciones puede extenderse mediante la adición de nuevos métodos o funcionalidades sin cambiar la estructura existente.
+ControllerQualification: The logic for handling qualifications can be extended by adding new methods or functionality without changing the existing structure.
 
-**Principio de Sustitución de Liskov (LSP):**
+**Liskov Substitution Principle (LSP):**
 
-El principio LSP establece que las instancias de una clase derivada deben poder reemplazar instancias de la clase base sin afectar la funcionalidad del programa. En los scripts proporcionados:
+The LSP principle states that instances of a derived class must be able to replace instances of the base class without affecting the functionality of the program. In the provided scripts:
 
-CategoryCosplayController: La clase base CategoryCosplay y sus derivadas deberían poder ser utilizadas de manera intercambiable sin afectar la funcionalidad del controlador.
+CategoryCosplayController: The CategoryCosplay base class and its derivatives should be able to be used interchangeably without affecting the functionality of the controller.
 
-CosplayValidatorDaoImpl: Las implementaciones de las validaciones deben poder reemplazar la interfaz CosplayValidatorDao sin cambiar la funcionalidad del código que las utiliza.
+CosplayValidatorDaoImpl: Validation implementations must be able to override the CosplayValidatorDao interface without changing the functionality of the code that uses them.
 
-**Principio de Segregación de Interfaz (ISP):**
+**Interface Segregation Principle (ISP):**
 
-El principio ISP establece que una clase no debe verse obligada a implementar interfaces que no utiliza. En los scripts proporcionados:
+The ISP principle states that a class should not be forced to implement interfaces that it does not use. In the provided scripts:
 
-CosplayValidatorDao: Define una interfaz con métodos relacionados con la validación de cosplays.
+CosplayValidatorDao: Defines an interface with methods related to cosplay validation.
 
-CategoryCosplayController: Implementa métodos específicos de gestión de categorías.
+CategoryCosplayController: Implements specific category management methods.
 
-QualificationDao: Define una interfaz con métodos relacionados con el manejo de calificaciones.
+QualificationDao: Defines an interface with methods related to handling qualifications.
 
-**Principio de Inversión de Dependencia (DIP):**
+**Dependency Inversion Principle (DIP):**
 
-El principio DIP establece que las clases de alto nivel no deben depender de clases de bajo nivel, ambas deben depender de abstracciones. En los scripts proporcionados:
+The DIP principle states that high-level classes should not depend on low-level classes, both should depend on abstractions. In the provided scripts:
 
-CosplayCategoryView, QualificationCosplayView: Dependencia de abstracciones (controladores) en lugar de clases concretas.
+CosplayCategoryView, QualificationCosplayView: Dependency on abstractions (controllers) instead of concrete classes.
 
-CategoryCosplayController, ControllerQualification: Son clases de alto nivel que dependen de abstracciones (interfaces).
+CategoryCosplayController, ControllerQualification: These are high-level classes that depend on abstractions (interfaces).
 
 ## PACKAGE STRUCTURE        
 Package Structure      

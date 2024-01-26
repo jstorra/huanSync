@@ -216,7 +216,7 @@ git clone https://github.com/Dabrox02/huanSync.git
 - [See Trivia](src/main/java/com/u2team/huansync/activity/trivia/)
 
 ### Cosplay
-- [See Cosplay](src/main/java/com/u2team/huansync/activity/cosplay/)
+- [See Cosplay](src/main/java/com/u2team/huansync/activity/cosplay/README_COSPLAY.md)
 
 ### Store
 - [See Store](src/main/java/com/u2team/huansync/establishment/store/README.md)

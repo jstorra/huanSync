@@ -9,8 +9,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * The AccountingDAO class implements the InterfaceAccountingDAO interface
+ * and provides methods for generating various accounting reports.
+ */
 public class AccountingDAO implements InterfaceAccountingDAO {
 
+    /**
+     * Generates a total sales report.
+     */
     @Override
     public void generateTotalSalesReport() {
         Operations.setConnection(BDConnection.MySQLConnection());
@@ -34,6 +41,9 @@ public class AccountingDAO implements InterfaceAccountingDAO {
         }
     }
 
+    /**
+     * Generates a category sales report.
+     */
     @Override
     public void generateCategorySalesReport() {
         Operations.setConnection(BDConnection.MySQLConnection());
@@ -61,6 +71,9 @@ public class AccountingDAO implements InterfaceAccountingDAO {
         }
     }
 
+    /**
+     * Generates an availability report.
+     */
     @Override
     public void generateAvailabilityReport() {
         Operations.setConnection(BDConnection.MySQLConnection());
@@ -86,6 +99,9 @@ public class AccountingDAO implements InterfaceAccountingDAO {
         }
     }
 
+    /**
+     * Generates a participants report.
+     */
     @Override
     public void generateParticipantsReport() {
         Operations.setConnection(BDConnection.MySQLConnection());

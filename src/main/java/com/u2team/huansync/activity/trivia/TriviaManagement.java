@@ -83,20 +83,30 @@ public class TriviaManagement {
     }
 
     private static void listTriviasToPlay() throws Exception {
+        System.out.println("\n------------ TRIVIAS TO PLAY ------------\n");
+
         List<Activity> triviasToPlay = listTrivias();
         if (triviasToPlay.isEmpty())
             throw new Exception("\nMensaje: There's no trivias to play.");
 
-        System.out.println("\n------------ TRIVIAS TO PLAY ------------\n");
-//        validateTriviaId();
+        System.out.print("\nEnter the trivia ID to play: ");
+        long triviaId = SCANNER.nextLong();
+        SCANNER.nextLine();
+
+        boolean exists = triviasToPlay.stream().anyMatch(trivia -> trivia.getActivityId() == triviaId);
+
+        if (!exists)
+            throw new Exception("\nError: Entered trivia doesn't exist.");
+
+        TriviaGame.initTriviaGame(triviaId);
     }
 
     private static void updateTrivia() throws Exception {
+        System.out.println("\n------------ UPDATE TRIVIA ------------\n");
+
         List<Activity> triviasToUpdate = listTrivias();
         if (triviasToUpdate.isEmpty())
             throw new Exception("\nMensaje: There's no trivias to update.");
-
-        System.out.println("\n------------ UPDATE TRIVIA ------------\n");
 
         System.out.print("\nEnter the trivia ID to update: ");
         long triviaId = SCANNER.nextLong();
@@ -142,11 +152,11 @@ public class TriviaManagement {
     }
 
     private static void deleteTrivia() throws Exception {
+        System.out.println("\n------------ DELETE TRIVIA ------------\n");
+
         List<Activity> triviasToDelete = listTrivias();
         if (triviasToDelete.isEmpty())
             throw new Exception("\nMensaje: There's no trivias to delete.");
-
-        System.out.println("\n------------ DELETE TRIVIA ------------\n");
 
         System.out.print("\nEnter the trivia ID to delete: ");
         long triviaId = SCANNER.nextLong();

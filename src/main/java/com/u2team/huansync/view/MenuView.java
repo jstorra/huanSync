@@ -6,10 +6,8 @@ package com.u2team.huansync.view;
 
 import com.u2team.huansync.view.activityView.ActivityView;
 import com.u2team.huansync.view.establishmentView.EstablishmentView;
-import com.u2team.huansync.view.eventView.EventView;
 import com.u2team.huansync.view.eventView.ShowEventView;
 import com.u2team.huansync.view.staffView.StaffView;
-import com.u2team.huansync.view.ticketView.TicketOfficeView;
 import com.u2team.huansync.view.ticketView.TicketShow;
 import com.u2team.huansync.view.workerRoleView.WorkerRoleView;
 import java.awt.Dimension;

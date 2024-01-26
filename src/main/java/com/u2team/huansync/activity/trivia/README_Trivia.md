@@ -55,3 +55,7 @@ Navigate through the Trivia section in our project repository:
       ├─ TestParticipants.java
       ├─ TriviaGame.java
       ├─ TriviaManagement.java
+
+# Class Diagram
+
+![](.\img\ClassDiagram.jpg)

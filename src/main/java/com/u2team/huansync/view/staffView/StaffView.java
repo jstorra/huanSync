@@ -9,16 +9,13 @@ import com.u2team.huansync.event.staff.model.classes.Staff;
 import com.u2team.huansync.event.workerRoles.controller.WorkerRolesController;
 import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.view.MenuView;
-import com.u2team.huansync.view.activityView.AlertDelete;
 import com.u2team.huansync.view.activityView.Successful;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

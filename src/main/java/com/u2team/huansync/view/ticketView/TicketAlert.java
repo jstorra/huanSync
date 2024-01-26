@@ -4,8 +4,6 @@
  */
 package com.u2team.huansync.view.ticketView;
 
-import com.u2team.huansync.ticketOffice.model.classes.TicketOffice;
-
 /**
  *
  * @author ANGIE DURAN

@@ -5,7 +5,6 @@
 package com.u2team.huansync.view.workerRoleView;
 
 import com.u2team.huansync.event.workerRoles.controller.WorkerRolesController;
-import com.u2team.huansync.event.workerRoles.model.DAO.WorkerRoleDAO;
 import com.u2team.huansync.event.workerRoles.model.classes.WorkerRole;
 import com.u2team.huansync.view.MenuView;
 import com.u2team.huansync.view.activityView.Successful;

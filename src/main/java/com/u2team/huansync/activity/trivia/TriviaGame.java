@@ -3,9 +3,8 @@ package com.u2team.huansync.activity.trivia;
 import com.u2team.huansync.activity.trivia.question.controller.QuestionController;
 import com.u2team.huansync.activity.trivia.question.model.Question;
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class pruebaTrivia {
+public class TriviaGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> jugadoresRonda1 = new ArrayList<>(Arrays.asList("Juan", "Cristina", "Gonzalo", "Santiago", "Pedro", "Camilo", "Violeta", "Pedro"));
@@ -13,12 +12,10 @@ public class pruebaTrivia {
         List<String> jugadoresRonda3 = new ArrayList<>();
         
         List<Question> questions = QuestionController.getAllQuestions();
-        System.out.println(questions.get(49));
-        List<Question> questionsEasy = questions.stream().filter(question -> "easy".equalsIgnoreCase(question.getDifficulty().getName())).collect(Collectors.toList());
-        List<Question> questionsMedium = questions.stream().filter(question -> "medium".equalsIgnoreCase(question.getDifficulty().getName())).collect(Collectors.toList());
-        List<Question> questionsHard = questions.stream().filter(question -> "hard".equalsIgnoreCase(question.getDifficulty().getName())).collect(Collectors.toList());
 
-        System.out.println(questionsEasy);
+        List<Question> questionsEasy = questions.stream().filter(question -> "easy".equalsIgnoreCase(question.getDifficulty().getName())).toList();
+        List<Question> questionsMedium = questions.stream().filter(question -> "medium".equalsIgnoreCase(question.getDifficulty().getName())).toList();
+        List<Question> questionsHard = questions.stream().filter(question -> "hard".equalsIgnoreCase(question.getDifficulty().getName())).toList();
 
 //        List<String> preguntas = Arrays.asList(
 //                "¿Cuál es tu película favorita y por qué la consideras especial?",

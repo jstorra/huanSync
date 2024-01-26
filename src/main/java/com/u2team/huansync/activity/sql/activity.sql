@@ -2,49 +2,49 @@ DROP DATABASE IF EXISTS db_huansync;
 CREATE DATABASE db_huansync;
 USE db_huansync;
 
-CREATE TABLE tbl_categoryCosplay(
-    categoryCosplayId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nameCosplay VARCHAR(255) NOT NULL UNIQUE,
-    deletable BOOLEAN NOT NULL
+CREATE TABLE `tbl_categoryCosplay` (
+    `categoryCosplayId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nameCosplay` VARCHAR(255) NOT NULL UNIQUE,
+    `deletable` BOOLEAN NOT NULL
 );
 
-CREATE TABLE tbl_activities (
-    activityId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nameActivity VARCHAR(255) NOT NULL,
-    typeActivity ENUM("cosplay", "trivia") NOT NULL,
-    categoryCosplayId INT,
-    numParticipants INT NOT NULL,
-    eventId INT,
-    startTime TIME NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    completed BOOLEAN NOT NULL
+CREATE TABLE `tbl_activities` (
+    `activityId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nameActivity` VARCHAR(255) NOT NULL,
+    `typeActivity` ENUM("cosplay", "trivia") NOT NULL,
+    `categoryCosplayId` INT,
+    `numParticipants` INT NOT NULL,
+    `eventId` INT,
+    `startTime` TIME NOT NULL UNIQUE,
+    `price` DECIMAL(10, 2) NOT NULL,
+    `completed` BOOLEAN NOT NULL
 );
 
-CREATE TABLE tbl_trivias (
-	triviaId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    activityId INT NOT NULL,
-    participantOneId INT NOT NULL,
-    participantTwoId INT NOT NULL,
-    winnerId INT NOT NULL,
-    inchargedId INT NOT NULL
+CREATE TABLE `tbl_trivias` (
+	`triviaId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `activityId` INT NOT NULL,
+    `participantOneId` INT NOT NULL,
+    `participantTwoId` INT NOT NULL,
+    `winnerId` INT NOT NULL,
+    `inchargedId` INT NOT NULL
 );
 
-CREATE TABLE tbl_prizes (
-	prizeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    typePrize ENUM("manga", "multimedia", "art", "figures", "souvenirs", "clothing", "technology") NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    statusPrize ENUM("available", "awarded") NOT NULL,
-    activityId INT,
-    winnerId INT
+CREATE TABLE `tbl_prizes` (
+	`prizeId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `typePrize` ENUM("manga", "multimedia", "art", "figures", "souvenirs", "clothing", "technology") NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
+    `price` DECIMAL(10, 2) NOT NULL,
+    `statusPrize` ENUM("available", "awarded") NOT NULL,
+    `activityId` INT,
+    `winnerId` INT
 );
 
-CREATE TABLE tbl_questions (
-    questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    question VARCHAR(255) NOT NULL UNIQUE,
-    answer VARCHAR(255) NOT NULL,
-    category ENUM("Naruto", "SPYxFamily", "Jujutsu Kaisen", "Harry Potter", "Comics") NOT NULL,
-    difficulty ENUM("easy", "medium", "hard") NOT NULL
+CREATE TABLE `tbl_questions` (
+    `questionId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `question` VARCHAR(255) NOT NULL UNIQUE,
+    `answer` VARCHAR(255) NOT NULL,
+    `category` ENUM("Naruto", "SPYxFamily", "Jujutsu Kaisen", "Harry Potter", "Comics") NOT NULL,
+    `difficulty` ENUM("easy", "medium", "hard") NOT NULL
 );
 
 /* Categories*/

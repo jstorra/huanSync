@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public class CategoryCosplayController {
-    private CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();
+    private static CategoryCosplayDAO categoryCosplayDAO = new CategoryCosplayDAO();
 
     /**
      * Retrieves all cosplay categories.
@@ -18,7 +18,7 @@ public class CategoryCosplayController {
      * @return List of cosplay categories.
      */
 
-    public List<CategoryCosplay> getAllCategories() {
+    public static List<CategoryCosplay> getAllCategories() {
         return categoryCosplayDAO.getAllCategories();
     }
 
@@ -28,7 +28,7 @@ public class CategoryCosplayController {
      * @param nameCategory Name of the new cosplay category.
      */
 
-    public void insertCategory(String nameCategory) {
+    public static void insertCategory(String nameCategory) {
         categoryCosplayDAO.insertCategory(nameCategory);
     }
 
@@ -39,7 +39,7 @@ public class CategoryCosplayController {
      * @param newNameCategoryCosplay New name for the cosplay category.
      */
 
-    public void updateCategory(long categoryId, String newNameCategoryCosplay,boolean deletable) {
+    public static void updateCategory(long categoryId, String newNameCategoryCosplay,boolean deletable) {
         categoryCosplayDAO.updateCategory(categoryId, newNameCategoryCosplay,deletable);
     }
 
@@ -49,7 +49,7 @@ public class CategoryCosplayController {
      * @param categoryId Identifier of the cosplay category to be deleted.
      */
 
-    public void deleteCategory(long categoryId) {
+    public static void deleteCategory(long categoryId) {
         categoryCosplayDAO.deleteCategory(categoryId);
     }
 }
